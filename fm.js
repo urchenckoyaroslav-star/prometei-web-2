@@ -118,7 +118,7 @@
         if(data?.managed===true)return data;
       }
     }catch(_) { /* offline API or no Cloudflare binding; static fallback */ }
-    const response=await fetch('fm-config.json',{cache:'no-store'});
+    const response=await fetch('/fm-config.json',{cache:'no-store'});
     if(!response.ok)throw Error('Station configuration unavailable');
     return response.json();
   }
