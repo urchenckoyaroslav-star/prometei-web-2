@@ -31,6 +31,8 @@ jobs:
         run: npm run check
       - name: Check Python Windows DJ code syntax
         run: python3 -m py_compile scripts/prometei_fm_dj.py
+      - name: Test Windows DJ shuffle, 36h retry, and safe file selection
+        run: python3 -m unittest discover -s tests -p 'test_fm_dj.py' -v
       - name: Build static site and SEO documents
         run: npm run build
       - name: Verify Cloudflare Pages output
