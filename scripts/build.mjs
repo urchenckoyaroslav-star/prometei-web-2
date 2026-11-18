@@ -104,7 +104,7 @@ function localize(html,locale){
 if(fs.existsSync(output))fs.rmSync(output,{recursive:true,force:true});
 fs.mkdirSync(output,{recursive:true});
 function copy(d){for(const entry of fs.readdirSync(d,{withFileTypes:true})){
-  if(['dist','node_modules','tests','scripts','functions','.git','__pycache__'].includes(entry.name))continue;
+  if(['dist','node_modules','tests','scripts','functions','.github','.git','__pycache__'].includes(entry.name))continue;
   const file=path.join(d,entry.name);const dest=path.join(output,path.relative(source,file));
   if(entry.isDirectory()){fs.mkdirSync(dest,{recursive:true});copy(file);}else if(entry.isFile()&&!entry.name.endsWith('.pyc')){fs.mkdirSync(path.dirname(dest),{recursive:true});fs.copyFileSync(file,dest);}
 }}
