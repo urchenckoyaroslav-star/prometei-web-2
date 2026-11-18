@@ -56,7 +56,8 @@
       }
       if(!source)throw Error('Cannot read the station data');
       state.playlists=(source.playlists||[]).slice(0,24);
-      f.elements.mode.value=source.mode==='pc'?'pc':'youtube';
+      f.elements.mode.value=['pc','youtube','youtube_live'].includes(source.mode)?source.mode:'youtube';
+      $('live-video-id').value=source.liveVideoId||'';
       $('stream-url').value=source.pcStreamUrl||'';
       render();
       $('station-playlist').value=source.playlistId||'';
@@ -70,9 +71,13 @@
       mode:f.elements.mode.value,
       enabled,
       pcStreamUrl:$('stream-url').value.trim(),
+      liveVideoId:$('live-video-id').value.trim(),
       playlistId:$('station-playlist').value,
       playlists:state.playlists
     };
+    if(enabled&&payload.mode==='youtube_live'&&!/^[A-Za-z0-9_-]{11}$/.test(payload.liveVideoId)){
+      hint('Enter a valid 11-character YouTube Live video ID.');return;
+    }
     if(enabled&&payload.mode==='pc'&&!payload.pcStreamUrl){
       hint('Enter the HTTPS public stream URL before going on air from the PC.');return;
     }
