@@ -23,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/fm.css">
+  <script defer src="/fm-i18n.js"></script>
   <script defer src="/fm-pc-websocket.js"></script>
   <script defer src="/fm.js"></script>
   <script defer src="/fm-donate.js"></script>
@@ -35,6 +36,18 @@
   <div class="shell nav-inner">
     <a class="brand" href="/" aria-label="PROMETEI home"><img src="/assets/mark.svg" alt="" width="40" height="40"><span>PROMETEI<small>FM / RADIO LAB</small></span></a>
     <nav class="nav-links" aria-label="Main"><a href="#listen">Listen</a><a href="#sources">Music</a><a href="#requests">Requests</a><a href="#support">Support</a><a href="#history">History</a><a href="/">Messenger ↗</a></nav>
+    <div class="fm-language" role="group" aria-label="Radio language">
+      <label for="fm-lang" class="fm-lang-icon" title="Choose language">🌐</label>
+      <select id="fm-lang" aria-label="Choose radio language">
+        <option value="en">English</option>
+        <option value="uk">Українська</option>
+        <option value="ru">Русский</option>
+        <option value="de">Deutsch</option>
+        <option value="es">Español</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+      </select>
+    </div>
     <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.meshnetwork.app" target="_blank" rel="noopener noreferrer">Get PROMETEI <span>↗</span></a>
   </div>
 </header>
