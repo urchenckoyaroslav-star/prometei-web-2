@@ -9,8 +9,9 @@ import {fileURLToPath} from 'node:url';
 
 const source = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = path.join(source, 'dist');
-const fallback='https://urchenckoyaroslav-star.github.io/prometei-web-2/';
-const siteURL=process.env.SITE_URL || process.env.CF_PAGES_URL || fallback;
+const fallback='https://prometei-web-2.pages.dev/';
+// CF_PAGES_URL points to an individual hashed deployment; do not use it for canonical URLs.
+const siteURL=process.env.SITE_URL || fallback;
 let site;
 try{site=new URL(siteURL); if(site.protocol!=='https:')throw Error('HTTPS required'); site.hash='';site.search=''; if(!site.pathname.endsWith('/'))site.pathname+='/';}
 catch(e){console.error('Invalid SITE_URL:',e.message);process.exit(1);}
@@ -89,7 +90,7 @@ function metadata(html,{url,title,description,lang='en',app=false,alternate=fals
    `<meta name="twitter:image" content="${escapeAttr(base+'assets/og-cover.png')}">`,
    `<script type="application/ld+json">${q(data)}</script>`
   ].filter(Boolean).join('\n  ');
-  return html.replace('</head>','  '+tags+'\n</head>');
+  return html.replace('</head>','  '+tags+'\n</head>').replace(/href="(\.\.\/)?(portfolio|privacy|privacy-phantom|privacy-pokonap|account-deletion|child-safety|terms|support|how-it-works)\.html"/g,'href="$1$2"');
 }
 function localize(html,locale){
   const dict=translations[locale];
@@ -122,10 +123,10 @@ for(const filename of docs){
  const old=fs.readFileSync(path.join(source,filename),'utf8');
  const titleMatch=old.match(/<title>([^<]+)<\/title>/i);
  const title=titleMatch?titleMatch[1]:'PROMETEI';
- const url=base+filename;
+ const url=base+filename.slice(0,-5);
  fs.writeFileSync(path.join(output,filename),metadata(old,{url,title,description:extraDescriptions[filename]||'Official PROMETEI documentation',lang:'en'}),'utf8');
 }
-const urls=['',...localized.map(x=>x+'/'),...docs];
+const urls=['',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5))];
 const xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for(const item of urls){
  xml.push('  <url><loc>'+base+item+'</loc>');
