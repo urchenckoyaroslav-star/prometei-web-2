@@ -316,6 +316,7 @@ class HistorySender:
         self.thread=None
         self.last_notice=0
         self.enabled=False
+        self.last_recovery=time.monotonic()
 
     def start(self):
         if not self.token:
@@ -340,8 +341,34 @@ class HistorySender:
         except queue.Full:
             print("WARN: history delivery queue full; local track log retained")
 
+    def recover_unsent(self, limit: int = 48) -> int:
+        """Resend bounded missing starts after temporary network failures.
+
+        The API uses playId idempotency, so retrying a start never adds an
+        extra play. We avoid old events outside the public 36h window.
+        """
+        cutoff=utc_ms()-WINDOW_MS
+        restored=0
+        for event in self.log.unsent():
+            stamp=event.get("startedAt")
+            if (not isinstance(stamp,int) or stamp<cutoff or
+                    stamp>utc_ms()+30000):
+                continue
+            if self.tasks.full():
+                break
+            self.enqueue({**event,"type":"start"})
+            restored+=1
+            if restored>=limit:
+                break
+        return restored
+
     def run(self):
         while not STOP.is_set() or not self.tasks.empty():
+            # A failed POST remains in the durable local log and gets retried
+            # while the broadcast continues; no restart is required.
+            if not STOP.is_set() and time.monotonic()-self.last_recovery>=60:
+                self.recover_unsent()
+                self.last_recovery=time.monotonic()
             try:
                 event=self.tasks.get(timeout=0.5)
             except queue.Empty:
