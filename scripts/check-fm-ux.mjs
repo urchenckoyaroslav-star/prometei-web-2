@@ -16,7 +16,12 @@ function assertLinks(doc,source){
   assert.ok(links.length>=12,source+' must expose useful navigation links');
   for(const [,href] of links){
     if(href.startsWith('#')) assert.ok(ids.has(href.slice(1)),source+' missing anchor '+href);
-    else assert.match(href,/^(https:\/\/|mailto:|\/|[\w.\/-]+(?:#[\w-]+)?)$/,source+' invalid link '+href);
+    else {
+      const url=new URL(href,'https://prometei-web-2.pages.dev/fm');
+      assert.ok(['https:','mailto:'].includes(url.protocol),source+' unsafe link '+href);
+      // A normal Play Store URI legitimately carries a ?id= query parameter.
+      assert.ok(!href.startsWith('javascript:'),source+' invalid link '+href);
+    }
   }
   const unsafeTarget=/<a\b(?=[^>]*target="_blank")(?![^>]*rel="[^"]*noopener)[^>]*>/g;
   assert.doesNotMatch(doc,unsafeTarget,source+' should use noopener for new-tab links');
