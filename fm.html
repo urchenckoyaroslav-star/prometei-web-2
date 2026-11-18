@@ -24,6 +24,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/fm.css">
   <script defer src="/fm.js"></script>
+  <script defer src="/fm-donate.js"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PROMETEI FM","publisher":{"@type":"Organization","name":"PROMETEI"},"url":"https://prometei-web-2.pages.dev/fm","description":"Curated PROMETEI FM listening experience using official embedded YouTube playlists.","applicationCategory":"MultimediaApplication","operatingSystem":"Web browser","isAccessibleForFree":true}</script>
 </head>
 <body>
@@ -32,7 +33,7 @@
 <header class="site-top">
   <div class="shell nav-inner">
     <a class="brand" href="/" aria-label="PROMETEI home"><img src="/assets/mark.svg" alt="" width="40" height="40"><span>PROMETEI<small>FM / RADIO LAB</small></span></a>
-    <nav class="nav-links" aria-label="Main"><a href="#listen">Listen</a><a href="#sources">Music</a><a href="#requests">Requests</a><a href="#history">History</a><a href="/">Messenger ↗</a></nav>
+    <nav class="nav-links" aria-label="Main"><a href="#listen">Listen</a><a href="#sources">Music</a><a href="#requests">Requests</a><a href="#support">Support</a><a href="#history">History</a><a href="/">Messenger ↗</a></nav>
     <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.meshnetwork.app" target="_blank" rel="noopener noreferrer">Get PROMETEI <span>↗</span></a>
   </div>
 </header>
@@ -137,6 +138,40 @@
       <article class="source-card glass"><h3>How does PROMETEI FM work?</h3><p>Listen to curated YouTube playlists in the official visible embedded player. Videos may contain ads and vary by region. The embedded player is a separate session for each visitor, not synchronized live radio.</p><h3>Can I listen on my phone?</h3><p>Yes. The page adapts to Android, iPhone, tablets and desktops. Press LISTEN to begin; browsers may require a tap before playing audio.</p></article>
       <article class="source-card glass"><h3>Can I request a song?</h3><p>Yes. Enter the artist, title and optional dedication in the request form. It prepares a free email message to our team. Paid orders are not accepted.</p><h3>How is music broadcast from a PC?</h3><p>Our DJ can switch the station to an authorized MP3/AAC stream served over HTTPS. The public stream must be set up separately, and music must be licensed for broadcasting.</p></article>
     </div>
+  </section>
+  <section class="shell support-section section-space" id="support" aria-labelledby="support-heading">
+    <div class="section-label"><span>06 / KEEP THE SIGNAL ALIVE</span><span class="line"></span><span>SUPPORT INDEPENDENT CREATION</span></div>
+    <div class="support-panel">
+      <div class="support-atmosphere" aria-hidden="true"><span class="support-orbit support-orbit-one"></span><span class="support-orbit support-orbit-two"></span><span class="support-planet">✦</span></div>
+      <div class="support-copy">
+        <div class="support-eyebrow"><span class="pulse-dot"></span><span>MADE WITH HEART. KEPT ALIVE TOGETHER.</span></div>
+        <h2 id="support-heading">HELP THE<br><em>SIGNAL LIVE ON.</em></h2>
+        <p class="support-lead">Every track has a story. Every new connection starts with an idea. PROMETEI FM, PROMETEI Messenger and our next independent projects are built with curiosity, determination and countless hours of work.</p>
+        <p>If our music or our technology has brought something good to your day, you can help us keep creating. Your voluntary support contributes to development, testing, infrastructure and new experiments.</p>
+        <div class="support-tags" aria-label="Projects your support helps"><span>✦ PROMETEI FM</span><span>✦ PROMETEI MESSENGER</span><span>✦ FUTURE PROJECTS</span></div>
+        <a class="support-jump" href="#support-method">EXPLORE SUPPORT OPTIONS <span aria-hidden="true">↗</span></a>
+      </div>
+      <aside class="support-method glass" id="support-method" aria-labelledby="support-method-heading">
+        <div class="support-method-head"><span class="micro-label">VOLUNTARY SUPPORT</span><span class="support-usdt-symbol" aria-hidden="true">₮</span></div>
+        <h3 id="support-method-heading">Fuel the next<br><span>big idea.</span></h3>
+        <p>We are preparing a USDT donation option with a verified wallet address, an exact blockchain network and a QR code.</p>
+        <div class="support-qr-frame" id="donate-qr-frame">
+          <div class="support-qr-placeholder" id="donate-qr-placeholder" aria-hidden="true"><span class="support-qr-star">✦</span><span class="support-qr-corner corner-tl"></span><span class="support-qr-corner corner-tr"></span><span class="support-qr-corner corner-bl"></span><span class="support-qr-corner corner-br"></span></div>
+          <img id="donate-qr" class="support-qr-image" alt="QR code with the verified USDT receiving address" width="212" height="212" hidden>
+          <span class="support-qr-caption" id="donate-qr-caption">VERIFIED WALLET COMING SOON</span>
+        </div>
+        <div class="support-wallet" id="donate-wallet" hidden>
+          <div class="support-network-line"><strong id="donate-token">USDT</strong><span id="donate-network">NETWORK PENDING</span></div>
+          <label class="support-address-label" for="donate-address">PUBLIC RECEIVING ADDRESS</label>
+          <div class="support-address-controls"><input id="donate-address" type="text" readonly spellcheck="false" autocomplete="off" aria-label="USDT receiving wallet address"><button id="donate-copy" type="button">COPY <span aria-hidden="true">⧉</span></button></div>
+          <p class="support-warning" id="donate-warning">Check that the wallet network matches before sending. Cryptocurrency transfers are generally irreversible.</p>
+        </div>
+        <p class="support-pending" id="donate-pending">The wallet is being verified. Please don't send funds to an address from an unrelated page or screenshot.</p>
+        <div class="support-assist"><a href="mailto:prometeimes@gmail.com?subject=PROMETEI%20project%20support">CONTACT THE TEAM <span aria-hidden="true">↗</span></a><span>NO SUBSCRIPTION · NO REQUIRED PAYMENT</span></div>
+        <p class="support-status" id="donate-status" role="status" aria-live="polite"></p>
+      </aside>
+    </div>
+    <p class="support-disclosure">PROMETEI is an independent development project, not a registered charity. Contributions are voluntary, do not buy access or special privileges, and are not presented as tax-deductible donations. Music and messenger features remain free to explore.</p>
   </section>
   <section class="shell bridge-cta"><span class="micro-label">THE CONNECTION CONTINUES</span><h2>MUSIC CONNECTS.<br><em>PROMETEI CONNECTS PEOPLE.</em></h2><p>From your favorite sounds to the next conversation. Discover the Android messenger with Internet, Bluetooth and local-network communication options.</p><div class="cta-row"><a class="main-button" href="https://play.google.com/store/apps/details?id=com.meshnetwork.app" target="_blank" rel="noopener noreferrer">INSTALL PROMETEI MESSENGER <span>↗</span></a><a class="secondary-button" href="/">EXPLORE OUR UNIVERSE <span>↗</span></a></div><div class="cta-orbit" aria-hidden="true">✦</div></section>
   <section class="shell fine-print" aria-label="About this experience"><p><strong>ABOUT THIS STATION</strong> PROMETEI FM currently offers a DJ-curated YouTube listening experience, not one synchronized public broadcast. The official YouTube player controls ads, playback and availability. A PC stream becomes active only after the DJ connects an authorized broadcast server. Payments are not operating. Song requests open the listener’s email client; this page does not collect payment.</p></section>
