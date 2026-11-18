@@ -55,3 +55,8 @@
 @media(max-width:760px){.video-stage{aspect-ratio:16/9;min-height:190px}.video-stage iframe{min-height:190px}.nav-inner{padding-inline:env(safe-area-inset-left) env(safe-area-inset-right)}.hero-art{max-width:100%}.hero h1{overflow-wrap:anywhere}.history-track{min-width:0}.collection-action{min-height:44px;display:inline-grid;place-items:center}.player-message{line-height:1.55}.track-counter{text-align:right;font-size:11px}.bridge-cta{overflow:hidden}}
 @media(pointer:coarse){button,.nav-cta,.main-button,.secondary-button,.form-action{min-height:44px}input,select,textarea{font-size:16px!important}}
 @media(prefers-reduced-motion:reduce){.studio-page .stars,.studio-page .glow{animation:none}}
+
+/* Visible official YouTube fallback, shown only for the active YouTube source */
+.yt-fallback{margin-top:12px;display:inline-flex;align-items:center;gap:6px;min-height:42px;padding:8px 12px;border:1px solid #f6b96933;border-radius:10px;color:#f2c690;font-size:11px;letter-spacing:.05em;font-weight:800}
+.yt-fallback[hidden]{display:none}
+.yt-fallback:hover,.yt-fallback:focus-visible{background:#f6b96914}
