@@ -32,3 +32,14 @@
 - [Cloudflare SEO project](https://app.openseo.so/p/62a3ca5e-d535-4cff-bedd-bec1e44df08f)
 - [Cloudflare Pages bindings docs](https://developers.cloudflare.com/pages/functions/bindings/)
 - [FM operator guide](PROMETEI_FM_GUIDE.md)
+
+
+## Continuation checkpoint — 2026-11-18 19:49 Europe/Kyiv
+
+- Live browser tab `https://prometei-web-2.pages.dev/fm` confirmed site content and PROMETEI Messenger installation link. This does not verify synchronized broadcasting.
+- The Cloudflare account's API Tokens page displayed confirmation that a token named `PROMETEI_FM_SETUP` had been created. **Never copy the token itself into GitHub issues, logs or chat.** Creation of an account API token is not proof of any Pages environment changes.
+- Latest GitHub Actions run `44353670874` on commit `52ec802a27499569ebaa1f8cee070d3e2934e60d` was independently checked via the authenticated GitHub connector and has conclusion **success** (Node checks, Python syntax, DJ unit tests, build, Pages output). GitHub Pages run `44353668165` also has conclusion **success**. Earlier email notifications about failed jobs are stale.
+- Not yet verified in this continuation: `FM_STATE` Workers KV namespace and Pages Production binding, encrypted `FM_DJ_TOKEN`, redeployment with those bindings, authenticated DJ Studio save, server-wide history, or a real live PC stream. No claim of active broadcasting should be made.
+- The user's existing Windows FM setup program is currently prompting for a Cloudflare API token. The safe next step is to copy it **inside the user's local Cloudflare browser** directly to the **hidden local Windows installer prompt**. Do not put it in a website, repository, message or screenshot. The local installer should be checked for trusted provenance before entering a credential. After configuration, verify `GET /api/fm/station` and `GET /api/fm/history` and a DJ Studio save from two independent devices.
+- Source files responsible for the backend are `functions/api/fm/station.js` and `functions/api/fm/history.js`. GitHub repository changes alone cannot create production Cloudflare KV resources or secrets.
+- No tokens, credentials or private music files were committed by this status update.
