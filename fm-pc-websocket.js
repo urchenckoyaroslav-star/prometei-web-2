@@ -4,8 +4,9 @@
 (() => {
   'use strict';
   let socket=null, media=null, source=null, objectURL='', audioNode=null, started=false;
-  let pending=[];
+  let pending=[], watchdog=null;
   function stop(){
+    if(watchdog!==null){clearTimeout(watchdog);watchdog=null;}
     if(socket){const old=socket;socket=null;try{old.close()}catch(_){}}
     pending=[];media=null;source=null;started=false;
     if(audioNode){try{audioNode.pause()}catch(_){}audioNode=null;}
@@ -48,14 +49,32 @@
     }
     audioNode=audio;
     media=new MediaSource();
+    const currentMedia=media;
     objectURL=URL.createObjectURL(media);
     audio.src=objectURL;
+    // WebSockets may connect yet never deliver a playable MP3 buffer.
+    // Recover with native HTTPS audio instead of showing a false PLAYING state.
+    watchdog=setTimeout(()=>{
+      if(media!==currentMedia || audioNode!==audio)return;
+      let playable=false;
+      try{
+        playable=!!source && source.buffered.length>0 &&
+          source.buffered.end(source.buffered.length-1)-source.buffered.start(0)>0.5 &&
+          audio.readyState>=2;
+      }catch(_){}
+      if(!playable){
+        message('The PC live stream is still buffering; trying compatible HTTPS MP3…');
+        fallbackHttpMp3(audio,streamUrl,message);
+      }
+    },10000);
     media.addEventListener('sourceopen',()=>{
+      if(media!==currentMedia)return;
       try{
         source=media.addSourceBuffer('audio/mpeg');
         source.mode='sequence';
       }catch(_){fallbackHttpMp3(audio,streamUrl,message);return;}
       source.addEventListener('updateend',()=>{
+        if(media!==currentMedia)return;
         if(source.buffered.length){
           const end=source.buffered.end(source.buffered.length-1);
           if(!started&&end>0){
