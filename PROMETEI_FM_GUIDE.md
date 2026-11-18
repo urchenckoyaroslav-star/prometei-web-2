@@ -50,3 +50,9 @@ Do not publish or guess a default token. The DJ control page can be discovered, 
 
 ## Testing
 Run \`npm run check\`, including Node syntax verification and unit checks for station API authorization and listener/SEO markup. Also test actual remote deployment and playback manually.
+
+## PC broadcast using OBS and YouTube Live
+- On a verified, live-enabled YouTube channel, start an OBS stream containing only music you own or are explicitly allowed to broadcast. Keep the YouTube streaming key private, outside the site and GitHub.
+- In DJ Studio select YouTube Live and paste the 11-character video ID from the public YouTube watch URL; press GO ON AIR (requires Cloudflare KV + FM_DJ_TOKEN).
+- Listeners then tune into the same official visible YouTube Live player. Delay may vary; some clients require a tap to start. Copyright owners/Content ID may block music, and ad playback depends on YouTube.
+- Without active Cloudflare storage, the operator may set `mode: "youtube_live"`, `enabled: true`, `liveVideoId: "REAL_VIDEO_ID"` in `fm-config.json` and redeploy.
