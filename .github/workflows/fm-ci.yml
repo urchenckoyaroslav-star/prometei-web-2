@@ -38,4 +38,4 @@ jobs:
           test -f dist/sitemap.xml
           test ! -f dist/functions/api/fm/station.js
           grep -q 'https://prometei-web-2.pages.dev/fm' dist/sitemap.xml
-          grep -q 'PROMETEI FM — Listen to Online Radio' dist/fm.html
+          grep -q 'PROMETEI FM — Online Radio' dist/fm.html
