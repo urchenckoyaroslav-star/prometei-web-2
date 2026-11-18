@@ -1,34 +1,22 @@
-# PROMETEI FM — Hybrid Personal Radio (v1)
+# PROMETEI FM — Station operator model (v2)
 
-Live page: https://prometei-web-2.pages.dev/fm
-Source files: fm.html, fm.css, fm.js, fm-config.json
+Public page: https://prometei-web-2.pages.dev/fm
 
-## Functions
-- Add multiple public, embeddable YouTube playlist URLs or IDs in the browser. The official visible YouTube IFrame player plays them. No audio extraction or hidden playback.
-- Select multiple local audio files: browser plays temporary object URLs; **no user audio is uploaded**.
-- Modes: YouTube, My PC, Hybrid. The mixer chooses between sources (weighted in hybrid mode), selects random playlists and random local files with recent-repeat avoidance. YouTube shuffle is used within playlists. Loaded YouTube playlist video IDs are cached in memory to randomly choose start positions on later visits.
-- Play/Pause/Next and ended auto-advance, with user gesture required initially. Browser autoplay restrictions and video blocking may intervene.
-- Now Playing uses actual YouTube Player video metadata (title and channel) or parses local filenames of the form Artist - Title.mp3.
-- History contains actual playback events, stored up to 60 entries in browser localStorage. No fake global feed.
+## Station policy
+- Only site operators program the playlists via GitHub and fm-config.json. Public users cannot add playlists or local audio or alter the official station configuration.
+- The current YouTube source uses YouTube's **visible official embedded player**. Users can listen, pause, and may access standard YouTube controls. Each user receives a local playlist session, **not synchronized live radio**. Public music history is not fabricated: history shown on the site is the visitor's own listening history.
+- A future authenticated operator console should control a centralized server-side queue (Cloudflare Access/Workers + D1, with audit log and roles). Never ship a DJ token in public JavaScript or rely on hiding buttons for authorization.
+- For live PC broadcasting, host an **authorized, rights-cleared audio stream** via a broadcast server (e.g. Icecast) and set `mode` to `pc` and `pcStreamUrl` to the HTTPS MP3/AAC stream URL in fm-config.json. PC must upload the actual audio to this licensed stream. Local browser file selection cannot broadcast to other visitors.
+- **Do not** use YouTube videos as an audio source for an Icecast stream or download/extract/rebroadcast embedded YouTube audio. YouTube is a separate, visible player option. Do not bypass embedded player ads or autoplay limitations.
+- Site design is retained in the original PROMETEI FM style.
 
-## What this is not
-This v1 is a **personal browser station**, not a synchronized public radio stream. Each visitor has their own rotation and private listening log. Files selected from your PC are available to that browser session only, never to other visitors. A real 24/7 shared broadcast would require licensed/authorized music, backend storage, playback service and persistent infrastructure.
+## Song requests and future payments
+- The song request form creates a prefilled email draft sent by the visitor's email program to prometetimes@gmail.com? **No**: official inbox is `prometeimes@gmail.com` (the webpage uses the correct address). Nothing is uploaded or charged by our site.
+- Telegram fallback: https://t.me/AlnairCanopus
+- Payments are **not active**. Before accepting paid requests: confirm music and public broadcast rights; select a real payment provider and merchant account; create server-verified payment checkout and webhook; add published price, refund/cancellation rules, privacy/terms; process only fully paid and approved requests and ensure a refund if not fulfilled. Do not sell YouTube video access or promise pay-to-play of YouTube embeds.
+- Proposed statuses: submitted -> awaiting review -> payment invited -> payment confirmed -> queued -> aired (or refunded). Rate-limit messages and prevent spam. No unverified payment state in the browser.
 
-## Sitewide featured playlists
-Edit fm-config.json and populate the playlists array with real, verified YouTube playlist IDs, e.g.:
-
-    {"version":1,"playlists":[{"name":"Owner-approved playlist","id":"ACTUAL_VALID_PLAYLIST_ID"}]}
-
-Personal playlists added through the website itself are stored only on the visitor's device, not published sitewide. Never add invalid IDs or invent on-air artist history.
-
-## Rights and security
-YouTube references:
-https://developers.google.com/youtube/iframe_api_reference
-https://developers.google.com/youtube/player_parameters
-
-Use official YouTube embed with visible player and controls, respect embedding restrictions, no audio extraction, downloading or proxying. Some videos may prohibit playback or autoplay. No API keys are shipped to client.
-
-The FM page is SEO indexable, but private history is not indexable public artist content. Artist pages and public track history would require real shared program data, original descriptions and applicable permissions.
-
-## Possible next iteration
-Cloudflare D1/KV shared track history, real 24/7 licensed Icecast/HLS channel, authorized public feed and translated labels for all seven PROMETEI site languages.
+## Current configuration
+- `fm-config.json`: `mode: "youtube"` and curated YouTube playlist array; optional `pcStreamUrl` is empty until a legitimate stream server exists.
+- GitHub source updates deploy to Cloudflare Pages. Keep playlist IDs verified and embeddable.
+- `npm run check` validates script syntax; `npm run build` builds the FM page as part of the site.
