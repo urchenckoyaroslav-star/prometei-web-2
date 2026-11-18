@@ -313,18 +313,25 @@ class HistorySender:
         self.tasks=queue.Queue(maxsize=3000)
         self.thread=None
         self.last_notice=0
+        self.enabled=False
 
     def start(self):
         if not self.token:
             print("NOTICE: no FM_DJ_TOKEN: local track log only; PUBLIC 36-hour history is not active.")
             return
+        status,data=http_json(self.url,timeout=5)
+        if status!=200 or data.get("configured") is not True:
+            print("NOTICE: Cloudflare FM history API is not configured (HTTP "
+                  +str(status)+"). Local history is recorded; no public history yet.")
+            return
+        self.enabled=True
         self.thread=threading.Thread(target=self.run,daemon=True)
         self.thread.start()
         for e in self.log.unsent():
             self.enqueue({**e,"type":"start"})
 
     def enqueue(self, data):
-        if not self.token:
+        if not self.enabled:
             return
         try:
             self.tasks.put_nowait(data)
@@ -347,9 +354,11 @@ class HistorySender:
             self.tasks.task_done()
 
     def stop(self):
-        if self.token:
+        if self.enabled:
             self.enqueue({"type":"offline"})
-            self.tasks.join()
+            deadline=time.monotonic()+8
+            while self.tasks.unfinished_tasks and time.monotonic()<deadline:
+                time.sleep(0.1)
 
 
 def shuffled_rotation(files: list[Path]):
