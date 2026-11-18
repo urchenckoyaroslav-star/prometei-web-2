@@ -8,6 +8,9 @@ const root=path.resolve('dist');
 const locales=['en','uk','ru','de','es','zh','ja'];
 const codes={en:'en',uk:'uk',ru:'ru',de:'de',es:'es',zh:'zh-CN',ja:'ja'};
 const catalog=JSON.parse(fs.readFileSync('fm-translations.json','utf8'));
+const pcSignalCopy="The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in. After 20 minutes without a PC signal, the official YouTube backup is selected.";
+assert.ok(catalog.uk[pcSignalCopy]?.includes('сигнал'), 'missing Ukrainian PC signal explanation');
+assert.doesNotMatch(catalog.uk[pcSignalCopy], /[\u3040-\u30ff\u3400-\u9fff]/, 'Ukrainian explanation must not contain Japanese/Chinese script');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const exists=p=>fs.existsSync(path.join(root,p));
 function assertLinks(doc,source){
