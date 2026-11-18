@@ -156,17 +156,18 @@
       .filter(p=>p && playlistIdValid(p.id)).slice(0,24)
       .map(p=>({id:p.id,name:clean(p.name,70)||'PROMETEI playlist'}));
     const url=typeof c.pcStreamUrl==='string' && /^https:\/\//.test(c.pcStreamUrl)?c.pcStreamUrl:'';
-    const mode=c.mode==='pc' && url?'pc':'youtube';
+    const liveVideoId=/^[A-Za-z0-9_-]{11}$/.test(c.liveVideoId||'')?c.liveVideoId:'';
+    const mode=c.mode==='pc'&&url?'pc':c.mode==='youtube_live'&&liveVideoId?'youtube_live':'youtube';
     const enabled=c.enabled!==false;
     const playlistId=playlists.some(p=>p.id===c.playlistId)?c.playlistId:'';
     const was=state.config;
     const previousPlaying=state.playing;
     if(was && was.enabled!==enabled && !enabled)stopIntent();
     const sourceChanged=!!was && (
-      was.mode!==mode || was.stream!==url || was.playlistId!==playlistId || was.enabled!==enabled
+      was.mode!==mode || was.stream!==url || was.liveVideoId!==liveVideoId || was.playlistId!==playlistId || was.enabled!==enabled
     );
     state.playlists=playlists;
-    state.config={mode,stream:url,playlistId,enabled,managed:c.managed===true};
+    state.config={mode,stream:url,liveVideoId,playlistId,enabled,managed:c.managed===true};
     renderPlaylists();
     if(!enabled){
       if(state.playing||state.source){
@@ -201,8 +202,8 @@
       state.source=null;state.playing=false;state.loading=false;
       el.title.textContent='PROMETEI FM / Our music';
       el.artist.textContent='Station-selected YouTube playlists';
-      el.source.textContent='▶ OFFICIAL YOUTUBE PLAYER';
-      notify('Station-curated YouTube music is ready. Press LISTEN.');
+      el.source.textContent=mode==='youtube_live'?'● OFFICIAL YOUTUBE LIVE':'▶ OFFICIAL YOUTUBE PLAYER';
+      notify(mode==='youtube_live'?'PROMETEI YouTube Live is selected. Press LISTEN.':'Station-curated YouTube music is ready. Press LISTEN.');
       update();
       if(previousPlaying)startYoutube();
     }
@@ -299,7 +300,9 @@
       update(); recordYouTube();
       notify('Playing in the official YouTube player. Availability and ads depend on YouTube.');
     } else if (evt.data === Y.ENDED) {
-      state.playing = false; update(); startYoutube();
+      state.playing = false; update();
+      if(state.config?.mode==='youtube_live')notify('The YouTube Live broadcast has ended.');
+      else startYoutube();
     } else if (evt.data === Y.PAUSED) {
       state.playing = false; state.loading = false; update();
     } else if (evt.data === Y.BUFFERING) {
@@ -314,19 +317,23 @@
   }
   async function startYoutube() {
     if(!state.config?.enabled) {notify('Our station is currently off air.');return;}
-    const p = selectPlaylist();
+    const liveMode=state.config.mode==='youtube_live';
+    const p=liveMode?{id:state.config.liveVideoId,name:'PROMETEI LIVE'}:selectPlaylist();
     if (!p) { notify('Station music is not configured.'); return; }
     state.source = 'youtube'; state.loading = true; state.playing = false;
     state.current = p; state.videoId = '';
-    if(el.fallback) el.fallback.href='https://www.youtube.com/playlist?list='+encodeURIComponent(p.id);
+    if(el.fallback) el.fallback.href=liveMode?'https://www.youtube.com/watch?v='+encodeURIComponent(p.id):'https://www.youtube.com/playlist?list='+encodeURIComponent(p.id);
     el.title.textContent = 'Tuning to ' + p.name;
     el.artist.textContent = 'Connecting to the official YouTube player...';
     el.source.textContent = '▶ YOUTUBE / ' + p.name;
     update();
     try {
       const player = await ensureYoutube();
-      player.loadPlaylist({listType:'playlist', list:p.id, index:0, startSeconds:0});
-      if (typeof player.setShuffle === 'function') player.setShuffle(true);
+      if(liveMode)player.loadVideoById({videoId:p.id});
+      else{
+        player.loadPlaylist({listType:'playlist', list:p.id, index:0, startSeconds:0});
+        if(typeof player.setShuffle==='function')player.setShuffle(true);
+      }
       notify('Connecting to station selection...');
     } catch (error) {
       state.playing = false; state.loading = false; update();
@@ -349,7 +356,7 @@
       state.yt?.pauseVideo();
       return;
     }
-    if (state.yt) { state.yt.playVideo(); return; }
+    if (state.yt) { if(state.config.mode==='youtube_live'&&state.source===null)startYoutube();else state.yt.playVideo(); return; }
     startYoutube();
   }
   el.play.addEventListener('click', toggleListening);
