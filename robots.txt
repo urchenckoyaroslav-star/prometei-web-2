@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://urchenckoyaroslav-star.github.io/prometei-web-2/sitemap.xml
