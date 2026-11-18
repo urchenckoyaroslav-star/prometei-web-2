@@ -244,7 +244,9 @@
       was.mode!==mode || was.stream!==url || was.liveVideoId!==liveVideoId || was.playlistId!==playlistId || was.enabled!==enabled
     );
     state.playlists=playlists;
-    state.config={mode,stream:url,liveVideoId,playlistId,enabled,managed:c.managed===true,previewMode:c.previewMode===true};
+    const isTemporaryPcStream=mode==='pc' && /^https:\/\/[a-z0-9-]+\.trycloudflare\.com\/live\.mp3$/.test(url);
+    state.config={mode,stream:url,liveVideoId,playlistId,enabled,managed:c.managed===true,
+      previewMode:c.previewMode===true||isTemporaryPcStream};
     renderPlaylists();
     renderHistory();
     if(globalMode())refreshGlobalHistory();
@@ -269,12 +271,12 @@
         try{state.yt?.pauseVideo();}catch(_){}
         state.source='pc';state.playing=false;state.loading=false;
         window.PrometeiPcPreview?.stop();
-        if(c.previewMode===true){el.audio.removeAttribute('src');el.audio.load();}
+        if(state.config.previewMode){el.audio.removeAttribute('src');el.audio.load();}
         else el.audio.src=url;
         el.title.textContent='PROMETEI FM / Live stream';
         el.artist.textContent='Broadcast selected by our DJ';
         el.source.textContent='♫ AUTHORIZED PC STREAM';
-        notify(c.previewMode===true?'Temporary owner-PC broadcast preview. Press LISTEN; the owner must keep their PC on.':'Our live PC radio source is available. Press LISTEN to connect.');
+        notify(state.config.previewMode?'Temporary owner-PC broadcast preview. Press LISTEN; the owner must keep their PC on.':'Our live PC radio source is available. Press LISTEN to connect.');
         update();
         if(previousPlaying)el.audio.play().catch(()=>notify('Our station source changed. Tap LISTEN to reconnect.'));
       }
