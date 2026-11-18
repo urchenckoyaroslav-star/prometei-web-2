@@ -55,6 +55,11 @@ test('SEO and listener controls',()=>{
   assert.match(studio,/noindex,nofollow/);
   assert.match(studio,/id="dj-token"/);
   assert.match(js,/fetch\('\/api\/fm\/station'/);
+  assert.match(html,/fm-pc-websocket\\.js/);
+  assert.match(js,/trycloudflare/);
+  assert.match(js,/previewStream/);
+  assert.match(read('fm-pc-websocket.js'),/new WebSocket/);
+  assert.match(read('fm-pc-websocket.js'),/MediaSource/);
   assert.match(css,/@media\(max-width:380px\)/);
   assert.match(read('scripts/build.mjs'),/functions'.*\.includes\(entry\.name\)/);
 });
