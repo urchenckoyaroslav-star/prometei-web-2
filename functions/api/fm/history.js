@@ -117,10 +117,15 @@ export async function onRequestPost({request,env}){
       return response({ok:true,live:false});
     }
     if(type==='start'){
-      const suppliedStart=Number(payload.startedAt);
-      const start=(Number.isSafeInteger(suppliedStart) && suppliedStart<=now+30000 &&
-        suppliedStart>=now-WINDOW_MS)?suppliedStart:now;
-      const event=extractEvent(payload,start);
+      // Backfill keeps the broadcaster's real clock time. Never turn an old
+      // or malformed replay into a new "now playing" event.
+      const suppliedStart=Object.prototype.hasOwnProperty.call(payload,'startedAt')?
+        Number(payload.startedAt):now;
+      if(!Number.isSafeInteger(suppliedStart) || suppliedStart>now+30000 ||
+          suppliedStart<now-WINDOW_MS){
+        return response({error:'Track timestamp is outside the last 36 hours'},400);
+      }
+      const event=extractEvent(payload,suppliedStart);
       if(!event)return response({error:'Invalid track metadata or playId'},400);
       const key=PREFIX+event.playId;
       const existing=await env.FM_STATE.get(key,'json');
@@ -129,10 +134,18 @@ export async function onRequestPost({request,env}){
         expirationTtl:Math.max(60,TTL_SECONDS-Math.floor((now-event.startedAt)/1000)),
         metadata:event
       });
-      await env.FM_STATE.put(NOW,JSON.stringify({...event,at:now}),{
-        expirationTtl:ACTIVE_TTL
-      });
-      return response({ok:true,startedAt:now});
+      // Replaying an older, successfully aired song fills the public log but
+      // must not resurrect it as currently broadcasting.
+      if(now-event.startedAt<=90000){
+        const previous=await env.FM_STATE.get(NOW,'json');
+        if(!previous || !Number.isFinite(previous.startedAt) ||
+            previous.startedAt<=event.startedAt){
+          await env.FM_STATE.put(NOW,JSON.stringify({...event,at:now}),{
+            expirationTtl:ACTIVE_TTL
+          });
+        }
+      }
+      return response({ok:true,startedAt:event.startedAt});
     }
     if(type==='heartbeat'){
       if(!playIdValid(payload.playId))return response({error:'Invalid playId'},400);
