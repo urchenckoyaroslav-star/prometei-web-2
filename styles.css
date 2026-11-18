@@ -38,3 +38,17 @@ html,body{overflow-x:clip}
 .portfolio-contact-note a{color:#f5c28c;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:680px){.footer-contact-bar{align-items:flex-start;padding:17px;flex-direction:column}.footer-contact-links,.footer-contact-link{width:100%}.footer-contact-link{padding:13px 12px}.portfolio-contact-actions{flex-direction:column;align-items:stretch}.portfolio-contact-actions .button{width:100%}}
 @media(prefers-reduced-motion:reduce){.footer-contact-link{transition:none}.footer-contact-link:hover{transform:none}}
+/* PROMETEI Messenger direct account contact */
+.prometei-id-wrap{flex-basis:100%;display:flex;align-items:center;gap:12px;flex-wrap:wrap;max-width:100%;min-width:0;padding:16px 0 0;border-top:1px solid rgba(247,182,104,.17)}
+.prometei-id-label{color:#f0c995;letter-spacing:.12em;font-size:11px;font-weight:800;flex-shrink:0}
+.prometei-id-value{color:#eef3fb;font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;font-size:clamp(10px,1.5vw,12px);letter-spacing:.005em;overflow-wrap:anywhere;word-break:break-all;flex:1 1 390px;min-width:0;text-align:left;line-height:1.6;user-select:all}
+.prometei-id-copy{cursor:pointer;background:rgba(245,177,101,.13);border:1px solid rgba(245,177,101,.52);color:#ffe0b3;border-radius:11px;font:700 12px/1.3 inherit;padding:11px 16px;min-height:42px;transition:background .2s ease,border-color .2s ease}
+.prometei-id-copy:hover{background:rgba(245,177,101,.25)}
+.prometei-id-copy:focus-visible{outline:2px solid #ffcc8e;outline-offset:3px}
+.prometei-copy-feedback{color:#c2e4c9;font-size:12px;min-height:1em}
+.portfolio-prometei-contact{max-width:850px;margin:27px auto 5px;padding:24px;border:1px solid rgba(246,183,110,.32);border-radius:19px;background:linear-gradient(135deg,rgba(13,20,32,.9),rgba(63,43,33,.38));box-shadow:0 15px 40px rgba(0,0,0,.17);text-align:left}
+.portfolio-prometei-heading{display:flex;align-items:center;gap:11px;flex-wrap:wrap;color:#f0c995;font-size:12px;letter-spacing:.11em}
+.portfolio-prometei-heading p{flex-basis:100%;color:#c2c6ce;font-size:13px;letter-spacing:0;margin:0 0 8px}
+.portfolio-prometei-contact .prometei-id-wrap{padding-top:17px}
+@media(max-width:700px){.prometei-id-wrap{align-items:flex-start;gap:10px}.prometei-id-value{flex:1 1 100%;font-size:11px}.prometei-id-copy{min-width:130px}.portfolio-prometei-contact{padding:18px 15px}}
+@media(prefers-reduced-motion:reduce){.prometei-id-copy{transition:none}}
