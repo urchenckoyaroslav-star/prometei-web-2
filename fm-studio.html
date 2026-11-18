@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#080b12">
+<title>PROMETEI FM — DJ Control Room</title>
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fm.css">
+<script defer src="fm-studio.js"></script>
+</head>
+<body class="studio-page">
+<div class="stars" aria-hidden="true"></div><div class="glow glow-one" aria-hidden="true"></div>
+<header class="site-top"><div class="shell nav-inner"><a class="brand" href="fm.html"><img src="assets/mark.svg" alt="" width="40" height="40"><span>PROMETEI<small>FM / DJ CONTROL ROOM</small></span></a><a class="nav-cta" href="fm.html">PUBLIC RADIO ↗</a></div></header>
+<main class="shell studio-main">
+  <div class="section-label"><span>STATION OPERATORS ONLY</span><span class="line"></span><span>YOU ARE THE DJ</span></div>
+  <h1 class="studio-title">TAKE CONTROL.<br><span>START THE SIGNAL.</span></h1>
+  <p class="lede">Select a YouTube playlist for our listeners, or switch to your licensed live stream from a PC. This studio never plays or uploads private files by itself.</p>
+  <div class="studio-grid">
+    <section class="source-card glass" aria-labelledby="auth-title">
+      <div class="source-head"><div class="source-icon">✦</div><div><span class="micro-label">01 / PRIVATE ACCESS</span><h2 id="auth-title" class="studio-card-title">DJ authorization</h2></div></div>
+      <p>Enter the secret configured in Cloudflare as <code>FM_DJ_TOKEN</code>. It is kept in this tab only and never written into site files.</p>
+      <label class="studio-label" for="dj-token">DJ ACCESS TOKEN</label>
+      <input id="dj-token" class="studio-input" type="password" autocomplete="off" minlength="24" placeholder="Cloudflare secret (24+ characters)">
+      <div class="studio-actions"><button id="load-station" class="form-action" type="button">REFRESH STATUS</button><button id="clear-token" class="outline-action" type="button">CLEAR TOKEN</button></div>
+      <p id="studio-status" class="source-help" role="status" aria-live="polite">Loading station status…</p>
+      <p class="source-help">Cloudflare must have a KV binding named <code>FM_STATE</code> and secret <code>FM_DJ_TOKEN</code>. No default password exists.</p>
+    </section>
+    <section class="source-card glass" aria-labelledby="control-title">
+      <div class="source-head"><div class="source-icon local-icon">♫</div><div><span class="micro-label">02 / BROADCAST SOURCE</span><h2 id="control-title" class="studio-card-title">Station mode</h2></div></div>
+      <form id="studio-form">
+        <fieldset class="studio-modes"><legend>SOURCE</legend>
+          <label><input type="radio" name="mode" value="youtube" checked> ▶ YouTube playlists</label>
+          <label><input type="radio" name="mode" value="pc"> ♫ PC audio broadcast</label>
+        </fieldset>
+        <label class="studio-label" for="station-playlist">ON-AIR YOUTUBE PLAYLIST</label>
+        <select id="station-playlist" class="studio-input"><option value="">Automatic rotation</option></select>
+        <label class="studio-label" for="stream-url">PC STREAM HTTPS ADDRESS</label>
+        <input id="stream-url" class="studio-input" type="url" inputmode="url" autocomplete="off" placeholder="https://radio.example.com/live.mp3">
+        <p class="source-help">The PC must be sending an authorized live MP3/AAC stream to an Internet-reachable server. Do not paste your PC's localhost address.</p>
+        <div class="studio-actions">
+          <button id="go-live" class="form-action" type="button">● GO ON AIR / SAVE</button>
+          <button id="go-offline" class="outline-action" type="button">■ TAKE OFF AIR</button>
+        </div>
+      </form>
+    </section>
+  </div>
+  <section class="source-card glass studio-playlists" aria-labelledby="lists-title">
+    <div class="source-head"><div class="source-icon">▶</div><div><span class="micro-label">03 / OUR MUSIC</span><h2 id="lists-title" class="studio-card-title">YouTube playlist collection</h2></div></div>
+    <p>Add several official embeddable YouTube playlist links or IDs. Only approved playlists can be selected for the station.</p>
+    <form id="playlist-editor" class="studio-add-form">
+      <div><label class="studio-label" for="new-playlist-name">PLAYLIST NAME</label><input class="studio-input" id="new-playlist-name" maxlength="70" required placeholder="Electronic nights"></div>
+      <div><label class="studio-label" for="new-playlist-url">YOUTUBE PLAYLIST LINK</label><input class="studio-input" id="new-playlist-url" maxlength="400" required placeholder="https://www.youtube.com/playlist?list=..."></div>
+      <button class="form-action" type="submit">+ ADD PLAYLIST</button>
+    </form>
+    <ul id="studio-playlists" class="playlist-list"></ul>
+    <p class="source-help">Adding or removing playlists changes the draft in this tab. Press GO ON AIR / SAVE to publish those changes globally.</p>
+  </section>
+  <p class="studio-footnote">YouTube embeds are separate listening sessions and not synchronized live broadcasting. A real single shared broadcast is possible with a licensed audio stream from the PC. Paid music requests remain disabled.</p>
+</main>
+<footer class="shell footer"><a class="brand" href="fm.html">PROMETEI FM</a><span>DJ CONTROL / PROTECTED API</span></footer>
+</body>
+</html>
