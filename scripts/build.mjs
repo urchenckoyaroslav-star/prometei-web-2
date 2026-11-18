@@ -21,21 +21,21 @@ const localized=['uk','ru','de','es','zh','ja'];
 const mappings={en:'en',uk:'uk',ru:'ru',de:'de',es:'es',zh:'zh-CN',ja:'ja'};
 const ogLocales={en:'en_US',uk:'uk_UA',ru:'ru_RU',de:'de_DE',es:'es_ES',zh:'zh_CN',ja:'ja_JP'};
 const titles={
- en:'PROMETEI Messenger for Android — Bluetooth, LAN & Internet',
- uk:'PROMETEI — Android-месенджер: Bluetooth, Wi-Fi LAN та інтернет',
- ru:'PROMETEI — Android-мессенджер: Bluetooth, Wi-Fi LAN и интернет',
- de:'PROMETEI für Android — Messenger mit Bluetooth, LAN & Internet',
- es:'PROMETEI para Android — Mensajería Bluetooth, Wi-Fi LAN e Internet',
+ en:'PROMETEI Android Messenger — Bluetooth & Internet',
+ uk:'PROMETEI — Android-месенджер: Bluetooth та інтернет',
+ ru:'PROMETEI — Android-мессенджер: Bluetooth и интернет',
+ de:'PROMETEI Android-Messenger — Bluetooth & Internet',
+ es:'PROMETEI Android — Mensajes por Bluetooth e Internet',
  zh:'PROMETEI Android 聊天应用 — 蓝牙、局域网与互联网连接',
  ja:'PROMETEI Androidメッセンジャー — Bluetooth・LAN・インターネット'
 };
 const descriptions={
- en:'Discover PROMETEI, an Android messenger with Bluetooth, local Wi-Fi/LAN, Internet and Mixed communication modes. Learn when nearby messaging can work without Internet.',
+ en:'PROMETEI for Android supports Bluetooth, local Wi-Fi/LAN, Internet and Mixed routes. Explore nearby messaging, including offline limits.',
  uk:'Відкрийте PROMETEI для Android: повідомлення через Bluetooth, локальну Wi-Fi/LAN мережу та інтернет. Дізнайтеся, як працює зв’язок без інтернету.',
  ru:'Откройте PROMETEI для Android: сообщения через Bluetooth, локальную Wi-Fi/LAN сеть и интернет. Узнайте, когда возможна связь без интернета.',
  de:'PROMETEI für Android verbindet über Bluetooth, lokales WLAN/LAN, Internet und gemischte Routen. Erfahren Sie, wann Nachrichten ohne Internet möglich sind.',
  es:'PROMETEI para Android combina Bluetooth, Wi-Fi/LAN local, Internet y modo mixto. Descubre cuándo es posible comunicarse sin conexión a Internet.',
- zh:'探索 PROMETEI 安卓通讯应用：通过蓝牙、本地 Wi-Fi 局域网、互联网及混合模式发送消息。了解何时可以离线连接。',
+ zh:'探索 PROMETEI 安卓通讯应用：通过蓝牙、本地 Wi-Fi 局域网、互联网及混合模式发送消息。了解何时可以离线连接，以及附近设备通信的条件、场景与限制。',
  ja:'PROMETEIはBluetooth、ローカルWi-Fi/LAN、インターネット、混合モードに対応するAndroidメッセンジャーです。オフライン通信の条件をご覧ください。'
 };
 const extraDescriptions={
@@ -122,7 +122,7 @@ for(const filename of docs){
  if(!fs.existsSync(path.join(source,filename)))continue;
  const old=fs.readFileSync(path.join(source,filename),'utf8');
  const titleMatch=old.match(/<title>([^<]+)<\/title>/i);
- const title=titleMatch?titleMatch[1]:'PROMETEI';
+ const title=titleMatch?titleMatch[1].replace(/&(?:amp;)+/gi,'&'):'PROMETEI';
  const url=base+filename.slice(0,-5);
  fs.writeFileSync(path.join(output,filename),metadata(old,{url,title,description:extraDescriptions[filename]||'Official PROMETEI documentation',lang:'en'}),'utf8');
 }
