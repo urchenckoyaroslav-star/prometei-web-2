@@ -5,8 +5,9 @@ on:
       - "fm*"
       - "functions/api/fm/**"
       - "scripts/build.mjs"
-      - "tests/fm.test.mjs"
+      - "tests/**"
       - "package.json"
+      - "scripts/prometei_fm_dj.py"
       - ".github/workflows/fm-ci.yml"
   pull_request:
     paths:
@@ -28,6 +29,8 @@ jobs:
           node-version: "22"
       - name: Verify syntax and FM controls
         run: npm run check
+      - name: Check Python Windows DJ code syntax
+        run: python3 -m py_compile scripts/prometei_fm_dj.py
       - name: Build static site and SEO documents
         run: npm run build
       - name: Verify Cloudflare Pages output
