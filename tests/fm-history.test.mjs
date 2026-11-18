@@ -90,6 +90,9 @@ test('heartbeat requires prior broadcast track and offline clears live',async()=
   const data=await res.json();
   assert.equal(data.live,false);
   assert.equal(data.tracks.length,1);
+  const stopped=await env.FM_STATE.get('prometei:fm:onair:v1','json');
+  assert.equal(stopped.offline,true,'explicit stop must never claim music is playing');
+  assert.ok(Date.now()-stopped.at<15000,'the 20-minute watchdog starts on last confirmed stop');
 });
 
 test('delayed DJ events preserve original timestamps and do not fake current music',async()=>{
