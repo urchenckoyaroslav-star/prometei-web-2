@@ -24,18 +24,28 @@
       }else{pending=[]}
     }
   }
+  function fallbackHttpMp3(audio,streamUrl,message){
+    stop();
+    audioNode=audio;
+    // A plain streaming MP3 URL is the compatibility path for Safari and
+    // mobile browsers where MSE or WebSockets may not play MP3 reliably.
+    audio.src=streamUrl;
+    audio.load();
+    audio.play().catch(()=>message('Tap LISTEN to start the PC radio in this browser.'));
+    message('Connecting to the owner PC using the compatible MP3 stream...');
+    return true;
+  }
   function start(audio,streamUrl,message){
     stop();
-    if(typeof MediaSource==='undefined'||!MediaSource.isTypeSupported('audio/mpeg')){
-      message('Live MP3 WebSocket is unsupported. Try Opera or Chrome for this temporary PC station.');
-      return false;
-    }
     let endpoint;
     try{
       const url=new URL(streamUrl);
       if(url.protocol!=='https:'||url.pathname!=='/live.mp3')throw Error('bad URL');
       endpoint='wss://'+url.host+'/live.ws';
     }catch(_){message('Temporary PC stream address is invalid.');return false;}
+    if(typeof MediaSource==='undefined' || !MediaSource.isTypeSupported('audio/mpeg')){
+      return fallbackHttpMp3(audio,streamUrl,message);
+    }
     audioNode=audio;
     media=new MediaSource();
     objectURL=URL.createObjectURL(media);
@@ -44,7 +54,7 @@
       try{
         source=media.addSourceBuffer('audio/mpeg');
         source.mode='sequence';
-      }catch(_){message('This browser cannot open a live MP3 buffer.');return;}
+      }catch(_){fallbackHttpMp3(audio,streamUrl,message);return;}
       source.addEventListener('updateend',()=>{
         if(source.buffered.length){
           const end=source.buffered.end(source.buffered.length-1);
@@ -64,8 +74,17 @@
         if(pending.length>96)pending.splice(0,pending.length-48);
         pending.push(e.data);pump();
       };
-      socket.onerror=()=>message('Temporary PC radio connection failed.');
-      socket.onclose=()=>message('The PC stream has ended. Press LISTEN to reconnect.');
+      const currentSocket=socket;
+      socket.onerror=()=>{
+        if(socket!==currentSocket)return;
+        message('Radio WebSocket unavailable; trying compatible HTTPS MP3.');
+        fallbackHttpMp3(audio,streamUrl,message);
+      };
+      socket.onclose=()=>{
+        if(socket!==currentSocket)return;
+        message('Radio WebSocket closed; trying compatible HTTPS MP3.');
+        fallbackHttpMp3(audio,streamUrl,message);
+      };
     },{once:true});
     audio.play().catch(()=>{});
     return true;
