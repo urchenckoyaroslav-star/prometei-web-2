@@ -4,6 +4,24 @@
    KV is eventually consistent; station changes may propagate with delay.
 */
 const KEY = 'prometei:fm:station:v1';
+// Last owner-PC DJ signal is retained by the history API for longer than the
+// live indicator, permitting a deterministic station-wide 20-minute fallback.
+const SIGNAL_KEY = 'prometei:fm:onair:v1';
+const PC_FALLBACK_DELAY_MS = 20 * 60 * 1000;
+const PC_FALLBACK_PLAYLIST_ID = 'PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX';
+
+export function determinePcFallback(state, signal, now=Date.now()) {
+  if (!state || state.enabled !== true || state.mode !== 'pc') return false;
+  const configuredAt = Number(state.updatedAt);
+  const lastSignalAt = Number(signal?.at);
+  // A malicious/malformed or very old timestamp must not be treated as live.
+  const configClock = Number.isSafeInteger(configuredAt) &&
+    configuredAt > 0 && configuredAt <= now + 30000 ? configuredAt : 0;
+  const liveClock = Number.isSafeInteger(lastSignalAt) &&
+    lastSignalAt > 0 && lastSignalAt <= now + 30000 ? lastSignalAt : 0;
+  const anchor = Math.max(configClock, liveClock);
+  return anchor > 0 && now - anchor >= PC_FALLBACK_DELAY_MS;
+}
 const reply = (data, status=200) => new Response(JSON.stringify(data), {
   status,
   headers:{
@@ -42,7 +60,18 @@ export async function onRequestGet({env}) {
     const content=await env.FM_STATE.get(KEY);
     if(!content) return reply({configured:false},404);
     const state=JSON.parse(content);
-    return reply({...state, managed:true});
+    let lastSignal=null;
+    if (state.enabled === true && state.mode === 'pc') {
+      // Read-only detection: we do not overwrite the DJ's saved choice.
+      // This way FM Studio always sees the configured PC source.
+      const encodedSignal=await env.FM_STATE.get(SIGNAL_KEY);
+      if (encodedSignal) {
+        try { lastSignal=JSON.parse(encodedSignal); } catch (_) { /* malformed signal */ }
+      }
+    }
+    const fallbackActive=determinePcFallback(state,lastSignal);
+    return reply({...state, managed:true, fallbackActive,
+      fallbackAfterMinutes:20, fallbackPlaylistId:PC_FALLBACK_PLAYLIST_ID});
   } catch(_) {return reply({error:'Station control temporarily unavailable'},503);}
 }
 export async function onRequestPost({request,env}) {
