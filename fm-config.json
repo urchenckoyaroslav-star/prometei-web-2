@@ -1,5 +1,18 @@
 {
   "version": 1,
-  "playlists": [],
-  "notes": "Add verified public embeddable YouTube playlist IDs here to show default collections to every visitor. IDs are not invented."
+  "playlists": [
+    {
+      "name": "NCS · Electronic",
+      "id": "PLRBp0Fe2GpgnZOm5rCopMAOYhZCPoUyO5"
+    },
+    {
+      "name": "NCS · House",
+      "id": "PLRBp0Fe2GpgmsW46rJyudVFlY6IYjFBIK"
+    },
+    {
+      "name": "NCS · Full selection",
+      "id": "PLRBp0Fe2GpgnIh0AiYKh7o7HnYAej-5ph"
+    }
+  ],
+  "notes": "These initial playlists were resolved from NoCopyrightSounds' own public YouTube playlist links. Playback uses the official YouTube embed; channel/content owners retain their rights. Visitors can add personal playlists in their browser."
 }
