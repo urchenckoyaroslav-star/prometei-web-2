@@ -27,6 +27,22 @@
   };
   const clean = (val, max = 180) => String(val ?? '').trim().slice(0, max);
   const playlistIdValid = id => typeof id === 'string' && /^[A-Za-z0-9_-]{10,120}$/.test(id);
+  // A temporary, shareable PC-radio preview link works even when DJ KV has
+  // not yet been configured. This never changes the globally published station.
+  const previewStream = (() => {
+    const raw = new URLSearchParams(location.search).get('listen');
+    if (!raw || raw.length > 320) return '';
+    try {
+      const url = new URL(raw);
+      if (url.protocol !== 'https:' || url.username || url.password || url.port ||
+          url.search || url.hash || url.pathname !== '/live.mp3') return '';
+      if (!/^[a-z0-9-]+\\.trycloudflare\\.com$/.test(url.hostname)) return '';
+      return url.href;
+    } catch (_) { return ''; }
+  })();
+  const maybePreview = value => previewStream
+    ? {...value, mode:'pc', pcStreamUrl:previewStream, enabled:true, previewMode:true}
+    : value;
   const duration = value => {
     if (!Number.isFinite(value) || value < 0) return '00:00';
     const s = Math.floor(value);
@@ -98,9 +114,20 @@
   async function refreshGlobalHistory(){
     if(!globalMode())return;
     try{
-      const res=await fetch('/api/fm/history',{cache:'no-store'});
-      if(!res.ok)throw Error('The DJ station history has not been connected to the server yet.');
-      const data=await res.json();
+      let data;
+      if(state.config.previewMode){
+        // Owner-PC status includes only song metadata, never local file paths.
+        const target=new URL(state.config.stream).origin+'/status.json';
+        const res=await fetch(target,{cache:'no-store'});
+        if(!res.ok)throw Error('The temporary PC radio is currently offline.');
+        const live=await res.json();
+        data={configured:true, tracks:Array.isArray(live.recent)?live.recent:[],
+          live:live.onAir===true, current:live.current||null};
+      }else{
+        const res=await fetch('/api/fm/history',{cache:'no-store'});
+        if(!res.ok)throw Error('The DJ station history has not been connected to the server yet.');
+        data=await res.json();
+      }
       if(data.configured!==true || !Array.isArray(data.tracks))throw Error('Station log unavailable.');
       const now=Date.now(),floor=now-36*3600*1000;
       globalHistory.items=data.tracks.filter(entry=>entry&&
@@ -166,12 +193,12 @@
       const remote=await fetch('/api/fm/station',{cache:'no-store'});
       if(remote.ok){
         const data=await remote.json();
-        if(data?.managed===true)return data;
+        if(data?.managed===true)return maybePreview(data);
       }
     }catch(_) { /* offline API or no Cloudflare binding; static fallback */ }
     const response=await fetch('/fm-config.json',{cache:'no-store'});
     if(!response.ok)throw Error('Station configuration unavailable');
-    return response.json();
+    return maybePreview(await response.json());
   }
   function cancelReconnect() {
     if(state.reconnectTimer!==null) clearTimeout(state.reconnectTimer);
@@ -217,7 +244,7 @@
       was.mode!==mode || was.stream!==url || was.liveVideoId!==liveVideoId || was.playlistId!==playlistId || was.enabled!==enabled
     );
     state.playlists=playlists;
-    state.config={mode,stream:url,liveVideoId,playlistId,enabled,managed:c.managed===true};
+    state.config={mode,stream:url,liveVideoId,playlistId,enabled,managed:c.managed===true,previewMode:c.previewMode===true};
     renderPlaylists();
     renderHistory();
     if(globalMode())refreshGlobalHistory();
@@ -244,7 +271,7 @@
         el.title.textContent='PROMETEI FM / Live stream';
         el.artist.textContent='Broadcast selected by our DJ';
         el.source.textContent='♫ AUTHORIZED PC STREAM';
-        notify('Our live PC radio source is available. Press LISTEN to connect.');
+        notify(c.previewMode===true?'Temporary owner-PC broadcast preview. Press LISTEN; the owner must keep their PC on.':'Our live PC radio source is available. Press LISTEN to connect.');
         update();
         if(previousPlaying)el.audio.play().catch(()=>notify('Our station source changed. Tap LISTEN to reconnect.'));
       }
