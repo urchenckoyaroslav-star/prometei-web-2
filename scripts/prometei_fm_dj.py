@@ -69,7 +69,9 @@ def paths(library: Path) -> list[Path]:
     if not library.is_dir():
         raise FileNotFoundError(f"Music directory not found: {library}")
     return sorted(
-        (p for p in library.rglob("*") if p.is_file() and p.suffix.lower() in EXTENSIONS),
+        (p for p in library.rglob("*") if p.is_file()
+         and p.suffix.lower() in EXTENSIONS
+         and not p.name.lower().startswith((".trashed-", ".trash-"))),
         key=lambda p: str(p).casefold()
     )
 
