@@ -1,5 +1,7 @@
 # PROMETEI WEB 2.0
 
+**Live website:** https://urchenckoyaroslav-star.github.io/prometei-web-2/
+
 A **real, responsive static website** for PROMETEI Messenger and related independent Android projects. Built from scratch with semantic HTML, custom CSS, accessible controls and vanilla JavaScript — no WordPress, Node build process, account credentials or paid runtime required.
 
 ## Features
