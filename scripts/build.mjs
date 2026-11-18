@@ -50,7 +50,7 @@ const extraDescriptions={
 };
 const appJs=fs.readFileSync(path.join(source,'app.js'),'utf8');
 const start=appJs.indexOf('const translations=')+'const translations='.length;
-const modeMarker=appJs.slice(start).match(/;\\r?\\nconst modeText=/);
+const modeMarker=appJs.slice(start).match(/;\r?\nconst modeText=/);
 const stop=modeMarker?start+modeMarker.index:-1;
 if(start<20 || stop<0)throw Error('Translation source not found');
 const translations=vm.runInNewContext('('+appJs.slice(start,stop)+')', Object.create(null), {timeout:1000});
