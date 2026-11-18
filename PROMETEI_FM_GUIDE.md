@@ -56,3 +56,11 @@ Run \`npm run check\`, including Node syntax verification and unit checks for st
 - In DJ Studio select YouTube Live and paste the 11-character video ID from the public YouTube watch URL; press GO ON AIR (requires Cloudflare KV + FM_DJ_TOKEN).
 - Listeners then tune into the same official visible YouTube Live player. Delay may vary; some clients require a tap to start. Copyright owners/Content ID may block music, and ad playback depends on YouTube.
 - Without active Cloudflare storage, the operator may set `mode: "youtube_live"`, `enabled: true`, `liveVideoId: "REAL_VIDEO_ID"` in `fm-config.json` and redeploy.
+
+## Voluntary support block (2026-11-18)
+- FM includes a beautifully styled independent-development support panel: development of PROMETEI FM, PROMETEI Messenger and future projects. Contributions are explicitly voluntary; PROMETEI is not represented as a registered charity.
+- Exact messenger USDT address and chain were **not** found or verified in GitHub source/journals. A separate historical BNB Smart Chain public wallet has NOT been established as the intended USDT donation receive address. The PROMETEI Messenger identity 0x... (64-hex-byte) is NOT a blockchain receiving address.
+- Until the address, network and QR encoding are verified, `fm-donations.json` intentionally has `enabled:false` and shows a warm preparation state, *without* a copyable wallet address or fake QR.
+- When the owner provides the address and network shown in the messenger, enter them in `fm-donations.json` with `verifiedByOwner:true`, `asset:"USDT"`, `qrSvgPath:"/assets/fm-usdt-qr.svg"`; generate `assets/fm-usdt-qr.svg` from exactly that address and network with `scripts/generate-fm-donation-qr.py` (requires Python qrcode package); only then set `enabled:true`.
+- Accepted networks in the frontend: tron-trc20, bsc-bep20, ethereum-erc20, polygon-pos, arbitrum-one. Strict address format checks and QR metadata keep the panel disabled on mismatch. The static QR encodes **the address only**; the exact chain must also be selected by the sender.
+- Never publish a mnemonic, private key, seed, exchange account access token or transaction history; only a public receiving address.
