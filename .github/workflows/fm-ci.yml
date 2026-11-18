@@ -1,0 +1,41 @@
+name: PROMETEI FM checks
+on:
+  push:
+    paths:
+      - "fm*"
+      - "functions/api/fm/**"
+      - "scripts/build.mjs"
+      - "tests/fm.test.mjs"
+      - "package.json"
+      - ".github/workflows/fm-ci.yml"
+  pull_request:
+    paths:
+      - "fm*"
+      - "functions/api/fm/**"
+      - "scripts/build.mjs"
+      - "tests/fm.test.mjs"
+      - "package.json"
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify syntax and FM controls
+        run: npm run check
+      - name: Build static site and SEO documents
+        run: npm run build
+      - name: Verify Cloudflare Pages output
+        run: |
+          test -f dist/fm.html
+          test -f dist/fm-studio.html
+          test -f dist/_routes.json
+          test -f dist/sitemap.xml
+          test ! -f dist/functions/api/fm/station.js
+          grep -q 'https://prometei-web-2.pages.dev/fm' dist/sitemap.xml
+          grep -q 'PROMETEI FM — Listen to Online Radio' dist/fm.html
