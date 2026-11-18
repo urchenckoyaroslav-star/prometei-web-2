@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {webcrypto,createHash} from 'node:crypto';
-import {onRequestGet,onRequestPost,determinePcFallback} from '../functions/api/fm/station.js';
+import {onRequestGet,onRequestPost,determinePcFallback,probePcStream} from '../functions/api/fm/station.js';
 
 globalThis.crypto ||= webcrypto;
 const read=path=>fs.readFileSync(new URL('../'+path,import.meta.url),'utf8');
@@ -147,4 +147,64 @@ test('listener presents official YouTube as backup without erasing the PC play l
   assert.match(js,/setInterval\(loadConfig, 20000\)/);
   assert.match(js,/globalMode=\(\)=>state\.config/);
   assert.match(read('fm.html'),/20 minutes/);
+});
+
+test('public owner-PC audio health is verifiable without a DJ secret and never probes arbitrary hosts',async()=>{
+  const now=Date.now(),stream='https://national-sitemap-panel-presented.trycloudflare.com/live.mp3';
+  let called='';
+  const healthy=(url)=>{
+    called=url;
+    return Promise.resolve({ok:true,text:async()=>JSON.stringify({
+      onAir:true,audioFresh:true,lastAudioAt:now-1500,
+      current:{playId:'a'.repeat(32),title:'Owner track'}
+    })});
+  };
+  assert.equal(await probePcStream(stream,now,healthy),true);
+  assert.equal(called,'https://national-sitemap-panel-presented.trycloudflare.com/status.json');
+  called='';
+  assert.equal(await probePcStream('https://example.com/live.mp3',now,healthy),false);
+  assert.equal(called,'','unrelated domains must never be fetched');
+  assert.equal(await probePcStream('https://local.trycloudflare.com/other.mp3',now,healthy),false);
+  assert.equal(called,'','wrong stream path must never be fetched');
+  const stale=async()=>({ok:true,text:async()=>JSON.stringify({
+    onAir:true,audioFresh:true,lastAudioAt:now-100000,
+    current:{playId:'a'.repeat(32)}
+  })});
+  assert.equal(await probePcStream(stream,now,stale),false,'stale audio is not an active stream');
+});
+
+test('public PC health prevents fallback even without a DJ history token',async()=>{
+  const now=Date.now(),stream='https://owner-pc.trycloudflare.com/live.mp3';
+  const kv=fakeStore(),env={FM_STATE:kv};
+  await kv.put('prometei:fm:station:v1',JSON.stringify({
+    version:4,mode:'pc',enabled:true,pcStreamUrl:stream,updatedAt:now-30*60*1000,
+    playlists:[{id:'PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX',name:'Owner playlist'}]
+  }));
+  const original=globalThis.fetch;
+  let attempts=0;
+  try{
+    globalThis.fetch=async(url)=>{
+      attempts++;
+      assert.equal(url,'https://owner-pc.trycloudflare.com/status.json');
+      return {ok:true,text:async()=>JSON.stringify({
+        onAir:true,audioFresh:true,lastAudioAt:Date.now()-1000,
+        current:{playId:'a'.repeat(32)}
+      })};
+    };
+    let response=await onRequestGet({env});
+    let data=await response.json();
+    assert.equal(data.mode,'pc');
+    assert.equal(data.fallbackActive,false);
+    assert.equal(attempts,1);
+    const saved=JSON.parse(await kv.get('prometei:fm:pc-verified:v1'));
+    assert.equal(saved.stream,stream);
+    assert.ok(Date.now()-saved.at<5000);
+    // Same recent probe should be reused, avoiding repeated external requests.
+    response=await onRequestGet({env});
+    data=await response.json();
+    assert.equal(data.fallbackActive,false);
+    assert.equal(attempts,1);
+  }finally{
+    globalThis.fetch=original;
+  }
 });
