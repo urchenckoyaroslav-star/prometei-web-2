@@ -51,7 +51,7 @@
         source=await response.json();
         state.configured=true;
       } else if(response.status===404 || response.status===503) {
-        const fallback=await fetch('fm-config.json',{cache:'no-store'});
+        const fallback=await fetch('/fm-config.json',{cache:'no-store'});
         if(fallback.ok) source=await fallback.json();
       }
       if(!source)throw Error('Cannot read the station data');
