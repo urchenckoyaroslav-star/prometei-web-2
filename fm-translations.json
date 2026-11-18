@@ -139,7 +139,10 @@
     "PROMETEI FM is off air.": "PROMETEI FM is off air.",
     "Our station is currently off air.": "Our station is currently off air.",
     "The owner PC is offline or this temporary radio link expired.": "The owner PC is offline or this temporary radio link expired.",
-    "The DJ station history has not been connected to the server yet.": "The DJ station history has not been connected to the server yet."
+    "The DJ station history has not been connected to the server yet.": "The DJ station history has not been connected to the server yet.",
+    "REQUEST A TRACK ↗": "REQUEST A TRACK ↗",
+    "PREPARE SONG REQUEST ↗": "PREPARE SONG REQUEST ↗",
+    "OPEN THIS SELECTION ON YOUTUBE ↗": "OPEN THIS SELECTION ON YOUTUBE ↗"
   },
   "uk": {
     "Listen": "Слухати",
@@ -281,7 +284,10 @@
     "PROMETEI FM is off air.": "PROMETEI FM поза ефіром.",
     "Our station is currently off air.": "Станція зараз не в ефірі.",
     "The owner PC is offline or this temporary radio link expired.": "ПК власника не працює або тимчасове посилання недійсне.",
-    "The DJ station history has not been connected to the server yet.": "Історія станції ще не підключена."
+    "The DJ station history has not been connected to the server yet.": "Історія станції ще не підключена.",
+    "REQUEST A TRACK ↗": "ЗАМОВИТИ ТРЕК ↗",
+    "PREPARE SONG REQUEST ↗": "ПІДГОТУВАТИ ЗАЯВКУ ↗",
+    "OPEN THIS SELECTION ON YOUTUBE ↗": "ВІДКРИТИ НА YOUTUBE ↗"
   },
   "ru": {
     "Listen": "Слушать",
@@ -423,7 +429,10 @@
     "PROMETEI FM is off air.": "PROMETEI FM не в эфире.",
     "Our station is currently off air.": "Станция сейчас не в эфире.",
     "The owner PC is offline or this temporary radio link expired.": "ПК владельца не работает или временная ссылка истекла.",
-    "The DJ station history has not been connected to the server yet.": "История станции ещё не подключена."
+    "The DJ station history has not been connected to the server yet.": "История станции ещё не подключена.",
+    "REQUEST A TRACK ↗": "ЗАКАЗАТЬ ТРЕК ↗",
+    "PREPARE SONG REQUEST ↗": "ПОДГОТОВИТЬ ЗАЯВКУ ↗",
+    "OPEN THIS SELECTION ON YOUTUBE ↗": "ОТКРЫТЬ НА YOUTUBE ↗"
   },
   "de": {
     "Listen": "Hören",
@@ -565,7 +574,10 @@
     "PROMETEI FM is off air.": "PROMETEI FM sendet nicht.",
     "Our station is currently off air.": "Der Sender ist aktuell offline.",
     "The owner PC is offline or this temporary radio link expired.": "PC offline oder temporärer Link abgelaufen.",
-    "The DJ station history has not been connected to the server yet.": "Senderverlauf ist noch nicht verbunden."
+    "The DJ station history has not been connected to the server yet.": "Senderverlauf ist noch nicht verbunden.",
+    "REQUEST A TRACK ↗": "SONG WÜNSCHEN ↗",
+    "PREPARE SONG REQUEST ↗": "SONGWUNSCH VORBEREITEN ↗",
+    "OPEN THIS SELECTION ON YOUTUBE ↗": "AUF YOUTUBE ÖFFNEN ↗"
   },
   "es": {
     "Listen": "Escuchar",
@@ -707,7 +719,10 @@
     "PROMETEI FM is off air.": "PROMETEI FM está fuera del aire.",
     "Our station is currently off air.": "La emisora está fuera del aire.",
     "The owner PC is offline or this temporary radio link expired.": "PC desconectado o enlace temporal caducado.",
-    "The DJ station history has not been connected to the server yet.": "El historial aún no está conectado."
+    "The DJ station history has not been connected to the server yet.": "El historial aún no está conectado.",
+    "REQUEST A TRACK ↗": "PEDIR CANCIÓN ↗",
+    "PREPARE SONG REQUEST ↗": "PREPARAR SOLICITUD ↗",
+    "OPEN THIS SELECTION ON YOUTUBE ↗": "ABRIR EN YOUTUBE ↗"
   },
   "zh": {
     "Listen": "收听",
@@ -849,7 +864,10 @@
     "PROMETEI FM is off air.": "PROMETEI FM 已停播。",
     "Our station is currently off air.": "电台目前停播。",
     "The owner PC is offline or this temporary radio link expired.": "站长 PC 离线或临时链接已过期。",
-    "The DJ station history has not been connected to the server yet.": "电台历史尚未连接。"
+    "The DJ station history has not been connected to the server yet.": "电台历史尚未连接。",
+    "REQUEST A TRACK ↗": "点播歌曲 ↗",
+    "PREPARE SONG REQUEST ↗": "准备点歌请求 ↗",
+    "OPEN THIS SELECTION ON YOUTUBE ↗": "在 YOUTUBE 打开 ↗"
   },
   "ja": {
     "Listen": "聴く",
@@ -991,6 +1009,9 @@
     "PROMETEI FM is off air.": "PROMETEI FM は放送休止中です。",
     "Our station is currently off air.": "現在放送休止中です。",
     "The owner PC is offline or this temporary radio link expired.": "PCがオフライン、または一時リンクが失効しました。",
-    "The DJ station history has not been connected to the server yet.": "放送履歴はまだ接続されていません。"
+    "The DJ station history has not been connected to the server yet.": "放送履歴はまだ接続されていません。",
+    "REQUEST A TRACK ↗": "曲をリクエスト ↗",
+    "PREPARE SONG REQUEST ↗": "リクエストを作成 ↗",
+    "OPEN THIS SELECTION ON YOUTUBE ↗": "YOUTUBEで開く ↗"
   }
 }
