@@ -1,12 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/</loc><lastmod>2026-11-18</lastmod></url>
-  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/portfolio.html</loc><lastmod>2026-11-18</lastmod></url>
-  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/privacy.html</loc><lastmod>2026-11-18</lastmod></url>
-  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/account-deletion.html</loc><lastmod>2026-11-18</lastmod></url>
-  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/child-safety.html</loc><lastmod>2026-11-18</lastmod></url>
-  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/terms.html</loc><lastmod>2026-11-18</lastmod></url>
-  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/support.html</loc><lastmod>2026-11-18</lastmod></url>
-  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/privacy-phantom.html</loc><lastmod>2026-11-18</lastmod></url>
-  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/privacy-pokonap.html</loc><lastmod>2026-11-18</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/uk/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/ru/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/es/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/"/>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/uk/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/uk/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/ru/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/es/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/"/>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/ru/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/uk/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/ru/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/es/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/"/>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/de/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/uk/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/ru/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/es/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/"/>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/uk/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/ru/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/es/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/"/>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/zh/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/uk/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/ru/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/es/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/"/>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/ja/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/uk/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/ru/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/es/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://urchenckoyaroslav-star.github.io/prometei-web-2/"/>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/portfolio.html</loc>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/privacy.html</loc>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/privacy-phantom.html</loc>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/privacy-pokonap.html</loc>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/account-deletion.html</loc>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/child-safety.html</loc>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/terms.html</loc>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/support.html</loc>
+  </url>
+  <url><loc>https://urchenckoyaroslav-star.github.io/prometei-web-2/how-it-works.html</loc>
+  </url>
 </urlset>

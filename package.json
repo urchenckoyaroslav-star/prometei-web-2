@@ -1,0 +1,8 @@
+{
+  "name": "prometei-web-2",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Static multilingual PROMETEI Messenger website",
+  "type": "module",
+  "scripts": {"build": "node scripts/build.mjs", "check": "node --check app.js && node --check scripts/build.mjs"}
+}
