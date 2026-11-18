@@ -1,10 +1,22 @@
 {
-  "version": 1,
-  "enabled": false,
+  "version": 2,
+  "enabled": true,
   "asset": "USDT",
-  "network": "",
-  "address": "",
-  "qrSvgPath": "",
-  "verifiedByOwner": false,
-  "note": "The team has not located and verified the exact USDT donation address/network used in the Android messenger. Never enable this card until the owner verifies the receiving wallet and a QR SVG encoding precisely that address. PROMETEI Messenger account IDs and PROI points are not crypto receiving addresses."
+  "kind": "voluntary-project-support",
+  "ownerProvided": true,
+  "networks": [
+    {
+      "id": "tron-trc20",
+      "label": "TRON (TRC20)",
+      "address": "TMGRFJKH851fjYZB6RmJSXKhsnDBq5gkGr",
+      "qrPayload": "TMGRFJKH851fjYZB6RmJSXKhsnDBq5gkGr"
+    },
+    {
+      "id": "bsc-bep20",
+      "label": "BNB Smart Chain (BEP20)",
+      "address": "0x5a289561bf0bbd6b6748d8dcda2e37ef8d6d120a",
+      "qrPayload": "0x5a289561bf0bbd6b6748d8dcda2e37ef8d6d120a"
+    }
+  ],
+  "disclosure": "Public receiving addresses supplied by the project owner. Verify chain and any exchange minimum deposit conditions. Never transfer funds on the wrong blockchain. No private keys are hosted here."
 }
