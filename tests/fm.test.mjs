@@ -65,6 +65,8 @@ test('SEO and listener controls',()=>{
   assert.match(js,/previewStream/);
   assert.match(read('fm-pc-websocket.js'),/new WebSocket/);
   assert.match(read('fm-pc-websocket.js'),/MediaSource/);
+  assert.match(read('fm-pc-websocket.js'),/fallbackHttpMp3/);
+  assert.match(read('fm-pc-websocket.js'),/audio\.src=streamUrl/);
   assert.match(css,/@media\(max-width:380px\)/);
   assert.match(read('scripts/build.mjs'),/functions'.*\.includes\(entry\.name\)/);
 });
