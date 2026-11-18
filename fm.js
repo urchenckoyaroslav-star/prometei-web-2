@@ -17,6 +17,9 @@
     request: $('request-form'), requestStatus: $('request-status'), fallback: $('youtube-fallback')
   };
   const HISTORY_KEY = 'prometei-fm-listener-history-v2';
+  const globalHistory={items:[],count:0,live:false,current:null,ready:false,error:''};
+  let globalVisible=120;
+  const globalMode=()=>state.config && (state.config.mode==='pc'||state.config.mode==='youtube_live');
   const state = {
     config: null, playlists: [], current: null, lastPlaylists: [],
     yt: null, ytPromise: null, playing: false, loading: false,
@@ -47,37 +50,84 @@
     if (Array.isArray(h)) history = h.slice(0, 60).filter(x => x && x.title && Number.isFinite(x.at));
   } catch (_) { /* private mode */ }
   function renderHistory() {
+    const broadcast=globalMode();
+    const items=broadcast?globalHistory.items:history;
     el.history.replaceChildren();
-    if (!history.length) {
-      const li = document.createElement('li');
-      li.className = 'history-empty';
-      li.textContent = 'Songs you listen to will appear here. This is your listening history, not a station-wide play log.';
+    if(!items.length){
+      const li=document.createElement('li');
+      li.className='history-empty';
+      li.textContent=broadcast?
+        (globalHistory.error||'No tracks have been registered in the last 36 hours. The DJ controls the station play log.'):
+        'Songs you hear in the YouTube player appear here. This is only your personal listening history.';
       el.history.append(li);
     }
-    for (const h of history.slice(0, 40)) {
-      const row = document.createElement('li');
-      const time = document.createElement('div');
-      time.className = 'history-time';
-      time.textContent = new Date(h.at).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-      const small = document.createElement('small');
-      small.textContent = h.source === 'pc' ? 'RADIO STREAM' : 'YOUTUBE';
+    const rows=broadcast?items.slice(0,globalVisible):items.slice(0,40);
+    for(const h of rows){
+      const row=document.createElement('li');
+      const time=document.createElement('div');
+      time.className='history-time';
+      const playedAt=h.startedAt||h.at;
+      time.textContent=new Date(playedAt).toLocaleString([],{
+        day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'
+      });
+      const small=document.createElement('small');
+      small.textContent=broadcast?'PROMETEI FM / ON AIR':'YOUTUBE / YOU';
       time.append(small);
-      const title = document.createElement('div');
-      title.className = 'history-track';
-      title.textContent = h.title;
-      const artist = document.createElement('small');
-      artist.textContent = h.artist || 'Artist / channel';
+      const title=document.createElement('div');title.className='history-track';
+      title.textContent=h.title;
+      const artist=document.createElement('small');
+      artist.textContent=h.artist||'Artist not specified in file metadata';
       title.append(artist);
-      const collection = document.createElement('div');
-      collection.className = 'history-collection';
-      collection.textContent = h.collection || 'PROMETEI selection';
-      row.append(time, title, collection);
+      const collection=document.createElement('div');collection.className='history-collection';
+      collection.textContent=broadcast?
+        (h.album||'PC DJ / SHUFFLE'):(h.collection||'PROMETEI selection');
+      row.append(time,title,collection);
       el.history.append(row);
     }
-    el.historyCount.textContent = String(history.length);
+    if(broadcast&&items.length>globalVisible){
+      const more=document.createElement('li');
+      more.className='history-show-more';
+      const button=document.createElement('button');
+      button.className='form-action';button.type='button';
+      button.textContent='SHOW MORE TRACKS ('+(items.length-globalVisible)+' LEFT)';
+      button.addEventListener('click',()=>{globalVisible+=120;renderHistory();});
+      more.append(button);el.history.append(more);
+    }
+    el.historyCount.textContent=String(broadcast?globalHistory.count:history.length);
+  }
+  async function refreshGlobalHistory(){
+    if(!globalMode())return;
+    try{
+      const res=await fetch('/api/fm/history',{cache:'no-store'});
+      if(!res.ok)throw Error('The DJ station history has not been connected to the server yet.');
+      const data=await res.json();
+      if(data.configured!==true || !Array.isArray(data.tracks))throw Error('Station log unavailable.');
+      const now=Date.now(),floor=now-36*3600*1000;
+      globalHistory.items=data.tracks.filter(entry=>entry&&
+        typeof entry.title==='string'&&Number(entry.startedAt)>=floor&&
+        Number(entry.startedAt)<=now+30000);
+      globalHistory.count=globalHistory.items.length;
+      globalHistory.live=data.live===true;
+      globalHistory.current=data.current||null;
+      globalHistory.ready=true;globalHistory.error='';
+      if(globalHistory.live&&globalHistory.current&&state.config?.enabled){
+        el.title.textContent=globalHistory.current.title;
+        el.artist.textContent=globalHistory.current.artist||
+          'Artist not specified in music tags';
+        el.source.textContent='♫ PROMETEI PC DJ / SHARED LIVE RADIO';
+      }else if(state.config?.mode==='pc'){
+        el.title.textContent='PROMETEI FM / Station standby';
+        el.artist.textContent='The DJ is not currently transmitting audio.';
+      }
+      renderHistory();
+    }catch(error){
+      globalHistory.error='36-hour public play log unavailable until the DJ station backend is connected.';
+      globalHistory.ready=false;
+      renderHistory();
+    }
   }
   function remember(entry) {
-    if (!entry?.title) return;
+    if (!entry?.title || globalMode()) return;
     history.unshift({...entry, at:Date.now()});
     history = history.slice(0, 60);
     try { localStorage.setItem(HISTORY_KEY, JSON.stringify(history)); } catch (_) {}
@@ -169,6 +219,8 @@
     state.playlists=playlists;
     state.config={mode,stream:url,liveVideoId,playlistId,enabled,managed:c.managed===true};
     renderPlaylists();
+    renderHistory();
+    if(globalMode())refreshGlobalHistory();
     if(!enabled){
       if(state.playing||state.source){
         el.audio.pause();
@@ -400,4 +452,5 @@
   setInterval(counter, 1000);
   loadConfig();
   setInterval(loadConfig, 20000);
+  setInterval(refreshGlobalHistory, 30000);
 })();
