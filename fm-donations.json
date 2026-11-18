@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "enabled": false,
+  "asset": "USDT",
+  "network": "",
+  "address": "",
+  "qrSvgPath": "",
+  "verifiedByOwner": false,
+  "note": "The team has not located and verified the exact USDT donation address/network used in the Android messenger. Never enable this card until the owner verifies the receiving wallet and a QR SVG encoding precisely that address. PROMETEI Messenger account IDs and PROI points are not crypto receiving addresses."
+}
