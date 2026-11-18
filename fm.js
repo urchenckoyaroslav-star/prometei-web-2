@@ -57,11 +57,12 @@
     const s = Math.floor(value);
     return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
   };
-  const notify = value => { el.message.textContent = value; };
+  const t = value => window.PrometeiFM?.translate?.(value) || value;
+  const notify = value => { el.message.textContent = t(value); };
   const update = () => {
-    el.play.innerHTML = state.playing ? 'Ⅱ <span>PAUSE</span>' : '▶ <span>LISTEN</span>';
-    el.play.setAttribute('aria-label', state.playing ? 'Pause listening' : 'Start listening');
-    el.status.textContent = state.loading ? 'CONNECTING' : state.playing ? 'PLAYING' : 'READY';
+    el.play.innerHTML = state.playing ? 'Ⅱ <span>'+t('PAUSE')+'</span>' : '▶ <span>'+t('LISTEN')+'</span>';
+    el.play.setAttribute('aria-label', state.playing ? t('Pause listening') : t('Start listening'));
+    el.status.textContent = t(state.loading ? 'CONNECTING' : state.playing ? 'PLAYING' : 'READY');
     el.status.classList.toggle('is-live', state.playing);
     el.art.classList.toggle('playing', state.playing);
     el.video.hidden = state.source !== 'youtube';
@@ -150,7 +151,7 @@
         el.title.textContent=globalHistory.current.title;
         el.artist.textContent=globalHistory.current.artist||
           'Artist not specified in music tags';
-        el.source.textContent='♫ PROMETEI PC DJ / SHARED LIVE RADIO';
+        el.source.textContent=t('♫ PROMETEI PC DJ / SHARED LIVE RADIO');
       }else if(state.config?.mode==='pc'){
         el.title.textContent='PROMETEI FM / Station standby';
         el.artist.textContent='The DJ is not currently transmitting audio.';
@@ -293,9 +294,9 @@
         window.PrometeiPcPreview?.stop();
         if(state.config.previewMode){el.audio.removeAttribute('src');el.audio.load();}
         else el.audio.src=url;
-        el.title.textContent='PROMETEI FM / Live stream';
-        el.artist.textContent='Broadcast selected by our DJ';
-        el.source.textContent='♫ AUTHORIZED PC STREAM';
+        el.title.textContent=t('PROMETEI FM / Live stream');
+        el.artist.textContent=t('Broadcast selected by our DJ');
+        el.source.textContent=t('♫ AUTHORIZED PC STREAM');
         notify(state.config.previewMode?'Temporary owner-PC broadcast preview. Press LISTEN; the owner must keep their PC on.':'Our live PC radio source is available. Press LISTEN to connect.');
         update();
         if(previousListening){
@@ -316,12 +317,12 @@
       cancelReconnect();
       el.audio.pause();
       state.source=null;state.playing=false;state.loading=false;
-      el.title.textContent=backupActive?'PROMETEI FM / Backup music':'PROMETEI FM / Our music';
-      el.artist.textContent=backupActive?
+      el.title.textContent=t(backupActive?'PROMETEI FM / Backup music':'PROMETEI FM / Our music');
+      el.artist.textContent=t(backupActive?
         'No PC DJ signal for 20 minutes. Official YouTube playlist is selected.':
-        'Station-selected YouTube playlists';
-      el.source.textContent=backupActive?'↪ PC OFFLINE / YOUTUBE BACKUP':
-        mode==='youtube_live'?'● OFFICIAL YOUTUBE LIVE':'▶ OFFICIAL YOUTUBE PLAYER';
+        'Station-selected YouTube playlists');
+      el.source.textContent=t(backupActive?'↪ PC OFFLINE / YOUTUBE BACKUP':
+        mode==='youtube_live'?'● OFFICIAL YOUTUBE LIVE':'▶ OFFICIAL YOUTUBE PLAYER');
       notify(backupActive?
         'The PC was silent for 20 minutes. YouTube backup is ready. Press LISTEN.':
         mode==='youtube_live'?'PROMETEI YouTube Live is selected. Press LISTEN.':
@@ -534,6 +535,10 @@
   renderHistory();
   update();
   $('year').textContent = String(new Date().getFullYear());
+  document.addEventListener('prometei-fm:language',()=>{
+    update();
+    if(!state.playing && state.config?.mode==='pc')notify('Our live PC radio source is available. Press LISTEN to connect.');
+  });
   window.addEventListener('pagehide',cancelReconnect);
   setInterval(counter, 1000);
   loadConfig();
