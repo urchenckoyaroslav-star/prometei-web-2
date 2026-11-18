@@ -174,3 +174,7 @@
 @media(max-width:760px){.donate-cards{grid-template-columns:1fr;gap:15px;padding:14px}.donate-constellation{border-radius:23px 23px 0 0;padding:40px 20px}.donate-cards{border-radius:0 0 23px 23px}.donate-card-body{flex-direction:row;align-items:center}.donate-qr-wrap{flex:0 0 37%;max-width:175px}.donate-network-title h3{font-size:18px}.donate-afterword{flex-direction:column;align-items:flex-start}.donate-caution{flex-direction:column}.donate-copy{min-height:48px}}
 @media(max-width:450px){.donate-card{padding:17px}.donate-constellation h2{font-size:clamp(2.45rem,10vw,3.6rem)}.donate-constellation h2 span{display:block}.donate-tagline{gap:10px}.donate-wave{font-size:10px}.donate-star-b{right:0}.donate-card-body{flex-direction:column;align-items:stretch}.donate-qr-wrap{flex:none;align-self:center;width:190px;max-width:100%}.donate-address{font-size:12px;line-height:1.6}.donate-caution{padding:13px}}
 @media(prefers-reduced-motion:reduce){.donate-star,.donate-wave{animation:none}.donate-card,.donate-copy{transition:none}.donate-card:hover{transform:none}.donate-card:after{display:none}}
+
+/* Hide QR until the exact address/matrix pair is validated; never render broken QR icons. */
+.donate-qr-img[hidden],.donate-card[hidden],.donate-qr-loading[hidden]{display:none!important}
+.donate-qr-loading{display:grid;place-items:center;min-height:170px;padding:18px;border-radius:13px;background:#ffffff0b;border:1px dashed #f6b9694a;color:#e0b98a;font-size:10px;font-weight:800;letter-spacing:.09em;text-align:center}
