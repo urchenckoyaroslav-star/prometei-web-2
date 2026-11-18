@@ -2,21 +2,14 @@
   "version": 4,
   "mode": "youtube",
   "pcStreamUrl": "",
+  "playlistId": "PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX",
   "playlists": [
     {
-      "name": "NCS · Electronic",
-      "id": "PLRBp0Fe2GpgnZOm5rCopMAOYhZCPoUyO5"
-    },
-    {
-      "name": "NCS · House",
-      "id": "PLRBp0Fe2GpgmsW46rJyudVFlY6IYjFBIK"
-    },
-    {
-      "name": "NCS · Full selection",
-      "id": "PLRBp0Fe2GpgnIh0AiYKh7o7HnYAej-5ph"
+      "name": "PROMETEI FM · Our YouTube backup",
+      "id": "PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX"
     }
   ],
-  "notes": "Owner-controlled playlists, optional official YouTube Live (video ID) or licensed HTTPS PC stream. No paid requests.",
+  "notes": "Safe static fallback ONLY when managed PC station is not configured or API is temporarily unavailable. Primary owner-PC live stream is centrally configured through Cloudflare FM_STATE; do not hardcode a temporary trycloudflare.com URL in GitHub. The public YouTube playlist uses the official YouTube embed.",
   "enabled": true,
   "liveVideoId": ""
 }
