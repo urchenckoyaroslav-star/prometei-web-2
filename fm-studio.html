@@ -18,7 +18,7 @@
 <main class="shell studio-main">
   <div class="section-label"><span>STATION OPERATORS ONLY</span><span class="line"></span><span>YOU ARE THE DJ</span></div>
   <h1 class="studio-title">TAKE CONTROL.<br><span>START THE SIGNAL.</span></h1>
-  <p class="lede">Select a YouTube playlist for our listeners, or switch to your licensed live stream from a PC. This studio never plays or uploads private files by itself.</p>
+  <p class="lede">Select YouTube playlists, YouTube Live from OBS or an authorized audio stream from a PC. This studio never plays or uploads private files by itself.</p>
   <div class="studio-grid">
     <section class="source-card glass" aria-labelledby="auth-title">
       <div class="source-head"><div class="source-icon">✦</div><div><span class="micro-label">01 / PRIVATE ACCESS</span><h2 id="auth-title" class="studio-card-title">DJ authorization</h2></div></div>
@@ -35,9 +35,13 @@
         <fieldset class="studio-modes"><legend>SOURCE</legend>
           <label><input type="radio" name="mode" value="youtube" checked> ▶ YouTube playlists</label>
           <label><input type="radio" name="mode" value="pc"> ♫ PC audio broadcast</label>
+          <label><input type="radio" name="mode" value="youtube_live"> ● YouTube Live from PC / OBS</label>
         </fieldset>
         <label class="studio-label" for="station-playlist">ON-AIR YOUTUBE PLAYLIST</label>
         <select id="station-playlist" class="studio-input"><option value="">Automatic rotation</option></select>
+        <label class="studio-label" for="live-video-id">YOUTUBE LIVE VIDEO ID</label>
+        <input id="live-video-id" class="studio-input" type="text" maxlength="11" autocomplete="off" placeholder="11-character ID from YouTube Live">
+        <p class="source-help">Start a stream with OBS on your verified YouTube channel. Broadcast only authorized music, then paste the 11-character live video ID here.</p>
         <label class="studio-label" for="stream-url">PC STREAM HTTPS ADDRESS</label>
         <input id="stream-url" class="studio-input" type="url" inputmode="url" autocomplete="off" placeholder="https://radio.example.com/live.mp3">
         <p class="source-help">The PC must be sending an authorized live MP3/AAC stream to an Internet-reachable server. Do not paste your PC's localhost address.</p>
