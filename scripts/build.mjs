@@ -104,7 +104,7 @@ function localize(html,locale){
 if(fs.existsSync(output))fs.rmSync(output,{recursive:true,force:true});
 fs.mkdirSync(output,{recursive:true});
 function copy(d){for(const entry of fs.readdirSync(d,{withFileTypes:true})){
-  if(['dist','node_modules','tests','scripts','.git','__pycache__'].includes(entry.name))continue;
+  if(['dist','node_modules','tests','scripts','functions','.git','__pycache__'].includes(entry.name))continue;
   const file=path.join(d,entry.name);const dest=path.join(output,path.relative(source,file));
   if(entry.isDirectory()){fs.mkdirSync(dest,{recursive:true});copy(file);}else if(entry.isFile()&&!entry.name.endsWith('.pyc')){fs.mkdirSync(path.dirname(dest),{recursive:true});fs.copyFileSync(file,dest);}
 }}
@@ -140,5 +140,7 @@ xml.push('</urlset>');
 fs.writeFileSync(path.join(output,'sitemap.xml'),xml.join('\n')+'\n');
 fs.writeFileSync(path.join(output,'robots.txt'),'User-agent: *\nAllow: /\nSitemap: '+base+'sitemap.xml\n');
 fs.writeFileSync(path.join(output,'_headers'),`/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n\n/assets/*\n  Cache-Control: public, max-age=3600\n`);
+// Restrict Cloudflare Pages Functions invocation to the station API.
+fs.writeFileSync(path.join(output,'_routes.json'),JSON.stringify({version:1,include:['/api/fm/*'],exclude:[]},null,2)+'\n');
 // Google and other public site crawlers may index the pages. Do not add invented verification tokens.
 console.log('Built',urls.length,'crawlable URLs for',base,'in',output);
