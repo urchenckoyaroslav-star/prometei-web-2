@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {webcrypto,createHash} from 'node:crypto';
-import {onRequestGet,onRequestPost} from '../functions/api/fm/station.js';
+import {onRequestGet,onRequestPost,determinePcFallback} from '../functions/api/fm/station.js';
 
 globalThis.crypto ||= webcrypto;
 const read=path=>fs.readFileSync(new URL('../'+path,import.meta.url),'utf8');
@@ -85,4 +85,61 @@ test('auth protects writes; station is read-only for unauthenticated visitors',a
   assert.equal(res.status,200);
   res=await onRequestGet({env:{}});
   assert.equal(res.status,503);
+});
+
+
+test('PC watchdog switches to the owner backup playlist only after 20 minutes without DJ signal',async()=>{
+  const now=Date.now(),min=60*1000;
+  const playing={mode:'pc',enabled:true,updatedAt:now-21*min,
+    pcStreamUrl:'https://radio.example/live.mp3'};
+  assert.equal(determinePcFallback(playing,null,now),true,
+    'PC went silent >20 minutes ago');
+  assert.equal(determinePcFallback({...playing,updatedAt:now-19*min},null,now),false,
+    'grace period must be a full 20 minutes');
+  assert.equal(determinePcFallback(playing,{at:now-2*min},now),false,
+    'recent heartbeat overrides old station configuration');
+  assert.equal(determinePcFallback(playing,{at:now-21*min},now),true);
+  assert.equal(determinePcFallback({...playing,enabled:false},null,now),false,
+    'manual OFF AIR must remain off air');
+  assert.equal(determinePcFallback({...playing,mode:'youtube'},null,now),false,
+    'operator Youtube choice must not be hijacked');
+
+  const kv=fakeStore(), env={FM_STATE:kv,FM_DJ_TOKEN:DJ_TOKEN};
+  await kv.put('prometei:fm:station:v1',JSON.stringify({
+    ...playing, playlists:[{id:'PLRBp0Fe2GpgnZOm5rCopMAOYhZCPoUyO5',name:'Original list'}],
+    playlistId:'PLRBp0Fe2GpgnZOm5rCopMAOYhZCPoUyO5'
+  }));
+  let res=await onRequestGet({env});
+  let data=await res.json();
+  assert.equal(data.mode,'pc','operator-saved PC mode must remain untouched');
+  assert.equal(data.fallbackActive,true);
+  assert.equal(data.fallbackAfterMinutes,20);
+  assert.equal(data.fallbackPlaylistId,'PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX');
+  await kv.put('prometei:fm:onair:v1',JSON.stringify({
+    playId:'a'.repeat(32), at:Date.now(), startedAt:Date.now()-180000
+  }));
+  res=await onRequestGet({env});
+  data=await res.json();
+  assert.equal(data.fallbackActive,false,'PC signal restoration automatically cancels backup');
+  assert.equal(data.mode,'pc');
+  // Simulate a STOP event 19m ago, not a deletion of the timestamp.
+  await kv.put('prometei:fm:onair:v1',JSON.stringify({offline:true,at:Date.now()-19*min}));
+  res=await onRequestGet({env});
+  assert.equal((await res.json()).fallbackActive,false);
+  await kv.put('prometei:fm:onair:v1',JSON.stringify({offline:true,at:Date.now()-21*min}));
+  res=await onRequestGet({env});
+  assert.equal((await res.json()).fallbackActive,true);
+});
+
+test('listener presents official YouTube as backup without erasing the PC play log',()=>{
+  const js=read('fm.js');
+  assert.match(js,/PC_BACKUP_PLAYLIST_ID = 'PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX'/);
+  assert.match(js,/state\.config\.fallbackActive/);
+  assert.match(js,/backupActive\?'youtube'/);
+  assert.match(js,/previousListening/);
+  assert.match(js,/startYoutube\(\)/);
+  assert.match(js,/loadPlaylist/);
+  assert.match(js,/setInterval\(loadConfig, 20000\)/);
+  assert.match(js,/globalMode=\(\)=>state\.config/);
+  assert.match(read('fm.html'),/20 minutes/);
 });
