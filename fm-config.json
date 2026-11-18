@@ -1,5 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
+  "mode": "youtube",
+  "pcStreamUrl": "",
   "playlists": [
     {
       "name": "NCS · Electronic",
@@ -14,5 +16,5 @@
       "id": "PLRBp0Fe2GpgnIh0AiYKh7o7HnYAej-5ph"
     }
   ],
-  "notes": "These initial playlists were resolved from NoCopyrightSounds' own public YouTube playlist links. Playback uses the official YouTube embed; channel/content owners retain their rights. Visitors can add personal playlists in their browser."
+  "notes": "Owner-curated YouTube embedded playlists. Visitors cannot change global programming. mode=pc requires an HTTPS licensed audio stream URL. Do not rebroadcast YouTube audio. Paid requests are not yet enabled."
 }
