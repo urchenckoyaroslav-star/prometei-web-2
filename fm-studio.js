@@ -61,7 +61,29 @@
       $('stream-url').value=source.pcStreamUrl||'';
       render();
       $('station-playlist').value=source.playlistId||'';
-      hint(source.managed?'Connected to Cloudflare station storage. '+(source.enabled?'ON AIR':'OFF AIR')+' · Last updated '+new Date(source.updatedAt||0).toLocaleString():'Reading static fallback. DJ writes require Cloudflare KV + secret.');
+      const stationInfo=source.managed?'Cloudflare FM_STATE: '+(source.enabled?'эфир включён':'эфир выключен'):'Статическая конфигурация станции';
+      const djKey=$('dj-token').value.trim();
+      if(djKey.length<24){
+        hint(stationInfo+' · DJ-доступ НЕ проверен. Введи ключ, затем нажми REFRESH STATUS. Управление песнями находится в блоке ниже.');
+      } else {
+        try{
+          const control=await fetch('/api/fm/control',{
+            headers:{authorization:'Bearer '+djKey},cache:'no-store'
+          });
+          const result=await control.json();
+          if(control.ok){
+            hint(stationInfo+' · DJ-доступ подтверждён. '+(result.online?'ПК подключён; пульт треков готов.':'ПК пока не передаёт каталог в DJ-пульт.')+' Перейди к пульту треков ниже.');
+          } else if(control.status===503){
+            hint(stationInfo+' · DJ ПУЛЬТ НЕ НАСТРОЕН: отсутствует FM_DJ_TOKEN в Cloudflare Production или нужен redeploy.');
+          } else if(control.status===401){
+            hint(stationInfo+' · DJ ТОКЕН НЕ ПРИНЯТ: проверь совпадение секретного ключа с Cloudflare Production.');
+          } else {
+            hint(stationInfo+' · Ошибка DJ-доступа: HTTP '+control.status+'. '+clean(result.error,80));
+          }
+        }catch(_){
+          hint(stationInfo+' · Не удалось проверить частный DJ-пульт. Попробуй REFRESH STATUS.');
+        }
+      }
     }catch(e){hint(clean(e.message,140));}
   }
   async function saveStation(enabled){
