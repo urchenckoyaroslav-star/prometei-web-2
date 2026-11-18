@@ -90,13 +90,13 @@ function metadata(html,{url,title,description,lang='en',app=false,alternate=fals
    `<meta name="twitter:image" content="${escapeAttr(base+'assets/og-cover.png')}">`,
    `<script type="application/ld+json">${q(data)}</script>`
   ].filter(Boolean).join('\n  ');
-  return html.replace('</head>','  '+tags+'\n</head>').replace(/href="(\.\.\/)?(portfolio|privacy|privacy-phantom|privacy-pokonap|account-deletion|child-safety|terms|support|how-it-works)\.html"/g,'href="$1$2"');
+  return html.replace('</head>','  '+tags+'\n</head>').replace(/href="(\.\.\/)?(portfolio|privacy|privacy-phantom|privacy-pokonap|account-deletion|child-safety|terms|support|how-it-works|fm)\.html"/g,'href="$1$2"');
 }
 function localize(html,locale){
   const dict=translations[locale];
   html=html.replace(/<([a-z][a-z\d-]*)([^>]*\bdata-i18n="([^"]+)"[^>]*)>([\s\S]*?)<\/\1>/gi,(match,tag,attrs,key)=>dict[key]===undefined?match:`<${tag}${attrs}>${dict[key]}</${tag}>`);
   // Only the six localized homepage variants use ../ relative resource links.
-  const resources=['styles.css','app.js','manifest.webmanifest','privacy.html','privacy-phantom.html','privacy-pokonap.html','child-safety.html','account-deletion.html','terms.html','support.html','portfolio.html','how-it-works.html'];
+  const resources=['styles.css','app.js','manifest.webmanifest','privacy.html','privacy-phantom.html','privacy-pokonap.html','child-safety.html','account-deletion.html','terms.html','support.html','portfolio.html','how-it-works.html','fm.html'];
   for(const f of resources){html=html.replaceAll('href="'+f+'"','href="../'+f+'"').replaceAll('src="'+f+'"','src="../'+f+'"');}
   html=html.replaceAll('href="assets/','href="../assets/').replaceAll('src="assets/','src="../assets/').replaceAll('href="index.html"','href="./"');
   return html;
@@ -126,7 +126,7 @@ for(const filename of docs){
  const url=base+filename.slice(0,-5);
  fs.writeFileSync(path.join(output,filename),metadata(old,{url,title,description:extraDescriptions[filename]||'Official PROMETEI documentation',lang:'en'}),'utf8');
 }
-const urls=['',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5))];
+const urls=['',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm'];
 const xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for(const item of urls){
  xml.push('  <url><loc>'+base+item+'</loc>');
