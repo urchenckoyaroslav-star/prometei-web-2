@@ -7,6 +7,31 @@ const KEY = 'prometei:fm:station:v1';
 // Last owner-PC DJ signal is retained by the history API for longer than the
 // live indicator, permitting a deterministic station-wide 20-minute fallback.
 const SIGNAL_KEY = 'prometei:fm:onair:v1';
+const PC_VERIFIED_KEY = 'prometei:fm:pc-verified:v1';
+const PC_HEALTH_TTL_SECONDS = 30*60;
+const PC_HEALTH_RECHECK_MS = 25000;
+// Only the public PC preview tunnel may be health-probed. Do not fetch URLs
+// submitted by visitors or arbitrary hosts (SSRF prevention).
+const TEMP_PC_STREAM = /^https:\/\/[a-z0-9-]+\.trycloudflare\.com\/live\.mp3$/;
+
+export async function probePcStream(streamUrl, now=Date.now(), fetcher=fetch) {
+  if(typeof streamUrl!=='string'||!TEMP_PC_STREAM.test(streamUrl))return false;
+  const statusUrl=new URL('/status.json',streamUrl).href;
+  try {
+    const response=await fetcher(statusUrl,{
+      method:'GET',headers:{'accept':'application/json','cache-control':'no-cache'},
+      signal:AbortSignal.timeout(3000)
+    });
+    if(!response.ok)return false;
+    const body=await response.text();
+    if(body.length>4096)return false;
+    const status=JSON.parse(body);
+    const audioAt=Number(status?.lastAudioAt);
+    return status?.onAir===true && status?.audioFresh===true &&
+      Number.isSafeInteger(audioAt) && audioAt>=now-60000 && audioAt<=now+30000 &&
+      /^[a-f0-9]{32}$/i.test(status?.current?.playId||'');
+  }catch(_){return false;}
+}
 const PC_FALLBACK_DELAY_MS = 20 * 60 * 1000;
 const PC_FALLBACK_PLAYLIST_ID = 'PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX';
 
@@ -62,12 +87,39 @@ export async function onRequestGet({env}) {
     const state=JSON.parse(content);
     let lastSignal=null;
     if (state.enabled === true && state.mode === 'pc') {
-      // Read-only detection: we do not overwrite the DJ's saved choice.
-      // This way FM Studio always sees the configured PC source.
-      const encodedSignal=await env.FM_STATE.get(SIGNAL_KEY);
+      const [encodedSignal,encodedVerified]=await Promise.all([
+        env.FM_STATE.get(SIGNAL_KEY), env.FM_STATE.get(PC_VERIFIED_KEY)
+      ]);
       if (encodedSignal) {
         try { lastSignal=JSON.parse(encodedSignal); } catch (_) { /* malformed signal */ }
       }
+      let verified=null;
+      if(encodedVerified) {
+        try { verified=JSON.parse(encodedVerified); } catch (_) { /* malformed probe record */ }
+      }
+      const now=Date.now();
+      const lastVerifiedAt=verified?.stream===state.pcStreamUrl &&
+        Number.isSafeInteger(verified?.at) && verified.at<=now+30000 ?
+        verified.at:0;
+      // A healthy public stream is sufficient to keep the owner-PC primary,
+      // even before a separate DJ history token is configured. Probing only
+      // the exact trycloudflare.com status endpoint prevents unsafe fetches.
+      if(TEMP_PC_STREAM.test(state.pcStreamUrl||'') &&
+         now-lastVerifiedAt>=PC_HEALTH_RECHECK_MS &&
+         await probePcStream(state.pcStreamUrl,now)){
+        const observed={at:now,stream:state.pcStreamUrl};
+        try {
+          await env.FM_STATE.put(PC_VERIFIED_KEY,JSON.stringify(observed),{
+            expirationTtl:PC_HEALTH_TTL_SECONDS
+          });
+        }catch(_){ /* a fresh valid probe still confirms PC health now */ }
+        verified=observed;
+      }
+      // A stale verified timestamp from a different tunnel is not trusted.
+      const goodAt=verified?.stream===state.pcStreamUrl &&
+        Number.isSafeInteger(verified?.at) && verified.at<=now+30000 ?
+        verified.at:0;
+      if(goodAt>Number(lastSignal?.at||0))lastSignal={at:goodAt};
     }
     const fallbackActive=determinePcFallback(state,lastSignal);
     return reply({...state, managed:true, fallbackActive,
