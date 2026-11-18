@@ -1,22 +1,52 @@
-# PROMETEI FM — Station operator model (v2)
+# PROMETEI FM — Operator setup (v3)
 
-Public page: https://prometei-web-2.pages.dev/fm
+## What is ready in source
+- DJ console: https://prometei-web-2.pages.dev/fm-studio (noindex; **write access requires a server-side token**).
+- Public station: https://prometei-web-2.pages.dev/fm with mobile layout, SEO metadata, crawlable descriptions, FAQ, official YouTube embeds and free email-based song requests.
+- DJ can add up to 24 YouTube playlists, pin one playlist or use rotation, switch on/off and select a PC source.
+- Changes propagate through Cloudflare Pages Functions and KV. The public page polls at 20-second intervals; Cloudflare KV is eventually consistent so some listeners update later.
+- YouTube visitors have **independent playback timelines** inside a visible official YouTube player. This is NOT one synchronized radio live stream. Users can still use official YouTube player controls.
+- One shared live PC audio source is possible when the PC sends properly authorized content to an Internet-accessible audio streaming service (Icecast, etc.).
+- No real payments.
 
-## Station policy
-- Only site operators program the playlists via GitHub and fm-config.json. Public users cannot add playlists or local audio or alter the official station configuration.
-- The current YouTube source uses YouTube's **visible official embedded player**. Users can listen, pause, and may access standard YouTube controls. Each user receives a local playlist session, **not synchronized live radio**. Public music history is not fabricated: history shown on the site is the visitor's own listening history.
-- A future authenticated operator console should control a centralized server-side queue (Cloudflare Access/Workers + D1, with audit log and roles). Never ship a DJ token in public JavaScript or rely on hiding buttons for authorization.
-- For live PC broadcasting, host an **authorized, rights-cleared audio stream** via a broadcast server (e.g. Icecast) and set `mode` to `pc` and `pcStreamUrl` to the HTTPS MP3/AAC stream URL in fm-config.json. PC must upload the actual audio to this licensed stream. Local browser file selection cannot broadcast to other visitors.
-- **Do not** use YouTube videos as an audio source for an Icecast stream or download/extract/rebroadcast embedded YouTube audio. YouTube is a separate, visible player option. Do not bypass embedded player ads or autoplay limitations.
-- Site design is retained in the original PROMETEI FM style.
+## Deploy backend (required for saving from DJ Studio)
+1. In Cloudflare Pages project linked to GitHub \`prometei-web-2\`, use the Git repository integration with build command \`npm run build\` and output directory \`dist\`.
+2. In Cloudflare dashboard > Workers & Pages > your project > Settings > Bindings, create a **Workers KV** namespace and bind it to the Pages application with the exact variable name \`FM_STATE\` in Production (and Preview if desired). Follow Cloudflare's Pages KV binding guide. Redeploy if prompted.
+3. In Pages > Settings > Variables and Secrets add a long, cryptographically random **secret** with the exact name \`FM_DJ_TOKEN\`. Use 32 random bytes (Base64URL 43 chars) or stronger, not a predictable password. Keep secret outside git, backups and screenshots. Production & Preview settings are independent.
+4. Deploy/redeploy Pages. \`GET /api/fm/station\` returns 404 before first saved station config; \`POST\` returns 503 until both KV and secret are set.
+5. Open /fm-studio, paste the secret into the password input and press REFRESH STATUS. Select YouTube, add playlists if needed, choose the featured playlist or automatic rotation, then press GO ON AIR / SAVE. This saves the central station configuration. The secret stays only in the tab input and is sent on save over HTTPS.
+6. View FM on another device. Refresh if needed; allow up to the KV propagation window. YouTube autoplay needs a listener tap. Test desktop + Android + iOS + 360px widths.
 
-## Song requests and future payments
-- The song request form creates a prefilled email draft sent by the visitor's email program to prometetimes@gmail.com? **No**: official inbox is `prometeimes@gmail.com` (the webpage uses the correct address). Nothing is uploaded or charged by our site.
-- Telegram fallback: https://t.me/AlnairCanopus
-- Payments are **not active**. Before accepting paid requests: confirm music and public broadcast rights; select a real payment provider and merchant account; create server-verified payment checkout and webhook; add published price, refund/cancellation rules, privacy/terms; process only fully paid and approved requests and ensure a refund if not fulfilled. Do not sell YouTube video access or promise pay-to-play of YouTube embeds.
-- Proposed statuses: submitted -> awaiting review -> payment invited -> payment confirmed -> queued -> aired (or refunded). Rate-limit messages and prevent spam. No unverified payment state in the browser.
+Do not publish or guess a default token. The DJ control page can be discovered, but saving without the server-side key is prohibited. Cloudflare WAF / rate limit rules for \`POST /api/fm/station\` are recommended.
 
-## Current configuration
-- `fm-config.json`: `mode: "youtube"` and curated YouTube playlist array; optional `pcStreamUrl` is empty until a legitimate stream server exists.
-- GitHub source updates deploy to Cloudflare Pages. Keep playlist IDs verified and embeddable.
-- `npm run check` validates script syntax; `npm run build` builds the FM page as part of the site.
+## Option A — curated YouTube collections
+- From Studio: choose YouTube -> add up to 24 embeddable playlist URLs/IDs -> choose a featured list or automatic list selection -> GO ON AIR.
+- The official visible iframe runs locally for every listener. No extraction, restreaming, invisible playback or ad bypass.
+- Some videos cannot embed, and YouTube or browsers may block autoplay. Do not claim perfect sync across listeners.
+
+## Option B — stream licensed audio from Windows PC
+1. Provision a real Icecast-compatible server (not the Pages static site itself). Enable a **public HTTPS audio URL** (for example \`https://radio.example.com/live.mp3\`), with correct MIME type \`audio/mpeg\`, cross-origin playback allowed and a valid HTTPS certificate. Its source upload port, often 8000, can be private and different from the public HTTPS proxy.
+2. Install FFmpeg on Windows; add it to PATH. Keep only tracks you have permission to broadcast in a local folder.
+3. Download \`scripts/fm-pc-broadcast.ps1\` from the GitHub source and run PowerShell:
+   \`\`\`powershell
+   powershell -ExecutionPolicy Bypass -File .\fm-pc-broadcast.ps1 -MusicFolder "C:\Radio\Licensed" -IcecastHost "radio.example.com" -Port 8000 -Mount live.mp3
+   \`\`\`
+   Supply the server SOURCE password when prompted. FFmpeg reads local files, shuffles a playlist and pushes MP3 audio to the server. Ctrl+C stops. The dedicated Icecast source password appears in the FFmpeg process command line while running; do not use an important reusable password or leave your workstation untrusted.
+4. Test the public HTTPS listening URL from another network in a browser. In DJ Studio select PC and enter that HTTPS listening URL, then GO ON AIR. Listeners will switch to the shared live radio stream on their next poll.
+5. To return to official YouTube playlists, choose YouTube and save. To close the station, TAKE OFF AIR.
+
+**IMPORTANT:** You cannot stream Windows local audio to the public by merely selecting a local file inside the browser; server + broadcast software is required. YouTube must not be used as the source for the Icecast broadcast; it remains inside the official YouTube embed.
+
+## Search / SEO
+- FM page includes a real HTML \`<title>\`, canonical URL, meta description, WebApplication JSON-LD, visible playlist names and indexable FAQ content.
+- The site build generates \`sitemap.xml\` including /fm and robots.txt. The DJ Studio has noindex.
+- Google Search Console should inspect the canonical FM URL and sitemap after Cloudflare deployment. Search ranking and indexing are decided by Google, not guaranteed.
+- Public FM copy avoids fabricated track history, fake real-time radio stats and unsupported 24/7 claims.
+
+## Rights and future payments
+- Only rights-cleared local music should be transmitted on the shared audio stream. NCS and other YouTube playlists are **not automatically licensed** for independent radio rebroadcast.
+- Requests currently open a prefilled email to \`prometeimes@gmail.com\`. The listener must hit Send. No payment or database submission takes place.
+- Paid priority can be added only after music rights, merchant verification, refunds, secure payment confirmation and user notices are finished.
+
+## Testing
+Run \`npm run check\`, including Node syntax verification and unit checks for station API authorization and listener/SEO markup. Also test actual remote deployment and playback manually.
