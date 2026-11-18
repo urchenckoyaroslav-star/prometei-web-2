@@ -14,13 +14,13 @@
     audioStage: $('audio-stage'), audio: $('station-audio'),
     playlists: $('playlist-list'), playlistCount: $('playlist-count'),
     history: $('history-list'), historyCount: $('history-count'),
-    request: $('request-form'), requestStatus: $('request-status')
+    request: $('request-form'), requestStatus: $('request-status'), fallback: $('youtube-fallback')
   };
   const HISTORY_KEY = 'prometei-fm-listener-history-v2';
   const state = {
     config: null, playlists: [], current: null, lastPlaylists: [],
     yt: null, ytPromise: null, playing: false, loading: false,
-    source: null, videoId: '', recent: [], errors: 0
+    source: null, videoId: '', recent: [], errors: 0, intent: false, reconnects: 0, reconnectTimer: null
   };
   const clean = (val, max = 180) => String(val ?? '').trim().slice(0, max);
   const playlistIdValid = id => typeof id === 'string' && /^[A-Za-z0-9_-]{10,120}$/.test(id);
@@ -39,6 +39,7 @@
     el.video.hidden = state.source !== 'youtube';
     el.audioStage.hidden = state.source === 'youtube';
     el.audioStage.classList.toggle('active', state.source === 'pc' && state.playing);
+    if (el.fallback) el.fallback.hidden = state.source !== 'youtube' || !state.current;
   };
   let history = [];
   try {
@@ -122,7 +123,35 @@
     if(!response.ok)throw Error('Station configuration unavailable');
     return response.json();
   }
-  function applyStation(c) {
+  function cancelReconnect() {
+    if(state.reconnectTimer!==null) clearTimeout(state.reconnectTimer);
+    state.reconnectTimer=null;
+  }
+  function stopIntent() {
+    state.intent=false;
+    state.reconnects=0;
+    cancelReconnect();
+  }
+  function reconnectStream() {
+    if (!state.intent || !state.config?.enabled || state.config.mode!=='pc' || state.reconnects>=4) {
+      if(state.intent && state.reconnects>=4) notify('The PC stream is unavailable. Press LISTEN to try again.');
+      return;
+    }
+    cancelReconnect();
+    const wait=Math.min(15000,1500*2**state.reconnects++);
+    notify('Signal interrupted. Reconnecting to the radio stream...');
+    state.reconnectTimer=setTimeout(async()=>{
+      state.reconnectTimer=null;
+      if(!state.intent || state.config?.mode!=='pc') return;
+      try{
+        el.audio.load();
+        await el.audio.play();
+      } catch(_) {
+        reconnectStream();
+      }
+    },wait);
+  }
+    function applyStation(c) {
     const playlists=(Array.isArray(c.playlists)?c.playlists:[])
       .filter(p=>p && playlistIdValid(p.id)).slice(0,24)
       .map(p=>({id:p.id,name:clean(p.name,70)||'PROMETEI playlist'}));
@@ -132,6 +161,7 @@
     const playlistId=playlists.some(p=>p.id===c.playlistId)?c.playlistId:'';
     const was=state.config;
     const previousPlaying=state.playing;
+    if(was && was.enabled!==enabled && !enabled)stopIntent();
     const sourceChanged=!!was && (
       was.mode!==mode || was.stream!==url || was.playlistId!==playlistId || was.enabled!==enabled
     );
@@ -153,6 +183,7 @@
     }
     if(mode==='pc'){
       if(!was || sourceChanged){
+        cancelReconnect();
         el.audio.pause();
         try{state.yt?.pauseVideo();}catch(_){}
         state.source='pc';state.playing=false;state.loading=false;
@@ -165,6 +196,7 @@
         if(previousPlaying)el.audio.play().catch(()=>notify('Our station source changed. Tap LISTEN to reconnect.'));
       }
     }else if(!was || sourceChanged){
+      cancelReconnect();
       el.audio.pause();
       state.source=null;state.playing=false;state.loading=false;
       el.title.textContent='PROMETEI FM / Our music';
@@ -286,6 +318,7 @@
     if (!p) { notify('Station music is not configured.'); return; }
     state.source = 'youtube'; state.loading = true; state.playing = false;
     state.current = p; state.videoId = '';
+    if(el.fallback) el.fallback.href='https://www.youtube.com/playlist?list='+encodeURIComponent(p.id);
     el.title.textContent = 'Tuning to ' + p.name;
     el.artist.textContent = 'Connecting to the official YouTube player...';
     el.source.textContent = '▶ YOUTUBE / ' + p.name;
@@ -304,7 +337,10 @@
     if (!state.config) { notify('Station is loading.'); return; }
     if (!state.config.enabled) { notify('PROMETEI FM is off air.'); return; }
     if (state.source === 'pc') {
-      if (state.playing) { el.audio.pause(); return; }
+      if (state.playing) { stopIntent(); el.audio.pause(); return; }
+      state.intent=true;
+      state.reconnects=0;
+      cancelReconnect();
       try { await el.audio.play(); }
       catch (_) { notify('Browser blocked audio. Tap play on the station player.'); }
       return;
@@ -318,13 +354,14 @@
   }
   el.play.addEventListener('click', toggleListening);
   el.audio.addEventListener('playing', () => {
-    state.playing = true; state.loading = false; update();
+    state.playing = true; state.loading = false; state.reconnects=0;
+    cancelReconnect();update();
     notify('Connected to PROMETEI FM stream.');
   });
   el.audio.addEventListener('pause', () => { state.playing = false; update(); });
   el.audio.addEventListener('error', () => {
     if (state.source !== 'pc') return;
-    state.playing = false; update(); notify('Station stream is temporarily unavailable.');
+    state.playing = false; update(); reconnectStream();
   });
   el.request.addEventListener('submit', e => {
     e.preventDefault();
@@ -352,6 +389,7 @@
   renderHistory();
   update();
   $('year').textContent = String(new Date().getFullYear());
+  window.addEventListener('pagehide',cancelReconnect);
   setInterval(counter, 1000);
   loadConfig();
   setInterval(loadConfig, 20000);
