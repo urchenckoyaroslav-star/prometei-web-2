@@ -68,18 +68,21 @@ export async function onRequestPost({request,env}) {
     if(seen.has(p.id))continue;
     selected.push({id:p.id,name:clean(p.name,70)});seen.add(p.id);
   }
-  const mode=data.mode==='pc'?'pc':data.mode==='youtube'?'youtube':null;
-  if(!mode)return reply({error:'Choose YouTube or PC stream'},400);
+  const mode=['pc','youtube','youtube_live'].includes(data.mode)?data.mode:null;
+  if(!mode)return reply({error:'Choose playlist, YouTube Live or PC stream'},400);
   const enabled=data.enabled===true;
   const pcStreamUrl=clean(data.pcStreamUrl,501);
+  const liveVideoId=clean(data.liveVideoId,30);
   if(!streamOkay(pcStreamUrl))return reply({error:'Stream URL must be valid HTTPS without credentials'},400);
+  if(liveVideoId && !/^[A-Za-z0-9_-]{11}$/.test(liveVideoId))return reply({error:'YouTube Live ID must be 11 characters'},400);
+  if(mode==='youtube_live' && enabled && !liveVideoId)return reply({error:'YouTube Live ID is required'},400);
   if(mode==='pc' && enabled && !pcStreamUrl)
     return reply({error:'An HTTPS stream URL is required before going on air from PC'},400);
   const playlistId=clean(data.playlistId,120);
   if(playlistId && !seen.has(playlistId))return reply({error:'Selected playlist is not in the station collection'},400);
   if(mode==='youtube' && enabled && selected.length===0)
     return reply({error:'Add at least one playlist'},400);
-  const state={version:3,enabled,mode,playlistId,pcStreamUrl,playlists:selected,updatedAt:Date.now()};
+  const state={version:4,enabled,mode,playlistId,pcStreamUrl,liveVideoId,playlists:selected,updatedAt:Date.now()};
   try {
     await env.FM_STATE.put(KEY,JSON.stringify(state));
     return reply({ok:true,state});
