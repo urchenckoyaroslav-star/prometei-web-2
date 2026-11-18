@@ -117,13 +117,16 @@ export async function onRequestPost({request,env}){
       return response({ok:true,live:false});
     }
     if(type==='start'){
-      const event=extractEvent(payload,now);
+      const suppliedStart=Number(payload.startedAt);
+      const start=(Number.isSafeInteger(suppliedStart) && suppliedStart<=now+30000 &&
+        suppliedStart>=now-WINDOW_MS)?suppliedStart:now;
+      const event=extractEvent(payload,start);
       if(!event)return response({error:'Invalid track metadata or playId'},400);
       const key=PREFIX+event.playId;
       const existing=await env.FM_STATE.get(key,'json');
       if(existing)return response({ok:true,duplicate:true});
       await env.FM_STATE.put(key,JSON.stringify(event),{
-        expirationTtl:TTL_SECONDS,
+        expirationTtl:Math.max(60,TTL_SECONDS-Math.floor((now-event.startedAt)/1000)),
         metadata:event
       });
       await env.FM_STATE.put(NOW,JSON.stringify({...event,at:now}),{
