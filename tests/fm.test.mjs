@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {webcrypto} from 'node:crypto';
+import {webcrypto,createHash} from 'node:crypto';
 import {onRequestGet,onRequestPost} from '../functions/api/fm/station.js';
 
 globalThis.crypto ||= webcrypto;
@@ -21,14 +21,36 @@ test('SEO and listener controls',()=>{
   assert.doesNotMatch(html,/id="playlist-form"|id="file-input"|id="next-btn"/);
   assert.match(html,/INSTALL PROMETEI MESSENGER/);
   assert.match(html,/id="support"/);
-  assert.match(html,/id="donate-address"/);
-  assert.match(html,/id="donate-qr"/);
-  const donation = JSON.parse(read('fm-donations.json'));
-  assert.equal(donation.enabled, false);
-  assert.equal(donation.address, '');
-  assert.equal(donation.asset, 'USDT');
-  assert.match(read('fm-donate.js'),/verifiedByOwner/);
-  assert.match(read('fm-donate.js'),/data-wallet-network/);
+  assert.match(html,/id="donate-qr-tron"/);
+  assert.match(html,/id="donate-qr-bsc"/);
+  assert.match(html,/data-copy-donation="tron-trc20"/);
+  assert.match(html,/data-copy-donation="bsc-bep20"/);
+  const config=JSON.parse(read('fm-donations.json'));
+  assert.equal(config.enabled,true);
+  assert.equal(config.version,2);
+  assert.equal(config.asset,'USDT');
+  assert.equal(config.ownerProvided,true);
+  assert.deepEqual(config.networks.map(n=>n.id),['tron-trc20','bsc-bep20']);
+  assert.equal(config.networks[0].address,'TMGRFJKH851fjYZB6RmJSXKhsnDBq5gkGr');
+  assert.equal(config.networks[1].address,'0x5a289561bf0bbd6b6748d8dcda2e37ef8d6d120a');
+  for(const network of config.networks){
+    assert.equal(network.address,network.qrPayload,'QR must encode exactly the displayed address');
+    assert.ok(html.includes(network.address),'address must be visible in static HTML');
+  }
+  const qrSource=read('fm-donate.js');
+  const matrices=[...qrSource.matchAll(/qrRows: '([0-9a-f:]+)'/g)].map(m=>m[1]);
+  assert.equal(matrices.length,2,'both networks must have actual embedded QR matrices');
+  const fixtureDigests=[
+    'f9a58fb064067a5557e15b4055db1f1750e1928730d0c2d8f5dbbbf55aff152d',
+    '9ae44777e4b55e098aed67bf508beedb03454cab2109e4358a7ef59b7b3d7e66'
+  ];
+  for(let i=0;i<2;i++){
+    const rows=matrices[i].split(':');
+    assert.equal(rows.length,41);
+    assert.ok(rows.every(r=>/^[0-9a-f]{11}$/.test(r)));
+    assert.equal(createHash('sha256').update(matrices[i]).digest('hex'),fixtureDigests[i],
+      'QR matrix changed independently of the owner-supplied address');
+  }
   assert.match(html,/NCS · Electronic/);
   assert.match(studio,/noindex,nofollow/);
   assert.match(studio,/id="dj-token"/);
