@@ -6,6 +6,6 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "check": "node --check app.js && node --check fm.js && node --check fm-studio.js && node --check functions/api/fm/station.js && node --check scripts/build.mjs && node --test tests/fm.test.mjs"
+    "check": "node --check app.js && node --check fm.js && node --check fm-donate.js && node --check fm-studio.js && node --check functions/api/fm/station.js && node --check scripts/build.mjs && node --test tests/fm.test.mjs"
   }
 }
