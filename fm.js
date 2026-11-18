@@ -36,7 +36,7 @@
       const url = new URL(raw);
       if (url.protocol !== 'https:' || url.username || url.password || url.port ||
           url.search || url.hash || url.pathname !== '/live.mp3') return '';
-      if (!/^[a-z0-9-]+\\.trycloudflare\\.com$/.test(url.hostname)) return '';
+      if (!/^[a-z0-9-]+\.trycloudflare\.com$/.test(url.hostname)) return '';
       return url.href;
     } catch (_) { return ''; }
   })();
@@ -148,7 +148,7 @@
       }
       renderHistory();
     }catch(error){
-      globalHistory.error='36-hour public play log unavailable until the DJ station backend is connected.';
+      globalHistory.error=state.config?.previewMode?'The owner PC is offline or this temporary radio link expired.':'36-hour public play log unavailable until the DJ station backend is connected.';
       globalHistory.ready=false;
       renderHistory();
     }
@@ -210,7 +210,7 @@
     cancelReconnect();
   }
   function reconnectStream() {
-    if (!state.intent || !state.config?.enabled || state.config.mode!=='pc' || state.reconnects>=4) {
+    if (!state.intent || !state.config?.enabled || state.config.mode!=='pc' || state.config.previewMode || state.reconnects>=4) {
       if(state.intent && state.reconnects>=4) notify('The PC stream is unavailable. Press LISTEN to try again.');
       return;
     }
@@ -250,6 +250,7 @@
     if(globalMode())refreshGlobalHistory();
     if(!enabled){
       if(state.playing||state.source){
+        window.PrometeiPcPreview?.stop();
         el.audio.pause();
         try{state.yt?.pauseVideo();}catch(_){}
       }
@@ -267,7 +268,9 @@
         el.audio.pause();
         try{state.yt?.pauseVideo();}catch(_){}
         state.source='pc';state.playing=false;state.loading=false;
-        el.audio.src=url;
+        window.PrometeiPcPreview?.stop();
+        if(c.previewMode===true){el.audio.removeAttribute('src');el.audio.load();}
+        else el.audio.src=url;
         el.title.textContent='PROMETEI FM / Live stream';
         el.artist.textContent='Broadcast selected by our DJ';
         el.source.textContent='♫ AUTHORIZED PC STREAM';
@@ -276,6 +279,7 @@
         if(previousPlaying)el.audio.play().catch(()=>notify('Our station source changed. Tap LISTEN to reconnect.'));
       }
     }else if(!was || sourceChanged){
+      window.PrometeiPcPreview?.stop();
       cancelReconnect();
       el.audio.pause();
       state.source=null;state.playing=false;state.loading=false;
@@ -422,6 +426,13 @@
   async function toggleListening() {
     if (!state.config) { notify('Station is loading.'); return; }
     if (!state.config.enabled) { notify('PROMETEI FM is off air.'); return; }
+    if (state.source === 'pc' && state.config.previewMode){
+      if(state.playing){window.PrometeiPcPreview?.stop();stopIntent();el.audio.pause();update();return;}
+      state.intent=true;state.loading=true;update();
+      const ok=window.PrometeiPcPreview?.start(el.audio,state.config.stream,notify);
+      if(!ok){state.loading=false;update();}
+      return;
+    }
     if (state.source === 'pc') {
       if (state.playing) { stopIntent(); el.audio.pause(); return; }
       state.intent=true;
@@ -447,7 +458,9 @@
   el.audio.addEventListener('pause', () => { state.playing = false; update(); });
   el.audio.addEventListener('error', () => {
     if (state.source !== 'pc') return;
-    state.playing = false; update(); reconnectStream();
+    state.playing = false; update();
+    if(state.config?.previewMode){notify('PC WebSocket audio stopped. Press LISTEN to reconnect.');return;}
+    reconnectStream();
   });
   el.request.addEventListener('submit', e => {
     e.preventDefault();
