@@ -51,7 +51,12 @@ test('SEO and listener controls',()=>{
     assert.equal(createHash('sha256').update(matrices[i]).digest('hex'),fixtureDigests[i],
       'QR matrix changed independently of the owner-supplied address');
   }
-  assert.match(html,/NCS · Electronic/);
+  assert.match(html,/PROMETEI FM · YouTube backup/);
+  assert.doesNotMatch(html,/NCS · Electronic|NCS · House|NCS · Full selection/);
+  const staticFallback=JSON.parse(read('fm-config.json'));
+  assert.equal(staticFallback.mode,'youtube');
+  assert.equal(staticFallback.playlistId,'PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX');
+  assert.deepEqual(staticFallback.playlists.map(p=>p.id),['PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX']);
   assert.match(studio,/noindex,nofollow/);
   assert.match(studio,/id="dj-token"/);
   assert.match(js,/fetch\('\/api\/fm\/station'/);
