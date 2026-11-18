@@ -91,3 +91,47 @@ test('heartbeat requires prior broadcast track and offline clears live',async()=
   assert.equal(data.live,false);
   assert.equal(data.tracks.length,1);
 });
+
+test('delayed DJ events preserve original timestamps and do not fake current music',async()=>{
+  const env={FM_STATE:store(),FM_DJ_TOKEN:TOKEN};
+  const backfilledAt=Date.now()-12*60*1000;
+  let res=await onRequestPost({
+    request:request(TOKEN,{...example,playId:'d'.repeat(32),startedAt:backfilledAt}),
+    env
+  });
+  assert.equal(res.status,200);
+  assert.equal((await res.json()).startedAt,backfilledAt);
+  let data=await (await onRequestGet({env})).json();
+  assert.equal(data.tracks.length,1);
+  assert.equal(data.tracks[0].startedAt,backfilledAt);
+  assert.equal(data.live,false, 'Backfilled track must not claim to be on air');
+  const currentAt=Date.now()-5000;
+  res=await onRequestPost({
+    request:request(TOKEN,{...example,playId:'e'.repeat(32),title:'Actually live',startedAt:currentAt}),
+    env
+  });
+  assert.equal(res.status,200);
+  // Arrival order can differ from the original play order.
+  res=await onRequestPost({
+    request:request(TOKEN,{...example,playId:'f'.repeat(32),title:'Older recovered',startedAt:Date.now()-65000}),
+    env
+  });
+  assert.equal(res.status,200);
+  data=await (await onRequestGet({env})).json();
+  assert.equal(data.live,true);
+  assert.equal(data.current.title,'Actually live');
+  assert.equal(data.tracks.length,3);
+});
+test('out-of-window or invalid DJ timestamps cannot become new plays',async()=>{
+  const env={FM_STATE:store(),FM_DJ_TOKEN:TOKEN};
+  for(const startedAt of [Date.now()-HOURS_36-1000, Date.now()+60000, 'not-a-time', null]){
+    const res=await onRequestPost({
+      request:request(TOKEN,{...example,playId:'b'.repeat(32),startedAt}),
+      env
+    });
+    assert.equal(res.status,400);
+  }
+  const data=await (await onRequestGet({env})).json();
+  assert.equal(data.tracks.length,0);
+  assert.equal(data.live,false);
+});
