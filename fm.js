@@ -48,10 +48,16 @@
   })();
   // A listener's temporary local preview is a different PC source from the
   // centrally managed station. Do not apply its server fallback to previews.
-  const maybePreview = value => previewStream
-    ? {...value, mode:'pc', pcStreamUrl:previewStream, enabled:true,
-        previewMode:true, fallbackActive:false}
-    : value;
+  // A stale ?listen= Quick Tunnel cannot override the live station's new URL.
+  const maybePreview = value => {
+    if (!previewStream) return value;
+    const centralPcLive=value?.managed===true && value.enabled===true &&
+      value.mode==='pc' && typeof value.pcStreamUrl==='string' &&
+      /^https:\/\//.test(value.pcStreamUrl);
+    if (centralPcLive) return value;
+    return {...value, mode:'pc', pcStreamUrl:previewStream, enabled:true,
+      previewMode:true, fallbackActive:false};
+  };
   const duration = value => {
     if (!Number.isFinite(value) || value < 0) return '00:00';
     const s = Math.floor(value);
@@ -231,8 +237,13 @@
       state.reconnectTimer=null;
       if(!state.intent || state.config?.mode!=='pc') return;
       try{
-        el.audio.load();
-        await el.audio.play();
+        if(state.config.pcWebSocket){
+          const started=window.PrometeiPcPreview?.start(el.audio,state.config.stream,notify);
+          if(!started) reconnectStream();
+        } else {
+          el.audio.load();
+          await el.audio.play();
+        }
       } catch(_) {
         reconnectStream();
       }
@@ -266,7 +277,7 @@
     state.playlists=playlists;
     const isTemporaryPcStream=mode==='pc' && /^https:\/\/[a-z0-9-]+\.trycloudflare\.com\/live\.mp3$/.test(url);
     state.config={mode,stream:url,liveVideoId,playlistId,enabled,managed:c.managed===true,
-      previewMode:c.previewMode===true||isTemporaryPcStream,
+      previewMode:c.previewMode===true, pcWebSocket:isTemporaryPcStream,
       fallbackActive:backupActive};
     renderPlaylists();
     renderHistory();
@@ -292,7 +303,7 @@
         try{state.yt?.pauseVideo();}catch(_){}
         state.source='pc';state.playing=false;state.loading=false;
         window.PrometeiPcPreview?.stop();
-        if(state.config.previewMode){el.audio.removeAttribute('src');el.audio.load();}
+        if(state.config.pcWebSocket){el.audio.removeAttribute('src');el.audio.load();}
         else el.audio.src=url;
         el.title.textContent=t('PROMETEI FM / Live stream');
         el.artist.textContent=t('Broadcast selected by our DJ');
@@ -301,7 +312,7 @@
         update();
         if(previousListening){
           state.intent=true;state.loading=true;update();
-          if(state.config.previewMode){
+          if(state.config.pcWebSocket){
             const ok=window.PrometeiPcPreview?.start(el.audio,url,notify);
             if(!ok){state.loading=false;update();notify('PC stream returned. Tap LISTEN to reconnect.');}
           }else{
@@ -467,7 +478,7 @@
   async function toggleListening() {
     if (!state.config) { notify('Station is loading.'); return; }
     if (!state.config.enabled) { notify('PROMETEI FM is off air.'); return; }
-    if (state.source === 'pc' && state.config.previewMode){
+    if (state.source === 'pc' && state.config.pcWebSocket){
       if(state.playing){window.PrometeiPcPreview?.stop();stopIntent();el.audio.pause();update();return;}
       state.intent=true;state.loading=true;update();
       const ok=window.PrometeiPcPreview?.start(el.audio,state.config.stream,notify);
@@ -506,7 +517,7 @@
   el.audio.addEventListener('error', () => {
     if (state.source !== 'pc') return;
     state.playing = false; update();
-    if(state.config?.previewMode){notify('PC WebSocket audio stopped. Press LISTEN to reconnect.');return;}
+    if(state.config?.pcWebSocket){notify('PC audio interrupted. Reconnecting to the live stream…');reconnectStream();return;}
     reconnectStream();
   });
   el.request.addEventListener('submit', e => {
