@@ -57,10 +57,32 @@ Run \`npm run check\`, including Node syntax verification and unit checks for st
 - Listeners then tune into the same official visible YouTube Live player. Delay may vary; some clients require a tap to start. Copyright owners/Content ID may block music, and ad playback depends on YouTube.
 - Without active Cloudflare storage, the operator may set `mode: "youtube_live"`, `enabled: true`, `liveVideoId: "REAL_VIDEO_ID"` in `fm-config.json` and redeploy.
 
-## Voluntary support block (2026-11-18)
-- FM includes a beautifully styled independent-development support panel: development of PROMETEI FM, PROMETEI Messenger and future projects. Contributions are explicitly voluntary; PROMETEI is not represented as a registered charity.
-- Exact messenger USDT address and chain were **not** found or verified in GitHub source/journals. A separate historical BNB Smart Chain public wallet has NOT been established as the intended USDT donation receive address. The PROMETEI Messenger identity 0x... (64-hex-byte) is NOT a blockchain receiving address.
-- Until the address, network and QR encoding are verified, `fm-donations.json` intentionally has `enabled:false` and shows a warm preparation state, *without* a copyable wallet address or fake QR.
-- When the owner provides the address and network shown in the messenger, enter them in `fm-donations.json` with `verifiedByOwner:true`, `asset:"USDT"`, `qrSvgPath:"/assets/fm-usdt-qr.svg"`; generate `assets/fm-usdt-qr.svg` from exactly that address and network with `scripts/generate-fm-donation-qr.py` (requires Python qrcode package); only then set `enabled:true`.
-- Accepted networks in the frontend: tron-trc20, bsc-bep20, ethereum-erc20, polygon-pos, arbitrum-one. Strict address format checks and QR metadata keep the panel disabled on mismatch. The static QR encodes **the address only**; the exact chain must also be selected by the sender.
-- Never publish a mnemonic, private key, seed, exchange account access token or transaction history; only a public receiving address.
+## Voluntary support — two USDT networks (2026-11-18)
+
+The FM website provides two separate cosmic glass cards with owner-supplied addresses, scannable QR codes generated offline from those exact addresses, and working copy buttons. Nothing on this page asks for private wallet keys or processes payments.
+
+- USDT on TRON (TRC20): TMGRFJKH851fjYZB6RmJSXKhsnDBq5gkGr
+- USDT on BNB Smart Chain (BEP20): 0x5a289561bf0bbd6b6748d8dcda2e37ef8d6d120a
+
+These values were provided by the project owner as deposit details in two screenshots and text. TRON format and Base58Check were verified; the BSC address has valid 20-byte EVM syntax. This is NOT independent confirmation of account ownership.
+
+### QR and copy integrity
+
+- fm-donations.json version 2 holds both owner-supplied public address/network pairs and QR payloads.
+- fm-donate.js contains two 41x41 QR bit matrices generated offline by Python qrcode, error correction Q and four-module quiet zone.
+- The web page checks the exact matching address, network and QR payload in the configuration and static HTML before displaying each QR and enabling copy. A mismatched card is hidden.
+- Each QR encodes the plain public address ONLY. The sender must select USDT and the exact TRC20 or BEP20 blockchain in their wallet.
+- The optional offline verifier scripts/generate-fm-donation-qr.py reconstructs the expected matrices from both addresses with Python qrcode and validates the TRON Base58Check checksum.
+- The Copy Address button uses navigator.clipboard on HTTPS and falls back to text selection/copy on older browsers.
+
+### Important limitations
+
+- These are voluntary cryptocurrency contributions, not a music request payment or subscription. Paid priority requests remain disabled.
+- Exchange deposit addresses can change and may have minimum deposit amounts, token/network restrictions or additional requirements. Confirm all details in the receiving account before accepting donations and periodically afterward.
+- Never use the PROMETEI Messenger account ID or internal PROI points as a crypto deposit address.
+- The project is an independent software project, not a registered charity, and does not claim donations are tax deductible.
+- Blockchain transfers may be irreversible and publicly traceable. Never commit private keys, seed phrases or credentials.
+
+### Maintenance
+
+If the owner changes an address, update static HTML, config, QR matrices and fixture checksums together. Verify both generated QRs by scanning them with an independent QR app and run npm run check. Never update the address field in isolation.
