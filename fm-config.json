@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 4,
   "mode": "youtube",
   "pcStreamUrl": "",
   "playlists": [
@@ -16,5 +16,7 @@
       "id": "PLRBp0Fe2GpgnIh0AiYKh7o7HnYAej-5ph"
     }
   ],
-  "notes": "Owner-curated YouTube embedded playlists. Visitors cannot change global programming. mode=pc requires an HTTPS licensed audio stream URL. Do not rebroadcast YouTube audio. Paid requests are not yet enabled."
+  "notes": "Owner-controlled playlists, optional official YouTube Live (video ID) or licensed HTTPS PC stream. No paid requests.",
+  "enabled": true,
+  "liveVideoId": ""
 }
