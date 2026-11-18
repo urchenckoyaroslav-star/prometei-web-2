@@ -1,8 +1,8 @@
 /* PROMETEI FM — listener-only station client (v2).
  * Programming is published by station operators through fm-config.json.
  * YouTube remains a visible, official embedded player; no audio extraction.
- * The present playlist experience is curated but NOT a synchronized radio stream.
- * A licensed PC stream can be configured later; paid requests are NOT charged here.
+ * The YouTube backup player runs independently for each visitor; it is not a synchronized relay.
+ * The owner-PC broadcast is one shared stream when available; paid requests are NOT charged here.
  */
 (() => {
   'use strict';
