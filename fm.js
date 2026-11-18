@@ -110,34 +110,88 @@
       el.playlists.append(row);
     }
   }
-  async function loadConfig() {
-    const response = await fetch('fm-config.json', {cache:'no-store'});
-    if (!response.ok) throw Error('Station configuration unavailable');
-    const c = await response.json();
-    state.playlists = (Array.isArray(c.playlists) ? c.playlists : [])
-      .filter(x => x && playlistIdValid(x.id))
-      .slice(0, 24)
-      .map(x => ({id:x.id, name:clean(x.name,70) || 'PROMETEI playlist'}));
-    const stream = typeof c.pcStreamUrl === 'string' && /^https:\/\//.test(c.pcStreamUrl)
-      ? c.pcStreamUrl : '';
-    state.config = {mode:c.mode === 'pc' && stream ? 'pc' : 'youtube', stream};
+  async function fetchStation() {
+    try {
+      const remote=await fetch('/api/fm/station',{cache:'no-store'});
+      if(remote.ok){
+        const data=await remote.json();
+        if(data?.managed===true)return data;
+      }
+    }catch(_) { /* offline API or no Cloudflare binding; static fallback */ }
+    const response=await fetch('fm-config.json',{cache:'no-store'});
+    if(!response.ok)throw Error('Station configuration unavailable');
+    return response.json();
+  }
+  function applyStation(c) {
+    const playlists=(Array.isArray(c.playlists)?c.playlists:[])
+      .filter(p=>p && playlistIdValid(p.id)).slice(0,24)
+      .map(p=>({id:p.id,name:clean(p.name,70)||'PROMETEI playlist'}));
+    const url=typeof c.pcStreamUrl==='string' && /^https:\/\//.test(c.pcStreamUrl)?c.pcStreamUrl:'';
+    const mode=c.mode==='pc' && url?'pc':'youtube';
+    const enabled=c.enabled!==false;
+    const playlistId=playlists.some(p=>p.id===c.playlistId)?c.playlistId:'';
+    const was=state.config;
+    const previousPlaying=state.playing;
+    const sourceChanged=!!was && (
+      was.mode!==mode || was.stream!==url || was.playlistId!==playlistId || was.enabled!==enabled
+    );
+    state.playlists=playlists;
+    state.config={mode,stream:url,playlistId,enabled,managed:c.managed===true};
     renderPlaylists();
-    if (state.config.mode === 'pc') {
-      el.audio.src = stream;
-      state.source = 'pc';
-      el.title.textContent = 'PROMETEI FM / Live Stream';
-      el.artist.textContent = 'Broadcast chosen by our DJ';
-      el.source.textContent = '♫ AUTHORIZED PC STREAM';
-      notify('A station stream is available. Press LISTEN to connect.');
-    } else if (state.playlists.length) {
-      el.title.textContent = 'PROMETEI FM / On Air Selection';
-      el.artist.textContent = 'Music selected by our station';
-      el.source.textContent = '▶ OFFICIAL YOUTUBE PLAYER';
-      notify('Station-curated playlists are ready. Press LISTEN to play.');
-    } else notify('No station music is configured at the moment.');
-    update();
+    if(!enabled){
+      if(state.playing||state.source){
+        el.audio.pause();
+        try{state.yt?.pauseVideo();}catch(_){}
+      }
+      state.playing=false;state.loading=false;state.source=null;
+      el.title.textContent='PROMETEI FM / OFF AIR';
+      el.artist.textContent='Our DJs will return with more music.';
+      el.source.textContent='◌ BROADCAST PAUSED';
+      notify('Our station is off air. Check back soon.');
+      update();
+      return;
+    }
+    if(mode==='pc'){
+      if(!was || sourceChanged){
+        el.audio.pause();
+        try{state.yt?.pauseVideo();}catch(_){}
+        state.source='pc';state.playing=false;state.loading=false;
+        el.audio.src=url;
+        el.title.textContent='PROMETEI FM / Live stream';
+        el.artist.textContent='Broadcast selected by our DJ';
+        el.source.textContent='♫ AUTHORIZED PC STREAM';
+        notify('Our live PC radio source is available. Press LISTEN to connect.');
+        update();
+        if(previousPlaying)el.audio.play().catch(()=>notify('Our station source changed. Tap LISTEN to reconnect.'));
+      }
+    }else if(!was || sourceChanged){
+      el.audio.pause();
+      state.source=null;state.playing=false;state.loading=false;
+      el.title.textContent='PROMETEI FM / Our music';
+      el.artist.textContent='Station-selected YouTube playlists';
+      el.source.textContent='▶ OFFICIAL YOUTUBE PLAYER';
+      notify('Station-curated YouTube music is ready. Press LISTEN.');
+      update();
+      if(previousPlaying)startYoutube();
+    }
+    if(!playlists.length && mode==='youtube'){
+      notify('The station team is choosing the next playlist.');
+    }
+  }
+  async function loadConfig() {
+    try {
+      const config=await fetchStation();
+      applyStation(config);
+    } catch(error){
+      if(!state.config)notify('Station is temporarily unavailable. Try again shortly.');
+    }
   }
   function selectPlaylist() {
+    const pin=state.config?.playlistId;
+    if(pin){
+      const selected=state.playlists.find(p=>p.id===pin);
+      if(selected)return selected;
+    }
     const options = state.playlists.filter(p => !state.lastPlaylists.includes(p.id));
     const candidates = options.length ? options : state.playlists;
     if (!candidates.length) return null;
@@ -227,6 +281,7 @@
     if (state.errors <= 2) startYoutube();
   }
   async function startYoutube() {
+    if(!state.config?.enabled) {notify('Our station is currently off air.');return;}
     const p = selectPlaylist();
     if (!p) { notify('Station music is not configured.'); return; }
     state.source = 'youtube'; state.loading = true; state.playing = false;
@@ -247,6 +302,7 @@
   }
   async function toggleListening() {
     if (!state.config) { notify('Station is loading.'); return; }
+    if (!state.config.enabled) { notify('PROMETEI FM is off air.'); return; }
     if (state.source === 'pc') {
       if (state.playing) { el.audio.pause(); return; }
       try { await el.audio.play(); }
@@ -297,5 +353,6 @@
   update();
   $('year').textContent = String(new Date().getFullYear());
   setInterval(counter, 1000);
-  loadConfig().catch(() => notify('Station could not load. Try again later.'));
+  loadConfig();
+  setInterval(loadConfig, 20000);
 })();
