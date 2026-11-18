@@ -53,7 +53,7 @@ class RemoteDJ:
         self.url=site.rstrip("/")+"/api/fm/control"
         self.token=token
         self.run_id=uuid.uuid4().hex
-        self.songs={track_id(s.relative_path):s for s in songs}
+        self.songs={track_id(getattr(s,'relative_path',getattr(s,'relative',''))):s for s in songs}
         self.library=[{"id":i,"title":s.title,"artist":s.artist,
                        "durationSec":max(0,min(14400,round(s.duration)))}
                       for i,s in self.songs.items()]
@@ -73,7 +73,7 @@ class RemoteDJ:
             return 0, {}
         url=self.url+("?poll=1" if poll else "")
         headers={"Accept":"application/json","Authorization":"Bearer "+self.token,
-                 "User-Agent":"PROMETEI-FM-PC-OWNER/2"}
+                 "User-Agent":"Mozilla/5.0 PROMETEI-FM-PC-OWNER/2"}
         data=None
         if payload is not None:
             data=json.dumps(payload,ensure_ascii=False).encode("utf-8")
@@ -103,7 +103,7 @@ class RemoteDJ:
         with self.lock:
             if song:
                 self.state.update({
-                    "trackId":track_id(song.relative_path),"title":song.title,
+                    "trackId":track_id(getattr(song,'relative_path',getattr(song,'relative',''))),"title":song.title,
                     "artist":song.artist,
                     "durationSec":max(0,min(14400,round(song.duration))),
                     "elapsedSec":max(0,min(14400,float(seconds))),
