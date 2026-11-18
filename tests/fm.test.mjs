@@ -43,6 +43,10 @@ test('auth protects writes; station is read-only for unauthenticated visitors',a
   const data=await res.json();
   assert.equal(data.managed,true);
   assert.equal(data.playlists.length,1);
+  res=await onRequestPost({request:req(DJ_TOKEN,{...base,mode:'youtube_live',liveVideoId:'short'}),env});
+  assert.equal(res.status,400);
+  res=await onRequestPost({request:req(DJ_TOKEN,{...base,mode:'youtube_live',liveVideoId:'abcdefghijk'}),env});
+  assert.equal(res.status,200);
   res=await onRequestGet({env:{}});
   assert.equal(res.status,503);
 });
