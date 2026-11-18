@@ -4,6 +4,10 @@
  const $=id=>document.getElementById(id), token=()=>($('dj-token')?.value||'').trim();
  const box=$('fm-deck'),notice=$('deck-notice');
  if(!box)return;
+ const randomButton=document.createElement('button');
+ randomButton.type='button';
+ randomButton.textContent='⤨ СЛУЧАЙНЫЙ ТРЕК';
+ $('deck-next').after(randomButton);
  const ftime=sec=>{
    const x=Math.max(0,Math.floor(Number(sec)||0));
    return Math.floor(x/3600)>0?`${Math.floor(x/3600)}:${String(Math.floor(x%3600/60)).padStart(2,'0')}:${String(x%60).padStart(2,'0')}`:
@@ -15,6 +19,7 @@
  const buttons=()=>[$('deck-next'),$('deck-previous'),$('deck-pause'),$('deck-seek')];
  function enabled(value){
    for(const b of buttons()) b.disabled=!value;
+   randomButton.disabled=!value||!tracks.some(track=>track.id!==current?.trackId);
    $('deck-pause').textContent=current?.state==='paused'?'▶ ПРОДОЛЖИТЬ':'Ⅱ ПАУЗА';
  }
  function elapsed(){
@@ -129,6 +134,13 @@
      show('Не выполнено: '+String(e.message||e).slice(0,150));
    }finally{drawTracks();}
  }
+ randomButton.addEventListener('click',()=>{
+   const choices=tracks.filter(track=>track.id!==current?.trackId);
+   if(choices.length){
+     const track=choices[Math.floor(Math.random()*choices.length)];
+     command('play',{trackId:track.id});
+   }
+ });
  $('deck-next').addEventListener('click',()=>command('next'));
  $('deck-previous').addEventListener('click',()=>command('previous'));
  $('deck-pause').addEventListener('click',()=>command(current?.state==='paused'?'resume':'pause'));
