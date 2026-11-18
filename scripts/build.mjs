@@ -98,6 +98,8 @@ function localize(html,locale){
   // Only the six localized homepage variants use ../ relative resource links.
   const resources=['styles.css','app.js','manifest.webmanifest','privacy.html','privacy-phantom.html','privacy-pokonap.html','child-safety.html','account-deletion.html','terms.html','support.html','portfolio.html','how-it-works.html','fm.html'];
   for(const f of resources){html=html.replaceAll('href="'+f+'"','href="../'+f+'"').replaceAll('src="'+f+'"','src="../'+f+'"');}
+  // Keep radio visitors in the same UI language as the localized home page.
+  html=html.replaceAll('href="../fm.html"','href="/'+locale+'/fm"');
   html=html.replaceAll('href="assets/','href="../assets/').replaceAll('src="assets/','src="../assets/').replaceAll('href="index.html"','href="./"');
   return html;
 }
