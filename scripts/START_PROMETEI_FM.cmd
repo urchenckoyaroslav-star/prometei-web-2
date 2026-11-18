@@ -2,44 +2,33 @@
 setlocal EnableExtensions DisableDelayedExpansion
 chcp 65001 >nul
 title PROMETEI FM - Owner DJ
-set "RADIO_DIR=%~dp0"
-set "LIBRARY=C:\TRADER_BOT\MUSIC FOR PROMETEI FM\Моя_YouTube_Медиатека"
-set "ENGINE=%RADIO_DIR%prometei_fm_dj.py"
+set "ENGINE=%~dp0prometei_fm_dj.py"
 if not exist "%ENGINE%" (
-  echo PROMETEI FM DJ engine not found: "%ENGINE%"
-  echo Please download prometei_fm_dj.py into the same folder.
+  echo DJ Python script not found next to this CMD file.
+  echo Put prometei_fm_dj.py in the same directory.
   pause
   exit /b 1
 )
-if not exist "%LIBRARY%" (
-  echo Music folder is not present:
-  echo "%LIBRARY%"
-  pause
-  exit /b 1
-)
+set "PYTHON=python.exe"
+if exist "C:\Python314\python.exe" set "PYTHON=C:\Python314\python.exe"
 :menu
 cls
-echo ======================================================
-echo                   PROMETEI FM - DJ
-echo ======================================================
-echo  Local music folder:
-echo  %LIBRARY%
+echo ========================================
+echo         PROMETEI FM - OWNER DJ
+echo ========================================
+echo 1. SCAN tags and create correction CSV
+echo 2. Broadcast via YouTube Live
+echo 3. Broadcast via Icecast
+echo 4. EXIT
 echo.
-echo  1. SCAN music and inspect names/artists [SAFE]
-echo  2. Broadcast to YouTube Live (OBS not required)
-echo  3. Broadcast to Icecast HTTPS radio endpoint
-echo  4. EXIT
-echo.
-choice /C 1234 /N /M "Choose [1-4]: "
+choice /C 1234 /N /M "Choose 1-4: "
 if errorlevel 4 goto done
 if errorlevel 3 goto icecast
 if errorlevel 2 goto youtube
 if errorlevel 1 goto scan
 :scan
-echo.
-echo Checking all files with ffprobe and preparing name correction lists...
-python "%ENGINE%" scan --library "%LIBRARY%"
-echo.
+"%PYTHON%" "%ENGINE%" scan
+if errorlevel 1 echo Scan failed. Check Python, FFmpeg, and music directory.
 pause
 goto menu
 :youtube
@@ -50,18 +39,13 @@ set "FM_MODE=icecast"
 goto rights
 :rights
 echo.
-echo PUBLIC BROADCAST RIGHTS CHECK
-echo You must have permission to transmit EACH recording on public radio.
-echo Saving a video from YouTube does not grant permission to rebroadcast it.
-echo Streaming is not activated until you explicitly enter YES.
+echo PUBLIC STREAMING RIGHTS REQUIRED FOR EVERY RECORDING.
+echo Downloading music does not grant broadcasting rights.
 set "ACCEPT="
-set /p "ACCEPT=I confirm public broadcast rights for all selected tracks [YES to continue]: "
+set /p "ACCEPT=Type YES to confirm rights and start: "
 if /I not "%ACCEPT%"=="YES" goto menu
-echo.
-echo Stream keys and DJ access token will be requested privately.
-echo The PC must remain on for the live broadcast.
-python "%ENGINE%" broadcast --mode "%FM_MODE%" --rights-confirmed --library "%LIBRARY%"
-echo.
+"%PYTHON%" "%ENGINE%" broadcast --mode "%FM_MODE%" --rights-confirmed
+if errorlevel 1 echo Broadcast failed. Check Python, FFmpeg, and stream settings.
 pause
 goto menu
 :done
