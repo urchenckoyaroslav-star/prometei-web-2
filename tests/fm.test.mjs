@@ -20,6 +20,15 @@ test('SEO and listener controls',()=>{
   assert.match(html,/id="request-form"/);
   assert.doesNotMatch(html,/id="playlist-form"|id="file-input"|id="next-btn"/);
   assert.match(html,/INSTALL PROMETEI MESSENGER/);
+  assert.match(html,/id="support"/);
+  assert.match(html,/id="donate-address"/);
+  assert.match(html,/id="donate-qr"/);
+  const donation = JSON.parse(read('fm-donations.json'));
+  assert.equal(donation.enabled, false);
+  assert.equal(donation.address, '');
+  assert.equal(donation.asset, 'USDT');
+  assert.match(read('fm-donate.js'),/verifiedByOwner/);
+  assert.match(read('fm-donate.js'),/data-wallet-network/);
   assert.match(html,/NCS · Electronic/);
   assert.match(studio,/noindex,nofollow/);
   assert.match(studio,/id="dj-token"/);
