@@ -43,4 +43,12 @@ jobs:
           test -f dist/sitemap.xml
           test ! -f dist/functions/api/fm/station.js
           grep -q 'https://prometei-web-2.pages.dev/fm' dist/sitemap.xml
-          grep -q 'PROMETEI FM — Online Radio' dist/fm.html
+          grep -q 'PROMETEI FM — Live PC Radio and YouTube Backup' dist/fm.html
+          for lang in uk ru de es zh ja; do
+            test -f "dist/$lang/fm.html"
+            grep -q "https://prometei-web-2.pages.dev/$lang/fm" "dist/$lang/fm.html"
+          done
+          grep -q 'hreflang="ru"' dist/fm.html
+          grep -q '/ja/fm' dist/sitemap.xml
+          test -f dist/fm-i18n.js
+          test -f dist/fm-translations.json
