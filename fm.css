@@ -178,3 +178,73 @@
 /* Hide QR until the exact address/matrix pair is validated; never render broken QR icons. */
 .donate-qr-img[hidden],.donate-card[hidden],.donate-qr-loading[hidden]{display:none!important}
 .donate-qr-loading{display:grid;place-items:center;min-height:170px;padding:18px;border-radius:13px;background:#ffffff0b;border:1px dashed #f6b9694a;color:#e0b98a;font-size:10px;font-weight:800;letter-spacing:.09em;text-align:center}
+
+
+/* PROMETEI FM responsive language navigation — 2026-11-18.
+ * Modern phone widths 320/360/390/430, tablets, laptops and large desktops.
+ * Controls remain keyboard reachable and large enough for touch users.
+ */
+.fm-language{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:0;flex:0 0 auto}
+.fm-lang-icon{font-size:17px;line-height:1;cursor:pointer}
+.fm-language select{max-width:135px;min-height:42px;padding:8px 24px 8px 10px;border:1px solid #e4a96955;border-radius:10px;background:#111723;color:#f7e5d0;font:700 12px/1.2 'DM Sans',sans-serif;cursor:pointer}
+.fm-language select:focus-visible{outline:2px solid #ffc381;outline-offset:3px}
+html{overflow-x:clip;scroll-padding-top:90px}
+body{min-width:0;max-width:100%;overflow-wrap:break-word}
+.hero,.deck,.player-card,.mixer,.source-card,.sources-grid,.history-glass,.nav-inner{min-width:0}
+.player-card,.source-card,.history-glass{max-width:100%}
+.playlist-list a,.collection-main,.song-info,.history-track{min-width:0;overflow-wrap:anywhere}
+.nav-inner{gap:clamp(9px,1.6vw,28px)}
+#video-stage,#yt-player,.video-stage iframe{max-width:100%}
+#play-btn{touch-action:manipulation}
+@media(max-width:1050px){
+  .nav-links{gap:10px}
+  .nav-cta{padding-inline:12px}
+}
+@media(max-width:760px){
+  .nav-inner{height:auto;min-height:73px;display:flex;flex-wrap:wrap;justify-content:space-between;column-gap:10px;row-gap:7px;padding-block:9px}
+  .brand{margin-right:auto}
+  .fm-language{order:2;margin-left:0}
+  .nav-cta{order:3;margin-left:0;min-height:42px;display:inline-flex;align-items:center}
+  .fm-language select{max-width:122px;font-size:12px}
+  .hero{padding-top:clamp(45px,8vw,78px)}
+  .hero-art{overflow:hidden}
+  .player-controls{gap:12px;flex-wrap:wrap}
+  .play-button{flex:1 1 auto;min-height:52px}
+  .history-list li,.history-columns{min-width:0}
+}
+@media(max-width:460px){
+  .nav-inner{gap:8px}
+  .brand{flex:1 1 100%;margin:0}
+  .fm-language{order:2;min-width:0}
+  .fm-language select{max-width:158px}
+  .nav-cta{order:3;max-width:calc(100% - 165px)}
+  .player-card{padding:16px 12px}
+  .now-block{align-items:center}
+  .record-art{flex-shrink:0}
+  .song-info h3{overflow-wrap:anywhere}
+  .hero h1{font-size:clamp(2.45rem,12vw,3.3rem)}
+  .hero-art{min-height:280px}
+  .orbit-c{width:min(92vw,360px)}
+  .donate-cards{padding:10px}
+  .donate-card{padding:14px}
+  .donate-address{overflow-wrap:anywhere;word-break:break-all}
+  .source-head{align-items:flex-start}
+  .source-head h3{overflow-wrap:anywhere}
+  .small-facts{flex-wrap:wrap}
+}
+@media(max-width:340px){
+  .nav-cta{font-size:9px;padding-inline:8px}
+  .fm-language select{max-width:128px}
+  .player-controls{flex-direction:column;align-items:stretch}
+  .track-counter{text-align:center}
+  .hero h1{font-size:clamp(2.2rem,11vw,2.5rem)}
+  .now-block{gap:8px}
+  .record-art{width:63px;height:63px}
+  .song-info h3{font-size:16px}
+}
+@media(hover:none){
+  .donate-card:hover,.source-card:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
