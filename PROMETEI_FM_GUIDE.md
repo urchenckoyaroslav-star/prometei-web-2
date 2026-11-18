@@ -86,3 +86,18 @@ These values were provided by the project owner as deposit details in two screen
 ### Maintenance
 
 If the owner changes an address, update static HTML, config, QR matrices and fixture checksums together. Verify both generated QRs by scanning them with an independent QR app and run npm run check. Never update the address field in isolation.
+
+
+## PC DJ inactivity backup (20 minutes)
+
+**Owner-selected YouTube fallback playlist:** https://www.youtube.com/playlist?list=PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX
+
+- When the **centrally managed station** is enabled in `pc` mode, `GET /api/fm/station` checks the last owner DJ signal stored under `prometei:fm:onair:v1` in the **existing `FM_STATE` Workers KV namespace**.
+- The history endpoint keeps the last signal timestamp for up to **30 minutes**, but marks the DJ as LIVE only for a short heartbeat freshness window. A normal `offline` stop records its time without falsely claiming a track is on air.
+- After **20 minutes without a new signal**, the station API exposes `fallbackActive: true`. The listener page selects the owner-specified playlist inside the **official visible YouTube embed**, polling for status every 20 seconds. The saved operator PC configuration is **not overwritten**.
+- When signed DJ heartbeats resume, the listener returns to the configured PC source on the next polling cycle. If the browser blocks automatic audio, a visitor must tap LISTEN or Play. YouTube listeners have **individual playback timelines**, not one synchronized YouTube broadcast; original YouTube advertising and regional availability apply.
+- The public **last-36-hours PC track log** remains a station-wide PC log while the YouTube backup runs. Backup YouTube plays are **not falsely recorded as station-wide PC events**.
+- **Important limitation:** detection is based on authenticated DJ heartbeat activity, not independent audio waveform reception at every visitor. An interrupted stream with a still-functioning DJ heartbeat may require separate stream-side monitoring; the listener still reports playback/reconnection errors. The fallback is conditional on Cloudflare Pages Functions + KV + DJ token actually being operational, and public site deployment.
+- If the Pages API fails entirely, the site retains its existing static `fm-config.json` fallback; it cannot claim a verified 20-minute station-wide outage in that condition. A temporary per-user preview using `?listen=` is intentionally isolated from the centrally managed station's fallback decision.
+- **QA:** configure a live PC station; verify `fallbackActive:false` while receiving heartbeats; stop PC DJ and verify 19-minute timeout stays on PC and 20+ minutes switches to YouTube; restart DJ and verify return to PC; test from Opera and phone. Never expose token values.
+- **Music rights:** local PC audio must have the necessary rights for public broadcasting. YouTube content remains inside YouTube's official player; it is never extracted or retransmitted by the PC broadcaster.
