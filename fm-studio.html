@@ -10,7 +10,9 @@
 <title>PROMETEI FM — DJ Control Room</title>
 <link rel="icon" href="/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/fm.css">
+<link rel="stylesheet" href="/fm-console.css">
 <script defer src="/fm-studio.js"></script>
+<script defer src="/fm-console.js"></script>
 </head>
 <body class="studio-page">
 <div class="stars" aria-hidden="true"></div><div class="glow glow-one" aria-hidden="true"></div>
@@ -52,6 +54,25 @@
       </form>
     </section>
   </div>
+  <section id="fm-deck" class="source-card glass fm-deck" aria-labelledby="deck-title-label">
+    <div class="deck-heading"><div class="source-head"><div class="source-icon">◉</div><div><span class="micro-label">03 / LIVE MIXING DESK</span><h2 id="deck-title-label" class="studio-card-title">Пульт прямого эфира</h2></div></div><span id="deck-health" class="deck-chip" data-online="no">○ ПК НЕ ПОДКЛЮЧЁН</span></div>
+    <p class="source-help">Управляй общей музыкой PROMETEI FM с ПК. Только оператор с DJ-токеном видит библиотеку и отправляет команды. Переключения выполняет музыкальный движок на компьютере.</p>
+    <div class="deck-now"><div class="deck-disc" aria-hidden="true">♫</div><div class="deck-now-text"><span id="deck-state" class="deck-state">OFFLINE</span><strong id="deck-title">Ожидаем сигнал с ПК</strong><p id="deck-artist">Для управления музыкой подключи PC DJ</p></div></div>
+    <div class="deck-clock"><span id="deck-elapsed">0:00</span><span>ВОСПРОИЗВЕДЕНО / ВСЕГО</span><span id="deck-duration">0:00</span></div>
+    <div class="deck-bar" aria-hidden="true"><span id="deck-progress"></span></div>
+    <label class="studio-label" for="deck-seek">ПЕРЕМОТКА ТРЕКА В ЭФИРЕ</label>
+    <input class="deck-seek" id="deck-seek" type="range" min="0" max="1" value="0" step="1" disabled aria-label="Перемотать текущую песню">
+    <div class="deck-controls">
+      <button id="deck-previous" type="button" disabled>⏮ ПРЕДЫДУЩИЙ</button>
+      <button id="deck-pause" type="button" disabled>Ⅱ ПАУЗА</button>
+      <button id="deck-next" type="button" disabled>⏭ СЛЕДУЮЩИЙ</button>
+    </div>
+    <p id="deck-notice" class="deck-note" role="status" aria-live="polite">Введите токен DJ выше.</p>
+    <div class="deck-library-head"><div><span class="micro-label">YOUR PC MUSIC LIBRARY</span><h3 class="studio-card-title">Все треки <small id="deck-count">0 треков</small></h3></div><input id="deck-search" class="studio-input deck-search" type="search" maxlength="120" placeholder="Поиск названия или исполнителя…" aria-label="Поиск по библиотеке"></div>
+    <ul id="deck-library" class="deck-library" aria-label="Треки музыкальной библиотеки ПК"></ul>
+    <button id="deck-more" class="outline-action deck-more" type="button" hidden>ПОКАЗАТЬ ЕЩЁ 80</button>
+    <p class="source-help">Время воспроизведения ориентировочное: задержка прямого эфира зависит от сети. YouTube-резерв работает отдельно и не управляется этими кнопками.</p>
+  </section>
   <section class="source-card glass studio-playlists" aria-labelledby="lists-title">
     <div class="source-head"><div class="source-icon">▶</div><div><span class="micro-label">03 / OUR MUSIC</span><h2 id="lists-title" class="studio-card-title">YouTube playlist collection</h2></div></div>
     <p>Add several official embeddable YouTube playlist links or IDs. Only approved playlists can be selected for the station.</p>

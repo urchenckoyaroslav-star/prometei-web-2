@@ -452,59 +452,132 @@ def monitor_encoder(proc, secret: str):
 
 
 def playback_track(
-    ffmpeg: str,encoder, song: Song, log: TrackLog, sender: HistorySender
+    ffmpeg: str, encoder, song: Song, log: TrackLog, sender: HistorySender,
+    remote=None, start_ack="", can_previous=False
 ):
-    if song.duration<1:
+    """Send the selected song through the SAME continuous live encoder.
+
+    The decoder can restart at a seek offset; the encoder and all listener
+    connections remain alive. During PAUSE we send PCM silence at real-time
+    speed rather than disconnecting the stream.
+    """
+    if song.duration < 1:
         print(f"SKIP invalid or unknown duration: {song.relative_path}")
-        return
-    decoder=subprocess.Popen(
-        [ffmpeg,"-hide_banner","-nostdin","-v","error","-re",
-         "-i",str(song.path),"-map","0:a:0","-vn","-sn","-dn",
-         "-ac","2","-ar","44100","-f","s16le","pipe:1"],
-        stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,bufsize=0
-    )
+        if remote and start_ack:
+            remote.acknowledge(start_ack,False,"Track has no known duration")
+        return None
+
+    def decoder_at(offset):
+        seek=["-ss",str(round(offset,2))] if offset>0 else []
+        return subprocess.Popen(
+            [ffmpeg,"-hide_banner","-nostdin","-v","error","-re",*seek,
+             "-i",str(song.path),"-map","0:a:0","-vn","-sn","-dn",
+             "-ac","2","-ar","44100","-f","s16le","pipe:1"],
+            stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,bufsize=0
+        )
+
+    def close_decoder(proc):
+        if proc.poll() is None:
+            proc.terminate()
+        try:
+            proc.wait(timeout=3)
+        except subprocess.TimeoutExpired:
+            proc.kill()
+            proc.wait(timeout=3)
+
+    decoder=decoder_at(0)
     play_id=uuid.uuid4().hex
     started=False
+    paused=False
+    position=0.0
+    pending_seek=""
     last_heartbeat=time.monotonic()
+    silence=bytes(MEDIA_CHUNK)
     try:
         while not STOP.is_set():
             if encoder.poll() is not None:
                 raise RuntimeError("Broadcast encoder disconnected from destination")
-            chunk=decoder.stdout.read(MEDIA_CHUNK)
-            if not chunk:
-                break
-            try:
-                encoder.stdin.write(chunk)
-            except (BrokenPipeError,OSError) as exc:
-                raise RuntimeError("Broadcast output connection was lost") from exc
-            if not started:
-                # Only mark a track after its first audio bytes reached the encoder.
-                if encoder.poll() is not None:
-                    raise RuntimeError("Encoder exited before a track was sent")
-                started=True
-                event={
-                    "type":"start","playId":play_id,
-                    "title":song.title,"artist":song.artist,"album":song.album,
-                    "durationSec":max(1,min(14400,round(song.duration))),
-                    "metadataSource":song.metadata_source,
-                    "startedAt":utc_ms()
-                }
-                log.add(event)
-                sender.enqueue(event)
-                print(f"ON AIR | {song.artist or 'Artist unspecified'} — {song.title} "
-                      f"({round(song.duration)} s) [{song.metadata_source}]")
+            cmd=remote.take() if remote else None
+            if cmd:
+                action=cmd.get("action","")
+                cid=cmd.get("id","")
+                if action in ("next","play","previous"):
+                    if action=="previous" and not can_previous:
+                        remote.acknowledge(cid,False,"No previous song")
+                    elif action=="play" and cmd.get("trackId") not in remote.songs:
+                        remote.acknowledge(cid,False,"Song not in PC library")
+                    else:
+                        # New song will confirm execution on its first real PCM bytes.
+                        return cmd
+                elif action=="seek":
+                    offset=float(cmd.get("offsetSec") or 0)
+                    if 0<=offset<song.duration:
+                        close_decoder(decoder)
+                        decoder=decoder_at(offset)
+                        position=offset
+                        pending_seek=cid
+                        if remote:remote.report(song,play_id,position,"paused" if paused else "playing")
+                    else:
+                        remote.acknowledge(cid,False,"Seek outside this song")
+                elif action=="pause":
+                    paused=True
+                    remote.acknowledge(cid)
+                elif action=="resume":
+                    paused=False
+                    remote.acknowledge(cid)
+                else:
+                    remote.acknowledge(cid,False,"Unknown command")
+            if paused:
+                try:
+                    encoder.stdin.write(silence)
+                except (BrokenPipeError,OSError) as exc:
+                    raise RuntimeError("Broadcast output connection was lost") from exc
+                # PCM silence is what all listeners hear, not disconnected audio.
+                time.sleep(MEDIA_CHUNK/(44100*2*2))
+                if remote:remote.report(song,play_id,position,"paused")
+            else:
+                chunk=decoder.stdout.read(MEDIA_CHUNK)
+                if not chunk:
+                    break
+                try:
+                    encoder.stdin.write(chunk)
+                except (BrokenPipeError,OSError) as exc:
+                    raise RuntimeError("Broadcast output connection was lost") from exc
+                position+=len(chunk)/(44100*2*2)
+                if not started:
+                    if encoder.poll() is not None:
+                        raise RuntimeError("Encoder exited before a track was sent")
+                    started=True
+                    event={
+                        "type":"start","playId":play_id,
+                        "title":song.title,"artist":song.artist,"album":song.album,
+                        "durationSec":max(1,min(14400,round(song.duration))),
+                        "metadataSource":song.metadata_source,"startedAt":utc_ms()
+                    }
+                    log.add(event)
+                    sender.enqueue(event)
+                    print(f"ON AIR | {song.artist or 'Artist unspecified'} — {song.title} "
+                          f"({round(song.duration)} s) [{song.metadata_source}]")
+                    if remote and start_ack:
+                        remote.acknowledge(start_ack)
+                        start_ack=""
+                if remote:
+                    remote.report(song,play_id,position,"playing")
+                if pending_seek:
+                    remote.acknowledge(pending_seek)
+                    pending_seek=""
             if started and time.monotonic()-last_heartbeat>=HEARTBEAT_SECONDS:
                 sender.enqueue({"type":"heartbeat","playId":play_id})
                 last_heartbeat=time.monotonic()
     finally:
-        if decoder.poll() is None:
-            decoder.terminate()
-        try:
-            decoder.wait(timeout=5)
-        except subprocess.TimeoutExpired:
-            decoder.kill()
+        close_decoder(decoder)
+    if remote and pending_seek:
+        remote.acknowledge(pending_seek,False,"Could not seek")
+    if remote and start_ack:
+        remote.acknowledge(start_ack,False,"New song could not start")
     if not started or decoder.returncode not in (0,None):
         print("SKIPPED/INTERRUPTED: decoder could not fully send track")
+    return None
 
 
 def select_destination(mode: str):
@@ -581,37 +654,74 @@ def broadcast(args, runtime: Path, ffmpeg: str, ffprobe: str):
     log=TrackLog(runtime/"PLAY_HISTORY_LAST_36H.json")
     sender=HistorySender(args.site,token,log)
     sender.start()
+
+    # Load the optional remote deck only while live streaming. It never
+    # starts recording, changes any station settings, or exposes file paths.
+    from fm_remote_control import RemoteDJ, build_catalog
+    corrections=load_corrections(runtime)
+    songs=build_catalog(music,args.library,runtime,ffprobe,probe,corrections,Song)
+    lookup={s.path:s for s in songs}
+    remote=RemoteDJ(args.site,token,songs) if token else None
+
     encoder=start_encoder(ffmpeg,args.mode,destination)
     monitor_encoder(encoder,secret)
+    if remote:remote.start()
     print("PROMETEI FM: encoder started. First valid track will now be streamed.")
+    print("Remote DJ deck: "+args.site.rstrip("/")+"/fm-studio")
     print("The first catalog round is fully shuffled with no repeated file. Ctrl+C stops.")
     selected=0
+    rotate=shuffled_rotation(music)
+    forced=None
+    previous=None
+    recent=[]
+    start_ack=""
     try:
-        for file in shuffled_rotation(music):
-            if STOP.is_set():
-                break
-            song=probe(file,args.library,ffprobe,load_corrections(runtime))
+        while not STOP.is_set():
+            file=forced if forced is not None else next(rotate)
+            forced=None
+            song=lookup[file]
+            if previous is not None and previous!=file:
+                recent.append(previous)
+                if len(recent)>200:recent=recent[-200:]
+            previous=file
             if selected==0:
-                # Start publication only after an encoder process exists;
-                # no source / stream keys are sent to the site.
                 publish_station(args.site,token,chosen)
             selected+=1
             try:
-                playback_track(ffmpeg,encoder,song,log,sender)
+                result=playback_track(ffmpeg,encoder,song,log,sender,remote,
+                                      start_ack, bool(recent))
+                start_ack=""
+                if result:
+                    action=result.get("action")
+                    if action=="play":
+                        desired=remote.songs.get(result.get("trackId")) if remote else None
+                        if desired:
+                            forced=desired.path
+                            start_ack=result.get("id","")
+                    elif action=="previous" and recent:
+                        forced=recent.pop()
+                        # Avoid putting the same song back as its own previous.
+                        previous=None
+                        start_ack=result.get("id","")
+                    elif action=="next":
+                        start_ack=result.get("id","")
             except RuntimeError as error:
                 print("RADIO OUTPUT STOPPED: "+str(error))
                 break
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt,StopIteration):
         print("Owner stopped PROMETEI FM.")
     finally:
         STOP.set()
+        if remote:
+            remote.report()
+            remote.stop()
         if encoder.stdin:
-            try: encoder.stdin.close()
-            except OSError: pass
+            try:encoder.stdin.close()
+            except OSError:pass
         if encoder.poll() is None:
             encoder.terminate()
-            try: encoder.wait(timeout=5)
-            except subprocess.TimeoutExpired: encoder.kill()
+            try:encoder.wait(timeout=5)
+            except subprocess.TimeoutExpired:encoder.kill()
         sender.stop()
         print("FM DJ stopped. Local 36h playback history retained at "+str(log.path))
 
