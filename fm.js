@@ -17,9 +17,15 @@
     request: $('request-form'), requestStatus: $('request-status'), fallback: $('youtube-fallback')
   };
   const HISTORY_KEY = 'prometei-fm-listener-history-v2';
+  const PC_BACKUP_PLAYLIST_ID = 'PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX';
+  const PC_BACKUP_PLAYLIST_NAME = 'PROMETEI FM · Automatic YouTube backup';
   const globalHistory={items:[],count:0,live:false,current:null,ready:false,error:''};
   let globalVisible=120;
-  const globalMode=()=>state.config && (state.config.mode==='pc'||state.config.mode==='youtube_live');
+  // Keep displaying the shared 36-hour PC history while the backup player
+  // is active; YouTube's independent playback must never be mislabelled as a
+  // station-wide synchronized broadcast.
+  const globalMode=()=>state.config &&
+    (state.config.mode==='pc'||state.config.mode==='youtube_live'||state.config.fallbackActive);
   const state = {
     config: null, playlists: [], current: null, lastPlaylists: [],
     yt: null, ytPromise: null, playing: false, loading: false,
@@ -40,8 +46,11 @@
       return url.href;
     } catch (_) { return ''; }
   })();
+  // A listener's temporary local preview is a different PC source from the
+  // centrally managed station. Do not apply its server fallback to previews.
   const maybePreview = value => previewStream
-    ? {...value, mode:'pc', pcStreamUrl:previewStream, enabled:true, previewMode:true}
+    ? {...value, mode:'pc', pcStreamUrl:previewStream, enabled:true,
+        previewMode:true, fallbackActive:false}
     : value;
   const duration = value => {
     if (!Number.isFinite(value) || value < 0) return '00:00';
@@ -229,24 +238,35 @@
     },wait);
   }
     function applyStation(c) {
+    // The API reports this read-only state after 20 minutes without a valid
+    // PC DJ heartbeat. The operator's original PC settings stay untouched.
+    const backupActive=c.managed===true && c.fallbackActive===true &&
+      c.mode==='pc' && c.previewMode!==true;
     const playlists=(Array.isArray(c.playlists)?c.playlists:[])
-      .filter(p=>p && playlistIdValid(p.id)).slice(0,24)
+      .filter(p=>p && playlistIdValid(p.id)).slice(0,backupActive?23:24)
       .map(p=>({id:p.id,name:clean(p.name,70)||'PROMETEI playlist'}));
+    if(backupActive && !playlists.some(p=>p.id===PC_BACKUP_PLAYLIST_ID))
+      playlists.push({id:PC_BACKUP_PLAYLIST_ID,name:PC_BACKUP_PLAYLIST_NAME});
     const url=typeof c.pcStreamUrl==='string' && /^https:\/\//.test(c.pcStreamUrl)?c.pcStreamUrl:'';
     const liveVideoId=/^[A-Za-z0-9_-]{11}$/.test(c.liveVideoId||'')?c.liveVideoId:'';
-    const mode=c.mode==='pc'&&url?'pc':c.mode==='youtube_live'&&liveVideoId?'youtube_live':'youtube';
+    const mode=backupActive?'youtube':c.mode==='pc'&&url?'pc':
+      c.mode==='youtube_live'&&liveVideoId?'youtube_live':'youtube';
     const enabled=c.enabled!==false;
-    const playlistId=playlists.some(p=>p.id===c.playlistId)?c.playlistId:'';
+    const playlistId=backupActive?PC_BACKUP_PLAYLIST_ID:
+      playlists.some(p=>p.id===c.playlistId)?c.playlistId:'';
     const was=state.config;
     const previousPlaying=state.playing;
+    const previousListening=previousPlaying||state.intent;
     if(was && was.enabled!==enabled && !enabled)stopIntent();
     const sourceChanged=!!was && (
-      was.mode!==mode || was.stream!==url || was.liveVideoId!==liveVideoId || was.playlistId!==playlistId || was.enabled!==enabled
+      was.mode!==mode || was.stream!==url || was.liveVideoId!==liveVideoId ||
+      was.playlistId!==playlistId || was.enabled!==enabled || was.fallbackActive!==backupActive
     );
     state.playlists=playlists;
     const isTemporaryPcStream=mode==='pc' && /^https:\/\/[a-z0-9-]+\.trycloudflare\.com\/live\.mp3$/.test(url);
     state.config={mode,stream:url,liveVideoId,playlistId,enabled,managed:c.managed===true,
-      previewMode:c.previewMode===true||isTemporaryPcStream};
+      previewMode:c.previewMode===true||isTemporaryPcStream,
+      fallbackActive:backupActive};
     renderPlaylists();
     renderHistory();
     if(globalMode())refreshGlobalHistory();
@@ -278,19 +298,36 @@
         el.source.textContent='♫ AUTHORIZED PC STREAM';
         notify(state.config.previewMode?'Temporary owner-PC broadcast preview. Press LISTEN; the owner must keep their PC on.':'Our live PC radio source is available. Press LISTEN to connect.');
         update();
-        if(previousPlaying)el.audio.play().catch(()=>notify('Our station source changed. Tap LISTEN to reconnect.'));
+        if(previousListening){
+          state.intent=true;state.loading=true;update();
+          if(state.config.previewMode){
+            const ok=window.PrometeiPcPreview?.start(el.audio,url,notify);
+            if(!ok){state.loading=false;update();notify('PC stream returned. Tap LISTEN to reconnect.');}
+          }else{
+            el.audio.play().catch(()=>{
+              state.loading=false;update();
+              notify('PC stream returned. Tap LISTEN to reconnect.');
+            });
+          }
+        }
       }
     }else if(!was || sourceChanged){
       window.PrometeiPcPreview?.stop();
       cancelReconnect();
       el.audio.pause();
       state.source=null;state.playing=false;state.loading=false;
-      el.title.textContent='PROMETEI FM / Our music';
-      el.artist.textContent='Station-selected YouTube playlists';
-      el.source.textContent=mode==='youtube_live'?'● OFFICIAL YOUTUBE LIVE':'▶ OFFICIAL YOUTUBE PLAYER';
-      notify(mode==='youtube_live'?'PROMETEI YouTube Live is selected. Press LISTEN.':'Station-curated YouTube music is ready. Press LISTEN.');
+      el.title.textContent=backupActive?'PROMETEI FM / Backup music':'PROMETEI FM / Our music';
+      el.artist.textContent=backupActive?
+        'No PC DJ signal for 20 minutes. Official YouTube playlist is selected.':
+        'Station-selected YouTube playlists';
+      el.source.textContent=backupActive?'↪ PC OFFLINE / YOUTUBE BACKUP':
+        mode==='youtube_live'?'● OFFICIAL YOUTUBE LIVE':'▶ OFFICIAL YOUTUBE PLAYER';
+      notify(backupActive?
+        'The PC was silent for 20 minutes. YouTube backup is ready. Press LISTEN.':
+        mode==='youtube_live'?'PROMETEI YouTube Live is selected. Press LISTEN.':
+          'Station-curated YouTube music is ready. Press LISTEN.');
       update();
-      if(previousPlaying)startYoutube();
+      if(previousListening){state.intent=true;startYoutube();}
     }
     if(!playlists.length && mode==='youtube'){
       notify('The station team is choosing the next playlist.');
@@ -382,6 +419,7 @@
     if (!Y) return;
     if (evt.data === Y.PLAYING) {
       state.playing = true; state.loading = false; state.errors = 0;
+      state.intent=true;
       update(); recordYouTube();
       notify('Playing in the official YouTube player. Availability and ads depend on YouTube.');
     } else if (evt.data === Y.ENDED) {
@@ -389,7 +427,7 @@
       if(state.config?.mode==='youtube_live')notify('The YouTube Live broadcast has ended.');
       else startYoutube();
     } else if (evt.data === Y.PAUSED) {
-      state.playing = false; state.loading = false; update();
+      state.playing = false; state.loading = false; stopIntent();update();
     } else if (evt.data === Y.BUFFERING) {
       state.loading = true; update();
     }
@@ -445,10 +483,16 @@
       return;
     }
     if (state.playing) {
-      state.yt?.pauseVideo();
+      stopIntent();state.yt?.pauseVideo();
       return;
     }
-    if (state.yt) { if(state.config.mode==='youtube_live'&&state.source===null)startYoutube();else state.yt.playVideo(); return; }
+    state.intent=true;
+    // A previously loaded YouTube player may still point at an old source.
+    if (state.yt) {
+      if(state.source!=='youtube'||!state.current)startYoutube();
+      else state.yt.playVideo();
+      return;
+    }
     startYoutube();
   }
   el.play.addEventListener('click', toggleListening);
