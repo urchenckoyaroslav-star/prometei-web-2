@@ -126,13 +126,81 @@ for(const filename of docs){
  const url=base+filename.slice(0,-5);
  fs.writeFileSync(path.join(output,filename),metadata(old,{url,title,description:extraDescriptions[filename]||'Official PROMETEI documentation',lang:'en'}),'utf8');
 }
-const urls=['',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm'];
+
+// Localized PROMETEI FM pages are server-rendered for crawlers and users who
+// block JavaScript; the runtime language picker uses the same shared catalog.
+const fmCatalog=JSON.parse(fs.readFileSync(path.join(source,'fm-translations.json'),'utf8'));
+for(const l of locales){
+  if(!fmCatalog[l] || Object.keys(fmCatalog[l]).length<70)
+    throw Error('FM locale missing translations: '+l);
+}
+const fmTitles={
+  en:'PROMETEI FM — Live PC Radio and YouTube Backup',
+  uk:'PROMETEI FM — Радіо з ПК та резервний YouTube',
+  ru:'PROMETEI FM — Радио с ПК и резервный YouTube',
+  de:'PROMETEI FM — PC-Liveradio und YouTube-Backup',
+  es:'PROMETEI FM — Radio en vivo desde PC y YouTube de reserva',
+  zh:'PROMETEI FM — PC 直播电台与 YouTube 备用播放',
+  ja:'PROMETEI FM — PC ラジオと YouTube バックアップ'
+};
+const fmDescriptions={
+  en:'Listen to PROMETEI FM shared live radio from our PC, with an official YouTube playlist after 20 minutes without a PC signal.',
+  uk:'Слухайте спільний ефір PROMETEI FM з ПК. Якщо сигналу немає 20 хвилин, доступний резервний плейлист YouTube.',
+  ru:'Слушайте общий эфир PROMETEI FM с ПК. Если сигнала нет 20 минут, доступен резервный плейлист YouTube.',
+  de:'PROMETEI FM sendet live vom PC. Nach 20 Minuten ohne PC-Signal übernimmt eine offizielle YouTube-Playlist.',
+  es:'Escucha PROMETEI FM en vivo desde nuestro PC; tras 20 minutos sin señal, se activa la lista de YouTube de reserva.',
+  zh:'收听 PROMETEI FM 的 PC 直播。PC 信号中断 20 分钟后切换至官方 YouTube 备用歌单。',
+  ja:'PROMETEI FM のPCライブ放送。信号が20分途切れると公式YouTubeプレイリストに切り替えます。'
+};
+function fmTranslate(html, lang){
+  const dictionary=fmCatalog[lang];
+  html=html.replace(/>([^<>]+)</g,(match,text)=>{
+    const value=text.trim(),translated=dictionary[value];
+    if(!translated || translated===value)return match;
+    const lead=(text.match(/^\s*/)||[''])[0],trail=(text.match(/\s*$/)||[''])[0];
+    return '>'+lead+translated+trail+'<';
+  });
+  html=html.replace(/\b(placeholder|aria-label)="([^"]+)"/g,(match,kind,value)=>{
+    const translated=dictionary[value];
+    return translated?kind+'="'+escapeAttr(translated)+'"':match;
+  });
+  html=html.replace(/<html lang="[^"]*"/,'<html lang="'+mappings[lang]+'"');
+  const url=base+(lang==='en'?'fm':lang+'/fm');
+  html=html.replace(/<title>[\s\S]*?<\/title>/i,'<title>'+escapeAttr(fmTitles[lang])+'</title>');
+  const d=escapeAttr(fmDescriptions[lang]);
+  html=html.replace(/<meta name="description"[^>]*>/i,'<meta name="description" content="'+d+'">');
+  html=html.replace(/<meta name="twitter:title"[^>]*>/i,'<meta name="twitter:title" content="'+escapeAttr(fmTitles[lang])+'">');
+  html=html.replace(/<meta name="twitter:description"[^>]*>/i,'<meta name="twitter:description" content="'+d+'">');
+  html=html.replace(/<meta property="og:title"[^>]*>/i,'<meta property="og:title" content="'+escapeAttr(fmTitles[lang])+'">');
+  html=html.replace(/<meta property="og:description"[^>]*>/i,'<meta property="og:description" content="'+d+'">');
+  html=html.replace(/<meta property="og:url"[^>]*>/i,'<meta property="og:url" content="'+escapeAttr(url)+'">');
+  html=html.replace(/<link rel="canonical"[^>]*>/i,'<link rel="canonical" href="'+escapeAttr(url)+'">');
+  // The WebApplication schema is uniform. Update its URL to each localized page.
+  html=html.replace('https://prometei-web-2.pages.dev/fm","description"',url+'","description"');
+  const fmAlternates=[
+    ...locales.map(code=>'<link rel="alternate" hreflang="'+mappings[code]+'" href="'+base+(code==='en'?'fm':code+'/fm')+'">'),
+    '<link rel="alternate" hreflang="x-default" href="'+base+'fm">'
+  ].join('\n  ');
+  html=html.replace('</head>','  '+fmAlternates+'\n</head>');
+  return html;
+}
+const fmSource=fs.readFileSync(path.join(source,'fm.html'),'utf8');
+fs.writeFileSync(path.join(output,'fm.html'),fmTranslate(fmSource,'en'));
+for(const lang of localized){
+  fs.writeFileSync(path.join(output,lang,'fm.html'),fmTranslate(fmSource,lang));
+}
+
+const urls=['',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm')];
 const xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for(const item of urls){
  xml.push('  <url><loc>'+base+item+'</loc>');
  if(item===''||localized.some(l=>item===l+'/')){
   for(const l of locales)xml.push(`    <xhtml:link rel="alternate" hreflang="${mappings[l]}" href="${base+(l==='en'?'':l+'/')}"/>`);
   xml.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${base}"/>`);
+ }
+ if(item==='fm'||localized.some(l=>item===l+'/fm')){
+  for(const l of locales)xml.push(`    <xhtml:link rel="alternate" hreflang="${mappings[l]}" href="${base+(l==='en'?'fm':l+'/fm')}"/>`);
+  xml.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${base}fm"/>`);
  }
  xml.push('  </url>');
 }
