@@ -8,7 +8,9 @@ const PREFIX='prometei:fm:played:v1:';
 const NOW='prometei:fm:onair:v1';
 const WINDOW_MS=36*60*60*1000;
 const TTL_SECONDS=36*60*60+180;
-const ACTIVE_TTL=120;
+// Retain the last DJ signal long enough for the 20-minute PC watchdog.
+// A signal is still considered LIVE only within the 110-second freshness window.
+const ACTIVE_TTL=30*60;
 const MAX_EVENTS=2200;
 const headers={
   'content-type':'application/json; charset=utf-8',
@@ -82,7 +84,8 @@ export async function onRequestGet({env}){
     }
     items.sort((a,b)=>b.startedAt-a.startedAt);
     const current=await env.FM_STATE.get(NOW,'json');
-    const active=!!(current && current.at>=now-110000 && playIdValid(current.playId));
+    const active=!!(current && current.offline!==true &&
+      current.at>=now-110000 && playIdValid(current.playId));
     return response({
       configured:true,
       windowHours:36,
@@ -113,7 +116,12 @@ export async function onRequestPost({request,env}){
   const type=payload.type;
   try{
     if(type==='offline'){
-      await env.FM_STATE.delete(NOW);
+      // Preserve the time of the explicit stop, not a fake "currently live" song.
+      // After 20 minutes without any newer PC heartbeat, the public site
+      // switches to the owner-selected official YouTube backup playlist.
+      await env.FM_STATE.put(NOW,JSON.stringify({offline:true,at:now}),{
+        expirationTtl:ACTIVE_TTL
+      });
       return response({ok:true,live:false});
     }
     if(type==='start'){
