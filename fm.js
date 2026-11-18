@@ -22,7 +22,7 @@
   };
   const state = {
     mode: 'hybrid', weight: 65, playlists: [], presets: [], files: [], history: [],
-    source: null, isPlaying: false, isLoading: false, activeLocal: null,
+    source: null, isPlaying: false, isLoading: false, activeLocal: null, activeLocalLogged: false,
     activeVideoId: '', activePlaylist: null, playlistVideos: new Map(),
     recentFileKeys: [], recentPlaylistKeys: [], recentVideoKeys: [],
     yt: null, ytPromise: null, startedOnce: false, pendingPlayback: false, consecutiveErrors: 0
@@ -224,6 +224,20 @@
     });
     return state.ytPromise;
   }
+  function maybeRecordYouTube() {
+    if(state.source!=='youtube' || !state.yt || !state.isPlaying) return;
+    try {
+      const data=state.yt.getVideoData()||{};
+      const id=cleanText(data.video_id,20);
+      if (!id || id===state.activeVideoId) return;
+      state.activeVideoId=id;
+      const title=cleanText(data.title,200)||'YouTube video';
+      const author=cleanText(data.author,150)||'YouTube channel';
+      updateNow({title,artist:author,source:'▶ YOUTUBE / '+(state.activePlaylist?.name||'PLAYLIST')});
+      remember(state.recentVideoKeys,id,8);
+      record({source:'youtube',title,artist:author,collection:state.activePlaylist?.name||'YouTube'});
+    }catch(_) { /* YouTube metadata is unavailable until the player reports it */ }
+  }
   function onYouTubeState(evt) {
     if (state.source!=='youtube') return;
     const YT=window.YT?.PlayerState;
@@ -234,16 +248,7 @@
       try {
         const vids=state.yt.getPlaylist()||[];
         if (vids.length&&state.activePlaylist) state.playlistVideos.set(state.activePlaylist.id,[...vids]);
-        const data=state.yt.getVideoData()||{};
-        const videoId=cleanText(data.video_id,20);
-        if (videoId && videoId!==state.activeVideoId) {
-          state.activeVideoId=videoId;
-          const title=cleanText(data.title,200)||'YouTube video';
-          const author=cleanText(data.author,150)||'YouTube channel';
-          updateNow({title,artist:author,source:'▶ YOUTUBE / '+(state.activePlaylist?.name||'PLAYLIST')});
-          remember(state.recentVideoKeys,videoId,8);
-          record({source:'youtube',title,artist:author,collection:state.activePlaylist?.name||'YouTube'});
-        }
+        maybeRecordYouTube();
       } catch (_) { /* metadata can arrive after play starts */ }
       notify('Now playing through the official YouTube player.');
     } else if (evt.data===YT.ENDED) {
@@ -264,7 +269,7 @@
   async function playLocal(item) {
     if (!item) return;
     pauseCurrent();
-    state.source='local';state.activeLocal=item;state.activePlaylist=null;state.activeVideoId='';
+    state.source='local';state.activeLocal=item;state.activeLocalLogged=false;state.activePlaylist=null;state.activeVideoId='';
     state.isLoading=true;state.isPlaying=false;
     showSource('local');updateControls();
     const meta=fileTitle(item.file);
@@ -412,7 +417,8 @@
   els.audio.addEventListener('playing',()=>{
     if(state.source!=='local')return;
     state.isLoading=false;state.isPlaying=true;updateControls();
-    if(state.activeLocal && els.audio.currentTime<1) {
+    if(state.activeLocal && !state.activeLocalLogged) {
+      state.activeLocalLogged=true;
       const meta=fileTitle(state.activeLocal.file);
       record({source:'local',title:meta.title,artist:meta.artist,collection:'Local collection'});
     }
@@ -429,6 +435,7 @@
     if(state.source==='local') {
       els.counter.textContent=safeTime(els.audio.currentTime)+' / '+safeTime(els.audio.duration);
     } else if(state.source==='youtube'&&state.yt) {
+      maybeRecordYouTube();
       try{els.counter.textContent=safeTime(state.yt.getCurrentTime())+' / '+safeTime(state.yt.getDuration());}catch(_){}
     } else els.counter.textContent='00 : 00';
   }
