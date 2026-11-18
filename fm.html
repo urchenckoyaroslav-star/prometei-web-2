@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="PROMETEI FM: build your own music rotation from multiple YouTube playlists and audio files on your computer. Shuffle tracks, see session history and discover PROMETEI Messenger.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://prometei-web-2.pages.dev/fm">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PROMETEI FM — Your Music. One Orbit.">
+  <meta property="og:description" content="Mix YouTube playlists and local music in a beautiful, private session player. Powered by the PROMETEI universe.">
+  <meta property="og:url" content="https://prometei-web-2.pages.dev/fm">
+  <meta property="og:image" content="https://prometei-web-2.pages.dev/assets/og-cover.png">
+  <link rel="icon" type="image/svg+xml" href="assets/mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fm.css">
+  <script defer src="fm.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PROMETEI FM","url":"https://prometei-web-2.pages.dev/fm","description":"Personal browser-based playlist mixer for embedded YouTube playlists and locally selected audio files.","applicationCategory":"MultimediaApplication","operatingSystem":"Web browser","isAccessibleForFree":true}</script>
+</head>
+<body>
+<a class="skip" href="#listen">Skip to player</a>
+<div class="stars" aria-hidden="true"></div><div class="glow glow-one" aria-hidden="true"></div><div class="glow glow-two" aria-hidden="true"></div>
+<header class="site-top">
+  <div class="shell nav-inner">
+    <a class="brand" href="index.html" aria-label="PROMETEI home"><img src="assets/mark.svg" alt="" width="40" height="40"><span>PROMETEI<small>FM / RADIO LAB</small></span></a>
+    <nav class="nav-links" aria-label="Main"><a href="#listen">Listen</a><a href="#sources">Sources</a><a href="#history">History</a><a href="index.html">Messenger ↗</a></nav>
+    <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.meshnetwork.app" target="_blank" rel="noopener noreferrer">Get PROMETEI <span>↗</span></a>
+  </div>
+</header>
+<main>
+  <section class="shell hero">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="pulse-dot"></span> PROMETEI UNIVERSE <span class="slash">/</span> EXPERIMENT 01</div>
+      <h1>YOUR MUSIC.<br><span>ONE ORBIT.</span></h1>
+      <p class="lede">One frequency, many worlds. Mix music from YouTube playlists and your own computer. Let the rotation surprise you.</p>
+      <div class="hero-buttons"><a class="main-button" href="#listen">ENTER THE FREQUENCY <span>↘</span></a><a class="secondary-button" href="#sources">Set up your music <span>↗</span></a></div>
+      <div class="small-facts"><span>✦ MULTI-PLAYLIST</span><span>✦ SMART SHUFFLE</span><span>✦ YOUR SESSION</span></div>
+    </div>
+    <div class="hero-art" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div><div class="planet-glow"></div><div class="planet"><span>✦</span><small>FM</small></div><span class="float-label label-a">SIGNAL / 001</span><span class="float-label label-b">∞ EXPLORE SOUND</span><div class="hero-grid"></div></div>
+  </section>
+  <div class="ticker" aria-hidden="true"><div class="ticker-line">SOUND MOVES THROUGH US <i>✦</i> NEW FREQUENCIES <i>✦</i> PLAYLISTS IN ORBIT <i>✦</i> SOUND MOVES THROUGH US <i>✦</i> NEW FREQUENCIES <i>✦</i></div></div>
+
+  <section class="shell section-space" id="listen" aria-labelledby="listen-heading">
+    <div class="section-label"><span>01 / THE STATION</span><span class="line"></span><span>PERSONAL RADIO ENGINE</span></div>
+    <div class="section-title"><h2 id="listen-heading">TUNE INTO<br><em>YOUR WORLD.</em></h2><p>Choose YouTube, music from your computer, or a hybrid rotation. The mixer selects a different source and track as the music moves on.</p></div>
+    <div class="deck">
+      <div class="player-card glass">
+        <div class="card-top"><span class="channel-label"><span class="pulse-dot"></span> PROMETEI FM / SESSION</span><span class="signal-number">87.7 <small>FM</small></span></div>
+        <div class="now-block"><div class="record-art" id="record-art" aria-hidden="true"><div class="record-orbit"></div><div class="record-center">✦</div></div><div class="song-info"><div class="micro-label">NOW PLAYING <span class="live-state" id="play-state">STANDBY</span></div><h3 id="track-title" aria-live="polite">The frequency is yours.</h3><p id="track-artist">Add a playlist or select music files to begin.</p><div class="track-source" id="track-source">◌ WAITING FOR SOURCES</div></div></div>
+        <div class="playback-area">
+          <div class="video-stage" id="video-stage" hidden><div id="yt-player"></div></div>
+          <div class="audio-stage" id="audio-stage"><div class="audio-stage-inner"><div class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span>TRANSMISSION READY</span></div></div>
+          <audio id="local-audio" preload="metadata"></audio>
+        </div>
+        <div class="player-controls"><button id="play-btn" class="play-button" type="button" aria-label="Start playback">▶ <span>START LISTENING</span></button><button id="next-btn" class="next-button" type="button" aria-label="Next track" title="Next track">NEXT <span>→</span></button><span class="track-counter" id="track-counter">00 : 00</span></div>
+        <div class="player-message" id="message" role="status" aria-live="polite">Ready when you are. Playback starts after you press play.</div>
+      </div>
+      <aside class="mixer glass" aria-label="Station controls">
+        <div class="mixer-head"><span class="micro-label">THE ROTATION ENGINE</span><span class="mix-icon" aria-hidden="true">⌁</span></div>
+        <h3>Make it<br><span>unexpected.</span></h3>
+        <p>One click picks from your active collections. We try to avoid repeats and keep the mix moving.</p>
+        <fieldset class="mode-options"><legend>SOURCE MODE</legend><div class="mode-buttons"><button class="mode-button" type="button" data-mode="youtube" aria-pressed="false">▶ YouTube</button><button class="mode-button" type="button" data-mode="local" aria-pressed="false">♫ My PC</button><button class="mode-button chosen" type="button" data-mode="hybrid" aria-pressed="true">✦ Hybrid</button></div></fieldset>
+        <div class="mixer-meter"><div class="meter-top"><label for="yt-weight">YouTube share in hybrid mode</label><output id="weight-label" for="yt-weight">65%</output></div><input type="range" id="yt-weight" min="0" max="100" step="5" value="65"><div class="meter-ends"><span>MY PC</span><span>YOUTUBE</span></div></div>
+        <div class="mix-stats"><div><strong id="playlist-count">0</strong><span>PLAYLISTS</span></div><div><strong id="file-count">0</strong><span>LOCAL FILES</span></div><div><strong id="history-count">0</strong><span>PLAYED</span></div></div>
+        <p class="mixer-note">No streaming server required. Each visitor hears their own selection; this is not a synchronized live broadcast.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="shell section-space sources-section" id="sources" aria-labelledby="sources-heading">
+    <div class="section-label"><span>02 / CONNECT YOUR SOUND</span><span class="line"></span><span>YOUR PLAYLIST CONTROL ROOM</span></div>
+    <div class="section-title"><h2 id="sources-heading">MANY SOURCES.<br><em>ONE FLOW.</em></h2><p>Mix several YouTube playlists. Add your own audio files. The station will switch between collections during the session.</p></div>
+    <div class="sources-grid">
+      <article class="source-card glass">
+        <div class="source-head"><div class="source-icon">▶</div><div><span class="micro-label">INPUT A / STREAM</span><h3>YouTube playlists</h3></div></div>
+        <p>Paste multiple public embeddable playlist links or IDs. The player stays visible, with standard YouTube controls.</p>
+        <form id="playlist-form" class="playlist-form">
+          <label for="playlist-name">PLAYLIST NAME</label>
+          <input id="playlist-name" maxlength="70" placeholder="e.g. Midnight electronic" autocomplete="off">
+          <label for="playlist-url">YOUTUBE PLAYLIST LINK OR ID</label>
+          <input id="playlist-url" required maxlength="400" placeholder="https://www.youtube.com/playlist?list=..." autocomplete="off" inputmode="url">
+          <button type="submit" class="form-action">+ ADD TO ROTATION</button>
+        </form>
+        <div class="source-subheading"><span>YOUR ROTATION</span><span id="playlist-label">0 playlists</span></div>
+        <ul class="playlist-list" id="playlist-list"><li class="empty-text">No playlists yet. Add one above.</li></ul>
+        <p class="source-help">Playlists you add here are saved in this browser only. Site-wide default playlists can be configured by the site owner.</p>
+      </article>
+      <article class="source-card glass">
+        <div class="source-head"><div class="source-icon local-icon">♫</div><div><span class="micro-label">INPUT B / LOCAL</span><h3>Music from your PC</h3></div></div>
+        <p>Choose audio files on your device. Files play in your browser and are never uploaded to our website.</p>
+        <label class="file-drop" id="file-drop" for="file-input"><span class="file-symbol">↟</span><strong>DROP YOUR MUSIC HERE</strong><span>or click to choose MP3, M4A, OGG, WAV and other browser-supported audio</span><span class="pick-button">CHOOSE FILES +</span></label>
+        <input id="file-input" type="file" accept="audio/*,.mp3,.m4a,.aac,.ogg,.oga,.wav,.flac,.opus" multiple hidden>
+        <div class="source-subheading"><span>LOCAL COLLECTION</span><span id="file-label">0 tracks loaded</span></div>
+        <ul class="file-list" id="file-list"><li class="empty-text">Your selected tracks will appear here.</li></ul>
+        <button id="clear-files" class="text-action" type="button">Clear local selection ↗</button>
+        <p class="source-help">Your PC needs to stay on only while YOU listen to its files here. For a public 24/7 station, an authorized streaming server is a separate future feature.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="shell section-space history-section" id="history" aria-labelledby="history-heading">
+    <div class="section-label"><span>03 / THE MEMORY</span><span class="line"></span><span>TRACKS ALREADY PLAYED</span></div>
+    <div class="history-top"><div><h2 id="history-heading">EVERY TRACK<br><em>LEAVES A TRACE.</em></h2><p>The recent track log is local to this browser and records real playback events—not an invented on-air feed.</p></div><button id="clear-history" class="outline-action" type="button">CLEAR MY HISTORY ↗</button></div>
+    <div class="history-glass glass"><div class="history-columns"><span>TIME / SOURCE</span><span>TRACK</span><span>COLLECTION</span></div><ol class="history-list" id="history-list"><li class="history-empty">Your listening history will appear here once a track starts.</li></ol></div>
+  </section>
+
+  <section class="shell bridge-cta"><span class="micro-label">THE CONNECTION CONTINUES</span><h2>MUSIC CONNECTS.<br><em>PROMETEI CONNECTS PEOPLE.</em></h2><p>From your favorite sounds to the next conversation. Discover the Android messenger with Internet, Bluetooth and local-network communication options.</p><div class="cta-row"><a class="main-button" href="https://play.google.com/store/apps/details?id=com.meshnetwork.app" target="_blank" rel="noopener noreferrer">INSTALL PROMETEI MESSENGER <span>↗</span></a><a class="secondary-button" href="index.html">EXPLORE OUR UNIVERSE <span>↗</span></a></div><div class="cta-orbit" aria-hidden="true">✦</div></section>
+  <section class="shell fine-print" aria-label="About this experience"><p><strong>ABOUT THIS STATION</strong> PROMETEI FM is a personal playlist-mixing experiment, not a public 24/7 radio broadcast. Embedded YouTube videos use the official YouTube player; playback availability, ads and restrictions are controlled by YouTube. Local files remain on your device. Music ownership and broadcasting rights stay with their respective owners.</p></section>
+</main>
+<footer class="shell footer"><a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34"><span>PROMETEI<small>BEYOND THE SIGNAL</small></span></a><div><a href="index.html">MAIN SITE</a><a href="portfolio.html">PORTFOLIO</a><a href="support.html">SUPPORT</a><a href="privacy.html">PRIVACY</a></div><span>© <span id="year">2026</span> PROMETEI FM</span></footer>
+</body>
+</html>
