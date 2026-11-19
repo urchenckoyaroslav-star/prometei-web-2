@@ -79,6 +79,16 @@ ja:['ライブWebラジオと開発','オーナーPCのMP3配信をすべての�
     ja: ['プロジェクトの画面', '制作事例', 'スクリーンショットを見る', 'お問い合わせ', 'Google Play の画像', 'ウェブサイトの画像', '閉じる', '前の画像', '次の画像', 'レーダー', 'アプリの言語', '音楽チャート'],
   };
 
+  const projectCaptions = {
+    en: ['Android setup', 'Map and address search', 'Choose a companion', 'Kitchen and care', 'School and learning activities'],
+    uk: ['Налаштування Android', 'Карта й пошук адреси', 'Вибір друга', 'Кухня й догляд', 'Школа й завдання'],
+    ru: ['Настройка Android', 'Карта и поиск адреса', 'Выбор питомца', 'Кухня и уход', 'Школа и задания'],
+    de: ['Android-Einrichtung', 'Karte und Adresssuche', 'Einen Freund auswählen', 'Küche und Pflege', 'Schule und Lernspiele'],
+    es: ['Configuración de Android', 'Mapa y búsqueda de direcciones', 'Elegir un compañero', 'Cocina y cuidados', 'Escuela y actividades'],
+    zh: ['Android 设置', '地图和地址搜索', '选择伙伴', '厨房和照顾', '学校和学习活动'],
+    ja: ['Android の設定', '地図と住所検索', 'お友だちを選ぶ', 'キッチンとお世話', '学校と学習アクティビティ'],
+  };
+
   let current = 0;
   let opener;
 
@@ -106,6 +116,12 @@ ja:['ライブWebラジオと開発','オーナーPCのMP3配信をすべての�
     document.getElementById('portfolio-shot-radar').textContent = 'PROMETEI Messenger · ' + radar;
     document.getElementById('portfolio-shot-lang').textContent = 'PROMETEI Messenger · ' + appLanguage;
     document.getElementById('portfolio-shot-radio').textContent = 'PROMETEI FM · ' + chart;
+    const captions = projectCaptions[language] || projectCaptions.en;
+    document.querySelectorAll('[data-project-caption]').forEach((label, index) => {
+      const project = label.dataset.projectCaption.startsWith('phantom') ? 'PHANTOM GPS' : 'PokoNap';
+      label.textContent = project + ' · ' + captions[index];
+    });
+    document.querySelectorAll('[data-case-gallery]').forEach(link => { link.textContent = galleryCta + ' ↓'; });
     if (dialog.open) showImage(current);
   }
 
