@@ -19,7 +19,7 @@ Projects you can independently inspect:
 
 Experience areas evidenced here: Android / Kotlin-oriented release workflows and device testing, Bluetooth/BLE and local network scenarios, Google Play testing, vanilla HTML/CSS/JavaScript, Cloudflare Pages Functions/Workers KV, responsive and multilingual UI.
 
-No invented professional years, degrees, client metrics, security guarantees or claims that closed tests are production apps. The portfolio gallery includes published PROMETEI Google Play screenshots, in-development captures of PHANTOM GPS and PokoNap, and screenshots of the live website and FM chart.
+No invented professional years, degrees, client metrics, security guarantees or claims that closed tests are production apps. The portfolio gallery includes device screenshots of PROMETEI Messenger, in-development captures of PHANTOM GPS and PokoNap, and screenshots of the live website and FM chart.
 
 ## Features
 

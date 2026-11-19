@@ -70,13 +70,23 @@ ja:['ライブWebラジオと開発','オーナーPCのMP3配信をすべての�
   const close = dialog.querySelector('button[type="submit"]');
 
   const labels = {
-    en: ['Project screenshots', 'Case studies', 'See project screenshots', 'Get in touch', 'Google Play screenshot', 'Website screenshot', 'Close', 'Previous image', 'Next image', 'Radar', 'App language', 'Music chart'],
-    uk: ['Скриншоти проєктів', 'Проєкти', 'Переглянути скриншоти', 'Зв’язатися', 'Скриншот Google Play', 'Скриншот сайту', 'Закрити', 'Попереднє зображення', 'Наступне зображення', 'Радар', 'Мова застосунку', 'Музичний чарт'],
-    ru: ['Скриншоты проектов', 'Кейсы', 'Посмотреть скриншоты', 'Связаться', 'Скриншот Google Play', 'Скриншот сайта', 'Закрыть', 'Предыдущее изображение', 'Следующее изображение', 'Радар', 'Язык приложения', 'Музыкальный чарт'],
-    de: ['Projekt-Screenshots', 'Fallstudien', 'Screenshots ansehen', 'Kontakt aufnehmen', 'Google-Play-Screenshot', 'Website-Screenshot', 'Schließen', 'Vorheriges Bild', 'Nächstes Bild', 'Radar', 'App-Sprache', 'Musikcharts'],
-    es: ['Capturas de los proyectos', 'Casos de estudio', 'Ver capturas', 'Contactar', 'Captura de Google Play', 'Captura del sitio web', 'Cerrar', 'Imagen anterior', 'Imagen siguiente', 'Radar', 'Idioma de la app', 'Lista musical'],
-    zh: ['项目截图', '项目案例', '查看项目截图', '联系', 'Google Play 截图', '网站截图', '关闭', '上一张图片', '下一张图片', '雷达', '应用语言', '音乐榜单'],
-    ja: ['プロジェクトの画面', '制作事例', 'スクリーンショットを見る', 'お問い合わせ', 'Google Play の画像', 'ウェブサイトの画像', '閉じる', '前の画像', '次の画像', 'レーダー', 'アプリの言語', '音楽チャート'],
+    en: ['Project screenshots', 'Case studies', 'See project screenshots', 'Get in touch', 'Website screenshot', 'Close', 'Previous image', 'Next image', 'Music chart'],
+    uk: ['Скриншоти проєктів', 'Проєкти', 'Переглянути скриншоти', 'Зв’язатися', 'Скриншот сайту', 'Закрити', 'Попереднє зображення', 'Наступне зображення', 'Музичний чарт'],
+    ru: ['Скриншоты проектов', 'Кейсы', 'Посмотреть скриншоты', 'Связаться', 'Скриншот сайта', 'Закрыть', 'Предыдущее изображение', 'Следующее изображение', 'Музыкальный чарт'],
+    de: ['Projekt-Screenshots', 'Fallstudien', 'Screenshots ansehen', 'Kontakt aufnehmen', 'Website-Screenshot', 'Schließen', 'Vorheriges Bild', 'Nächstes Bild', 'Musikcharts'],
+    es: ['Capturas de los proyectos', 'Casos de estudio', 'Ver capturas', 'Contactar', 'Captura del sitio web', 'Cerrar', 'Imagen anterior', 'Imagen siguiente', 'Lista musical'],
+    zh: ['项目截图', '项目案例', '查看项目截图', '联系', '网站截图', '关闭', '上一张图片', '下一张图片', '音乐榜单'],
+    ja: ['プロジェクトの画面', '制作事例', 'スクリーンショットを見る', 'お問い合わせ', 'ウェブサイトの画像', '閉じる', '前の画像', '次の画像', '音楽チャート'],
+  };
+
+  const messengerCaptions = {
+    en: ['Messages', 'Arena community', 'Radar and nearby devices', 'Spark nearby', 'App language', 'Interface themes'],
+    uk: ['Повідомлення', 'Спільнота Arena', 'Радар і пристрої поруч', 'Іскра поруч', 'Мова застосунку', 'Теми інтерфейсу'],
+    ru: ['Сообщения', 'Сообщество Arena', 'Радар и устройства рядом', 'Искра поблизости', 'Язык приложения', 'Темы интерфейса'],
+    de: ['Nachrichten', 'Arena-Community', 'Radar und Geräte in der Nähe', 'Spark in der Nähe', 'App-Sprache', 'Oberflächendesigns'],
+    es: ['Mensajes', 'Comunidad Arena', 'Radar y dispositivos cercanos', 'Spark cercano', 'Idioma de la app', 'Temas de la interfaz'],
+    zh: ['消息', 'Arena 社区', '雷达与附近设备', '附近 Spark', '应用语言', '界面主题'],
+    ja: ['メッセージ', 'Arena コミュニティ', 'レーダーと近くの端末', '近くの Spark', 'アプリの言語', '画面テーマ'],
   };
 
   const projectCaptions = {
@@ -103,19 +113,20 @@ ja:['ライブWebラジオと開発','オーナーPCのMP3配信をすべての�
 
   function translateGallery() {
     const language = window.PROMETEI_I18N?.getLang() || 'en';
-    const [gallery, cases, galleryCta, inquiryCta, play, site, closeLabel, previousLabel, nextLabel, radar, appLanguage, chart] = labels[language] || labels.en;
+    const [gallery, cases, galleryCta, inquiryCta, site, closeLabel, previousLabel, nextLabel, chart] = labels[language] || labels.en;
     document.getElementById('portfolio-gallery-title').textContent = gallery;
     document.getElementById('portfolio-cases-title').textContent = cases;
     document.getElementById('portfolio-gallery-cta').firstChild.textContent = galleryCta + ' ';
     document.getElementById('portfolio-inquiry-cta').firstChild.textContent = inquiryCta + ' ';
-    document.querySelectorAll('[data-portfolio-label="play"]').forEach(label => { label.textContent = play; });
     document.querySelectorAll('[data-portfolio-label="site"]').forEach(label => { label.textContent = site; });
     close.textContent = closeLabel;
     previous.setAttribute('aria-label', previousLabel);
     next.setAttribute('aria-label', nextLabel);
-    document.getElementById('portfolio-shot-radar').textContent = 'PROMETEI Messenger · ' + radar;
-    document.getElementById('portfolio-shot-lang').textContent = 'PROMETEI Messenger · ' + appLanguage;
     document.getElementById('portfolio-shot-radio').textContent = 'PROMETEI FM · ' + chart;
+    const messenger = messengerCaptions[language] || messengerCaptions.en;
+    document.querySelectorAll('[data-messenger-caption]').forEach((label, index) => {
+      label.textContent = messenger[index];
+    });
     const captions = projectCaptions[language] || projectCaptions.en;
     document.querySelectorAll('[data-project-caption]').forEach((label, index) => {
       const project = label.dataset.projectCaption.startsWith('phantom') ? 'PHANTOM GPS' : 'PokoNap';

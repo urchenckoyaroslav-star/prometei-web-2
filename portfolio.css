@@ -109,8 +109,8 @@
 
 .portfolio-device {
   grid-area: 1 / 1;
-  width: min(34%, 180px);
-  aspect-ratio: 600 / 1067;
+  width: min(30%, 160px);
+  aspect-ratio: 562 / 1280;
   border: 1px solid #9fbdda73;
   border-radius: clamp(10px, 2vw, 22px);
   overflow: hidden;
