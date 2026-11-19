@@ -35,6 +35,20 @@ export async function probePcStream(streamUrl, now=Date.now(), fetcher=fetch) {
 const PC_FALLBACK_DELAY_MS = 20 * 60 * 1000;
 const PC_FALLBACK_PLAYLIST_ID = 'PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX';
 
+// Temporary recovery for the active Windows DJ while FM_STATE rejects writes.
+// A newer station setting, an off-air setting, or a stale encoder supersedes it.
+const RECOVERY_STREAM = 'https://refuse-columbus-forums-consequences.trycloudflare.com/live.mp3';
+const RECOVERY_EXPIRES_AT = 1795146101028;
+const RECOVERY_REPLACES_UPDATED_AT = 1795095370619;
+
+async function recoveryStation(state, now=Date.now()) {
+  if (now >= RECOVERY_EXPIRES_AT || state?.updatedAt !== RECOVERY_REPLACES_UPDATED_AT ||
+      state.enabled !== true || state.mode !== 'pc') return null;
+  if (!await probePcStream(RECOVERY_STREAM,now)) return null;
+  return {...state,pcStreamUrl:RECOVERY_STREAM,managed:true,broadcastEnded:false,
+    fallbackActive:false,fallbackAfterMinutes:20,fallbackPlaylistId:PC_FALLBACK_PLAYLIST_ID};
+}
+
 export function determinePcFallback(state, signal, now=Date.now()) {
   if (!state || state.enabled !== true || state.mode !== 'pc') return false;
   const configuredAt = Number(state.updatedAt);
@@ -85,6 +99,8 @@ export async function onRequestGet({env}) {
     const content=await env.FM_STATE.get(KEY);
     if(!content) return reply({configured:false},404);
     const state=JSON.parse(content);
+    const recovery=await recoveryStation(state);
+    if(recovery)return reply(recovery);
     let lastSignal=null;
     let pcUnavailable=false;
     if (state.enabled === true && state.mode === 'pc') {
