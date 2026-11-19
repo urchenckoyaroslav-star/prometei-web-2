@@ -23,16 +23,16 @@ const localized=['uk','ru','de','es','zh','ja'];
 const mappings={en:'en',uk:'uk',ru:'ru',de:'de',es:'es',zh:'zh-CN',ja:'ja'};
 const ogLocales={en:'en_US',uk:'uk_UA',ru:'ru_RU',de:'de_DE',es:'es_ES',zh:'zh_CN',ja:'ja_JP'};
 const titles={
- en:'PROMETEI Android Messenger — Bluetooth & Internet',
- uk:'PROMETEI — Android-месенджер: Bluetooth та інтернет',
- ru:'PROMETEI — Android-мессенджер: Bluetooth и интернет',
+ en:'PROMETEI Offline Messenger for Android | Bluetooth & Wi-Fi',
+ uk:'PROMETEI — месенджер без інтернету для Android',
+ ru:'PROMETEI — мессенджер без интернета для Android',
  de:'PROMETEI Android-Messenger — Bluetooth & Internet',
  es:'PROMETEI Android — Mensajes por Bluetooth e Internet',
  zh:'PROMETEI Android 聊天应用 — 蓝牙、局域网与互联网连接',
  ja:'PROMETEI Androidメッセンジャー — Bluetooth・LAN・インターネット'
 };
 const descriptions={
- en:'PROMETEI for Android supports Bluetooth, local Wi-Fi/LAN, Internet and Mixed routes. Explore nearby messaging, including offline limits.',
+ en:'Chat online, or message nearby Android phones without internet over Bluetooth or a reachable local Wi-Fi network. Get PROMETEI on Google Play.',
  uk:'Відкрийте PROMETEI для Android: повідомлення через Bluetooth, локальну Wi-Fi/LAN мережу та інтернет. Дізнайтеся, як працює зв’язок без інтернету.',
  ru:'PROMETEI — мессенджер для Android. Отправляйте сообщения через Bluetooth, локальную Wi-Fi/LAN сеть и интернет. Узнайте, когда возможна связь без интернета.',
  de:'PROMETEI für Android verbindet über Bluetooth, lokales WLAN/LAN, Internet und gemischte Routen. Erfahren Sie, wann Nachrichten ohne Internet möglich sind.',
@@ -41,7 +41,7 @@ const descriptions={
  ja:'PROMETEIはBluetooth、ローカルWi-Fi/LAN、インターネット、混合モードに対応するAndroidメッセンジャーです。オフライン通信の条件をご覧ください。'
 };
 const extraDescriptions={
- 'how-it-works.html':'How PROMETEI messages can use Bluetooth, local Wi-Fi/LAN, Internet and Mixed routes, including limits of offline messaging on Android.',
+ 'how-it-works.html':'Learn how to test offline messaging on two Android phones with Bluetooth or local Wi-Fi, and troubleshoot why messages may not arrive.',
  'portfolio.html':'Android and web developer portfolio: PROMETEI Messenger on Google Play, PHANTOM GPS testing, multilingual website and PROMETEI FM radio. Remote development services and verifiable case studies.',
  'privacy.html':'PROMETEI Messenger privacy information and data handling disclosure. Review notice: policy details are being verified against the Android release.',
  'privacy-phantom.html':'PHANTOM GPS privacy information for the Android mock-location utility in closed testing.',
@@ -63,15 +63,24 @@ const q=s=>JSON.stringify(s).replace(/</g,'\\u003c');
 const alternates=()=>[...locales.map(x=>`<link rel="alternate" hreflang="${mappings[x]}" href="${escapeAttr(base+(x==='en'?'':x+'/'))}">`),`<link rel="alternate" hreflang="x-default" href="${escapeAttr(base)}">`].join('\n');
 function metadata(html,{url,title,description,lang='en',app=false,alternate=false}){
   html=html.replace(/<meta name="description"[^>]*>/gi,'').replace(/<meta property="og:(?:type|title|description|image|url|locale|image:width|image:height)"[^>]*>/gi,'').replace(/<meta name="(?:twitter:card|twitter:title|twitter:description|twitter:image|robots)"[^>]*>/gi,'').replace(/<link rel="canonical"[^>]*>/gi,'').replace(/<link rel="alternate" hreflang="[^"]+"[^>]*>/gi,'');
+  html=html.replace(/<script\s+type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/gi,'');
   html=html.replace(/<title>[\s\S]*?<\/title>/i,'<title>'+escapeAttr(title)+'</title>');
   html=html.replace(/<html lang="[^"]*"/i,'<html lang="'+mappings[lang]+'"');
   const data={
     '@context':'https://schema.org',
     '@type':app?'MobileApplication':'WebPage',
-    name:app?'PROMETEI Messenger':title,
+    name:app?'PROMETEI Offline Messenger':title,
     url,
     description,
-    ...(app?{operatingSystem:'Android',applicationCategory:'CommunicationApplication',downloadUrl:'https://play.google.com/store/apps/details?id=com.meshnetwork.app',publisher:{'@type':'Organization',name:'PROMETEI'}}:{inLanguage:mappings[lang]})
+    inLanguage:mappings[lang],
+    ...(app?{
+      alternateName:'PROMETEI Messenger',
+      operatingSystem:'Android',
+      applicationCategory:'CommunicationApplication',
+      installUrl:'https://play.google.com/store/apps/details?id=com.meshnetwork.app',
+      sameAs:'https://play.google.com/store/apps/details?id=com.meshnetwork.app',
+      publisher:{'@type':'Organization',name:'Prometeimsndgr',url:base}
+    }:{})
   };
   const tags=[
    `<meta name="description" content="${escapeAttr(description)}">`,
