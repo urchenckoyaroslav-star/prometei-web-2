@@ -1,7 +1,11 @@
+import {labels,alternate,languages,urlFor,locales} from '../fm-locales.js';
 import {onRequestGet as history} from './api/fm/history.js';
 import recovered from '../fm-recovered-history.json';
 const escape=s=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 export async function onRequestGet(ctx){
+  const lang=ctx.params?.locale||'ru';
+  if(!locales.includes(lang))return new Response('Not found',{status:404});
+  const base='https://prometei-web-2.pages.dev',t=labels(lang);
   const data=await (await history(ctx)).json(), cutoff=Date.now()-36*3600000;
   let recent=[];
   try{
@@ -14,7 +18,7 @@ export async function onRequestGet(ctx){
   const plays=new Map();
   for(const row of [...recovered,...(data.tracks||[]),...recent])if(row?.title && row.playId && row.startedAt>=cutoff && row.startedAt<=Date.now()+30000)plays.set(row.playId,row);
   const rows=[...plays.values()].sort((a,b)=>b.startedAt-a.startedAt);
-  const time=new Intl.DateTimeFormat('ru',{timeZone:'Europe/Kyiv',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+  const time=new Intl.DateTimeFormat(lang,{timeZone:'Europe/Kyiv',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
   const html=rows.map(t=>'<p><time>'+time.format(t.startedAt)+'</time> · <strong>'+escape(t.title)+'</strong> '+escape(t.artist)+'</p>').join('');
-  return new Response('<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Что играло на радио онлайн — история PROMETEI FM</title><link rel="canonical" href="https://prometei-web-2.pages.dev/fm-history"><link rel="stylesheet" href="/fm-ranking.css"><main><nav><a href="/ru/fm">Слушать радио онлайн</a><a href="/fm-charts">Чарт клипов</a></nav><h1>Что играло в эфире</h1><p>Последние 36 часов · время Киева</p>'+ (html||'<p>Пока нет записей.</p>')+'</main></html>',{headers:{'content-type':'text/html; charset=utf-8','cache-control':'public, max-age=30'}});
+  return new Response(`<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${t.history} · ${t.radio} | PROMETEI FM</title><meta name="description" content="${t.history} · PROMETEI FM · ${t.period}"><link rel="canonical" href="${base}${urlFor(lang,'fm-history')}">${alternate('fm-history',base)}<link rel="stylesheet" href="/fm-ranking.css?v=i18n"></head><body><main>${languages('fm-history',lang)}<nav><a href="${urlFor(lang,'fm')}">${t.radio}</a><a href="${urlFor(lang,'fm-charts')}">${t.chart}</a></nav><h1>${t.history}</h1><p>${t.period}</p>${html||t.empty}</main></body></html>`,{headers:{'content-type':'text/html; charset=utf-8','cache-control':'public, max-age=30'}});
 }

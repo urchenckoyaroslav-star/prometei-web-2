@@ -10,12 +10,12 @@ function paint(scores){
   }
   const votes=row=>counts.get(row.dataset.id)||0;
   const total=rows.reduce((sum,row)=>sum+votes(row),0);
-  const percent=new Intl.NumberFormat('ru',{style:'percent',maximumFractionDigits:1});
+  const percent=new Intl.NumberFormat(document.documentElement.lang,{style:'percent',maximumFractionDigits:1});
   for(const row of rows){
     row.querySelector('output').value=percent.format(total?votes(row)/total:0);
     const button=row.querySelector('button');
     button.disabled=pending||!!choice||!week;
-    button.textContent=choice.split('/').pop()===row.dataset.id?'Ваш голос':'Голосовать';
+    button.textContent=choice.split('/').pop()===row.dataset.id?message.dataset.yours:message.dataset.vote;
   }
   rows.sort((a,b)=>votes(b)-votes(a)||Number(a.dataset.seed)-Number(b.dataset.seed));
   list.append(...rows);
@@ -29,7 +29,7 @@ async function refresh(){
     if(token!==generation||pending)return;
     if(week!==d.week)choice='';
     week=d.week;choice=d.choice||choice;scores=d.scores;paint(scores);
-  }catch(e){message.textContent=e.message;}
+  }catch(e){message.textContent=document.documentElement.lang==='ru'?e.message:message.dataset.retry;}
 }
 document.addEventListener('click',async e=>{
   const button=e.target.closest('button[data-vote]');
@@ -40,8 +40,8 @@ document.addEventListener('click',async e=>{
     const r=await fetch('/api/fm/votes',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,region,week})});
     const d=await r.json();
     if(!r.ok)throw Error(d.error||'Попробуйте позже');
-    choice=d.choice;scores[choice]=(scores[choice]||0)+1;message.textContent='Голос принят';
-  }catch(e){message.textContent=e.message;}
+    choice=d.choice;scores[choice]=(scores[choice]||0)+1;message.textContent=message.dataset.saved;
+  }catch(e){message.textContent=document.documentElement.lang==='ru'?e.message:message.dataset.retry;}
   finally{pending=false;paint(scores);}
 });
 refresh();setInterval(refresh,30000);

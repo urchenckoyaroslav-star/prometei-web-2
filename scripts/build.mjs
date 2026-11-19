@@ -3,6 +3,7 @@
  * Set it to the verified Cloudflare Pages production URL after project creation.
  */
 import fs from 'node:fs';
+import {urlFor} from '../fm-locales.js';
 import {chartPage} from './build-charts.mjs';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -140,6 +141,7 @@ for(const l of locales){
 const fmTitles={"en": "PROMETEI FM — Online radio", "uk": "PROMETEI FM — Радіо онлайн", "ru": "PROMETEI FM — Радио онлайн", "de": "PROMETEI FM — Online-Radio", "es": "PROMETEI FM — Radio en línea", "zh": "PROMETEI FM — 在线电台", "ja": "PROMETEI FM — オンラインラジオ"};
 const fmDescriptions={"en": "Listen live, explore recently played tracks and vote for music videos.", "uk": "Слухайте прямий ефір, переглядайте історію треків і голосуйте за кліпи.", "ru": "Слушайте радио онлайн, находите исполнителей в истории эфира и выбирайте клип недели.", "de": "Live hören, gespielte Titel entdecken und für Musikvideos stimmen.", "es": "Escucha la radio en directo, descubre canciones y vota por tus vídeos favoritos.", "zh": "收听直播，查看播放记录，为音乐视频投票。", "ja": "生放送を聴き、曲の履歴を調べ、ミュージックビデオに投票できます。"};
 function fmTranslate(html, lang){
+  for(const page of ['fm-charts','fm-history'])html=html.replaceAll('href="/'+page+'"','href="'+urlFor(lang,page)+'"');
   const dictionary=fmCatalog[lang];
   html=html.replace(/>([^<>]+)</g,(match,text)=>{
     const value=text.trim(),translated=dictionary[value];
@@ -177,8 +179,13 @@ for(const lang of localized){
   fs.writeFileSync(path.join(output,lang,'fm.html'),fmTranslate(fmSource,lang));
 }
 
-fs.writeFileSync(path.join(output,'fm-charts.html'),chartPage(JSON.parse(fs.readFileSync(path.join(source,'fm-ballot.json'),'utf8'))));
-const urls=['fm-history','fm-charts','',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm')];
+const catalog=JSON.parse(fs.readFileSync(path.join(source,'fm-ballot.json'),'utf8'));
+for(const lang of locales){
+  const dest=path.join(output,urlFor(lang,'fm-charts')+'.html');
+  fs.mkdirSync(path.dirname(dest),{recursive:true});
+  fs.writeFileSync(dest,chartPage(catalog,lang,site.origin));
+}
+const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm')];
 const xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for(const item of urls){
  xml.push('  <url><loc>'+base+item+'</loc>');
@@ -197,6 +204,6 @@ fs.writeFileSync(path.join(output,'sitemap.xml'),xml.join('\n')+'\n');
 fs.writeFileSync(path.join(output,'robots.txt'),'User-agent: *\nAllow: /\nSitemap: '+base+'sitemap.xml\n');
 fs.writeFileSync(path.join(output,'_headers'),`/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n\n/assets/*\n  Cache-Control: public, max-age=3600\n`);
 // Restrict Cloudflare Pages Functions invocation to the station API.
-fs.writeFileSync(path.join(output,'_routes.json'),JSON.stringify({version:1,include:['/api/fm/*','/fm-history'],exclude:[]},null,2)+'\n');
+fs.writeFileSync(path.join(output,'_routes.json'),JSON.stringify({version:1,include:['/api/fm/*',...locales.map(l=>urlFor(l,'fm-history'))],exclude:[]},null,2)+'\n');
 // Google and other public site crawlers may index the pages. Do not add invented verification tokens.
 console.log('Built',urls.length,'crawlable URLs for',base,'in',output);
