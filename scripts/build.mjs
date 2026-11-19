@@ -42,7 +42,7 @@ const descriptions={
 };
 const extraDescriptions={
  'how-it-works.html':'How PROMETEI messages can use Bluetooth, local Wi-Fi/LAN, Internet and Mixed routes, including limits of offline messaging on Android.',
- 'portfolio.html':'Explore Android development case studies: PROMETEI Messenger, PHANTOM GPS testing utility, PokoNap and independent web development.',
+ 'portfolio.html':'Android and web developer portfolio: PROMETEI Messenger on Google Play, PHANTOM GPS testing, multilingual website and PROMETEI FM radio. Remote development services and verifiable case studies.',
  'privacy.html':'PROMETEI Messenger privacy information and data handling disclosure. Review notice: policy details are being verified against the Android release.',
  'privacy-phantom.html':'PHANTOM GPS privacy information for the Android mock-location utility in closed testing.',
  'privacy-pokonap.html':'PokoNap Android educational game privacy information and development status.',
