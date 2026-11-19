@@ -20,6 +20,7 @@ async function handleVoteRequest({request,env},trace){
   trace.stage='digest';
   const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify([env.FM_DJ_TOKEN,week,address])));
   const key=prefix+Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
+  const totalsKey='fm:vote:totals:'+week;
   trace.stage='method';
   if(request.method==='POST'){
     if(request.headers.get('Origin')!==new URL(request.url).origin)return reply({},403);
@@ -30,18 +31,22 @@ async function handleVoteRequest({request,env},trace){
     trace.stage='post-get';
     if(await store.get(key))return reply({error:'Голос с этого подключения уже принят'},409);
     const choice=body.region+'/'+body.id;
+    // KV namespace supports get/put, but this deployment's list() fails.
+    // Maintain a weekly summary instead of relying on KV listing for every read.
+    trace.stage='post-totals-get';
+    const current=await store.get(totalsKey,'json');
+    const next=current && typeof current==='object' && !Array.isArray(current)?current:{};
+    next[choice]=(Number(next[choice])||0)+1;
     trace.stage='post-put';
     await store.put(key,choice,{expirationTtl:8*86400,metadata:{choice}});
+    trace.stage='post-totals-put';
+    await store.put(totalsKey,JSON.stringify(next),{expirationTtl:8*86400});
     return reply({ok:true,choice,week});
   }
   if(request.method!=='GET')return reply({},405);
-  const scores={}; let cursor;
-  do{
-    trace.stage='get-list';
-    const page=await store.list({prefix,...(cursor?{cursor}:{})});
-    for(const row of page.keys){const id=row.metadata?.choice;if(id)scores[id]=(scores[id]||0)+1;}
-    cursor=page.list_complete?null:page.cursor;
-  }while(cursor);
+  trace.stage='get-totals';
+  const totals=await store.get(totalsKey,'json');
+  const scores=totals && typeof totals==='object' && !Array.isArray(totals)?totals:{};
   trace.stage='get-choice';
   return reply({scores,week,choice:await store.get(key)});
 }
