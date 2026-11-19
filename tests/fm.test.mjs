@@ -51,12 +51,11 @@ test('SEO and listener controls',()=>{
     assert.equal(createHash('sha256').update(matrices[i]).digest('hex'),fixtureDigests[i],
       'QR matrix changed independently of the owner-supplied address');
   }
-  assert.match(html,/PROMETEI FM · YouTube backup/);
+  assert.doesNotMatch(html,/YouTube backup|id="yt-player"/);
   assert.doesNotMatch(html,/NCS · Electronic|NCS · House|NCS · Full selection/);
   const staticFallback=JSON.parse(read('fm-config.json'));
-  assert.equal(staticFallback.mode,'youtube');
-  assert.equal(staticFallback.playlistId,'PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX');
-  assert.deepEqual(staticFallback.playlists.map(p=>p.id),['PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX']);
+  assert.equal(staticFallback.mode,'pc');
+  assert.equal(staticFallback.enabled,false);
   assert.match(studio,/noindex,nofollow/);
   assert.match(studio,/id="dj-token"/);
   assert.match(js,/fetch\('\/api\/fm\/station'/);
@@ -120,6 +119,7 @@ test('PC watchdog switches to the owner backup playlist only after 20 minutes wi
   let data=await res.json();
   assert.equal(data.mode,'pc','operator-saved PC mode must remain untouched');
   assert.equal(data.fallbackActive,true);
+  assert.equal(data.broadcastEnded,true);
   assert.equal(data.fallbackAfterMinutes,20);
   assert.equal(data.fallbackPlaylistId,'PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX');
   await kv.put('prometei:fm:onair:v1',JSON.stringify({
@@ -132,23 +132,21 @@ test('PC watchdog switches to the owner backup playlist only after 20 minutes wi
   // Simulate a STOP event 19m ago, not a deletion of the timestamp.
   await kv.put('prometei:fm:onair:v1',JSON.stringify({offline:true,at:Date.now()-19*min}));
   res=await onRequestGet({env});
-  assert.equal((await res.json()).fallbackActive,false);
+  data=await res.json();
+  assert.equal(data.fallbackActive,false);
+  assert.equal(data.broadcastEnded,true);
   await kv.put('prometei:fm:onair:v1',JSON.stringify({offline:true,at:Date.now()-21*min}));
   res=await onRequestGet({env});
   assert.equal((await res.json()).fallbackActive,true);
 });
 
-test('listener presents official YouTube as backup without erasing the PC play log',()=>{
+test('listener only accepts PC audio and turns off the player when the broadcast ends',()=>{
   const js=read('fm.js');
-  assert.match(js,/PC_BACKUP_PLAYLIST_ID = 'PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX'/);
-  assert.match(js,/state\.config\.fallbackActive/);
-  assert.match(js,/backupActive\?'youtube'/);
-  assert.match(js,/previousListening/);
-  assert.match(js,/startYoutube\(\)/);
-  assert.match(js,/loadPlaylist/);
-  assert.match(js,/setInterval\(loadConfig, 20000\)/);
-  assert.match(js,/globalMode=\(\)=>state\.config/);
-  assert.match(read('fm.html'),/20 minutes/);
+  assert.match(js,/c\.broadcastEnded!==true/);
+  assert.match(js,/c\.fallbackActive!==true/);
+  assert.match(js,/value\?\.managed===true/);
+  assert.match(js,/Broadcast ended/);
+  assert.doesNotMatch(js,/startYoutube|loadPlaylist|youtube\.com/);
 });
 
 test('public owner-PC audio health is verifiable without a DJ secret and never probes arbitrary hosts',async()=>{

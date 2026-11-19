@@ -1,15 +1,1 @@
-{
-  "version": 4,
-  "mode": "youtube",
-  "pcStreamUrl": "",
-  "playlistId": "PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX",
-  "playlists": [
-    {
-      "name": "PROMETEI FM · Our YouTube backup",
-      "id": "PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX"
-    }
-  ],
-  "notes": "Safe static fallback ONLY when managed PC station is not configured or API is temporarily unavailable. Primary owner-PC live stream is centrally configured through Cloudflare FM_STATE; do not hardcode a temporary trycloudflare.com URL in GitHub. The public YouTube playlist uses the official YouTube embed.",
-  "enabled": true,
-  "liveVideoId": ""
-}
+{"version":4,"mode":"pc","enabled":false,"pcStreamUrl":"","playlistId":"","playlists":[]}

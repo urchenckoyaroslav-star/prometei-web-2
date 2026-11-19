@@ -8,9 +8,9 @@
   <meta name="author" content="PROMETEI">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="PROMETEI FM — Online Radio &amp; Song Requests">
-  <meta name="twitter:description" content="Listen to selected YouTube playlists, discover our music and request a song from the PROMETEI team.">
+  <meta name="twitter:description" content="Listen to the live PROMETEI FM broadcast and explore recent tracks.">
   <meta property="og:site_name" content="PROMETEI FM">
-  <meta name="description" content="Listen to PROMETEI FM: a shared live PC DJ music stream when on air, official YouTube playlist backup after 20 minutes without PC signal, track history and song requests.">
+  <meta name="description" content="Listen to PROMETEI FM: a shared live PC DJ music stream, track history and song requests.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://prometei-web-2.pages.dev/fm">
   <meta property="og:type" content="website">
@@ -27,7 +27,7 @@
   <script defer src="/fm-pc-websocket.js"></script>
   <script defer src="/fm.js"></script>
   <script defer src="/fm-donate.js"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PROMETEI FM","publisher":{"@type":"Organization","name":"PROMETEI"},"url":"https://prometei-web-2.pages.dev/fm","description":"Curated PROMETEI FM listening experience using official embedded YouTube playlists.","applicationCategory":"MultimediaApplication","operatingSystem":"Web browser","isAccessibleForFree":true}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PROMETEI FM","publisher":{"@type":"Organization","name":"PROMETEI"},"url":"https://prometei-web-2.pages.dev/fm","description":"Live PC DJ music stream and track history.","applicationCategory":"MultimediaApplication","operatingSystem":"Web browser","isAccessibleForFree":true}</script>
 </head>
 <body>
 <a class="skip" href="#listen">Skip to player</a>
@@ -56,7 +56,7 @@
     <div class="hero-copy">
       <div class="eyebrow"><span class="pulse-dot"></span> PROMETEI UNIVERSE <span class="slash">/</span> EXPERIMENT 01</div>
       <h1>YOUR MUSIC.<br><span>ONE ORBIT.</span></h1>
-      <p class="lede">Listen to the owner DJ's shared PC radio stream when online. If the PC signal is absent for 20 minutes, the station selects our official YouTube backup playlist.</p>
+      <p class="lede">Listen to the owner DJ's shared PC radio stream when online.</p>
       <div class="hero-buttons"><a class="main-button" href="#listen">ENTER THE FREQUENCY <span>↘</span></a><a class="secondary-button" href="#requests">Request a song <span>↗</span></a></div>
       <div class="small-facts"><span>✦ MULTI-PLAYLIST</span><span>✦ SMART SHUFFLE</span><span>✦ LISTENER REQUESTS</span></div>
     </div>
@@ -66,26 +66,24 @@
 
   <section class="shell section-space" id="listen" aria-labelledby="listen-heading">
     <div class="section-label"><span>01 / THE STATION</span><span class="line"></span><span>CURATED BY PROMETEI FM</span></div>
-    <div class="section-title"><h2 id="listen-heading">TUNE INTO<br><em>OUR FREQUENCY.</em></h2><p>The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in. After 20 minutes without a PC signal, the official YouTube backup is selected.</p></div>
+    <div class="section-title"><h2 id="listen-heading">TUNE INTO<br><em>OUR FREQUENCY.</em></h2><p>The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.</p></div>
     <div class="deck">
       <div class="player-card glass">
         <div class="card-top"><span class="channel-label"><span class="pulse-dot"></span> PROMETEI FM / LISTEN</span><span class="signal-number">87.7 <small>FM</small></span></div>
         <div class="now-block"><div class="record-art" id="record-art" aria-hidden="true"><div class="record-orbit"></div><div class="record-center">✦</div></div><div class="song-info"><div class="micro-label">NOW PLAYING <span class="live-state" id="play-state">STANDBY</span></div><h3 id="track-title" aria-live="polite">Music selected by PROMETEI</h3><p id="track-artist">Press listen to enjoy our station selection.</p><div class="track-source" id="track-source">◌ STATION READY</div></div></div>
         <div class="playback-area">
-          <div class="video-stage" id="video-stage" hidden><div id="yt-player"></div></div>
           <div class="audio-stage" id="audio-stage"><div class="audio-stage-inner"><div class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span>TRANSMISSION READY</span></div></div>
           <audio id="station-audio" preload="none"></audio>
         </div>
         <div class="player-controls"><button id="play-btn" class="play-button" type="button" aria-label="Start playback">▶ <span>START LISTENING</span></button><span class="track-counter" id="track-counter">00 : 00</span></div>
-        <a id="youtube-fallback" class="yt-fallback" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" hidden>OPEN THIS SELECTION ON YOUTUBE ↗</a>
         <div class="player-message" id="message" role="status" aria-live="polite">Press listen to start the station player.</div>
       </div>
       <aside class="mixer glass" aria-label="About PROMETEI FM">
         <div class="mixer-head"><span class="micro-label">THE DJ TEAM / OUR ROTATION</span><span class="mix-icon" aria-hidden="true">⌁</span></div>
         <h3>We choose.<br><span>You listen.</span></h3>
         <p>Our team programs the music. The public player never uploads your files or changes our station playlists.</p>
-        <div class="mix-stats"><div><strong id="playlist-count">0</strong><span>CURATED LISTS</span></div><div><strong>01</strong><span>STATION</span></div><div><strong id="history-count">0</strong><span>YOU HEARD</span></div></div>
-        <p class="mixer-note">Primary source: the owner DJ's shared PC radio stream. Backup: our official YouTube playlist after 20 minutes without PC audio. YouTube playback is independent for each listener.</p>
+        <div class="mix-stats"><div><strong>01</strong><span>STATION</span></div><div><strong id="history-count">0</strong><span>YOU HEARD</span></div></div>
+        <p class="mixer-note">Live audio from the owner DJ's PC.</p>
         <a class="form-action listener-request-link" href="#requests">REQUEST A TRACK ↗</a>
       </aside>
     </div>
@@ -93,23 +91,12 @@
 
   <section class="shell section-space sources-section" id="sources" aria-labelledby="sources-heading">
     <div class="section-label"><span>02 / OUR MUSIC</span><span class="line"></span><span>PROGRAMMED BY THE DJ TEAM</span></div>
-    <div class="section-title"><h2 id="sources-heading">OUR PLAYLISTS.<br><em>ONE FREQUENCY.</em></h2><p>The owner DJ's PC stream is our first choice. If it is absent for 20 minutes, listeners can hear our designated YouTube backup playlist in the official player.</p></div>
+    <div class="section-title"><h2 id="sources-heading">LIVE RADIO.<br><em>ONE FREQUENCY.</em></h2><p>The station is silent between broadcasts.</p></div>
     <div class="sources-grid">
       <article class="source-card glass">
-        <div class="source-head"><div class="source-icon">▶</div><div><span class="micro-label">INPUT A / ACTIVE SELECTION</span><h3>Our YouTube playlists</h3></div></div>
-        <p>Our DJs choose several public playlists for the PROMETEI rotation. Playback uses the official visible YouTube player, with its own controls and restrictions.</p>
-        <div class="source-subheading"><span>STATION COLLECTION</span><span>CURATED BY US</span></div>
-        <ul class="playlist-list" id="playlist-list">
-          <li><span class="collection-main"><strong>PROMETEI FM · YouTube backup</strong><small>THE OWNER'S SELECTED PLAYLIST</small></span></li>
-        </ul>
-        <p class="source-help">Listeners cannot edit the station program. A playlist may contain videos unavailable in some countries or browsers.</p>
-      </article>
-      <article class="source-card glass">
-        <div class="source-head"><div class="source-icon local-icon">♫</div><div><span class="micro-label">INPUT B / PC FIRST</span><h3>Broadcast from our PC</h3></div></div>
-        <p>When the owner DJ is on air, every visitor who presses LISTEN connects to the same live PC audio stream. The radio source is controlled centrally, not by each visitor.</p>
+        <div class="source-head"><div class="source-icon local-icon">♫</div><div><span class="micro-label"></span><h3>Broadcast from our PC</h3></div></div>
+        <p>When the owner DJ is on air, every visitor who presses LISTEN connects to the same live PC audio stream. </p>
         <div class="file-drop station-source-preview" aria-label="Future station source"><span class="file-symbol">♫</span><strong>DJ-CONTROLLED BROADCAST</strong><span>No visitor uploads. No guest DJs. Only the PROMETEI team chooses the music.</span><span class="pick-button">STUDIO SOURCE</span></div>
-        <p class="source-help">Automatic backup: if no PC DJ signal is confirmed for 20 minutes, PROMETEI FM selects our official YouTube backup playlist. When the PC signal returns, the station selects the PC source again. Browsers may require another tap to resume audio; YouTube playback is independent for each visitor.</p>
-        <p class="source-help">We will not extract or relay YouTube audio to our PC broadcast. YouTube remains inside its official embedded player.</p>
       </article>
     </div>
   </section>
@@ -134,13 +121,13 @@
         <div class="source-head"><div class="source-icon local-icon">★</div><div><span class="micro-label">COMING LATER / PRIORITY</span><h3>Paid song requests</h3></div></div>
         <p>We plan a transparent paid request queue, with clear prices, secure checkout, DJ approval and refunds if a confirmed request cannot be fulfilled.</p>
         <div class="file-drop station-source-preview" aria-label="Payments planned"><span class="file-symbol">✦</span><strong>PRIORITY REQUESTS</strong><span>Payments will activate only after licensing and payment-provider verification.</span><span class="pick-button">NOT CHARGING YET</span></div>
-        <p class="source-help">Paying will never mean buying access to a YouTube video or overriding music rights and platform rules.</p>
+        <p class="source-help">Paying will never mean overriding music rights and platform rules.</p>
       </article>
     </div>
   </section>
   <section class="shell section-space history-section" id="history" aria-labelledby="history-heading">
     <div class="section-label"><span>04 / THE LAST 36 HOURS</span><span class="line"></span><span>THE STATION PLAY LOG</span></div>
-    <div class="history-top"><div><h2 id="history-heading">EVERY TRACK<br><em>LEAVES A TRACE.</em></h2><p>When our DJ broadcasts from the PC, this shows the real station-wide track history from the last 36 hours, with artists and titles from music metadata. Times are shown in your local timezone. YouTube playlist mode keeps a separate, local listening history.</p></div></div>
+    <div class="history-top"><div><h2 id="history-heading">EVERY TRACK<br><em>LEAVES A TRACE.</em></h2><p>When our DJ broadcasts from the PC, this shows the real station-wide track history from the last 36 hours, with artists and titles from music metadata. Times are shown in your local timezone. </p></div></div>
     <div class="history-glass glass"><div class="history-columns"><span>TIME / SOURCE</span><span>TRACK</span><span>COLLECTION</span></div><ol class="history-list" id="history-list"><li class="history-empty">The 36-hour public play log will appear when our DJ starts the shared broadcast.</li></ol></div>
   </section>
 
@@ -148,8 +135,8 @@
     <div class="section-label"><span>05 / DISCOVER PROMETEI RADIO</span><span class="line"></span><span>ONLINE RADIO AND MUSIC</span></div>
     <div class="section-title"><h2 id="about-fm">MUSIC IN<br><em>THE PROMETEI UNIVERSE.</em></h2><p>PROMETEI FM is a music page by the team behind PROMETEI Messenger. Our DJs choose the collections; visitors listen and send song requests.</p></div>
     <div class="sources-grid">
-      <article class="source-card glass"><h3>How does PROMETEI FM work?</h3><p>The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in. After 20 minutes without a PC signal, the official YouTube backup is selected.</p><p>Listen to curated YouTube playlists in the official visible embedded player. Videos may contain ads and vary by region. The embedded player is a separate session for each visitor, not synchronized live radio.</p><h3>Can I listen on my phone?</h3><p>Yes. The page adapts to Android, iPhone, tablets and desktops. Press LISTEN to hear the shared PC radio when online; browsers may require another tap after source switching.</p></article>
-      <article class="source-card glass"><h3>Can I request a song?</h3><p>Yes. Enter the artist, title and optional dedication in the request form. It prepares a free email message to our team. Paid orders are not accepted.</p><h3>How is music broadcast from a PC?</h3><p>The owner DJ can publish an authorized PC MP3 stream over HTTPS to all listeners. Cloudflare automatically selects the owner's YouTube playlist after a 20-minute loss of verified PC signal.</p></article>
+      <article class="source-card glass"><h3>How does PROMETEI FM work?</h3><p>The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.</p><h3>Can I listen on my phone?</h3><p>Yes. The page adapts to Android, iPhone, tablets and desktops. Press LISTEN to hear the shared PC radio when online; browsers may require another tap after source switching.</p></article>
+      <article class="source-card glass"><h3>Can I request a song?</h3><p>Yes. Enter the artist, title and optional dedication in the request form. It prepares a free email message to our team. Paid orders are not accepted.</p><h3>How is music broadcast from a PC?</h3><p>The owner DJ can publish an authorized PC MP3 stream over HTTPS to all listeners.</p></article>
     </div>
   </section>
   <section class="shell section-space donate-section" id="support" aria-labelledby="donate-heading">
@@ -213,7 +200,7 @@
     <p class="donate-disclosure">PROMETEI is an independent software project, not a registered charity. USDT contributions are voluntary, not tax-deductible charity donations, and do not buy song requests, subscriptions or special privileges.</p>
   </section>
   <section class="shell bridge-cta"><span class="micro-label">THE CONNECTION CONTINUES</span><h2>MUSIC CONNECTS.<br><em>PROMETEI CONNECTS PEOPLE.</em></h2><p>From your favorite sounds to the next conversation. Discover the Android messenger with Internet, Bluetooth and local-network communication options.</p><div class="cta-row"><a class="main-button" href="https://play.google.com/store/apps/details?id=com.meshnetwork.app" target="_blank" rel="noopener noreferrer">INSTALL PROMETEI MESSENGER <span>↗</span></a><a class="secondary-button" href="/">EXPLORE OUR UNIVERSE <span>↗</span></a></div><div class="cta-orbit" aria-hidden="true">✦</div></section>
-  <section class="shell fine-print" aria-label="About this experience"><p><strong>ABOUT THIS STATION</strong> PROMETEI FM offers one shared PC DJ radio stream when the owner is on air, with an official YouTube playlist as its backup after 20 minutes without the PC signal. YouTube playback is independent for each visitor and subject to YouTube ads, availability and browser policies. Paid song requests are not operating. Free song requests open your email client; voluntary USDT support is handled directly in your own wallet.</p></section>
+  <section class="shell fine-print" aria-label="About this experience"><p><strong>ABOUT THIS STATION</strong> PROMETEI FM offers one shared PC DJ radio stream when the owner is on air. Paid song requests are not operating. Free song requests open your email client; voluntary USDT support is handled directly in your own wallet.</p></section>
 </main>
 <footer class="shell footer"><a class="brand" href="/"><img src="/assets/mark.svg" alt="" width="34" height="34"><span>PROMETEI<small>BEYOND THE SIGNAL</small></span></a><div><a href="/">MAIN SITE</a><a href="/portfolio">PORTFOLIO</a><a href="/fm-studio" rel="nofollow">DJ STUDIO</a><a href="/support">SUPPORT</a><a href="/privacy">PRIVACY</a></div><span>© <span id="year">2026</span> PROMETEI FM</span></footer>
 </body>

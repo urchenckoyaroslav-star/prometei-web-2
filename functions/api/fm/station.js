@@ -24,7 +24,7 @@ export async function probePcStream(streamUrl, now=Date.now(), fetcher=fetch) {
     });
     if(!response.ok)return false;
     const body=await response.text();
-    if(body.length>4096)return false;
+    if(body.length>2_000_000)return false;
     const status=JSON.parse(body);
     const audioAt=Number(status?.lastAudioAt);
     return status?.onAir===true && status?.audioFresh===true &&
@@ -86,6 +86,7 @@ export async function onRequestGet({env}) {
     if(!content) return reply({configured:false},404);
     const state=JSON.parse(content);
     let lastSignal=null;
+    let pcUnavailable=false;
     if (state.enabled === true && state.mode === 'pc') {
       const [encodedSignal,encodedVerified]=await Promise.all([
         env.FM_STATE.get(SIGNAL_KEY), env.FM_STATE.get(PC_VERIFIED_KEY)
@@ -105,8 +106,9 @@ export async function onRequestGet({env}) {
       // even before a separate DJ history token is configured. Probing only
       // the exact trycloudflare.com status endpoint prevents unsafe fetches.
       if(TEMP_PC_STREAM.test(state.pcStreamUrl||'') &&
-         now-lastVerifiedAt>=PC_HEALTH_RECHECK_MS &&
-         await probePcStream(state.pcStreamUrl,now)){
+         now-lastVerifiedAt>=PC_HEALTH_RECHECK_MS){
+        pcUnavailable=!(await probePcStream(state.pcStreamUrl,now));
+        if(!pcUnavailable){
         const observed={at:now,stream:state.pcStreamUrl};
         try {
           await env.FM_STATE.put(PC_VERIFIED_KEY,JSON.stringify(observed),{
@@ -114,6 +116,7 @@ export async function onRequestGet({env}) {
           });
         }catch(_){ /* a fresh valid probe still confirms PC health now */ }
         verified=observed;
+        }
       }
       // A stale verified timestamp from a different tunnel is not trusted.
       const goodAt=verified?.stream===state.pcStreamUrl &&
@@ -122,7 +125,11 @@ export async function onRequestGet({env}) {
       if(goodAt>Number(lastSignal?.at||0))lastSignal={at:goodAt};
     }
     const fallbackActive=determinePcFallback(state,lastSignal);
-    return reply({...state, managed:true, fallbackActive,
+    const broadcastEnded = state.mode==='pc' && (
+      (lastSignal?.offline===true && Number(lastSignal.at)>=Number(state.updatedAt)) ||
+      pcUnavailable || fallbackActive
+    );
+    return reply({...state, managed:true, broadcastEnded, fallbackActive,
       fallbackAfterMinutes:20, fallbackPlaylistId:PC_FALLBACK_PLAYLIST_ID});
   } catch(_) {return reply({error:'Station control temporarily unavailable'},503);}
 }

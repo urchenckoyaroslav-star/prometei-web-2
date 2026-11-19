@@ -142,7 +142,13 @@
     "The DJ station history has not been connected to the server yet.": "The DJ station history has not been connected to the server yet.",
     "REQUEST A TRACK ↗": "REQUEST A TRACK ↗",
     "PREPARE SONG REQUEST ↗": "PREPARE SONG REQUEST ↗",
-    "OPEN THIS SELECTION ON YOUTUBE ↗": "OPEN THIS SELECTION ON YOUTUBE ↗"
+    "OPEN THIS SELECTION ON YOUTUBE ↗": "OPEN THIS SELECTION ON YOUTUBE ↗",
+    "Broadcast ended": "Broadcast ended",
+    "LIVE RADIO.": "LIVE RADIO.",
+    "The station is silent between broadcasts.": "The station is silent between broadcasts.",
+    "Live audio from the owner DJ's PC.": "Live audio from the owner DJ's PC.",
+    "Listen to the owner DJ's shared PC radio stream when online.": "Listen to the owner DJ's shared PC radio stream when online.",
+    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in."
   },
   "uk": {
     "Listen": "Слухати",
@@ -287,7 +293,13 @@
     "The DJ station history has not been connected to the server yet.": "Історія станції ще не підключена.",
     "REQUEST A TRACK ↗": "ЗАМОВИТИ ТРЕК ↗",
     "PREPARE SONG REQUEST ↗": "ПІДГОТУВАТИ ЗАЯВКУ ↗",
-    "OPEN THIS SELECTION ON YOUTUBE ↗": "ВІДКРИТИ НА YOUTUBE ↗"
+    "OPEN THIS SELECTION ON YOUTUBE ↗": "ВІДКРИТИ НА YOUTUBE ↗",
+    "Broadcast ended": "Ефір завершено",
+    "LIVE RADIO.": "ПРЯМИЙ ЕФІР.",
+    "The station is silent between broadcasts.": "Між ефірами станція мовчить.",
+    "Live audio from the owner DJ's PC.": "Прямий звук із ПК діджея.",
+    "Listen to the owner DJ's shared PC radio stream when online.": "Слухайте спільний прямий ефір із ПК діджея.",
+    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "Діджей веде спільний ефір із ПК. Натисніть «Слухати»."
   },
   "ru": {
     "Listen": "Слушать",
@@ -432,7 +444,13 @@
     "The DJ station history has not been connected to the server yet.": "История станции ещё не подключена.",
     "REQUEST A TRACK ↗": "ЗАКАЗАТЬ ТРЕК ↗",
     "PREPARE SONG REQUEST ↗": "ПОДГОТОВИТЬ ЗАЯВКУ ↗",
-    "OPEN THIS SELECTION ON YOUTUBE ↗": "ОТКРЫТЬ НА YOUTUBE ↗"
+    "OPEN THIS SELECTION ON YOUTUBE ↗": "ОТКРЫТЬ НА YOUTUBE ↗",
+    "Broadcast ended": "Эфир завершён",
+    "LIVE RADIO.": "ПРЯМОЙ ЭФИР.",
+    "The station is silent between broadcasts.": "Между эфирами радио молчит.",
+    "Live audio from the owner DJ's PC.": "Прямой звук с ПК диджея.",
+    "Listen to the owner DJ's shared PC radio stream when online.": "Слушайте общий прямой эфир с ПК диджея.",
+    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "Диджей ведёт общий эфир с ПК. Нажми «Слушать»."
   },
   "de": {
     "Listen": "Hören",
@@ -577,7 +595,13 @@
     "The DJ station history has not been connected to the server yet.": "Senderverlauf ist noch nicht verbunden.",
     "REQUEST A TRACK ↗": "SONG WÜNSCHEN ↗",
     "PREPARE SONG REQUEST ↗": "SONGWUNSCH VORBEREITEN ↗",
-    "OPEN THIS SELECTION ON YOUTUBE ↗": "AUF YOUTUBE ÖFFNEN ↗"
+    "OPEN THIS SELECTION ON YOUTUBE ↗": "AUF YOUTUBE ÖFFNEN ↗",
+    "Broadcast ended": "Sendung beendet",
+    "LIVE RADIO.": "LIVE-RADIO.",
+    "The station is silent between broadcasts.": "Zwischen den Sendungen bleibt das Radio stumm.",
+    "Live audio from the owner DJ's PC.": "Live-Audio vom PC des DJs.",
+    "Listen to the owner DJ's shared PC radio stream when online.": "Höre den gemeinsamen Livestream vom PC des DJs.",
+    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "Der DJ sendet live vom PC. Drücke auf „Hören“."
   },
   "es": {
     "Listen": "Escuchar",
@@ -722,7 +746,13 @@
     "The DJ station history has not been connected to the server yet.": "El historial aún no está conectado.",
     "REQUEST A TRACK ↗": "PEDIR CANCIÓN ↗",
     "PREPARE SONG REQUEST ↗": "PREPARAR SOLICITUD ↗",
-    "OPEN THIS SELECTION ON YOUTUBE ↗": "ABRIR EN YOUTUBE ↗"
+    "OPEN THIS SELECTION ON YOUTUBE ↗": "ABRIR EN YOUTUBE ↗",
+    "Broadcast ended": "Emisión finalizada",
+    "LIVE RADIO.": "RADIO EN DIRECTO.",
+    "The station is silent between broadcasts.": "La radio permanece en silencio entre emisiones.",
+    "Live audio from the owner DJ's PC.": "Audio en directo desde el PC del DJ.",
+    "Listen to the owner DJ's shared PC radio stream when online.": "Escucha la emisión en directo desde el PC del DJ.",
+    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "El DJ emite desde su PC. Pulsa «Escuchar» para sintonizar."
   },
   "zh": {
     "Listen": "收听",
@@ -867,7 +897,13 @@
     "The DJ station history has not been connected to the server yet.": "电台历史尚未连接。",
     "REQUEST A TRACK ↗": "点播歌曲 ↗",
     "PREPARE SONG REQUEST ↗": "准备点歌请求 ↗",
-    "OPEN THIS SELECTION ON YOUTUBE ↗": "在 YOUTUBE 打开 ↗"
+    "OPEN THIS SELECTION ON YOUTUBE ↗": "在 YOUTUBE 打开 ↗",
+    "Broadcast ended": "直播已结束",
+    "LIVE RADIO.": "电台直播。",
+    "The station is silent between broadcasts.": "两次直播之间电台保持静音。",
+    "Live audio from the owner DJ's PC.": "音频由 DJ 的电脑实时传输。",
+    "Listen to the owner DJ's shared PC radio stream when online.": "收听 DJ 电脑推送的共享直播。",
+    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "DJ 通过电脑进行直播。点击“收听”加入。"
   },
   "ja": {
     "Listen": "聴く",
@@ -1012,6 +1048,12 @@
     "The DJ station history has not been connected to the server yet.": "放送履歴はまだ接続されていません。",
     "REQUEST A TRACK ↗": "曲をリクエスト ↗",
     "PREPARE SONG REQUEST ↗": "リクエストを作成 ↗",
-    "OPEN THIS SELECTION ON YOUTUBE ↗": "YOUTUBEで開く ↗"
+    "OPEN THIS SELECTION ON YOUTUBE ↗": "YOUTUBEで開く ↗",
+    "Broadcast ended": "放送終了",
+    "LIVE RADIO.": "ラジオ生放送。",
+    "The station is silent between broadcasts.": "放送時間外は音声が流れません。",
+    "Live audio from the owner DJ's PC.": "DJのPCからのライブ音声。",
+    "Listen to the owner DJ's shared PC radio stream when online.": "DJのPCから配信される共通のライブ音声を聴けます。",
+    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "DJがPCから配信します。「聴く」を押して参加できます。"
   }
 }
