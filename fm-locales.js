@@ -12,4 +12,7 @@ export const locales=Object.keys(strings);
 export const labels=lang=>Object.fromEntries(fields.map((field,i)=>[field,strings[lang][i]]));
 export const urlFor=(lang,page)=>'/'+(lang===(page==='fm'?'en':'ru')?'':lang+'/')+page;
 export const alternate=(page,base)=>[...locales,'x-default'].map(l=>'<link rel="alternate" hreflang="'+l+'" href="'+base+urlFor(l==='x-default'?'ru':l,page)+'">').join('');
-export const languages=(page,lang)=>'<nav class="languages" aria-label="Languages">'+locales.map(l=>'<a lang="'+l+'" hreflang="'+l+'" href="'+urlFor(l,page)+'"'+(l===lang?' aria-current="page"':'')+'>'+strings[l][0]+'</a>').join('')+'</nav>';
+export function languages(page,lang){
+  const options=locales.map(l=>`<a lang="${l}" hreflang="${l}" href="${urlFor(l,page)}" ${l===lang?'aria-current="page"':''}><b>${l.toUpperCase()}</b>${strings[l][0]}</a>`).join('');
+  return `<header class="station-bar"><a class="wordmark" href="${urlFor(lang,'fm')}"><i aria-hidden="true">▮▥▮</i> PROMETEI <em>FM</em></a><details class="locale"><summary><b>${lang.toUpperCase()}</b> ${strings[lang][0]} <span aria-hidden="true">⌄</span></summary><nav aria-label="Languages">${options}</nav></details></header>`;
+}
