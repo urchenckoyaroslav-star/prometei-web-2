@@ -37,7 +37,7 @@ const PC_FALLBACK_PLAYLIST_ID = 'PLFS8aAbOL3x5wZaXGyuSy9Hl-LLI_KhUX';
 
 // Temporary recovery for the active Windows DJ while FM_STATE rejects writes.
 // A newer station setting, an off-air setting, or a stale encoder supersedes it.
-const RECOVERY_STREAM = 'https://refuse-columbus-forums-consequences.trycloudflare.com/live.mp3';
+const RECOVERY_STREAM = 'https://sorted-bureau-hawk-produced.trycloudflare.com/live.mp3';
 const RECOVERY_EXPIRES_AT = 1795146101028;
 const RECOVERY_REPLACES_UPDATED_AT = 1795095370619;
 
