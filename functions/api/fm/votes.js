@@ -8,7 +8,7 @@ export function ballotWeek(now=new Date()){
   return date.toISOString().slice(0,10);
 }
 const reply=(data,status=200)=>Response.json(data,{status,headers:{'Cache-Control':'no-store','X-Robots-Tag':'noindex'}});
-export async function onRequest({request,env}){
+async function handleVoteRequest({request,env}){
   const store=env.FM_STATE;
   if(!store || !env.FM_DJ_TOKEN)return reply({error:'Сервис голосования временно недоступен'},503);
   const week=ballotWeek(), prefix='fm:vote:'+week+':';
@@ -30,9 +30,18 @@ export async function onRequest({request,env}){
   if(request.method!=='GET')return reply({},405);
   const scores={}; let cursor;
   do{
-    const page=await store.list({prefix,cursor});
+    const page=await store.list({prefix,...(cursor?{cursor}:{})});
     for(const row of page.keys){const id=row.metadata?.choice;if(id)scores[id]=(scores[id]||0)+1;}
     cursor=page.list_complete?null:page.cursor;
   }while(cursor);
   return reply({scores,week,choice:await store.get(key)});
+}
+
+export async function onRequest(context){
+  try{
+    return await handleVoteRequest(context);
+  }catch(err){
+    console.error('PROMETEI FM votes request failed',err);
+    return reply({error:'Сервис голосования временно недоступен',code:'VOTES_RUNTIME_ERROR'},503);
+  }
 }
