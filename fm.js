@@ -91,28 +91,38 @@
     }
     el.historyCount.textContent=String(globalHistory.count);
   }
+  let recoveredHistory;
+  async function recoveredTracks(){
+    if(recoveredHistory)return recoveredHistory;
+    const response=await fetch('/fm-recovered-history.json');
+    if(!response.ok)throw Error('Recovery history unavailable');
+    recoveredHistory=await response.json();
+    return recoveredHistory;
+  }
   async function refreshGlobalHistory(){
     if(!globalMode())return;
     try{
-      let data;
-      if(state.config.previewMode){
-        // Owner-PC status includes only song metadata, never local file paths.
-        const target=new URL(state.config.stream).origin+'/status.json';
-        const res=await fetch(target,{cache:'no-store'});
-        if(!res.ok)throw Error('The temporary PC radio is currently offline.');
-        const live=await res.json();
-        data={configured:true, tracks:Array.isArray(live.recent)?live.recent:[],
-          live:live.onAir===true, current:live.current||null};
-      }else{
-        const res=await fetch('/api/fm/history',{cache:'no-store'});
-        if(!res.ok)throw Error('The DJ station history has not been connected to the server yet.');
-        data=await res.json();
+      const stream=state.config.stream;
+      const sources=[fetch('/api/fm/history',{cache:'no-store'})
+        .then(r=>r.ok?r.json():Promise.reject(Error('History unavailable')))];
+      if(stream && /^https:\/\/[a-z0-9-]+\.trycloudflare\.com\/live\.mp3$/.test(stream)){
+        sources.push(fetch(new URL('/status.json',stream),{cache:'no-store',signal:AbortSignal.timeout(3500)})
+          .then(r=>r.ok?r.json():Promise.reject(Error('PC unavailable')))
+          .then(pc=>({tracks:pc.recent,current:pc.current,live:pc.onAir})));
       }
-      if(data.configured!==true || !Array.isArray(data.tracks))throw Error('Station log unavailable.');
+      sources.push(recoveredTracks().then(tracks=>({tracks})));
+      const results=await Promise.allSettled(sources);
+      if(stream!==state.config.stream)return;
+      const logs=results.filter(r=>r.status==='fulfilled' && Array.isArray(r.value.tracks)).map(r=>r.value);
       const now=Date.now(),floor=now-36*3600*1000;
-      globalHistory.items=data.tracks.filter(entry=>entry&&
-        typeof entry.title==='string'&&Number(entry.startedAt)>=floor&&
-        Number(entry.startedAt)<=now+30000);
+      const merged=new Map();
+      for(const entry of [...globalHistory.items,...logs.flatMap(log=>log.tracks)]){
+        if(entry?.playId && typeof entry.title==='string' && entry.startedAt>=floor && entry.startedAt<=now+30000)
+          merged.set(entry.playId,entry);
+      }
+      globalHistory.items=[...merged.values()].sort((a,b)=>b.startedAt-a.startedAt);
+      const data=logs.filter(log=>log.live && log.current)
+        .sort((a,b)=>b.current.startedAt-a.current.startedAt)[0]||{};
       globalHistory.count=globalHistory.items.length;
       globalHistory.live=data.live===true;
       globalHistory.current=data.current||null;
