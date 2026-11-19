@@ -4,6 +4,21 @@
 
 A **real, responsive static website** for PROMETEI Messenger and related independent Android projects. Built from scratch with semantic HTML, custom CSS, accessible controls and vanilla JavaScript — no WordPress, account credentials or paid runtime required. A small build-time Node script prepares SEO metadata and localized static output for Cloudflare Pages.
 
+## For international hiring teams
+
+**Developer portfolio:** https://prometei-web-2.pages.dev/portfolio
+
+Projects you can independently inspect:
+- **PROMETEI Messenger:** published Android app on Google Play; Bluetooth, local Wi-Fi/LAN and Internet workflows — [store listing](https://play.google.com/store/apps/details?id=com.meshnetwork.app).
+- **PHANTOM GPS:** Android test utility in Google Play **closed testing**, not public production — [tester opt-in](https://play.google.com/apps/testing/com.phantomgps.app).
+- **PokoNap:** development-stage Android educational game, not public production.
+- **PROMETEI WEB 2:** this seven-language responsive site, publicly deployed with source control and documented SEO/accessibility work.
+- **PROMETEI FM:** [live radio website](https://prometei-web-2.pages.dev/fm), [55-track music chart](https://prometei-web-2.pages.dev/fm-charts) and [play history](https://prometei-web-2.pages.dev/fm-history).
+
+Experience areas evidenced here: Android / Kotlin-oriented release workflows and device testing, Bluetooth/BLE and local network scenarios, Google Play testing, vanilla HTML/CSS/JavaScript, Cloudflare Pages Functions/Workers KV, responsive and multilingual UI.
+
+No invented professional years, degrees, client metrics, security guarantees or claims that closed tests are production apps. Genuine Android UI screenshots are not yet part of this public site; concept illustrations are marked separately.
+
 ## Features
 
 - Seven Google-crawlable home-page versions: English at `/`, Ukrainian `/uk/`, Russian `/ru/`, German `/de/`, Spanish `/es/`, Simplified Chinese `/zh/`, Japanese `/ja/`. HTML translations are pre-rendered (not only JS), with reciprocal `hreflang`, individual titles and canonical URLs.
