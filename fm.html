@@ -10,7 +10,7 @@
   <meta name="twitter:title" content="PROMETEI FM — Online Radio &amp; Song Requests">
   <meta name="twitter:description" content="Listen to the live PROMETEI FM broadcast and explore recent tracks.">
   <meta property="og:site_name" content="PROMETEI FM">
-  <meta name="description" content="Listen to PROMETEI FM: a shared live PC DJ music stream, track history and song requests.">
+  <meta name="description" content="Listen to PROMETEI FM: an independent online radio station with curated music, the last 36 hours of track history and a listener-voted chart.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://prometei-web-2.pages.dev/fm">
   <meta property="og:type" content="website">
@@ -27,7 +27,7 @@
   <script defer src="/fm-pc-websocket.js"></script>
   <script defer src="/fm.js?v=pc-history"></script>
   <script defer src="/fm-donate.js"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PROMETEI FM","publisher":{"@type":"Organization","name":"PROMETEI"},"url":"https://prometei-web-2.pages.dev/fm","description":"Live PC DJ music stream and track history.","applicationCategory":"MultimediaApplication","operatingSystem":"Web browser","isAccessibleForFree":true}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PROMETEI FM","publisher":{"@type":"Organization","name":"PROMETEI"},"url":"https://prometei-web-2.pages.dev/fm","description":"Independent online radio with curated music and track history.","applicationCategory":"MultimediaApplication","operatingSystem":"Web browser","isAccessibleForFree":true}</script>
 </head>
 <body>
 <a class="skip" href="#listen">Skip to player</a>
@@ -54,9 +54,9 @@
 <main>
   <section class="shell hero">
     <div class="hero-copy">
-      <div class="eyebrow"><span class="pulse-dot"></span> PROMETEI UNIVERSE <span class="slash">/</span> EXPERIMENT 01</div>
+      <div class="eyebrow"><span class="pulse-dot"></span> PROMETEI UNIVERSE <span class="slash">/</span> TRANSMISSION 001</div>
       <h1>YOUR MUSIC.<br><span>ONE ORBIT.</span></h1>
-      <p class="lede">Listen to the owner DJ's shared PC radio stream when online.</p>
+      <p class="lede">Enter our frequency and discover a universe of sound, live when the station is on air.</p>
       <div class="hero-buttons"><a class="main-button" href="#listen">ENTER THE FREQUENCY <span>↘</span></a><a class="secondary-button" href="#requests">Request a song <span>↗</span></a></div>
       <div class="small-facts"><span>✦ MULTI-PLAYLIST</span><span>✦ SMART SHUFFLE</span><span>✦ LISTENER REQUESTS</span></div>
     </div>
@@ -66,7 +66,7 @@
 
   <section class="shell section-space" id="listen" aria-labelledby="listen-heading">
     <div class="section-label"><span>01 / THE STATION</span><span class="line"></span><span>CURATED BY PROMETEI FM</span></div>
-    <div class="section-title"><h2 id="listen-heading">TUNE INTO<br><em>OUR FREQUENCY.</em></h2><p>The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.</p></div>
+    <div class="section-title"><h2 id="listen-heading">TUNE INTO<br><em>OUR FREQUENCY.</em></h2><p>One frequency. An entire universe of music. Press LISTEN to join us on air.</p></div>
     <div class="deck">
       <div class="player-card glass">
         <div class="card-top"><span class="channel-label"><span class="pulse-dot"></span> PROMETEI FM / LISTEN</span><span class="signal-number">87.7 <small>FM</small></span></div>
@@ -81,22 +81,27 @@
       <aside class="mixer glass" aria-label="About PROMETEI FM">
         <div class="mixer-head"><span class="micro-label">THE DJ TEAM / OUR ROTATION</span><span class="mix-icon" aria-hidden="true">⌁</span></div>
         <h3>We choose.<br><span>You listen.</span></h3>
-        <p>Our team programs the music. The public player never uploads your files or changes our station playlists.</p>
-        <div class="mix-stats"><div><strong>01</strong><span>STATION</span></div><div><strong id="history-count">0</strong><span>YOU HEARD</span></div></div>
-        <p class="mixer-note">Live audio from the owner DJ's PC.</p>
+        <p>Every track is chosen to take you somewhere new. Discover the unexpected.</p>
+        <div class="mix-stats"><div><strong>01</strong><span>STATION</span></div><div><strong id="history-count">0</strong><span>IN THE ARCHIVE</span></div></div>
+        <p class="mixer-note">A universe of sound. One unforgettable signal.</p>
         <a class="form-action listener-request-link" href="#requests">REQUEST A TRACK ↗</a>
       </aside>
     </div>
   </section>
 
   <section class="shell section-space sources-section" id="sources" aria-labelledby="sources-heading">
-    <div class="section-label"><span>02 / OUR MUSIC</span><span class="line"></span><span>PROGRAMMED BY THE DJ TEAM</span></div>
-    <div class="section-title"><h2 id="sources-heading">LIVE RADIO.<br><em>ONE FREQUENCY.</em></h2><p>The station is silent between broadcasts.</p></div>
-    <div class="sources-grid">
-      <article class="source-card glass">
-        <div class="source-head"><div class="source-icon local-icon">♫</div><div><span class="micro-label"></span><h3>Broadcast from our PC</h3></div></div>
-        <p>When the owner DJ is on air, every visitor who presses LISTEN connects to the same live PC audio stream. </p>
-        <div class="file-drop station-source-preview" aria-label="Future station source"><span class="file-symbol">♫</span><strong>DJ-CONTROLLED BROADCAST</strong><span>No visitor uploads. No guest DJs. Only the PROMETEI team chooses the music.</span><span class="pick-button">STUDIO SOURCE</span></div>
+    <div class="section-label"><span>02 / OUR MUSIC</span><span class="line"></span><span>CURATED FOR THE COSMOS</span></div>
+    <div class="section-title"><h2 id="sources-heading">LIVE RADIO.<br><em>ONE FREQUENCY.</em></h2><p>Enter the frequency when we are on air. Until then, the stars are listening.</p></div>
+    <div class="sources-grid station-identity-grid">
+      <article class="station-identity glass">
+        <div class="station-identity-art" aria-hidden="true"><span class="station-emblem">✦</span><i></i><i></i><i></i></div>
+        <div class="station-identity-copy">
+          <span class="micro-label">THE SOUND OF PROMETEI</span>
+          <h3>BEYOND THE ORDINARY.</h3>
+          <p>One frequency, countless worlds. Handpicked tracks, fresh discoveries and a sound that travels beyond the stars.</p>
+          <div class="station-identity-tags"><span>CURATED MUSIC</span><span>LIVE WHEN ON AIR</span></div>
+        </div>
+        <a class="station-identity-link" href="/fm-charts"><span>EXPLORE THE MUSIC CHART</span><span class="station-arrow" aria-hidden="true">↗</span></a>
       </article>
     </div>
   </section>
@@ -104,7 +109,7 @@
 
   <section class="shell section-space request-section" id="requests" aria-labelledby="requests-heading">
     <div class="section-label"><span>03 / SONG REQUESTS</span><span class="line"></span><span>YOU SUGGEST / WE DECIDE</span></div>
-    <div class="section-title"><h2 id="requests-heading">YOUR SONG.<br><em>OUR FREQUENCY.</em></h2><p>Want us to play a song or send a dedication? Share your request with our DJ team. Paid priority requests are planned, but no payment is collected yet.</p></div>
+    <div class="section-title"><h2 id="requests-heading">YOUR SONG.<br><em>OUR FREQUENCY.</em></h2><p>A song can carry a message across the universe. Send us a track request or a dedication.</p></div>
     <div class="sources-grid">
       <article class="source-card glass">
         <div class="source-head"><div class="source-icon">✦</div><div><span class="micro-label">LISTENER REQUEST</span><h3>Request a track</h3></div></div>
@@ -117,26 +122,44 @@
         <p id="request-status" class="source-help" role="status">This opens your email app with a prepared message. You still need to press Send. No money is charged.</p>
         <p class="source-help">Or contact our DJ on <a href="https://t.me/AlnairCanopus" target="_blank" rel="noopener noreferrer">Telegram ↗</a>.</p>
       </article>
-      <article class="source-card glass">
-        <div class="source-head"><div class="source-icon local-icon">★</div><div><span class="micro-label">COMING LATER / PRIORITY</span><h3>Paid song requests</h3></div></div>
-        <p>We plan a transparent paid request queue, with clear prices, secure checkout, DJ approval and refunds if a confirmed request cannot be fulfilled.</p>
-        <div class="file-drop station-source-preview" aria-label="Payments planned"><span class="file-symbol">✦</span><strong>PRIORITY REQUESTS</strong><span>Payments will activate only after licensing and payment-provider verification.</span><span class="pick-button">NOT CHARGING YET</span></div>
-        <p class="source-help">Paying will never mean overriding music rights and platform rules.</p>
-      </article>
+      <aside class="request-sky glass" aria-label="Explore the PROMETEI universe">
+        <div class="request-sky-orbit" aria-hidden="true"><span>✦</span><i></i><i></i></div>
+        <div class="request-sky-copy"><span class="micro-label">A NEW STAR IS WAITING</span><h3>EVERY SONG HAS A STORY.</h3><p>Find your next favourite sound in the PROMETEI music chart.</p>
+          <a class="station-identity-link" href="/fm-charts"><span>DISCOVER THE CHART</span><span class="station-arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </aside>
     </div>
   </section>
   <section class="shell section-space history-section" id="history" aria-labelledby="history-heading">
-    <div class="section-label"><span>04 / THE LAST 36 HOURS</span><span class="line"></span><span>THE STATION PLAY LOG</span></div>
-    <nav class="shell" aria-label="FM charts"><a class="form-action" href="/fm-charts">YouTube Chart · Vote</a> <a class="form-action" href="/fm-history">Track history</a></nav><div class="history-top"><div><h2 id="history-heading">EVERY TRACK<br><em>LEAVES A TRACE.</em></h2><p>When our DJ broadcasts from the PC, this shows the real station-wide track history from the last 36 hours, with artists and titles from music metadata. Times are shown in your local timezone. </p></div></div>
-    <div class="history-glass glass"><div class="history-columns"><span>TIME / SOURCE</span><span>TRACK</span><span>COLLECTION</span></div><ol class="history-list" id="history-list"><li class="history-empty">The 36-hour public play log will appear when our DJ starts the shared broadcast.</li></ol></div>
+    <div class="section-label"><span>04 / THE LAST 36 HOURS</span><span class="line"></span><span>THE SIGNAL ARCHIVE</span></div>
+    <div class="history-top">
+      <div class="history-heading-copy">
+        <h2 id="history-heading">EVERY TRACK<br><em>LEAVES A TRACE.</em></h2>
+        <p>Explore the last 36 hours on our frequency. Follow the songs, remember the artists and discover what moved through the cosmos.</p>
+      </div>
+      <div class="history-sigil" aria-hidden="true"><span>✧</span><i></i><i></i></div>
+    </div>
+    <nav class="history-portal-grid" aria-label="Explore the PROMETEI music archive">
+      <a class="history-portal history-portal-chart" href="/fm-charts">
+        <span class="portal-symbol" aria-hidden="true">✦</span>
+        <span class="portal-content"><span class="portal-eyebrow">THE CHART / VOTE</span><strong>THE MUSIC CHART</strong><span class="portal-caption">Listen. Discover. Cast your vote.</span></span>
+        <span class="portal-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="history-portal history-portal-archive" href="/fm-history">
+        <span class="portal-symbol" aria-hidden="true">◷</span>
+        <span class="portal-content"><span class="portal-eyebrow">THE LAST 36 HOURS</span><strong>EXPLORE THE ARCHIVE</strong><span class="portal-caption">The songs that travelled through our universe.</span></span>
+        <span class="portal-arrow" aria-hidden="true">↗</span>
+      </a>
+    </nav>
+    <div class="history-glass glass"><div class="history-columns"><span>PLAYED AT</span><span>TRACK</span><span>COLLECTION</span></div><ol class="history-list" id="history-list"><li class="history-empty">The archive will illuminate when our next broadcast begins.</li></ol></div>
   </section>
 
   <section class="shell section-space fm-info" id="about" aria-labelledby="about-fm">
     <div class="section-label"><span>05 / DISCOVER PROMETEI RADIO</span><span class="line"></span><span>ONLINE RADIO AND MUSIC</span></div>
     <div class="section-title"><h2 id="about-fm">MUSIC IN<br><em>THE PROMETEI UNIVERSE.</em></h2><p>PROMETEI FM is a music page by the team behind PROMETEI Messenger. Our DJs choose the collections; visitors listen and send song requests.</p></div>
     <div class="sources-grid">
-      <article class="source-card glass"><h3>How does PROMETEI FM work?</h3><p>The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.</p><h3>Can I listen on my phone?</h3><p>Yes. The page adapts to Android, iPhone, tablets and desktops. Press LISTEN to hear the shared PC radio when online; browsers may require another tap after source switching.</p></article>
-      <article class="source-card glass"><h3>Can I request a song?</h3><p>Yes. Enter the artist, title and optional dedication in the request form. It prepares a free email message to our team. Paid orders are not accepted.</p><h3>How is music broadcast from a PC?</h3><p>The owner DJ can publish an authorized PC MP3 stream over HTTPS to all listeners.</p></article>
+      <article class="source-card glass"><h3>How do I tune in?</h3><p>Press LISTEN on the player. PROMETEI FM comes alive when the station is broadcasting.</p><h3>Can I listen on my phone?</h3><p>Yes. Tune in from Android, iPhone, tablet or desktop. Your browser may ask you to tap Play.</p></article>
+      <article class="source-card glass"><h3>Can I request a song?</h3><p>Yes. Send us an artist, title and optional dedication. Requests are free and open your email application.</p><h3>Where can I discover more music?</h3><p>Explore the chart, listen to the selection and vote for the tracks you love.</p></article>
     </div>
   </section>
   <section class="shell section-space donate-section" id="support" aria-labelledby="donate-heading">
@@ -200,8 +223,8 @@
     <p class="donate-disclosure">PROMETEI is an independent software project, not a registered charity. USDT contributions are voluntary, not tax-deductible charity donations, and do not buy song requests, subscriptions or special privileges.</p>
   </section>
   <section class="shell bridge-cta"><span class="micro-label">THE CONNECTION CONTINUES</span><h2>MUSIC CONNECTS.<br><em>PROMETEI CONNECTS PEOPLE.</em></h2><p>From your favorite sounds to the next conversation. Discover the Android messenger with Internet, Bluetooth and local-network communication options.</p><div class="cta-row"><a class="main-button" href="https://play.google.com/store/apps/details?id=com.meshnetwork.app" target="_blank" rel="noopener noreferrer">INSTALL PROMETEI MESSENGER <span>↗</span></a><a class="secondary-button" href="/">EXPLORE OUR UNIVERSE <span>↗</span></a></div><div class="cta-orbit" aria-hidden="true">✦</div></section>
-  <section class="shell fine-print" aria-label="About this experience"><p><strong>ABOUT THIS STATION</strong> PROMETEI FM offers one shared PC DJ radio stream when the owner is on air. Paid song requests are not operating. Free song requests open your email client; voluntary USDT support is handled directly in your own wallet.</p></section>
+  <section class="shell fine-print" aria-label="About this experience"><p><strong>ABOUT THIS STATION</strong> PROMETEI FM is an independent curated radio station. Song requests open your email application and are free; voluntary USDT support does not buy airplay or special privileges.</p></section>
 </main>
-<footer class="shell footer"><a class="brand" href="/"><img src="/assets/mark.svg" alt="" width="34" height="34"><span>PROMETEI<small>BEYOND THE SIGNAL</small></span></a><div><a href="/">MAIN SITE</a><a href="/portfolio">PORTFOLIO</a><a href="/fm-studio" rel="nofollow">DJ STUDIO</a><a href="/support">SUPPORT</a><a href="/privacy">PRIVACY</a></div><span>© <span id="year">2026</span> PROMETEI FM</span></footer>
+<footer class="shell footer"><a class="brand" href="/"><img src="/assets/mark.svg" alt="" width="34" height="34"><span>PROMETEI<small>BEYOND THE SIGNAL</small></span></a><div><a href="/">MAIN SITE</a><a href="/portfolio">PORTFOLIO</a><a href="/support">SUPPORT</a><a href="/privacy">PRIVACY</a></div><span>© <span id="year">2026</span> PROMETEI FM</span></footer>
 </body>
 </html>
