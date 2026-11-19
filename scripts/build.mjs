@@ -3,6 +3,7 @@
  * Set it to the verified Cloudflare Pages production URL after project creation.
  */
 import fs from 'node:fs';
+import {chartPage} from './build-charts.mjs';
 import path from 'node:path';
 import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
@@ -32,7 +33,7 @@ const titles={
 const descriptions={
  en:'PROMETEI for Android supports Bluetooth, local Wi-Fi/LAN, Internet and Mixed routes. Explore nearby messaging, including offline limits.',
  uk:'Відкрийте PROMETEI для Android: повідомлення через Bluetooth, локальну Wi-Fi/LAN мережу та інтернет. Дізнайтеся, як працює зв’язок без інтернету.',
- ru:'Откройте PROMETEI для Android: сообщения через Bluetooth, локальную Wi-Fi/LAN сеть и интернет. Узнайте, когда возможна связь без интернета.',
+ ru:'PROMETEI — мессенджер для Android. Отправляйте сообщения через Bluetooth, локальную Wi-Fi/LAN сеть и интернет. Узнайте, когда возможна связь без интернета.',
  de:'PROMETEI für Android verbindet über Bluetooth, lokales WLAN/LAN, Internet und gemischte Routen. Erfahren Sie, wann Nachrichten ohne Internet möglich sind.',
  es:'PROMETEI para Android combina Bluetooth, Wi-Fi/LAN local, Internet y modo mixto. Descubre cuándo es posible comunicarse sin conexión a Internet.',
  zh:'探索 PROMETEI 安卓通讯应用：通过蓝牙、本地 Wi-Fi 局域网、互联网及混合模式发送消息。了解何时可以离线连接，以及附近设备通信的条件、场景与限制。',
@@ -136,24 +137,8 @@ for(const l of locales){
   if(!fmCatalog[l] || Object.keys(fmCatalog[l]).length<70)
     throw Error('FM locale missing translations: '+l);
 }
-const fmTitles={
-  en:'PROMETEI FM — Live PC Radio and YouTube Backup',
-  uk:'PROMETEI FM — Радіо з ПК та резервний YouTube',
-  ru:'PROMETEI FM — Радио с ПК и резервный YouTube',
-  de:'PROMETEI FM — PC-Liveradio und YouTube-Backup',
-  es:'PROMETEI FM — Radio en vivo desde PC y YouTube de reserva',
-  zh:'PROMETEI FM — PC 直播电台与 YouTube 备用播放',
-  ja:'PROMETEI FM — PC ラジオと YouTube バックアップ'
-};
-const fmDescriptions={
-  en:'Listen to PROMETEI FM shared live radio from our PC, with an official YouTube playlist after 20 minutes without a PC signal.',
-  uk:'Слухайте спільний ефір PROMETEI FM з ПК. Якщо сигналу немає 20 хвилин, доступний резервний плейлист YouTube.',
-  ru:'Слушайте общий эфир PROMETEI FM с ПК. Если сигнала нет 20 минут, доступен резервный плейлист YouTube.',
-  de:'PROMETEI FM sendet live vom PC. Nach 20 Minuten ohne PC-Signal übernimmt eine offizielle YouTube-Playlist.',
-  es:'Escucha PROMETEI FM en vivo desde nuestro PC; tras 20 minutos sin señal, se activa la lista de YouTube de reserva.',
-  zh:'收听 PROMETEI FM 的 PC 直播。PC 信号中断 20 分钟后切换至官方 YouTube 备用歌单。',
-  ja:'PROMETEI FM のPCライブ放送。信号が20分途切れると公式YouTubeプレイリストに切り替えます。'
-};
+const fmTitles={"en": "PROMETEI FM — Online radio", "uk": "PROMETEI FM — Радіо онлайн", "ru": "PROMETEI FM — Радио онлайн", "de": "PROMETEI FM — Online-Radio", "es": "PROMETEI FM — Radio en línea", "zh": "PROMETEI FM — 在线电台", "ja": "PROMETEI FM — オンラインラジオ"};
+const fmDescriptions={"en": "Listen live, explore recently played tracks and vote for music videos.", "uk": "Слухайте прямий ефір, переглядайте історію треків і голосуйте за кліпи.", "ru": "Слушайте радио онлайн, находите исполнителей в истории эфира и выбирайте клип недели.", "de": "Live hören, gespielte Titel entdecken und für Musikvideos stimmen.", "es": "Escucha la radio en directo, descubre canciones y vota por tus vídeos favoritos.", "zh": "收听直播，查看播放记录，为音乐视频投票。", "ja": "生放送を聴き、曲の履歴を調べ、ミュージックビデオに投票できます。"};
 function fmTranslate(html, lang){
   const dictionary=fmCatalog[lang];
   html=html.replace(/>([^<>]+)</g,(match,text)=>{
@@ -192,7 +177,8 @@ for(const lang of localized){
   fs.writeFileSync(path.join(output,lang,'fm.html'),fmTranslate(fmSource,lang));
 }
 
-const urls=['',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm')];
+fs.writeFileSync(path.join(output,'fm-charts.html'),chartPage(JSON.parse(fs.readFileSync(path.join(source,'fm-ballot.json'),'utf8'))));
+const urls=['fm-history','fm-charts','',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm')];
 const xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for(const item of urls){
  xml.push('  <url><loc>'+base+item+'</loc>');
@@ -211,6 +197,6 @@ fs.writeFileSync(path.join(output,'sitemap.xml'),xml.join('\n')+'\n');
 fs.writeFileSync(path.join(output,'robots.txt'),'User-agent: *\nAllow: /\nSitemap: '+base+'sitemap.xml\n');
 fs.writeFileSync(path.join(output,'_headers'),`/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n\n/assets/*\n  Cache-Control: public, max-age=3600\n`);
 // Restrict Cloudflare Pages Functions invocation to the station API.
-fs.writeFileSync(path.join(output,'_routes.json'),JSON.stringify({version:1,include:['/api/fm/*'],exclude:[]},null,2)+'\n');
+fs.writeFileSync(path.join(output,'_routes.json'),JSON.stringify({version:1,include:['/api/fm/*','/fm-history'],exclude:[]},null,2)+'\n');
 // Google and other public site crawlers may index the pages. Do not add invented verification tokens.
 console.log('Built',urls.length,'crawlable URLs for',base,'in',output);

@@ -148,7 +148,9 @@
     "The station is silent between broadcasts.": "The station is silent between broadcasts.",
     "Live audio from the owner DJ's PC.": "Live audio from the owner DJ's PC.",
     "Listen to the owner DJ's shared PC radio stream when online.": "Listen to the owner DJ's shared PC radio stream when online.",
-    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in."
+    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.",
+    "YouTube Top 20 · Vote": "YouTube Top 20 · Vote",
+    "Track history": "Track history"
   },
   "uk": {
     "Listen": "Слухати",
@@ -299,7 +301,9 @@
     "The station is silent between broadcasts.": "Між ефірами станція мовчить.",
     "Live audio from the owner DJ's PC.": "Прямий звук із ПК діджея.",
     "Listen to the owner DJ's shared PC radio stream when online.": "Слухайте спільний прямий ефір із ПК діджея.",
-    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "Діджей веде спільний ефір із ПК. Натисніть «Слухати»."
+    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "Діджей веде спільний ефір із ПК. Натисніть «Слухати».",
+    "YouTube Top 20 · Vote": "Топ-20 YouTube · Голосувати",
+    "Track history": "Історія ефіру"
   },
   "ru": {
     "Listen": "Слушать",
@@ -450,7 +454,9 @@
     "The station is silent between broadcasts.": "Между эфирами радио молчит.",
     "Live audio from the owner DJ's PC.": "Прямой звук с ПК диджея.",
     "Listen to the owner DJ's shared PC radio stream when online.": "Слушайте общий прямой эфир с ПК диджея.",
-    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "Диджей ведёт общий эфир с ПК. Нажми «Слушать»."
+    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "Диджей ведёт общий эфир с ПК. Нажми «Слушать».",
+    "YouTube Top 20 · Vote": "Топ-20 YouTube · Голосовать",
+    "Track history": "История эфира"
   },
   "de": {
     "Listen": "Hören",
@@ -601,7 +607,9 @@
     "The station is silent between broadcasts.": "Zwischen den Sendungen bleibt das Radio stumm.",
     "Live audio from the owner DJ's PC.": "Live-Audio vom PC des DJs.",
     "Listen to the owner DJ's shared PC radio stream when online.": "Höre den gemeinsamen Livestream vom PC des DJs.",
-    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "Der DJ sendet live vom PC. Drücke auf „Hören“."
+    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "Der DJ sendet live vom PC. Drücke auf „Hören“.",
+    "YouTube Top 20 · Vote": "YouTube Top 20 · Abstimmen",
+    "Track history": "Titelverlauf"
   },
   "es": {
     "Listen": "Escuchar",
@@ -752,7 +760,9 @@
     "The station is silent between broadcasts.": "La radio permanece en silencio entre emisiones.",
     "Live audio from the owner DJ's PC.": "Audio en directo desde el PC del DJ.",
     "Listen to the owner DJ's shared PC radio stream when online.": "Escucha la emisión en directo desde el PC del DJ.",
-    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "El DJ emite desde su PC. Pulsa «Escuchar» para sintonizar."
+    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "El DJ emite desde su PC. Pulsa «Escuchar» para sintonizar.",
+    "YouTube Top 20 · Vote": "Top 20 YouTube · Votar",
+    "Track history": "Historial de canciones"
   },
   "zh": {
     "Listen": "收听",
@@ -903,7 +913,9 @@
     "The station is silent between broadcasts.": "两次直播之间电台保持静音。",
     "Live audio from the owner DJ's PC.": "音频由 DJ 的电脑实时传输。",
     "Listen to the owner DJ's shared PC radio stream when online.": "收听 DJ 电脑推送的共享直播。",
-    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "DJ 通过电脑进行直播。点击“收听”加入。"
+    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "DJ 通过电脑进行直播。点击“收听”加入。",
+    "YouTube Top 20 · Vote": "YouTube 前20名 · 投票",
+    "Track history": "播放记录"
   },
   "ja": {
     "Listen": "聴く",
@@ -1054,6 +1066,8 @@
     "The station is silent between broadcasts.": "放送時間外は音声が流れません。",
     "Live audio from the owner DJ's PC.": "DJのPCからのライブ音声。",
     "Listen to the owner DJ's shared PC radio stream when online.": "DJのPCから配信される共通のライブ音声を聴けます。",
-    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "DJがPCから配信します。「聴く」を押して参加できます。"
+    "The owner DJ broadcasts one shared PC radio stream when available. Press LISTEN to tune in.": "DJがPCから配信します。「聴く」を押して参加できます。",
+    "YouTube Top 20 · Vote": "YouTube トップ20・投票",
+    "Track history": "放送履歴"
   }
 }
