@@ -111,6 +111,7 @@ function localize(html,locale){
   for(const f of resources){html=html.replaceAll('href="'+f+'"','href="../'+f+'"').replaceAll('src="'+f+'"','src="../'+f+'"');}
   // Keep radio visitors in the same UI language as the localized home page.
   html=html.replaceAll('href="../fm.html"','href="/'+locale+'/fm"');
+  if(locale==='ru'||locale==='uk')html=html.replaceAll('♫ PROMETEI FM</a>','♫ Прометей ФМ</a>');
   html=html.replaceAll('href="assets/','href="../assets/').replaceAll('src="assets/','src="../assets/').replaceAll('href="index.html"','href="./"');
   return html;
 }
@@ -147,8 +148,17 @@ for(const l of locales){
   if(!fmCatalog[l] || Object.keys(fmCatalog[l]).length<70)
     throw Error('FM locale missing translations: '+l);
 }
-const fmTitles={"en":"PROMETEI FM — Online Radio, Live DJ & Music Chart","uk":"PROMETEI FM — Радіо онлайн, живий ефір і хіт-парад","ru":"PROMETEI FM — Радио онлайн, прямой эфир и хит-парад","de":"PROMETEI FM — Online-Radio, Live-DJ und Musikcharts","es":"PROMETEI FM — Radio online, DJ en vivo y éxitos musicales","zh":"PROMETEI FM — 在线电台、直播与音乐排行榜","ja":"PROMETEI FM — オンラインラジオ・生放送・音楽チャート"};
-const fmDescriptions={"en":"Listen to PROMETEI FM online radio when live. Discover our DJ-led music stream, recently played tracks, song requests and a listener-voted music chart.","uk":"Слухайте PROMETEI FM онлайн під час ефіру: музика від діджея, історія треків, замовлення пісень та хіт-парад із голосуванням.","ru":"Слушайте PROMETEI FM онлайн во время эфира: музыка от диджея, история треков, заявки на песни и хит-парад с голосованием.","de":"PROMETEI FM online hören: DJ-Livestream, gespielte Titel, Musikwünsche und Musikcharts mit Publikumsabstimmung.","es":"Escucha PROMETEI FM en directo: radio online con DJ, historial de canciones, solicitudes y lista musical con votaciones.","zh":"收听 PROMETEI FM 在线直播：DJ 播放、歌曲历史、点歌服务和听众投票音乐排行榜。","ja":"PROMETEI FMのオンラインラジオを聴こう。DJ生放送、再生履歴、リクエスト、投票できる音楽チャート。"};
+const fmTitles={"en":"PROMETEI FM — Online Radio, Live DJ & Music Chart","uk":"Прометей ФМ (PROMETEI FM) — слухати радіо онлайн","ru":"Прометей ФМ (PROMETEI FM) — слушать радио онлайн","de":"PROMETEI FM — Online-Radio, Live-DJ und Musikcharts","es":"PROMETEI FM — Radio online, DJ en vivo y éxitos musicales","zh":"PROMETEI FM — 在线电台、直播与音乐排行榜","ja":"PROMETEI FM — オンラインラジオ・生放送・音楽チャート"};
+const fmDescriptions={"en":"Listen to PROMETEI FM online radio when live. Discover our DJ-led music stream, recently played tracks, song requests and a listener-voted music chart.","uk":"Слухайте Прометей ФМ (PROMETEI FM) онлайн під час ефіру. Дивіться історію треків і голосуйте в музичному хіт-параді.","ru":"Слушайте Прометей ФМ (PROMETEI FM) онлайн во время эфира. Смотрите историю треков и голосуйте в музыкальном чарте.","de":"PROMETEI FM online hören: DJ-Livestream, gespielte Titel, Musikwünsche und Musikcharts mit Publikumsabstimmung.","es":"Escucha PROMETEI FM en directo: radio online con DJ, historial de canciones, solicitudes y lista musical con votaciones.","zh":"收听 PROMETEI FM 在线直播：DJ 播放、歌曲历史、点歌服务和听众投票音乐排行榜。","ja":"PROMETEI FMのオンラインラジオを聴こう。DJ生放送、再生履歴、リクエスト、投票できる音楽チャート。"};
+const fmHeading={
+ en:['PROMETEI FM','Online radio'],
+ uk:['Прометей ФМ','Радіо онлайн'],
+ ru:['Прометей ФМ','Радио онлайн'],
+ de:['PROMETEI FM','Online-Radio'],
+ es:['PROMETEI FM','Radio en línea'],
+ zh:['PROMETEI FM','在线电台'],
+ ja:['PROMETEI FM','オンラインラジオ']
+};
 function fmTranslate(html, lang){
   for(const page of ['fm-charts','fm-history'])html=html.replaceAll('href="/'+page+'"','href="'+urlFor(lang,page)+'"');
   const dictionary=fmCatalog[lang];
@@ -163,7 +173,12 @@ function fmTranslate(html, lang){
     return translated?kind+'="'+escapeAttr(translated)+'"':match;
   });
   html=html.replace(/<html lang="[^"]*"/,'<html lang="'+mappings[lang]+'"');
-  const url=base+(lang==='en'?'fm':lang+'/fm');
+  const url=new URL(urlFor(lang,'fm').slice(1),base).href;
+  const [name, label]=fmHeading[lang];
+  html=html.replace(/<h1>[^]*?<\/h1>/i,
+    '<h1>'+escapeAttr(name)+'<br><span>'+escapeAttr(label)+'</span></h1>');
+  html=html.replace(/<p class="lede">[^]*?<\/p>/i,
+    '<p class="lede">'+escapeAttr(fmDescriptions[lang])+'</p>');
   html=html.replace(/<title>[\s\S]*?<\/title>/i,'<title>'+escapeAttr(fmTitles[lang])+'</title>');
   const d=escapeAttr(fmDescriptions[lang]);
   html=html.replace(/<meta name="description"[^>]*>/i,'<meta name="description" content="'+d+'">');
@@ -173,8 +188,25 @@ function fmTranslate(html, lang){
   html=html.replace(/<meta property="og:description"[^>]*>/i,'<meta property="og:description" content="'+d+'">');
   html=html.replace(/<meta property="og:url"[^>]*>/i,'<meta property="og:url" content="'+escapeAttr(url)+'">');
   html=html.replace(/<link rel="canonical"[^>]*>/i,'<link rel="canonical" href="'+escapeAttr(url)+'">');
-  // The WebApplication schema is uniform. Update its URL to each localized page.
-  html=html.replace('https://prometei-web-2.pages.dev/fm","description"',url+'","description"');
+  const stationUrl=base+'fm';
+  const radioPage={
+    '@context':'https://schema.org',
+    '@type':'WebPage',
+    url,
+    name:fmTitles[lang],
+    description:fmDescriptions[lang],
+    inLanguage:mappings[lang],
+    mainEntity:{
+      '@type':'BroadcastService',
+      '@id':stationUrl+'#station',
+      name:'PROMETEI FM',
+      alternateName:['Прометей ФМ','Прометей FM'],
+      url:stationUrl,
+      broadcaster:{'@type':'Organization',name:'PROMETEI',url:base}
+    }
+  };
+  html=html.replace(/<script type="application\/ld\+json">[^]*?<\/script>/i,
+    '<script type="application/ld+json">'+q(radioPage)+'</script>');
   const fmAlternates=[
     ...locales.map(code=>'<link rel="alternate" hreflang="'+mappings[code]+'" href="'+base+(code==='en'?'fm':code+'/fm')+'">'),
     '<link rel="alternate" hreflang="x-default" href="'+base+'fm">'
@@ -210,7 +242,15 @@ for(const item of urls){
 }
 xml.push('</urlset>');
 fs.writeFileSync(path.join(output,'sitemap.xml'),xml.join('\n')+'\n');
-fs.writeFileSync(path.join(output,'robots.txt'),'User-agent: *\nAllow: /\nSitemap: '+base+'sitemap.xml\n');
+const fmUrls=locales.map(lang=>base+urlFor(lang,'fm').slice(1));
+const fmSitemap=[
+  '<?xml version="1.0" encoding="UTF-8"?>',
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+  ...fmUrls.map(url=>'<url><loc>'+escapeAttr(url)+'</loc></url>'),
+  '</urlset>'
+].join('\n');
+fs.writeFileSync(path.join(output,'sitemap-fm.xml'),fmSitemap+'\n');
+fs.writeFileSync(path.join(output,'robots.txt'),'User-agent: *\nAllow: /\nSitemap: '+base+'sitemap.xml\nSitemap: '+base+'sitemap-fm.xml\n');
 fs.writeFileSync(path.join(output,'_headers'),`/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n\n/assets/*\n  Cache-Control: public, max-age=3600\n`);
 // Restrict Cloudflare Pages Functions invocation to the station API.
 fs.writeFileSync(path.join(output,'_routes.json'),JSON.stringify({version:1,include:['/api/fm/*',...locales.map(l=>urlFor(l,'fm-history'))],exclude:[]},null,2)+'\n');

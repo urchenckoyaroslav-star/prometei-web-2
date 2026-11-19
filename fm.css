@@ -370,3 +370,19 @@ body{min-width:0;max-width:100%;overflow-wrap:break-word}
  .history-portal,.station-identity-link,.portal-arrow{transition:none!important}
  .history-portal:hover,.station-identity-link:hover{transform:none}
 }
+
+.fm-language-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  padding-block: 12px;
+}
+
+.fm-language-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #e6caa3;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
