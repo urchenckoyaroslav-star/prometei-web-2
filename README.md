@@ -6,7 +6,9 @@ A **real, responsive static website** for PROMETEI Messenger and related indepen
 
 ## For international hiring teams
 
-**Developer portfolio:** https://prometei-web-2.pages.dev/portfolio
+**Developer portfolio:** [Case studies and contact](https://prometei-web-2.pages.dev/portfolio) · [Project screenshots](https://prometei-web-2.pages.dev/portfolio#project-gallery)
+
+[![PROMETEI WEB 2 homepage](assets/portfolio/web.webp)](https://prometei-web-2.pages.dev/portfolio#project-gallery)
 
 Projects you can independently inspect:
 - **PROMETEI Messenger:** published Android app on Google Play; Bluetooth, local Wi-Fi/LAN and Internet workflows — [store listing](https://play.google.com/store/apps/details?id=com.meshnetwork.app).
@@ -17,7 +19,7 @@ Projects you can independently inspect:
 
 Experience areas evidenced here: Android / Kotlin-oriented release workflows and device testing, Bluetooth/BLE and local network scenarios, Google Play testing, vanilla HTML/CSS/JavaScript, Cloudflare Pages Functions/Workers KV, responsive and multilingual UI.
 
-No invented professional years, degrees, client metrics, security guarantees or claims that closed tests are production apps. Genuine Android UI screenshots are not yet part of this public site; concept illustrations are marked separately.
+No invented professional years, degrees, client metrics, security guarantees or claims that closed tests are production apps. The portfolio gallery includes published PROMETEI Google Play screenshots and captures of the live website and FM chart.
 
 ## Features
 
