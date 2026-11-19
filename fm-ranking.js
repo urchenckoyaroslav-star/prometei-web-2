@@ -62,3 +62,47 @@ document.addEventListener('click',async e=>{
   finally{button.classList.remove('sending');pending=false;paint(scores);}
 });
 refresh();setInterval(refresh,30000);
+
+const playChart=document.querySelector('#play-chart');
+const playerPanel=document.querySelector('#chart-player');
+const screen=document.querySelector('#chart-screen');
+const jump=document.querySelector('#chart-jump');
+let sessionTracks=[];
+function playFrom(index){
+  const ids=sessionTracks.slice(index).map(track=>track.id);
+  const url=new URL('https://www.youtube-nocookie.com/embed/'+ids[0]);
+  url.searchParams.set('autoplay','1');
+  url.searchParams.set('playsinline','1');
+  if(ids.length>1)url.searchParams.set('playlist',ids.slice(1).join(','));
+  const frame=document.createElement('iframe');
+  frame.title='PROMETEI FM · '+sessionTracks[index].title;
+  frame.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';
+  frame.allowFullscreen=true;
+  frame.referrerPolicy='strict-origin-when-cross-origin';
+  frame.src=url.href;
+  screen.replaceChildren(frame);
+}
+playChart.addEventListener('click',()=>{
+  sessionTracks=[...document.querySelectorAll('#chart > li')].map(row=>({id:row.dataset.id,title:row.querySelector('a').textContent}));
+  if(!sessionTracks.length)return;
+  jump.length=1;
+  sessionTracks.forEach((track,i)=>jump.add(new Option((i+1)+'. '+track.title,String(i))));
+  playerPanel.hidden=false;
+  playChart.hidden=true;
+  playChart.setAttribute('aria-expanded','true');
+  playFrom(0);
+  jump.focus({preventScroll:true});
+});
+jump.addEventListener('change',()=>{
+  if(jump.value==='')return;
+  playFrom(Number(jump.value));
+  jump.selectedIndex=0;
+});
+document.querySelector('#close-chart').addEventListener('click',()=>{
+  screen.replaceChildren();
+  sessionTracks=[];
+  playerPanel.hidden=true;
+  playChart.hidden=false;
+  playChart.setAttribute('aria-expanded','false');
+  playChart.focus({preventScroll:true});
+});
