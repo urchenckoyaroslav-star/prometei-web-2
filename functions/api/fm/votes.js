@@ -1,4 +1,4 @@
-import catalog from '../../../fm-ballot.json';
+import catalog from '../../../fm-vote-catalog.js';
 
 export function ballotWeek(now=new Date()){
   const parts=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Kyiv',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(now).map(x=>[x.type,x.value]));
@@ -20,8 +20,8 @@ async function handleVoteRequest({request,env}){
     if(request.headers.get('Origin')!==new URL(request.url).origin)return reply({},403);
     const body=await request.json().catch(()=>null);
     if(body?.week!==week)return reply({error:'Началась новая неделя. Обновите рейтинг.'},409);
-    const tracks=Object.hasOwn(catalog,body.region)?catalog[body.region]:[];
-    if(!tracks.some(t=>t.id===body.id))return reply({error:'Клип отсутствует в списке'},400);
+    const tracks=body && typeof body.region==='string' && Object.hasOwn(catalog,body.region)?catalog[body.region]:[];
+    if(!tracks.includes(body?.id))return reply({error:'Клип отсутствует в списке'},400);
     if(await store.get(key))return reply({error:'Голос с этого подключения уже принят'},409);
     const choice=body.region+'/'+body.id;
     await store.put(key,choice,{expirationTtl:8*86400,metadata:{choice}});
