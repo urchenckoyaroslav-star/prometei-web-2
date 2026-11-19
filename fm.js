@@ -76,7 +76,7 @@
       artist.textContent=h.artist||'Artist not specified in file metadata';
       title.append(artist);
       const collection=document.createElement('div');collection.className='history-collection';
-      collection.textContent=h.album||'PC DJ / SHUFFLE';
+      collection.textContent=h.album||'PROMETEI / ROTATION';
       row.append(time,title,collection);
       el.history.append(row);
     }
@@ -130,15 +130,15 @@
       if(globalHistory.live&&globalHistory.current&&state.config?.enabled){
         el.title.textContent=globalHistory.current.title;
         el.artist.textContent=globalHistory.current.artist||
-          'Artist not specified in music tags';
-        el.source.textContent=t('♫ PROMETEI PC DJ / SHARED LIVE RADIO');
+          'PROMETEI FM';
+        el.source.textContent=t('♫ PROMETEI FM / LIVE');
       }else if(state.config?.enabled){
         el.title.textContent='PROMETEI FM / Station standby';
-        el.artist.textContent='The DJ is not currently transmitting audio.';
+        el.artist.textContent='The frequency is quiet between broadcasts.';
       }
       renderHistory();
     }catch(error){
-      globalHistory.error=state.config?.previewMode?'The owner PC is offline or this temporary radio link expired.':'36-hour public play log unavailable until the DJ station backend is connected.';
+      globalHistory.error=state.config?.previewMode?'The signal is temporarily unavailable. Please try again later.':'The music archive is temporarily unavailable.';
       globalHistory.ready=false;
       renderHistory();
     }
@@ -166,7 +166,7 @@
   }
   function reconnectStream() {
     if (!state.intent || !state.config?.enabled || state.config.mode!=='pc' || state.config.previewMode || state.reconnects>=4) {
-      if(state.intent && state.reconnects>=4) notify('The PC stream is unavailable. Press LISTEN to try again.');
+      if(state.intent && state.reconnects>=4) notify('The signal is unavailable. Press LISTEN to try again.');
       return;
     }
     cancelReconnect();
@@ -232,18 +232,18 @@
         else el.audio.src=url;
         el.title.textContent=t('PROMETEI FM / Live stream');
         el.artist.textContent=t('Broadcast selected by our DJ');
-        el.source.textContent=t('♫ AUTHORIZED PC STREAM');
-        notify(state.config.previewMode?'Temporary owner-PC broadcast preview. Press LISTEN; the owner must keep their PC on.':'Our live PC radio source is available. Press LISTEN to connect.');
+        el.source.textContent=t('♫ LIVE ON PROMETEI FM');
+        notify(state.config.previewMode?'The live signal is ready. Press LISTEN to tune in.':'The frequency is ready. Press LISTEN to tune in.');
         update();
         if(previousListening){
           state.intent=true;state.loading=true;update();
           if(state.config.pcWebSocket){
             const ok=window.PrometeiPcPreview?.start(el.audio,url,notify);
-            if(!ok){state.loading=false;update();notify('PC stream returned. Tap LISTEN to reconnect.');}
+            if(!ok){state.loading=false;update();notify('The signal is back. Tap LISTEN to reconnect.');}
           }else{
             el.audio.play().catch(()=>{
               state.loading=false;update();
-              notify('PC stream returned. Tap LISTEN to reconnect.');
+              notify('The signal is back. Tap LISTEN to reconnect.');
             });
           }
         }
@@ -289,7 +289,7 @@
   el.audio.addEventListener('error', () => {
     if (state.source !== 'pc') return;
     state.playing = false; update();
-    if(state.config?.pcWebSocket){notify('PC audio interrupted. Reconnecting to the live stream…');reconnectStream();return;}
+    if(state.config?.pcWebSocket){notify('Signal interrupted. Reconnecting…');reconnectStream();return;}
     reconnectStream();
   });
   el.request.addEventListener('submit', e => {
@@ -322,7 +322,7 @@
       notify('Our station is currently off air.');
       return;
     }
-    if(!state.playing && state.config?.mode==='pc')notify('Our live PC radio source is available. Press LISTEN to connect.');
+    if(!state.playing && state.config?.mode==='pc')notify('The frequency is ready. Press LISTEN to tune in.');
   });
   window.addEventListener('pagehide',cancelReconnect);
   setInterval(counter, 1000);
