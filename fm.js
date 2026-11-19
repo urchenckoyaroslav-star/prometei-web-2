@@ -122,7 +122,7 @@
         el.artist.textContent=globalHistory.current.artist||
           'Artist not specified in music tags';
         el.source.textContent=t('♫ PROMETEI PC DJ / SHARED LIVE RADIO');
-      }else if(state.config?.mode==='pc'){
+      }else if(state.config?.enabled){
         el.title.textContent='PROMETEI FM / Station standby';
         el.artist.textContent='The DJ is not currently transmitting audio.';
       }
