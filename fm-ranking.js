@@ -1,20 +1,24 @@
-const lists=[...document.querySelectorAll('[data-region]')];
 const message=document.querySelector('#vote-message');
 let week='',choice='',pending=false;
 function paint(scores){
-  for(const list of lists){
-    const rows=[...list.children];
-    for(const row of rows){
-      const id=list.dataset.region+'/'+row.dataset.id;
-      const votes=scores[id]||0;
-      row.querySelector('output').value=String(votes);
-      const button=row.querySelector('button');
-      button.disabled=pending||!!choice||!week;
-      button.textContent=choice===id?'Ваш голос':'Голосовать';
-    }
-    rows.sort((a,b)=>Number(b.querySelector('output').value)-Number(a.querySelector('output').value)||Number(a.dataset.seed)-Number(b.dataset.seed));
-    list.append(...rows);
+  const list=document.querySelector('#chart');
+  const rows=[...list.children];
+  const counts=new Map();
+  for(const [key,count] of Object.entries(scores)){
+    const id=key.split('/').pop();
+    counts.set(id,(counts.get(id)||0)+count);
   }
+  const votes=row=>counts.get(row.dataset.id)||0;
+  const total=rows.reduce((sum,row)=>sum+votes(row),0);
+  const percent=new Intl.NumberFormat('ru',{style:'percent',maximumFractionDigits:1});
+  for(const row of rows){
+    row.querySelector('output').value=percent.format(total?votes(row)/total:0);
+    const button=row.querySelector('button');
+    button.disabled=pending||!!choice||!week;
+    button.textContent=choice.split('/').pop()===row.dataset.id?'Ваш голос':'Голосовать';
+  }
+  rows.sort((a,b)=>votes(b)-votes(a)||Number(a.dataset.seed)-Number(b.dataset.seed));
+  list.append(...rows);
 }
 let scores={},generation=0;
 async function refresh(){
@@ -31,7 +35,7 @@ document.addEventListener('click',async e=>{
   const button=e.target.closest('button[data-vote]');
   if(!button||pending||choice)return;
   pending=true;generation++;paint(scores);
-  const id=button.closest('li').dataset.id,region=button.closest('ol').dataset.region;
+  const id=button.closest('li').dataset.id,region=button.closest('li').dataset.origin;
   try{
     const r=await fetch('/api/fm/votes',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,region,week})});
     const d=await r.json();
