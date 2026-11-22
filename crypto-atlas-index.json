@@ -11,7 +11,6 @@
       "ecosystem": "Bitcoin network",
       "kind": "Currency",
       "glyph": "₿",
-      "official": "https://bitcoin.org/",
       "coinbasePage": 1
     },
     {
@@ -22,7 +21,6 @@
       "ecosystem": "Ethereum network",
       "kind": "Smart contracts",
       "glyph": "Ξ",
-      "official": "https://ethereum.org/",
       "coinbasePage": 1
     },
     {
@@ -33,7 +31,6 @@
       "ecosystem": "Tether",
       "kind": "Stablecoin",
       "glyph": "₮",
-      "official": "https://tether.to/",
       "coinbasePage": 1
     },
     {
@@ -44,7 +41,6 @@
       "ecosystem": "BNB Chain ecosystem",
       "kind": "Exchange and chain",
       "glyph": "◆",
-      "official": "https://www.bnbchain.org/",
       "coinbasePage": 1
     },
     {
@@ -55,7 +51,6 @@
       "ecosystem": "Circle",
       "kind": "Stablecoin",
       "glyph": "$",
-      "official": "https://www.circle.com/usdc",
       "coinbasePage": 1
     },
     {
@@ -66,7 +61,6 @@
       "ecosystem": "XRP Ledger",
       "kind": "Payments",
       "glyph": "✕",
-      "official": "https://xrpl.org/",
       "coinbasePage": 1
     },
     {
@@ -77,7 +71,6 @@
       "ecosystem": "Solana",
       "kind": "Smart contracts",
       "glyph": "◎",
-      "official": "https://solana.com/",
       "coinbasePage": 1
     },
     {
@@ -88,7 +81,6 @@
       "ecosystem": "Hyperliquid",
       "kind": "Trading infrastructure",
       "glyph": "↗",
-      "official": "https://hyperliquid.xyz/",
       "coinbasePage": 1
     },
     {
@@ -99,7 +91,6 @@
       "ecosystem": "Zcash",
       "kind": "Privacy",
       "glyph": "ⓩ",
-      "official": "https://z.cash/",
       "coinbasePage": 1
     },
     {
@@ -110,7 +101,6 @@
       "ecosystem": "Dogecoin",
       "kind": "Meme",
       "glyph": "Ð",
-      "official": "https://dogecoin.com/",
       "coinbasePage": 1
     },
     {
@@ -121,7 +111,6 @@
       "ecosystem": "Chainlink",
       "kind": "Oracle",
       "glyph": "⬡",
-      "official": "https://chain.link/",
       "coinbasePage": 2
     },
     {
@@ -132,7 +121,6 @@
       "ecosystem": "Sky ecosystem",
       "kind": "Stablecoin",
       "glyph": "$",
-      "official": "https://sky.money/",
       "coinbasePage": 2
     },
     {
@@ -143,7 +131,6 @@
       "ecosystem": "Cardano",
       "kind": "Smart contracts",
       "glyph": "✣",
-      "official": "https://cardano.org/",
       "coinbasePage": 2
     },
     {
@@ -154,7 +141,6 @@
       "ecosystem": "Stellar",
       "kind": "Payments",
       "glyph": "✧",
-      "official": "https://stellar.org/",
       "coinbasePage": 2
     },
     {
@@ -165,7 +151,6 @@
       "ecosystem": "Bitcoin Cash",
       "kind": "Currency",
       "glyph": "Ƀ",
-      "official": "https://bitcoincash.org/",
       "coinbasePage": 2
     },
     {
@@ -176,7 +161,6 @@
       "ecosystem": "NEAR Protocol",
       "kind": "Smart contracts",
       "glyph": "И",
-      "official": "https://near.org/",
       "coinbasePage": 2
     },
     {
@@ -187,7 +171,6 @@
       "ecosystem": "Litecoin",
       "kind": "Currency",
       "glyph": "Ł",
-      "official": "https://litecoin.org/",
       "coinbasePage": 2
     },
     {
@@ -198,7 +181,6 @@
       "ecosystem": "Avalanche",
       "kind": "Smart contracts",
       "glyph": "▲",
-      "official": "https://avax.network/",
       "coinbasePage": 2
     },
     {
@@ -209,7 +191,6 @@
       "ecosystem": "Ripple",
       "kind": "Stablecoin",
       "glyph": "$",
-      "official": "https://ripple.com/",
       "coinbasePage": 2
     },
     {
@@ -220,7 +201,6 @@
       "ecosystem": "World Liberty Financial",
       "kind": "Stablecoin",
       "glyph": "$",
-      "official": "https://www.worldlibertyfinancial.com/",
       "coinbasePage": 2
     },
     {
@@ -231,7 +211,6 @@
       "ecosystem": "Uniswap",
       "kind": "DeFi",
       "glyph": "🦄",
-      "official": "https://uniswap.org/",
       "coinbasePage": 3
     },
     {
@@ -242,7 +221,6 @@
       "ecosystem": "The Open Network",
       "kind": "Smart contracts",
       "glyph": "◇",
-      "official": "https://ton.org/",
       "coinbasePage": 3
     },
     {
@@ -253,7 +231,6 @@
       "ecosystem": "Sui",
       "kind": "Smart contracts",
       "glyph": "◈",
-      "official": "https://sui.io/",
       "coinbasePage": 3
     },
     {
@@ -264,7 +241,6 @@
       "ecosystem": "PayPal USD",
       "kind": "Stablecoin",
       "glyph": "$",
-      "official": "https://www.paypal.com/",
       "coinbasePage": 3
     },
     {
@@ -275,7 +251,6 @@
       "ecosystem": "Hedera",
       "kind": "Smart contracts",
       "glyph": "ℏ",
-      "official": "https://hedera.com/",
       "coinbasePage": 3
     },
     {
@@ -286,7 +261,6 @@
       "ecosystem": "Shiba Inu",
       "kind": "Meme",
       "glyph": "🐕",
-      "official": "https://shib.io/",
       "coinbasePage": 3
     },
     {
@@ -297,7 +271,6 @@
       "ecosystem": "Bittensor",
       "kind": "AI network",
       "glyph": "τ",
-      "official": "https://bittensor.com/",
       "coinbasePage": 3
     },
     {
@@ -308,7 +281,6 @@
       "ecosystem": "Cronos",
       "kind": "Exchange and chain",
       "glyph": "⬢",
-      "official": "https://cronos.org/",
       "coinbasePage": 3
     },
     {
@@ -319,7 +291,6 @@
       "ecosystem": "Paxos",
       "kind": "Tokenized asset",
       "glyph": "Au",
-      "official": "https://www.paxos.com/",
       "coinbasePage": 3
     },
     {
@@ -330,7 +301,6 @@
       "ecosystem": "Quant",
       "kind": "Interoperability",
       "glyph": "Q",
-      "official": "https://quant.network/",
       "coinbasePage": 3
     },
     {
@@ -341,7 +311,6 @@
       "ecosystem": "Aave",
       "kind": "DeFi lending",
       "glyph": "◌",
-      "official": "https://aave.com/",
       "coinbasePage": 4
     },
     {
@@ -352,7 +321,6 @@
       "ecosystem": "World Liberty Financial",
       "kind": "Governance",
       "glyph": "W",
-      "official": "https://www.worldlibertyfinancial.com/",
       "coinbasePage": 4
     },
     {
@@ -363,7 +331,6 @@
       "ecosystem": "Pepe token",
       "kind": "Meme",
       "glyph": "🐸",
-      "official": "https://www.coinbase.com/explore/s/all?page=4",
       "coinbasePage": 4
     },
     {
@@ -374,7 +341,6 @@
       "ecosystem": "Aster DEX",
       "kind": "Trading infrastructure",
       "glyph": "✺",
-      "official": "https://www.asterdex.com/",
       "coinbasePage": 4
     },
     {
@@ -385,7 +351,6 @@
       "ecosystem": "Ondo Finance",
       "kind": "Tokenized finance",
       "glyph": "◈",
-      "official": "https://ondo.finance/",
       "coinbasePage": 4
     },
     {
@@ -396,7 +361,6 @@
       "ecosystem": "Ethena Labs",
       "kind": "Synthetic dollar",
       "glyph": "△",
-      "official": "https://ethena.fi/",
       "coinbasePage": 4
     },
     {
@@ -407,7 +371,6 @@
       "ecosystem": "Mantle",
       "kind": "Ethereum scaling",
       "glyph": "▣",
-      "official": "https://www.mantle.xyz/",
       "coinbasePage": 4
     },
     {
@@ -418,7 +381,6 @@
       "ecosystem": "Polkadot",
       "kind": "Interoperability",
       "glyph": "●",
-      "official": "https://polkadot.com/",
       "coinbasePage": 4
     },
     {
@@ -429,7 +391,6 @@
       "ecosystem": "Internet Computer",
       "kind": "Smart contracts",
       "glyph": "∞",
-      "official": "https://internetcomputer.org/",
       "coinbasePage": 4
     },
     {
@@ -440,7 +401,6 @@
       "ecosystem": "Venice AI",
       "kind": "AI access",
       "glyph": "V",
-      "official": "https://venice.ai/",
       "coinbasePage": 4
     },
     {
@@ -451,7 +411,6 @@
       "ecosystem": "Sky ecosystem",
       "kind": "Governance",
       "glyph": "☀",
-      "official": "https://sky.money/",
       "coinbasePage": 5
     },
     {
@@ -462,7 +421,6 @@
       "ecosystem": "Pump.fun",
       "kind": "Meme platform",
       "glyph": "♨",
-      "official": "https://pump.fun/",
       "coinbasePage": 5
     },
     {
@@ -473,7 +431,6 @@
       "ecosystem": "Open Standard",
       "kind": "Stablecoin",
       "glyph": "$",
-      "official": "https://openusd.inc/",
       "coinbasePage": 5
     },
     {
@@ -484,7 +441,6 @@
       "ecosystem": "Morpho",
       "kind": "DeFi lending",
       "glyph": "◐",
-      "official": "https://morpho.org/",
       "coinbasePage": 5
     },
     {
@@ -495,7 +451,6 @@
       "ecosystem": "Ethereum Classic",
       "kind": "Smart contracts",
       "glyph": "Ξ",
-      "official": "https://ethereumclassic.org/",
       "coinbasePage": 5
     },
     {
@@ -506,7 +461,6 @@
       "ecosystem": "World",
       "kind": "Digital identity",
       "glyph": "◉",
-      "official": "https://world.org/",
       "coinbasePage": 5
     },
     {
@@ -517,7 +471,6 @@
       "ecosystem": "Polygon",
       "kind": "Ethereum scaling",
       "glyph": "⬡",
-      "official": "https://polygon.technology/",
       "coinbasePage": 5
     },
     {
@@ -528,7 +481,6 @@
       "ecosystem": "Arbitrum",
       "kind": "Ethereum scaling",
       "glyph": "▲",
-      "official": "https://arbitrum.io/",
       "coinbasePage": 5
     },
     {
@@ -539,7 +491,6 @@
       "ecosystem": "Jupiter",
       "kind": "Solana DeFi",
       "glyph": "♃",
-      "official": "https://jup.ag/",
       "coinbasePage": 5
     },
     {
@@ -550,7 +501,6 @@
       "ecosystem": "Jito",
       "kind": "Liquid staking",
       "glyph": "✦",
-      "official": "https://www.jito.network/",
       "coinbasePage": 5
     }
   ]
