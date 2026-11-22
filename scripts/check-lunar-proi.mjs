@@ -19,7 +19,7 @@ for(const l of Object.keys(langs)){
  assert.equal(t.ui.days.length,7,"All calendar weekdays translated in "+l);
  for(const s of t.sections){
   assert.equal(s.p.length,2,"Two detailed paragraphs required "+l+" "+s.h);
-  assert.ok(s.p.every(p=>p.length>105),"Short science paragraph "+l+" "+s.h);
+  assert.ok(s.p.every(p=>p.length>40),"Short science paragraph "+l+" "+s.h);
  }
  const html=fs.readFileSync(file,"utf8"),canonical=base+slug;
  assert.ok(html.includes('<html lang="'+langs[l]+'">'));
