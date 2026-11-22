@@ -19,6 +19,6 @@ export function adBox(base,slot="newsFeed",place="inline"){
  const label='<span class="site-ad-label">ADVERTISEMENT</span>';
  const content=active
   ?'<ins class="adsbygoogle" style="display:block" data-ad-client="'+pub+'" data-ad-slot="'+zone+'" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(window.adsbygoogle=window.adsbygoogle||[]).push({});</script>'
-  :'<div class="site-ad-inner"><span class="site-ad-spark" aria-hidden="true">✦</span><div class="site-ad-copy"><strong>'+esc(config.house.headline)+'</strong><p>'+esc(config.house.description)+'</p><a href="'+esc(base+'portfolio')+'">Sponsorship and portfolio information ↗</a></div></div><small class="site-ad-disclaimer">House promotion · Paid advertising is not active in this placement.</small>';
+  :'<div class="site-ad-inner"><span class="site-ad-spark" aria-hidden="true">✦</span><div class="site-ad-copy"><strong>'+esc(config.house.headline)+'</strong><p>'+esc(config.house.description)+'</p><a href="'+esc(new URL(config.house.contactUrl||"/advertise/",base).href)+'">Explore sponsorship opportunities ↗</a></div></div><small class="site-ad-disclaimer">House promotion · Google ads are not currently active in this placement.</small>';
  return '<aside class="site-ad-placement site-ad-'+esc(place)+'" data-ad-placement="'+key+'" aria-label="Advertisement">'+label+content+'</aside>';
 }
