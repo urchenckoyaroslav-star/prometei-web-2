@@ -37,8 +37,6 @@ function topic(g,lang){if(g[lang])return {title:g[lang][0],description:g[lang][1
  return {title:d.titles[i],description:d.intros[i].slice(0,210),intro:d.intros[i],sections:[[scienceTitles[lang].focus,d.focus[i]]]};
 }
 function slugURL(base,lang,slug){return base+(lang==="en"?"":lang+"/")+"guides/"+(slug?slug+"/":"")}
-function esc(s){return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;")}
-function jsonLd(data){return JSON.stringify(data).replace(/</g,"\\u003c")}
 function langSwitch(base,lang,active){let items=locales.map(l=>'<a '+(l===lang?'aria-current="true"':'')+' lang="'+languageCodes[l]+'" hreflang="'+languageCodes[l]+'" href="'+esc(slugURL(base,l,active==="guides"?"":active))+'">'+languageNames[l]+'</a>').join("");
  return '<details class="language-switch"><summary aria-label="Choose language">'+languageNames[lang]+' <span aria-hidden="true">⌄</span></summary><div class="language-options">'+items+'</div></details>'
 }
