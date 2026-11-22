@@ -38,6 +38,23 @@ let selectedDate=null,lastDay=null,animationFrame=0,currentPhase=phaseAt(utcToda
 const phaseButtons=[...document.querySelectorAll("[data-phase-index]")];
 const rail=$("lp-milestones");
 const railButtons=[];
+const valueOutput=$("lp-issuance-number");
+const cycleOutput=$("lp-cycle-number");
+let previouslyDisplayedMilli=null;
+function showPotentialReward(earnedMilli){
+ const formatted=one.format(earnedMilli/1000);
+ // Split markup keeps the value gold and the PROI symbol green while screen readers
+ // continue receiving a single natural text value inside the parent <output>.
+ if(valueOutput)valueOutput.textContent=formatted;
+ if(previouslyDisplayedMilli!==null && earnedMilli!==previouslyDisplayedMilli &&
+    !reduced && valueOutput?.animate){
+   valueOutput.animate([
+     {transform:"translateY(5px) scale(.985)",opacity:.65},
+     {transform:"translateY(0) scale(1)",opacity:1}
+   ],{duration:220,easing:"ease-out"});
+ }
+ previouslyDisplayedMilli=earnedMilli;
+}
 const chartTrace=$("lp-chart-trace"),chartArea=$("lp-chart-area");
 const chartCursor=$("lp-chart-cursor"),chartPoint=$("lp-chart-point");
 function renderRewardChart(){
@@ -121,9 +138,9 @@ function paint(age,date=null){
  $("lp-lit-percent").textContent=Math.floor(lit*100)+"%";
  $("lp-age").textContent=dec.format(safeAge);
  const due=dueAt(p),earnedMilli=due.reduce((sum,m)=>sum+m.milli,0);
- $("lp-issuance").textContent=one.format(earnedMilli/1000)+" PROI";
+ showPotentialReward(earnedMilli);
  updateChartCursor(p,earnedMilli);
- $("lp-cycle-total").textContent=one.format(totalMilli/1000)+" PROI";
+ if(cycleOutput)cycleOutput.textContent=one.format(totalMilli/1000);
  $("lp-selected-date").textContent=date?dateText.format(date):cfg.labels.manual;
  const baseLunation=lunationIndex(date?date.getTime():utcToday.getTime());
  const next=nextAfter(baseLunation,p);
@@ -165,7 +182,12 @@ function renderRail(){
   b.setAttribute("aria-pressed","false");
   b.setAttribute("aria-label",(m.waxing?"↗ ":"↘ ")+m.threshold+"%, +"+one.format(m.milli/1000)+" PROI");
   const mark=document.createElement("span");mark.textContent=(m.waxing?"↗ ":"↘ ")+m.threshold+"%";
-  const reward=document.createElement("small");reward.textContent="+"+one.format(m.milli/1000);
+  const reward=document.createElement("small");reward.className="lp-milestone-pay";
+  const number=document.createElement("span");number.className="lp-milestone-number";
+  number.textContent="+"+one.format(m.milli/1000);
+  const token=document.createElement("span");token.className="lp-milestone-unit";token.textContent="P";
+  token.setAttribute("aria-hidden","true");
+  reward.append(number,token);
   b.append(mark,reward);
   b.addEventListener("click",()=>animate(m.p*syn,null));
   rail.append(b);railButtons.push(b);
