@@ -1,0 +1,141 @@
+{
+  "title": "The Moon, its phases & the future of PROI",
+  "description": "Explore lunar science, tides, animal rhythms and evidence about human sleep. Move a realistic Moon-phase slider to simulate a proposed future PROI emission and fee-burn model. PROI is currently in-app points, not a cryptocurrency.",
+  "ui": {
+    "kicker": "PROMETEI LUNAR LAB · SCIENCE & FUTURE DESIGN",
+    "headline": "The Moon keeps time. PROI imagines a future.",
+    "lead": "One celestial rhythm. A world of real science. And an experimental idea: a future PROI coin whose issuance schedule follows an openly calculated lunar cycle.",
+    "status": "Today PROI means in-app reward points, not a launched cryptocurrency. The numbers in this laboratory are illustrative design assumptions, not rewards, investments, or coins being minted.",
+    "now": "NOW · REWARD POINTS",
+    "future": "FUTURE TOKEN · CONCEPT",
+    "top10": "Top-ten ambition · not a prediction",
+    "moonTitle": "Move through a lunar month",
+    "moonIntro": "Drag the slider, tap a phase, or choose a calendar day. The Moon's shape and the proposed PROI issuance update together.",
+    "slider": "Lunar cycle position",
+    "phase": "Phase",
+    "light": "Visible illumination",
+    "age": "Approximate lunar age",
+    "date": "Selected date (UTC)",
+    "manual": "Manual phase preview",
+    "estimate": "Illustrative PROI units / day",
+    "cycle": "Illustrative units / 29.53-day cycle",
+    "actual": "Real blockchain PROI issued today",
+    "zeroNote": "Zero: no PROI blockchain or automated lunar issuance has been launched.",
+    "mint": "MOON-TIMED PROI · HYPOTHETICAL",
+    "sim": "Example only: 100 × (1 + 2 × illuminated fraction). At a new Moon: 100 units/day; at a full Moon: 300 units/day. These are invented demonstration parameters, not an approved supply policy.",
+    "phaseChoose": "Choose a Moon phase",
+    "calendarTitle": "Interactive lunar calendar",
+    "calendarInfo": "Select a day to preview the approximate phase and illustrative issuance. This is not an astronomical ephemeris or real reward balance.",
+    "prev": "Previous month",
+    "next": "Next month",
+    "today": "Today",
+    "selected": "Selected",
+    "approx": "Approximate visual model; dates can differ from official ephemerides.",
+    "feeTitle": "What could transaction fees and burning look like?",
+    "feeIntro": "Try a hypothetical future transfer. The demo assumes a 1% fee: 0.25% of the transfer destroyed and 0.75% allocated to network operation. Nothing is charged or burned today.",
+    "amount": "Example transfer (concept units)",
+    "totalFee": "Sample total fee",
+    "burned": "Sample permanent burn",
+    "network": "Sample network maintenance",
+    "feesNote": "Numbers are a scenario, not established PROI rules, an offer, or a guarantee of scarcity, market price, or future exchange.",
+    "learnTitle": "Science behind the lunar clock",
+    "sources": "Scientific sources & further reading",
+    "sourcesIntro": "Research and agency sources are linked directly. Some evidence on human sleep is conflicting; the page deliberately describes uncertainty.",
+    "model": "Proposed model, not deployed blockchain",
+    "roadmap": "What must happen before a possible coin?",
+    "roadmapText": "A public specification, governance, technical design, security audit, reliable astronomical calculation, regulatory review and a clear separation between points and any future asset would be necessary. Conversion of existing points into future tokens is not promised.",
+    "collect": "Use PROI points under the current app rules if the feature is available; collecting points is not a way to guarantee a future monetary benefit.",
+    "cta": "Discover PROMETEI on Google Play",
+    "back": "Crypto Atlas",
+    "guides": "Communication science",
+    "news": "Weekly News",
+    "portfolio": "Portfolio",
+    "fees": "Fees & model",
+    "calendar": "Calendar",
+    "research": "Research",
+    "phases": [
+      "New Moon",
+      "Waxing Crescent",
+      "First Quarter",
+      "Waxing Gibbous",
+      "Full Moon",
+      "Waning Gibbous",
+      "Last Quarter",
+      "Waning Crescent"
+    ],
+    "days": [
+      "Sun",
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat"
+    ]
+  },
+  "sections": [
+    {
+      "h": "01 · The lunar phase is geometry, not a changing light bulb",
+      "p": [
+        "The Moon does not create light of its own. Sunlight illuminates roughly one hemisphere of the Moon at all times; what changes is the fraction of that sunlit side that we see from Earth. Near new Moon the bright half points mostly away from us. As the Moon moves, a thin crescent grows, the first-quarter half-disc appears, the disc becomes gibbous and finally the near face looks full. Then the sequence reverses. The eight familiar names describe a continuous geometric cycle, not eight sudden physical transformations.",
+        "The bright edge is shaped by the Sun–Moon–Earth viewing geometry. Earthshine can faintly illuminate the unlit part of a crescent; this is sunlight reflected from Earth back toward the Moon. Our Moon visualization is a simplified northern-hemisphere orientation, not a telescope simulation."
+      ]
+    },
+    {
+      "h": "02 · Why one lunar month is about 29.53 days",
+      "p": [
+        "The Moon completes a revolution relative to distant stars in about 27.3 days. But Earth travels around the Sun at the same time, so the Moon must move farther before the same Sun–Earth–Moon alignment returns. The resulting synodic month, from one new Moon to the next, averages about 29.53059 days. Individual months vary because the orbit is elliptical and the motion is perturbed by the Sun.",
+        "This predictable cycle has helped people mark time and build calendars for millennia. A software protocol can also use astronomical dates as public reference points—but that is a human programming decision, not a force that creates currency. Our calendar uses a mean-cycle estimate and can differ from precise observatory tables."
+      ]
+    },
+    {
+      "h": "03 · Ocean tides: the Moon's undeniable influence",
+      "p": [
+        "The Moon and Sun raise tides through differences in gravitational pull across the Earth. These tidal forces move enormous quantities of seawater; local coastlines, ocean depth, rotation and weather determine the exact height and timing at each place. During new and full Moon, the solar and lunar tidal effects are more aligned, often producing a larger range called spring tides. Near the quarter phases they partially counteract, giving generally smaller neap tides.",
+        "A full Moon does not universally mean a dangerous high tide at every beach, and the word spring has nothing to do with the season. For any coastal safety decision, use an official local tide prediction, never this decorative lunar calendar."
+      ]
+    },
+    {
+      "h": "04 · Why eclipses do not arrive every month",
+      "p": [
+        "If phases simply follow the orbit, why is every full Moon not a lunar eclipse? The Moon's orbital plane is inclined by about five degrees to Earth's path around the Sun. Usually the Moon passes above or below the precise alignment necessary for an eclipse. Only near the crossing points of the two orbital planes can the Sun, Earth and Moon line up for an eclipse.",
+        "The darkened part of an ordinary crescent is the Moon's own night side, not Earth's shadow sweeping across it. Understanding this distinction reveals why lunar phases and eclipses are connected to the same orbital geometry but are fundamentally different events."
+      ]
+    },
+    {
+      "h": "05 · Coral and animals can read the night",
+      "p": [
+        "A number of marine species show roughly lunar or semilunar rhythms. In one experimental study of the coral Dipsastraea speciosa, researchers changed artificial moonlight conditions and found that timing of moonrise and an intervening period of darkness helped coordinate spawning. This is a concrete biological response to environmental light, not a mystical universal law.",
+        "Tidal habitat, nocturnal illumination and predator–prey behavior can create useful timing signals for coastal animals. Species vary enormously: it would be misleading to claim that all fish, birds or mammals reproduce on the full Moon. Real studies establish particular mechanisms for particular organisms and environments."
+      ]
+    },
+    {
+      "h": "06 · Does the Moon influence human sleep?",
+      "p": [
+        "Scientists have reported mixed results. A 2013 laboratory analysis found changes in sleep measures near full Moon in a small sample. A 2021 field study reported shifts in sleep timing across different communities, potentially related to natural nighttime light. These results suggest possible relationships worth investigating, but they do not show that a lunar phase controls everyone's sleep.",
+        "A large 2024 conference-abstract analysis of consumer sleep data found no consistent detectable phase effect on total sleep duration. Because study designs, devices, confounders and populations differ, the overall picture remains disputed. There is no reliable evidence that phases universally determine personality, luck, medical outcomes or human decisions."
+      ]
+    },
+    {
+      "h": "07 · Wildlife, humans and a brighter or darker sky",
+      "p": [
+        "Long before electric lighting, nights were naturally darker around new Moon and brighter around full Moon. Such changes can matter when organisms hunt, hide, navigate or reproduce by night. Human calendars and cultural traditions have also been built around visible changes in the sky, making the Moon an unusually accessible clock shared across continents.",
+        "Yet natural cycles are not identical everywhere. Cloud cover, latitude, season, artificial light and habitat alter what any animal actually experiences. A responsible scientific story separates measurable light and gravity from folklore, and treats correlations as questions rather than proof of causation."
+      ]
+    },
+    {
+      "h": "08 · PROI today: reward points, not an investment",
+      "p": [
+        "Prometei Iskra, abbreviated PROI, is currently described as reward points within the PROMETEI ecosystem. Where the relevant app features and rules are active, users can explore those points as an engagement feature. There is no launched blockchain PROI coin, no established market price and no guaranteed exchange of today's points for a future token.",
+        "Our long-term dream is a potentially useful digital coin connected to a real communications network. We may hope it becomes prominent one day, even aspire to a top-ten ranking, but rankings depend on adoption and markets and cannot be promised. The present messenger must provide value even if a cryptocurrency is never issued."
+      ]
+    },
+    {
+      "h": "09 · How the Moon could 'print' future PROI",
+      "p": [
+        "Imagine a publicly audited emission contract whose schedule uses verified new-Moon timestamps as a periodic clock. The simulator uses an explicitly hypothetical formula: 100 model units a day at zero illumination, rising smoothly toward 300 at full Moon and returning toward 100. Moving the slider demonstrates what those numbers would look like for any phase. The Moon is not physically minting anything: ordinary software would execute the formula.",
+        "A separate proposal models a 1% transfer fee, with 0.25% of a sample transfer going to irreversible burning and 0.75% to network costs. Issuance and burning are distinct processes; neither guarantees scarcity or appreciation. Before anything real, the project needs published rules, security and legal review, and transparent governance. Today's actual on-chain issuance and burns remain zero."
+      ]
+    }
+  ]
+}
