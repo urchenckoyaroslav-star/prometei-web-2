@@ -1,0 +1,132 @@
+/* PROMETEI responsive + accessible polish, shared by all static pages.
+   Loaded last to resolve narrow-screen clipping without hiding content.
+   Preserve original cosmic illustrations, motion and language styling. */
+:root {
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+body { min-width:0; }
+img, svg, video { max-width:100%; }
+img { height:auto; }
+:where(.container,.nw-wrap,.ca-container,.wrap,.portfolio-main,.site-header-inner) { max-width:100%; }
+:where(h1,h2,h3,h4,p,li,blockquote,figcaption) { overflow-wrap:break-word; }
+:where(.nw-article,.nw-article-layout,.nw-article-content,.nw-story-text,.ca-article,.ca-story,.ca-read-layout,.asset-card,.nw-card,.news-photo,.ca-hero,.nw-cover,.crypto-portal-panel,.weekly-news-home-inner,.site-ad-placement) { min-width:0; }
+:where(button,select,input,textarea) { max-width:100%; }
+:where(a,button,[role="button"],select) { touch-action:manipulation; }
+:where(a,button,select,input,textarea,summary,[tabindex]):focus-visible {
+  outline:3px solid #ffe0a3;
+  outline-offset:3px;
+  border-radius:4px;
+}
+:where(.nw-header nav,.ca-header nav,.site-header nav,.ca-filter-scroll,.nw-filters) {
+  overscroll-behavior-inline:contain;
+  -webkit-overflow-scrolling:touch;
+}
+:where(.nw-header nav,.ca-header nav,.site-header nav) a { text-underline-offset:3px; }
+:where(.nw-article-head,.ca-article-head,.nw-section-head,.ca-section-head,.hero,.inner-header) :is(h1,h2) {
+  text-wrap:balance;
+}
+:where(.nw-card,.asset-card,.ca-article,.nw-article,.card) a {
+  overflow-wrap:anywhere;
+}
+:where(.ca-crumb,.nw-crumb) { overflow-wrap:anywhere; }
+:where(.nw-source-list a,.nw-attribution a,.ca-sources a,.footer a,.nw-footer a,.ca-footer a) {
+  overflow-wrap:anywhere;
+}
+/* Larger tap targets on touch hardware, with visible hover and focus behavior. */
+@media (pointer:coarse) {
+  :where(.button,.nw-btn,.ca-button,.category-btn,.nw-filters button,.ca-filter-scroll button,.ca-phase-grid button,[data-mode],.site-header button,.nw-header button,.ca-header button) {
+    min-height:44px;
+  }
+  :where(.site-header nav a,.nw-header nav a,.ca-header nav a,.nw-explore a) {
+    display:inline-flex;align-items:center;min-height:44px;
+  }
+}
+@media (max-width:1000px) {
+  :where(.nw-header nav,.ca-header nav,.site-header nav) {
+    row-gap:8px;
+  }
+  :where(.nw-article-layout,.ca-read-layout,.hero,.nw-cover) {
+    min-width:0;
+  }
+}
+@media (max-width:640px) {
+  :where(.nw-grid,.ca-asset-grid,.ca-related-list,.nw-related .nw-grid) {
+    grid-template-columns:minmax(0,1fr);
+  }
+  .nw-card,.asset-card { max-width:100%; }
+  :where(.nw-article-head h1,.ca-article h1,.nw-cover h1,.ca-hero h1,.hero h1) {
+    overflow-wrap:break-word;
+    hyphens:auto;
+  }
+  :where(.nw-article>.news-photo,.ca-story-block,.nw-story-text) { max-width:100%; }
+  :where(.site-ad-placement,.nw-card-content,.asset-meta,.nw-article-content) { overflow-wrap:break-word; }
+  .ca-footer-grid,.nw-footer-layout { gap:22px; }
+}
+@media (max-width:390px) {
+  .container { width:calc(100% - 28px); }
+  :where(.nw-wrap,.ca-container,.wrap) { padding-inline:14px; }
+  :where(.ca-header-inner,.nw-header-content,.header-inner) { column-gap:10px; }
+  .nw-actions,.ca-actions,.weekly-news-ctas,.crypto-portal-actions {
+    align-items:stretch;
+  }
+  :where(.nw-actions,.ca-actions,.weekly-news-ctas,.crypto-portal-actions) > a {
+    max-width:100%;
+  }
+  .nw-section-head,.ca-article-mast { gap:12px; }
+  :where(.nw-article-head h1,.ca-article h1) { line-height:1.1; }
+  :where(.nw-source-list li,.site-ad-placement,.ca-proi-chapter) { padding-inline:15px; }
+}
+@media (max-width:320px) {
+  .container { width:calc(100% - 20px); }
+  :where(.nw-wrap,.ca-container,.wrap) { padding-inline:10px; }
+  .nw-card-content,.asset-card { padding:13px; }
+  :where(.nw-header nav,.ca-header nav,.site-header nav) { gap:12px; }
+  .site-ad-inner { flex-direction:column;align-items:flex-start; }
+  :where(.nw-article-head h1,.ca-article h1) { font-size:clamp(1.72rem,9vw,2.1rem); }
+}
+@media (min-width:1920px) {
+  :where(.nw-wrap,.ca-container,.wrap,.container) { margin-inline:auto; }
+  .news-photo img { object-position:center; }
+}
+/* Users requesting less movement still receive content and all controls. */
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto!important; }
+  *,*::before,*::after {
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  :where(.reveal,.nw-reveal,.ca-reveal) { opacity:1!important;transform:none!important; }
+}
+@media (forced-colors:active) {
+  :where(a,button) { forced-color-adjust:auto; }
+  :where(.nw-card,.asset-card,.card,.site-ad-placement) { border:1px solid CanvasText; }
+}
+@media print {
+  :where(.nw-header,.ca-header,.site-header,#site-header,.nw-footer,.ca-footer,.footer,.site-footer,.site-ad-placement) { display:none!important; }
+  body { background:#fff!important;color:#111!important; }
+  a { color:#111!important;text-decoration:underline; }
+  :where(.nw-reveal,.ca-reveal,.reveal) { opacity:1!important;transform:none!important; }
+}
+
+/* Real-device audit: prevent header call-to-action overflow between tablet and desktop. */
+@media (min-width:901px) and (max-width:1160px) {
+  .desktop-nav,.nav-install { display:none!important; }
+  .nav-container { gap:18px; }
+  .nav-actions { margin-left:auto; }
+  .menu-toggle { display:block!important;flex-shrink:0; }
+  .mobile-menu { position:absolute;top:calc(100% - 1px);left:0;right:0;padding:18px 24px 26px;background:rgba(8,11,18,.97);backdrop-filter:blur(25px);border-bottom:1px solid var(--line);box-shadow:0 20px 40px #0008;flex-direction:column;gap:10px; }
+  .mobile-menu:not([hidden]) { display:flex!important; }
+  .mobile-menu a { display:block;padding:10px 12px;font-weight:700;color:#c3c3ca;border-radius:8px; }
+}
+@media (min-width:761px) and (max-width:960px) {
+  .site-top .nav-links { display:none!important; }
+  .site-top .nav-cta { margin-left:auto; }
+  .site-top .nav-inner { gap:15px; }
+}
+@media (max-width:370px) {
+  .story-heading h2 { font-size:clamp(1.85rem,8.7vw,2.65rem);line-height:1.08;overflow-wrap:anywhere;word-break:normal; }
+}

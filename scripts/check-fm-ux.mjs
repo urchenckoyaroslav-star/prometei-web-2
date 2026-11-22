@@ -41,19 +41,23 @@ for(const lang of locales){
   for(const option of locales)assert.ok(html.includes('value="'+option+'"'),'missing '+option+' option');
   assert.ok(html.includes('id="play-btn"'),'missing Listen button');
   assert.ok(html.includes('id="request-form"'),'missing song request form');
-  assert.ok(html.includes('id="playlist-list"'),'missing playlist list');
+  // The current FM UI shows live source, track details and recent history, not a separate playlist list.
+  // Verify real working controls instead of requiring a removed, non-interactive placeholder.
+  assert.ok(html.includes('id="listen-heading"'),'missing live radio heading');
+  assert.ok(html.includes('id="track-title"'),'missing current-track display');
   assert.ok(html.includes('id="history-list"'),'missing history list');
   assert.ok(html.includes('href="/fm.css"'),'missing FM CSS');
   assert.ok(html.includes('src="/fm-i18n.js"'),'missing client i18n');
-  assert.ok(html.includes('src="/fm.js"'),'missing radio player');
+  assert.match(html,/src="\/fm\.js(?:\?[^"]+)?"/,'missing versioned radio player');
   for(const id of ['listen','sources','requests','support','history']){
     assert.ok(html.includes('id="'+id+'"'),'missing destination '+id);
   }
   assertLinks(html,rel);
   assert.ok(Object.keys(catalog[lang]||{}).length>=130,'incomplete '+lang+' catalog');
   if(lang!=='en'){
-    const translatedHero=catalog[lang]['YOUR MUSIC.'];
-    assert.ok(html.includes(translatedHero),'hero unlocalized '+lang);
+    // The current generated FM H1 is the localized station name + radio descriptor.
+    const radioLabel={uk:'Радіо онлайн',ru:'Радио онлайн',de:'Online-Radio',es:'Radio en línea',zh:'在线电台',ja:'オンラインラジオ'}[lang];
+    assert.ok(html.includes('<h1>')&&html.includes(radioLabel),'hero unlocalized '+lang);
     assert.ok(html.includes(catalog[lang]['ARTIST']),'request form unlocalized '+lang);
     assert.ok(html.includes(catalog[lang]['YOUR SONG.']),'requests section unlocalized '+lang);
   }

@@ -1,0 +1,88 @@
+name: PROMETEI Site Quality and Mobile SEO
+on:
+  pull_request:
+    paths:
+      - "app.js"
+      - "index.html"
+      - "site-quality.css"
+      - "scripts/build.mjs"
+      - "scripts/build-news.mjs"
+      - "scripts/check-site-quality.mjs"
+      - "scripts/check-fm-ux.mjs"
+      - ".github/workflows/site-quality.yml"
+      - "scripts/check-responsive-browser.mjs"
+  push:
+    branches: [main]
+    paths:
+      - "app.js"
+      - "index.html"
+      - "site-quality.css"
+      - "scripts/build.mjs"
+      - "scripts/build-news.mjs"
+      - "scripts/check-site-quality.mjs"
+      - "scripts/check-fm-ux.mjs"
+      - ".github/workflows/site-quality.yml"
+      - "scripts/check-responsive-browser.mjs"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax checks
+        run: |
+          node --check app.js
+          node --check scripts/build.mjs
+          node --check scripts/build-news.mjs
+          node --check scripts/check-site-quality.mjs
+          node --check scripts/check-responsive-browser.mjs
+      - name: Generate entire seven-language website
+        run: npm run build
+      - name: Audit all 211 sitemap destinations, titles, canonicals, translations and images
+        run: node scripts/check-site-quality.mjs
+      - name: Test seven-language science content
+        run: node scripts/check-seo-guides.mjs
+      - name: Test news, sources, disclosures and sponsorship blocks
+        run: node scripts/check-weekly-news.mjs
+      - name: Test 50 cryptocurrency histories and PROI disclaimers
+        run: node scripts/check-crypto-atlas.mjs
+      - name: Test current FM controls and seven-language pages
+        run: node scripts/check-fm-ux.mjs
+      - name: Diagnose live sitemap and robots access for Googlebot
+        continue-on-error: true
+        run: |
+          for resource in robots.txt sitemap.xml sitemap-fm.xml; do
+            echo "Live fetch: $resource"
+            curl -L -s -o /dev/null -w 'HTTP %{http_code}; content-type %{content_type}; total %{time_total}s\n' --max-time 15 --user-agent 'Googlebot/2.1 (+http://www.google.com/bot.html)' "https://prometei-web-2.pages.dev/$resource" || true
+          done
+
+  browser-audit:
+    needs: static-audit
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate site for real Chromium checks
+        run: npm run build
+      - name: Install deterministic Chromium browser testing
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Validate mobile, tablet, desktop, translations and interactive search
+        run: node scripts/check-responsive-browser.mjs
+      - name: Preserve screenshots for visual review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: prometei-device-preview-screenshots
+          path: qa-screenshots/
+          if-no-files-found: ignore
+          retention-days: 7
