@@ -252,6 +252,132 @@
           ]
         ]
       ]
+    },
+    {
+      "slug": "how-internet-messengers-deliver-messages",
+      "group": "internet",
+      "en": [
+        "How Internet Messengers Deliver Messages and Calls",
+        "Understand online chat delivery, reachability, retry queues and why voice/video calls need different network conditions.",
+        "An Internet messenger delivers data through a network path that can include service infrastructure. Application protocols, privacy designs and offline queues differ between products.",
+        [
+          [
+            "Sending is not delivery",
+            "The sender prepares a message and transmits it through the available Internet path. An app may queue, retry or synchronize a message later if the recipient is unreachable. The exact behavior depends on the messenger's architecture."
+          ],
+          [
+            "Why calls are different",
+            "Voice and video require a reasonably stable stream of data. Delay, packet loss and jitter affect calls more immediately than short text. A successful text test does not prove that a call will work under the same conditions."
+          ],
+          [
+            "PROMETEI and familiar apps",
+            "WhatsApp, Telegram, Signal and Viber offer extensive Internet communication features. PROMETEI also explores nearby Bluetooth and LAN messaging. That is a distinct use case, not proof of faster calls, better encryption or stronger anonymity than the established alternatives."
+          ]
+        ]
+      ],
+      "ru": [
+        "Как интернет-мессенджеры доставляют сообщения и звонки",
+        "Как работают сообщения, очереди и звонки в интернет-мессенджерах, а также чем отличается подход PROMETEI.",
+        "Интернет-мессенджер передаёт данные по сетевому маршруту, в котором могут участвовать серверы. Способы доставки и защиты данных отличаются у разных приложений.",
+        [
+          [
+            "Отправить — не значит доставить",
+            "Приложение формирует сообщение и передаёт его по интернету. Если получатель недоступен, система иногда сохраняет текст и пытается доставить позднее. Это зависит от конкретной архитектуры."
+          ],
+          [
+            "Почему звонки работают иначе",
+            "Голосовые и видеозвонки чувствительны к задержкам, потерям пакетов и нестабильности сети. Успешная доставка короткого текста не гарантирует надёжный звонок."
+          ],
+          [
+            "PROMETEI и известные мессенджеры",
+            "WhatsApp, Telegram, Signal и Viber предлагают развитое общение через интернет. PROMETEI дополнительно исследует Bluetooth и LAN поблизости. Это другое применение, а не доказательство лучшего шифрования, звонков или анонимности."
+          ]
+        ]
+      ]
+    },
+    {
+      "slug": "mixed-routes-and-offline-fallback",
+      "group": "internet",
+      "en": [
+        "Mixed Messaging Routes: Internet, Bluetooth and Local Wi-Fi",
+        "What mixed messaging means, what route selection depends on and why fallback cannot be promised without real device tests.",
+        "Different connection types can become available or disappear independently. Exploring more than one route helps a messenger address scenarios where Internet-only delivery is not sufficient.",
+        [
+          [
+            "Why mixed paths matter",
+            "The public Internet may fail while a local router continues working. Bluetooth may remain available when no Wi-Fi network is shared. A practical app must recognize which destination can actually be reached."
+          ],
+          [
+            "Route selection is implementation-specific",
+            "The selected route may depend on recipient reachability, phone permissions, background state and feature type. The label Mixed does not by itself guarantee automatic failover, delivery between cities without infrastructure or identical security on every path."
+          ],
+          [
+            "How to test a fallback claim",
+            "Try text on each supported route independently, then change one factor at a time: router uplink, local Wi-Fi, Bluetooth or foreground state. Record delivery timestamps and failures. PROMETEI is an evolving tool, not an emergency service."
+          ]
+        ]
+      ],
+      "ru": [
+        "Смешанный режим связи: интернет, Bluetooth и Wi-Fi в одном мессенджере",
+        "Зачем мессенджеру несколько маршрутов, от чего зависит их выбор и почему нет гарантии автоматического переключения.",
+        "Разные виды связи могут исчезать независимо друг от друга. Использование нескольких маршрутов помогает исследовать сценарии, в которых одного интернета недостаточно.",
+        [
+          [
+            "Зачем несколько путей",
+            "Интернет может пропасть, хотя локальный роутер продолжает работать. Bluetooth может быть доступен при отсутствии общей сети Wi-Fi. Приложению важно понимать достижимость получателя."
+          ],
+          [
+            "Выбор зависит от реализации",
+            "На маршрут влияют разрешения Android, состояние приложения и тип сообщения. Название Mixed не обещает автоматического переключения во всех случаях, связи между городами без инфраструктуры и одинаковой защиты каждого канала."
+          ],
+          [
+            "Проверка на практике",
+            "Отправьте короткий текст отдельно через каждый доступный путь, затем меняйте по одному условию: интернет роутера, локальный Wi-Fi, Bluetooth и фоновое состояние. Сравнивайте фактическую доставку. PROMETEI не заменяет экстренные службы."
+          ]
+        ]
+      ]
+    },
+    {
+      "slug": "messenger-without-phone-number-comparison",
+      "group": "internet",
+      "en": [
+        "Messenger Without a Phone Number: PROMETEI and Popular Apps",
+        "No SIM, no phone-number signup and offline chat are different concepts. Compare PROMETEI with Telegram, WhatsApp, Signal and Viber.",
+        "The phrase anonymous messenger can mean several distinct things: no phone number during signup, no SIM card in the phone, no Internet for nearby chat or strong privacy protections.",
+        [
+          [
+            "Number-free account setup",
+            "PROMETEI is designed for onboarding without requiring a phone number or email address. Compatible Android phones can still use Wi-Fi and Bluetooth without a SIM. Neither fact guarantees absolute anonymity or free communication across any distance."
+          ],
+          [
+            "Compared with familiar messengers",
+            "WhatsApp, Telegram, Signal and Viber are established Internet communication services. Their signup and phone-number policies can change; check current official guidance. PROMETEI explores additional local Bluetooth/LAN routes rather than claiming that the other apps are always inferior."
+          ],
+          [
+            "Choosing based on real needs",
+            "For distant contacts, check online reachability and supported calling features. For a nearby outage, try local text delivery on two devices. For privacy, examine encryption details, metadata, account recovery and backups rather than relying on the word anonymous alone."
+          ]
+        ]
+      ],
+      "ru": [
+        "Анонимный мессенджер без номера: PROMETEI, Telegram, WhatsApp, Signal, Viber",
+        "Чем мессенджер без SIM и обязательной регистрации по номеру отличается от обычных приложений: честное сравнение PROMETEI.",
+        "Под фразой «анонимный мессенджер» скрываются разные потребности: не вводить номер, пользоваться телефоном без SIM, переписываться рядом без интернета или защищать приватность.",
+        [
+          [
+            "Начало общения без номера",
+            "PROMETEI задуман так, чтобы начинать пользоваться без обязательного ввода номера телефона или электронной почты. Wi-Fi и Bluetooth способны работать без SIM на совместимом Android. Но это не гарантирует полной анонимности или связи на любом расстоянии."
+          ],
+          [
+            "Сравнение с известными продуктами",
+            "WhatsApp, Telegram, Signal и Viber — развитые сервисы для интернет-общения. Их правила регистрации могут меняться, поэтому проверяйте официальные условия. PROMETEI исследует дополнительные локальные Bluetooth/LAN-маршруты, а не заявляет о безусловном превосходстве."
+          ],
+          [
+            "Как выбирать",
+            "Для дальнего общения проверьте доступность контакта и звонков. При локальной аварии протестируйте текст на двух телефонах. Для приватности важны реализация шифрования, метаданные, восстановление аккаунта и резервные копии, а не одно слово «анонимный»."
+          ]
+        ]
+      ]
     }
   ]
 }
