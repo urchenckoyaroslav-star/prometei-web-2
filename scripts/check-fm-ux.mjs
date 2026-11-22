@@ -48,7 +48,7 @@ for(const lang of locales){
   assert.ok(html.includes('id="history-list"'),'missing history list');
   assert.ok(html.includes('href="/fm.css"'),'missing FM CSS');
   assert.ok(html.includes('src="/fm-i18n.js"'),'missing client i18n');
-  assert.ok(html.includes('src="/fm.js"'),'missing radio player');
+  assert.match(html,/src="\/fm\.js(?:\?[^"]+)?"/,'missing versioned radio player');
   for(const id of ['listen','sources','requests','support','history']){
     assert.ok(html.includes('id="'+id+'"'),'missing destination '+id);
   }
