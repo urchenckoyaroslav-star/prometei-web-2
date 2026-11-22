@@ -72,7 +72,7 @@ async function inspect(route,size){
  if(!measurement.hasLang)failures.push(route+" @"+size.width+": missing html language");
  results.push(route+" "+size.width+"px OK H1="+measurement.mainHeading+" font="+measurement.fontSize+" scroll="+measurement.scrollWidth);
  if((route==="/"||route==="/news/"||route==="/crypto-atlas/"||route==="/advertise/")&&(size.width===390||size.width===1440)){
-   await page.screenshot({path:path.join(screenshots,route.replace(/\W/g,"-")||"home")+"-"+size.width+".png"),fullPage:false});
+   await page.screenshot({path:path.join(screenshots,(route.replace(/\W/g,"-")||"home")+"-"+size.width+".png")),fullPage:false});
  }
 }
 try{
