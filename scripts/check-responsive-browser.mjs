@@ -42,7 +42,7 @@ await context.route("**/*",route=>{
  }
  return route.abort();
 });
-const primary=["/","/news/","/news/signal-adds-defenses-against-screen-reading-agents/","/crypto-atlas/","/crypto-atlas/bitcoin/","/crypto-atlas/proi/","/guides/","/advertise/","/services/","/portfolio","/fm"];
+const primary=["/","/news/","/news/signal-adds-defenses-against-screen-reading-agents/","/crypto-atlas/","/crypto-atlas/bitcoin/","/crypto-atlas/proi/","/guides/","/advertise/","/services/","/portfolio","/fm","/site-map/"];
 const localized=["/uk/","/ru/","/de/","/es/","/zh/","/ja/","/uk/crypto-atlas/proi/","/ru/crypto-atlas/proi/","/de/crypto-atlas/proi/","/es/crypto-atlas/proi/","/zh/crypto-atlas/proi/","/ja/crypto-atlas/proi/"];
 const sizes=[{width:320,height:720},{width:360,height:760},{width:390,height:844},{width:430,height:932},{width:768,height:1024},{width:1024,height:768},{width:1440,height:900},{width:1920,height:1080},{width:2560,height:1440}];
 const failures=[],results=[];
@@ -88,6 +88,11 @@ async function inspect(route,size){
  if(!measurement.hasLang)failures.push(route+" @"+size.width+": missing html language");
  if(!measurement.installVisible)failures.push(route+" @"+size.width+": universal Google Play install CTA is not visible");
  if(measurement.installClip)failures.push(route+" @"+size.width+": install button is horizontally clipped");
+ if(route==="/site-map/"){
+  const linkCount=await page.locator(".sd-section li a").count();
+  if(linkCount<200)failures.push("Site directory omits sitemap destinations: "+linkCount);
+  if(!(await page.locator(".sd-section a[href*='/crypto-atlas/proi/']").count()))failures.push("Site directory missing PROI articles");
+ }
  results.push(route+" "+size.width+"px OK H1="+measurement.mainHeading+" font="+measurement.fontSize+" scroll="+measurement.scrollWidth);
  if((route==="/"||route==="/news/"||route==="/crypto-atlas/"||route==="/crypto-atlas/proi/"||route==="/advertise/")&&(size.width===390||size.width===1440)){
    await page.screenshot({path:path.join(screenshots,(route.replace(/\W/g,"-")||"home")+"-"+size.width+".png"),fullPage:false});
