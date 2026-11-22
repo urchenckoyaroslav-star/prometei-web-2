@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "worldcoin",
+    "facts": [
+      "Worldcoin emerged from a project combining digital identity research with cryptocurrency distribution.",
+      "Sam Altman and Alex Blania were among its best-known co-founders.",
+      "The initiative developed iris-scanning hardware called the Orb to explore proof of personhood.",
+      "The WLD token entered public circulation in 2023.",
+      "Supporters argued that distinguishing humans from bots may become increasingly important.",
+      "Critics questioned whether biometric collection creates privacy and consent risks.",
+      "Public authorities in several jurisdictions investigated aspects of the identity program.",
+      "The organization gradually broadened branding around the name World.",
+      "World ID became an important concept in its approach to verifying unique human participation.",
+      "A separate World Chain effort connected the identity ecosystem to blockchain infrastructure.",
+      "Token distribution programs and geographic eligibility created recurring debate.",
+      "Famous founders attracted attention but did not resolve concerns about sensitive personal data.",
+      "WLD's market cycles followed changing expectations for digital identity and artificial intelligence.",
+      "Worldcoin demonstrates that proving personhood can be a much harder challenge than creating a token."
+    ],
+    "bridge": "World's identity verification approach is far removed from PROI, which currently awards use-based points without biometric proof of personhood."
+  },
+  {
+    "slug": "polygon-ecosystem-token",
+    "facts": [
+      "Polygon began as Matic Network, a scaling project associated with Jaynti Kanani and Sandeep Nailwal.",
+      "Anurag Arjun was another important figure in its early founding history.",
+      "The network attracted developers who wanted cheaper transactions connected to Ethereum.",
+      "Polygon's proof-of-stake chain became widely used by applications and digital-asset projects.",
+      "The organization expanded research into zero-knowledge rollups and other scaling designs.",
+      "Polygon zkEVM launched during 2023 as part of those ambitions.",
+      "The original MATIC token served important roles in the earlier ecosystem.",
+      "A planned migration toward POL became a major technical and governance story in 2024.",
+      "The Polygon Ecosystem Token is intended to support changing network and validator needs.",
+      "Software migrations require wallets, exchanges, and applications to coordinate carefully.",
+      "Corporate partnerships helped make Polygon visible beyond crypto-native developer communities.",
+      "Partnership announcements do not mean every named company guarantees the token.",
+      "Competition among Ethereum scaling systems strongly influenced the project's roadmap.",
+      "Polygon illustrates that a successful network may still need complex changes to its token model."
+    ],
+    "bridge": "POL reflects a live network migration, whereas any future move from PROI points to a coin would require explicit consent and new infrastructure."
+  },
+  {
+    "slug": "arbitrum",
+    "facts": [
+      "Arbitrum was developed by Offchain Labs to improve Ethereum transaction scalability.",
+      "Ed Felten, Steven Goldfeder, and Harry Kalodner are prominent founders of the venture.",
+      "Arbitrum One launched in 2021 as an Ethereum layer-two network.",
+      "Its rollup approach processes activity away from Ethereum's main execution layer.",
+      "The system uses Ethereum as an important part of its security and settlement architecture.",
+      "Applications from lending to trading adopted the network as Ethereum fees became a concern.",
+      "The ARB governance token was introduced in 2023.",
+      "A widely discussed allocation gave many early users a governance-token distribution.",
+      "Early votes sparked debates about how much power a token community actually holds.",
+      "Sequencing and decentralization were recurring topics in the network's technical roadmap.",
+      "Developer activity expanded as more applications sought lower-cost Ethereum compatibility.",
+      "Smart-contract bugs and bridge assumptions still require careful security engineering.",
+      "ARB's market behavior should not be confused with the fee dynamics of every application on Arbitrum.",
+      "The project demonstrates that scaling an existing chain is different from replacing it."
+    ],
+    "bridge": "Arbitrum's governance token belongs to an operating layer-two system, while PROI remains internal PROMETEI rewards."
+  },
+  {
+    "slug": "jupiter",
+    "facts": [
+      "Jupiter emerged as a Solana-based service for finding routes through decentralized exchange liquidity.",
+      "A pseudonymous figure commonly known as Meow became a recognizable public leader.",
+      "The project grew alongside Solana's expanding application ecosystem.",
+      "Its routing software explored multiple pools and venues rather than relying on one fixed source.",
+      "JUP became a governance-related token during 2024.",
+      "Community distribution drew attention to the role of users in decentralized applications.",
+      "The Jupiter ecosystem expanded its experiments beyond its first routing interface.",
+      "Governance discussions addressed treasury use, incentives, and software priorities.",
+      "Public enthusiasm often reflected the broader fortunes of the Solana ecosystem.",
+      "Many financial applications rely on network speed while exposing users to separate market risks.",
+      "Market liquidity and routing quality can vary sharply with conditions.",
+      "Jupiter's leadership frequently emphasized community participation and experimentation.",
+      "The token's role must be distinguished from SOL, the chain's native asset.",
+      "Jupiter shows how a useful application can develop an identity and governance system of its own."
+    ],
+    "bridge": "JUP links a Solana application to governance, whereas PROI currently links messenger participation to recognition points."
+  },
+  {
+    "slug": "jito-staked-sol",
+    "facts": [
+      "JitoSOL emerged in 2022 as a liquid-staking token for the Solana ecosystem.",
+      "Jito Foundation and Jito Labs were central organizations in the project.",
+      "The design builds upon Solana staking and stake-pool software.",
+      "People who stake SOL through a pool can receive a token representing their pool position.",
+      "JitoSOL is designed to reflect underlying staking rewards over time.",
+      "Its model also incorporates selected revenue from maximal-extractable-value activity.",
+      "The token is different from JTO, which serves governance roles in the Jito ecosystem.",
+      "Staking economics depend on the underlying Solana network and validator operations.",
+      "Liquid staking allows a representation of a staked asset to circulate within other applications.",
+      "That convenience creates extra smart-contract, liquidity, and composability risks.",
+      "Jito's research contributed to important discussions about transaction ordering on Solana.",
+      "The project's growth mirrored increased attention to Solana staking infrastructure.",
+      "JitoSOL's market value normally tracks SOL-related economics rather than a fixed dollar peg.",
+      "It illustrates how a token may represent a yield-bearing claim rather than a newly mined currency."
+    ],
+    "bridge": "JitoSOL represents a staking-related claim backed by a live protocol, while PROI points grant no staking yield or blockchain asset."
+  }
+]
