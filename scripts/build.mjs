@@ -248,6 +248,28 @@ const guideUrls=generateGuides(output,base);
 const cryptoUrls=generateCryptoAtlas(output,base);
 const lunarUrls=generateLunarProi(output,base);
 const weeklyNewsUrls=generateWeeklyNews(output,base);
+// One first-party Play Store route for every public static page. Inline HTML works without
+// JavaScript, pop-ups, sticky banners, third-party scripts, or misleading download buttons.
+const playStoreURL='https://play.google.com/store/apps/details?id=com.meshnetwork.app';
+const installMessages={
+  en:{region:'PROMETEI Android app',headline:'Stay connected with PROMETEI',copy:'Explore Internet chat and nearby Bluetooth or local Wi-Fi messaging on supported Android devices.',button:'Get PROMETEI on Google Play',partner:'Advertising & partnerships'},
+  uk:{region:'Застосунок PROMETEI для Android',headline:'Залишайтеся на зв’язку з PROMETEI',copy:'Спробуйте повідомлення через інтернет, Bluetooth поблизу або локальну Wi-Fi мережу на сумісних пристроях Android.',button:'Встановити з Google Play',partner:'Реклама та співпраця'},
+  ru:{region:'Приложение PROMETEI для Android',headline:'Оставайтесь на связи с PROMETEI',copy:'Попробуйте переписку через интернет, Bluetooth поблизости или локальную сеть Wi-Fi на совместимых устройствах Android.',button:'Установить из Google Play',partner:'Реклама и сотрудничество'},
+  de:{region:'PROMETEI Android-App',headline:'Mit PROMETEI in Verbindung bleiben',copy:'Entdecke Chats per Internet, Bluetooth in der Nähe oder lokalem WLAN auf kompatiblen Android-Geräten.',button:'PROMETEI bei Google Play',partner:'Werbung & Partnerschaften'},
+  es:{region:'Aplicación PROMETEI para Android',headline:'Sigue conectado con PROMETEI',copy:'Descubre chats por Internet, Bluetooth cercano o Wi-Fi local en dispositivos Android compatibles.',button:'Instalar desde Google Play',partner:'Publicidad y colaboraciones'},
+  zh:{region:'PROMETEI 安卓应用',headline:'使用 PROMETEI 保持联系',copy:'在兼容的安卓设备上体验互联网聊天、近距离蓝牙通信及本地 Wi-Fi 消息。',button:'前往 Google Play 安装',partner:'广告与合作'},
+  ja:{region:'Android用 PROMETEI',headline:'PROMETEI でつながろう',copy:'対応する Android 端末で、インターネット、近距離 Bluetooth、ローカル Wi-Fi のメッセージ機能をご覧ください。',button:'Google Play でインストール',partner:'広告・パートナーシップ'}
+};
+function installationBand(html){
+  const lang=(html.match(/<html\b[^>]*\blang="([^"]+)"/i)?.[1]||'en').slice(0,2).toLowerCase();
+  const t=installMessages[lang]||installMessages.en;
+  const a=escapeAttr;
+  return '<aside class="prometei-install-band" aria-label="'+a(t.region)+'"><div class="prometei-install-inner">'+
+    '<span class="prometei-install-mark" aria-hidden="true">✦</span>'+
+    '<div class="prometei-install-copy"><span class="prometei-install-eyebrow">PROMETEI · ANDROID</span><strong>'+a(t.headline)+'</strong><p>'+a(t.copy)+'</p></div>'+
+    '<div class="prometei-install-actions"><a class="prometei-install-button" href="'+playStoreURL+'" target="_blank" rel="noopener noreferrer">'+a(t.button)+' <span aria-hidden="true">↗</span></a>'+
+    '<a class="prometei-partner-link" href="'+a(base+'advertise/')+'">'+a(t.partner)+'</a></div></div></aside>';
+}
 // Apply consistent responsive and accessible controls to every generated static page,
  // including translated home pages, FM charts, scientific articles and sponsor pages.
 function applyGlobalQualityStyles(directory){
@@ -257,8 +279,11 @@ function applyGlobalQualityStyles(directory){
     if(!entry.isFile()||!entry.name.endsWith('.html'))continue;
     let html=fs.readFileSync(pathname,'utf8');
     if(!/<\/head>/i.test(html))continue; // Google ownership-verification and HTML fragments are not site pages.
-    if(html.includes('href="/site-quality.css"'))continue;
-    html=html.replace(/<\/head>/i,'<link rel="stylesheet" href="/site-quality.css">\n</head>');
+    if(!/<\/main>/i.test(html))continue; // Ignore technical verification files and fragments.
+    if(!html.includes('href="/site-quality.css"'))
+      html=html.replace(/<\/head>/i,'<link rel="stylesheet" href="/site-quality.css">\n</head>');
+    if(!html.includes('class="prometei-install-band"'))
+      html=html.replace(/<\/main>/i,match=>match+'\n'+installationBand(html));
     fs.writeFileSync(pathname,html,'utf8');
   }
 }
