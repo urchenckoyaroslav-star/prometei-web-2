@@ -1,0 +1,20 @@
+/* PROMETEI Services — substantive engineering work, not a thin keyword doorway. */
+.service-hero .lead{max-width:68ch}
+.services-grid .card{min-height:470px;display:flex;flex-direction:column;align-items:flex-start}
+.services-grid .card .card-no{margin-bottom:6px}
+.services-grid .card .card-icon{color:#d0e8f7;filter:drop-shadow(0 0 20px #8edbf844)}
+.services-grid .card h3{font-size:clamp(1.45rem,2.1vw,1.88rem);min-height:2.35em}
+.services-grid .card p{min-height:0;margin-bottom:14px;line-height:1.7}
+.services-grid .card .service-detail{margin-top:auto;border-left:2px solid #acdded;padding:11px 15px;background:#0c1a2b9b;border-radius:6px;font-size:.86rem;color:#d6e4f0}
+.services-grid .card .service-detail strong{color:#f4d8aa}
+.services-grid .card a{margin-top:10px;color:#a8ecf4}
+.work-method{border-top:1px solid #374f6d}
+.steps{list-style:none;counter-reset:step;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;padding:0;margin:30px 0 0}
+.steps li{counter-increment:step;position:relative;min-width:0;border:1px solid #4b617f;border-radius:17px;padding:25px 25px 25px 74px;background:linear-gradient(130deg,#192844,#111b30)}
+.steps li::before{content:counter(step,decimal-leading-zero);position:absolute;left:22px;top:19px;color:#f6dcad;font:700 1.85rem "Space Grotesk",sans-serif}
+.steps li strong{display:block;color:#f9f5ff;font-size:1.02rem}
+.steps li p{color:#c6d6e6;font-size:.87rem;line-height:1.75;margin:9px 0 0}
+.services-grid .card a:focus-visible,.steps li a:focus-visible{outline:3px solid #ffe0a3;outline-offset:4px}
+@media (max-width:900px){.services-grid .card{min-height:0}.services-grid .card h3{min-height:0}}
+@media (max-width:690px){.steps{grid-template-columns:minmax(0,1fr)}.steps li{padding:20px 18px 20px 62px}.steps li::before{left:15px;top:19px}.services-grid{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.services-grid .card{transition:none!important}}

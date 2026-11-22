@@ -1,0 +1,58 @@
+name: PROMETEI Service Pages & Revenue Integrity
+on:
+  pull_request:
+    paths:
+      - "services/**"
+      - "services.css"
+      - "scripts/check-services.mjs"
+      - "scripts/build.mjs"
+      - "index.html"
+      - "portfolio.html"
+      - "advertise/index.html"
+      - "scripts/build-news.mjs"
+      - "scripts/build-crypto-atlas.mjs"
+      - ".github/workflows/services.yml"
+  push:
+    branches: [main]
+    paths:
+      - "services/**"
+      - "services.css"
+      - "scripts/check-services.mjs"
+      - "scripts/build.mjs"
+      - "index.html"
+      - "portfolio.html"
+      - "advertise/index.html"
+      - "scripts/build-news.mjs"
+      - "scripts/build-crypto-atlas.mjs"
+      - ".github/workflows/services.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax checks
+        run: |
+          node --check scripts/build.mjs
+          node --check scripts/check-services.mjs
+          node --check scripts/build-news.mjs
+          node --check scripts/build-crypto-atlas.mjs
+      - name: Build complete site
+        run: npm run build
+      - name: Check development service page and monetization integrity
+        run: node scripts/check-services.mjs
+      - name: Preserve global SEO and translations
+        run: node scripts/check-site-quality.mjs
+      - name: Check scientific guides
+        run: node scripts/check-seo-guides.mjs
+      - name: Check news sourcing
+        run: node scripts/check-weekly-news.mjs
+      - name: Check Crypto Atlas
+        run: node scripts/check-crypto-atlas.mjs
+      - name: Check FM
+        run: node scripts/check-fm-ux.mjs
