@@ -96,6 +96,24 @@ async function inspect(route,size){
 try{
  for(const route of primary)for(const size of sizes)await inspect(route,size);
  for(const route of localized)for(const size of [sizes[0],sizes[2],sizes[5]])await inspect(route,size);
+ // All about PROI must be findable from main navigation, not buried in Crypto Atlas.
+ for(const [lang,home] of [["en","/"],["ru","/ru/"]]){
+  await page.setViewportSize({width:390,height:844});
+  await page.goto("http://127.0.0.1:"+port+home,{waitUntil:"domcontentloaded"});
+  const menu=page.locator("#menu-toggle");
+  if(!(await menu.isVisible()))failures.push("Mobile menu toggle missing on "+home);
+  else {
+   await menu.click();
+   const proiLink=page.locator("#mobile-menu .prometei-proi-nav");
+   if(!(await proiLink.isVisible()))failures.push("Primary PROI link not visible when mobile menu opens: "+home);
+   const href=await proiLink.getAttribute("href");
+   const expected="https://prometei-web-2.pages.dev/"+(lang==="en"?"":lang+"/")+"crypto-atlas/proi/";
+   if(href!==expected)failures.push("Mobile PROI destination incorrect "+home+": "+href);
+  }
+ }
+ await page.setViewportSize({width:1440,height:900});
+ await page.goto("http://127.0.0.1:"+port+"/",{waitUntil:"domcontentloaded"});
+ if(!(await page.locator(".desktop-nav .prometei-proi-nav").isVisible()))failures.push("Desktop All about PROI link must be visible");
  await page.setViewportSize({width:390,height:844});
  await page.goto("http://127.0.0.1:"+port+"/news/",{waitUntil:"domcontentloaded"});
  if(await page.locator("#story-search").count()){
