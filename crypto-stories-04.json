@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "near",
+    "facts": [
+      "NEAR Protocol grew from work by Illia Polosukhin and Alexander Skidanov during the late 2010s.",
+      "Polosukhin had previously contributed to influential research on neural-network architecture.",
+      "The NEAR network launched publicly in 2020 as a developer-focused blockchain platform.",
+      "Its designers wanted ordinary applications to interact with blockchain systems more smoothly.",
+      "NEAR's Nightshade architecture explores dividing network work into parallel shards.",
+      "Account usability and readable addresses became prominent parts of its developer story.",
+      "The protocol supports smart contracts and a network token used for operations.",
+      "Early venture funding helped the project recruit teams and build infrastructure.",
+      "Applications and ecosystem grants grew during the broader decentralized-app boom.",
+      "NEAR's technical roadmap continued changing as account abstraction and chain abstraction gained attention.",
+      "Periods of enthusiasm about artificial intelligence also shaped public interest in its community.",
+      "Its market valuation has moved sharply with optimism about layer-one networks.",
+      "Sharding introduces difficult questions about coordination, security, and cross-shard communication.",
+      "NEAR shows that good user experience is a central engineering problem, not merely a token feature."
+    ],
+    "bridge": "NEAR's developer-oriented architecture highlights how much infrastructure would be needed before PROI points could ever become network tokens."
+  },
+  {
+    "slug": "litecoin",
+    "facts": [
+      "Software engineer Charlie Lee released Litecoin in 2011 as a Bitcoin-related digital currency.",
+      "Its design altered certain parameters while preserving a proof-of-work approach.",
+      "Litecoin uses the Scrypt hashing family rather than Bitcoin's SHA-256 mining design.",
+      "The network aims for more frequent blocks than Bitcoin's base layer.",
+      "Early cryptocurrency communities sometimes described Litecoin as silver to Bitcoin's gold.",
+      "Charlie Lee's personal sale of his holdings in 2017 became a public controversy.",
+      "Litecoin activated Segregated Witness before Bitcoin did, attracting technical attention.",
+      "The network has survived multiple cryptocurrency boom-and-bust cycles.",
+      "An optional privacy-related upgrade called Mimblewimble Extension Blocks arrived in 2022.",
+      "Some exchanges and regulators scrutinized features that can obscure transaction information.",
+      "Litecoin's monetary schedule includes periodic mining-reward halvings.",
+      "Its long operating record has helped keep it visible among early digital currencies.",
+      "Competition from stablecoins and faster payment networks has challenged its original payments narrative.",
+      "Litecoin's history illustrates how open-source currency experiments can persist without an elaborate app ecosystem."
+    ],
+    "bridge": "Litecoin's established mining and emission schedule differs from PROI's proposed lunar calendar, which remains an untested concept."
+  },
+  {
+    "slug": "avalanche",
+    "facts": [
+      "Avalanche was developed from research into new consensus approaches for distributed networks.",
+      "Emin Gün Sirer became a prominent public founder associated with Ava Labs.",
+      "Kevin Sekniqi and Maofan Yin were also part of the founding technical team.",
+      "The Avalanche network launched in 2020 with a design for programmable blockchain applications.",
+      "Its architecture distinguished different chain functions rather than treating every operation identically.",
+      "The AVAX token helps secure the network and pay operational fees.",
+      "Transaction-fee burning is one element of Avalanche's implemented economic model.",
+      "The project attracted builders in decentralized finance, digital assets, and gaming.",
+      "Subnets and later network-specific configurations expanded its vision for customizable chains.",
+      "Rapid adoption periods were followed by downturns familiar to other smart-contract platforms.",
+      "Research and investment support helped finance infrastructure and application development.",
+      "Technical debate has centered on decentralization, validator costs, and interoperability.",
+      "Launching a custom blockchain involves considerably more than choosing a token name.",
+      "Avalanche offers a concrete example of token mechanics that can be examined in running software."
+    ],
+    "bridge": "Avalanche already has fee-burning rules, while the comparable PROI burn-and-fee split is only a possible future design."
+  },
+  {
+    "slug": "ripple-usd",
+    "facts": [
+      "Ripple announced plans for a dollar stablecoin before RLUSD became available in late 2024.",
+      "Ripple's leadership, including Brad Garlinghouse, promoted stablecoin payment infrastructure.",
+      "RLUSD is distinct from XRP even though both are associated with Ripple's ecosystem.",
+      "The token is designed to maintain a value close to one United States dollar.",
+      "Its issuance has involved a regulated financial framework and identified issuer arrangements.",
+      "RLUSD has appeared on the XRP Ledger and Ethereum as blockchain infrastructures.",
+      "The reserve-backed model creates operating duties unlike those of mining-based cryptocurrencies.",
+      "Market participants use such digital dollars for transfers, settlement, and liquidity.",
+      "Ripple's earlier payment-network work shaped the commercial context for RLUSD.",
+      "Trust in reserve management and redemption remains a central consideration.",
+      "Stablecoin growth has unfolded amid increasingly detailed legislative and compliance discussions.",
+      "RLUSD's market history is shorter than that of older dollar tokens such as USDT.",
+      "Connections to a well-known technology company do not erase custody or liquidity risk.",
+      "RLUSD illustrates how a stablecoin and a network's native asset can coexist without being interchangeable."
+    ],
+    "bridge": "RLUSD is an issued digital-dollar product, whereas PROI is currently a participation score without a redemption promise."
+  },
+  {
+    "slug": "world-liberty-financial-usd",
+    "facts": [
+      "USD1 was introduced in 2025 within the World Liberty Financial ecosystem.",
+      "World Liberty Financial became widely known for its ties to the Trump family.",
+      "The project also has public figures connected to the Witkoff family and executive team.",
+      "USD1 is marketed as a dollar-linked stablecoin rather than a speculative scarcity token.",
+      "Its existence is separate from WLFI, the surrounding project's governance asset.",
+      "The issuer and custody arrangements are essential to understanding its risk profile.",
+      "Early adoption discussions focused on cryptocurrency settlement and digital-dollar liquidity.",
+      "Political affiliations produced unusually intense media coverage of the project.",
+      "Critics raised questions about conflicts of interest and the concentration of benefits.",
+      "Supporters described a chance to expand dollar-token use across blockchain markets.",
+      "A dollar peg is a design objective, not proof against interruptions in redemption or liquidity.",
+      "Reserve reports and regulatory disclosures matter more than social-media enthusiasm.",
+      "USD1's market history is too short to resemble Bitcoin's multi-cycle record.",
+      "The asset shows how political visibility can complicate the assessment of a financial product."
+    ],
+    "bridge": "The political and reserve-backed story of USD1 contrasts with PROI's current status as non-monetary messenger rewards."
+  }
+]
