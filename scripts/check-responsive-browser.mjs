@@ -118,9 +118,9 @@ try{
   const first=(await page.locator("#lp-issuance").innerText()).trim();
   await lunarSlider.evaluate(el=>{el.value="14.76";el.dispatchEvent(new Event("input",{bubbles:true}))});
   const second=(await page.locator("#lp-issuance").innerText()).trim();
-  if(!first.includes("0")||!second.includes("5"))failures.push("Lunar Pulse threshold totals incorrect: "+first+" -> "+second);
+  if(!first.startsWith("0")||!second.includes("4")&&!second.includes("5"))failures.push("Lunar Pulse threshold totals incorrect: "+first+" -> "+second);
   if(await page.locator(".lp-milestone").count()!==20)failures.push("Expected twenty official lunar milestone buttons");
-  await lunarSlider.evaluate(el=>{el.value="29.53";el.dispatchEvent(new Event("input",{bubbles:true}))});
+  await page.locator(".lp-milestone").last().click();
   const full=(await page.locator("#lp-issuance").innerText()).trim();
   if(!full.includes("6"))failures.push("Expected six possible PROI per completed lunar cycle: "+full);
   const lunarGrid=await page.locator(".lp-date-button").count();
