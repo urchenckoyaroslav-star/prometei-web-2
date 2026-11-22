@@ -6,6 +6,12 @@ on:
       - "index.html"
       - "site-quality.css"
       - "scripts/build.mjs"
+      - "scripts/build-lunar-proi.mjs"
+      - "scripts/check-lunar-proi.mjs"
+      - "lunar-proi-i18n/**"
+      - "lunar-proi-moon.svg"
+      - "lunar-proi.js"
+      - "lunar-proi.css"
       - "scripts/build-news.mjs"
       - "scripts/check-site-quality.mjs"
       - "scripts/check-fm-ux.mjs"
@@ -18,6 +24,12 @@ on:
       - "index.html"
       - "site-quality.css"
       - "scripts/build.mjs"
+      - "scripts/build-lunar-proi.mjs"
+      - "scripts/check-lunar-proi.mjs"
+      - "lunar-proi-i18n/**"
+      - "lunar-proi-moon.svg"
+      - "lunar-proi.js"
+      - "lunar-proi.css"
       - "scripts/build-news.mjs"
       - "scripts/check-site-quality.mjs"
       - "scripts/check-fm-ux.mjs"
@@ -41,6 +53,9 @@ jobs:
           node --check scripts/build-news.mjs
           node --check scripts/check-site-quality.mjs
           node --check scripts/check-responsive-browser.mjs
+          node --check scripts/build-lunar-proi.mjs
+          node --check lunar-proi.js
+          node --check scripts/check-lunar-proi.mjs
       - name: Generate entire seven-language website
         run: npm run build
       - name: Audit all 211 sitemap destinations, titles, canonicals, translations and images
@@ -51,6 +66,8 @@ jobs:
         run: node scripts/check-weekly-news.mjs
       - name: Test 50 cryptocurrency histories and PROI disclaimers
         run: node scripts/check-crypto-atlas.mjs
+      - name: Test seven Moon science articles and interactive PROI simulation
+        run: node scripts/check-lunar-proi.mjs
       - name: Test current FM controls and seven-language pages
         run: node scripts/check-fm-ux.mjs
       - name: Diagnose live sitemap and robots access for Googlebot
