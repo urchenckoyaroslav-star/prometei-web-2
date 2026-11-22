@@ -270,6 +270,34 @@ function installationBand(html){
     '<div class="prometei-install-actions"><a class="prometei-install-button" href="'+playStoreURL+'" target="_blank" rel="noopener noreferrer">'+a(t.button)+' <span aria-hidden="true">↗</span></a>'+
     '<a class="prometei-partner-link" href="'+a(base+'advertise/')+'">'+a(t.partner)+'</a></div></div></aside>';
 }
+// Promote PROI to a first-class, crawlable main-menu destination on EVERY generated page.
+// This is independent of JavaScript, correctly localized, and points at the existing
+// authoritative Android-aligned Lunar Pulse / PROI science and economy hub.
+const proiNavLabels={
+  en:'All about PROI',
+  uk:'Усе про PROI',
+  ru:'Всё о PROI',
+  de:'Alles über PROI',
+  es:'Todo sobre PROI',
+  zh:'PROI 完整指南',
+  ja:'PROI のすべて'
+};
+function putProiInMainMenu(html){
+  const lang=(html.match(/<html\\b[^>]*\\blang=["']([^"']+)["']/i)?.[1]||'en').slice(0,2).toLowerCase();
+  const target=base+(lang==='en'?'':lang+'/')+'crypto-atlas/proi/';
+  const active=new URL(html.match(/<link\\s+rel=["']canonical["']\\s+href=["']([^"']+)["']/i)?.[1]||base).pathname.replace(/\\/?$/,'/')===new URL(target).pathname.replace(/\\/?$/,'/');
+  const link='<a class="prometei-proi-nav" href="'+escapeAttr(target)+'"'+(active?' aria-current="page"':'')+'><span class="prometei-proi-glyph" aria-hidden="true">✦</span> '+escapeAttr(proiNavLabels[lang]||proiNavLabels.en)+'</a>';
+  // Restrict modification to header navigation; never change article links, footer,
+  // content or external ad blocks. Existing Moon & PROI links become this exact entry.
+  return html.replace(/<header\\b[^>]*>[\\s\\S]*?<\\/header>/i,header=>
+    header.replace(/<nav\\b[^>]*>[\\s\\S]*?<\\/nav>/gi,nav=>{
+      if(/class=["'][^"']*prometei-proi-nav/.test(nav))return nav;
+      const old=/<a\\b[^>]*\\bhref=["'][^"']*\\/crypto-atlas\\/proi\\/["'][^>]*>[\\s\\S]*?<\\/a>/i;
+      if(old.test(nav))return nav.replace(old,link);
+      return nav.replace(/(<nav\\b[^>]*>)/i,'$1'+link);
+    })
+  );
+}
 // Apply consistent responsive and accessible controls to every generated static page,
  // including translated home pages, FM charts, scientific articles and sponsor pages.
 function applyGlobalQualityStyles(directory){
@@ -280,6 +308,7 @@ function applyGlobalQualityStyles(directory){
     let html=fs.readFileSync(pathname,'utf8');
     if(!/<\/head>/i.test(html))continue; // Google ownership-verification and HTML fragments are not site pages.
     if(!/<\/main>/i.test(html))continue; // Ignore technical verification files and fragments.
+    html=putProiInMainMenu(html);
     if(!html.includes('href="/site-quality.css"'))
       html=html.replace(/<\/head>/i,'<link rel="stylesheet" href="/site-quality.css">\n</head>');
     if(!html.includes('class="prometei-install-band"'))
