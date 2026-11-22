@@ -52,3 +52,29 @@ jobs:
         run: node scripts/check-crypto-atlas.mjs
       - name: Test current FM controls and seven-language pages
         run: node scripts/check-fm-ux.mjs
+
+  browser-audit:
+    needs: static-audit
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate site for real Chromium checks
+        run: npm run build
+      - name: Install deterministic Chromium browser testing
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Validate mobile, tablet, desktop, translations and interactive search
+        run: node scripts/check-responsive-browser.mjs
+      - name: Preserve screenshots for visual review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: prometei-device-preview-screenshots
+          path: qa-screenshots/
+          if-no-files-found: ignore
+          retention-days: 7
