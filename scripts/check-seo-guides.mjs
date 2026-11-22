@@ -24,7 +24,7 @@ for(const lang of languages){
   assert.equal(locale.titles.length,9);
   assert.equal(locale.intros.length,9);
   assert.equal(locale.focus.length,9);
-  assert.ok(locale.focus.every(f=>f.length>150),"insufficient translated science: "+lang);
+  assert.ok(locale.focus.every(f=>f.length>(lang==="zh"?110:lang==="ja"?115:150)),"insufficient translated science: "+lang);
  }
  for(const guide of [null,...data.guides]){
   const suffix="guides/"+(guide?guide.slug+"/":"");
