@@ -105,6 +105,24 @@ try{
    const count=await page.locator("#asset-grid .asset-card:not([hidden])").count();
    if(count<1||count>=50)failures.push("Crypto atlas filtering broken: "+count+" cards for Bitcoin");
  }
+ await page.goto("http://127.0.0.1:"+port+"/crypto-atlas/proi/",{waitUntil:"domcontentloaded"});
+ const lunarSlider=page.locator("#lp-slider");
+ if(await lunarSlider.count()){
+  const first=Number((await page.locator("#lp-issuance").innerText()).replace(/[^0-9.]/g,""));
+  await lunarSlider.evaluate(el=>{el.value="14.75";el.dispatchEvent(new Event("input",{bubbles:true}))});
+  const second=Number((await page.locator("#lp-issuance").innerText()).replace(/[^0-9.]/g,""));
+  if(!(second>first))failures.push("Moon slider did not change projected PROI emission: "+first+" -> "+second);
+  const lunarGrid=await page.locator(".lp-date-button").count();
+  if(lunarGrid<28||lunarGrid>31)failures.push("Moon calendar did not render valid month: "+lunarGrid);
+  await page.locator("#lp-month-next").click();
+  const nextCount=await page.locator(".lp-date-button").count();
+  if(nextCount<28||nextCount>31)failures.push("Next-month calendar button failed: "+nextCount);
+  await page.locator("#lp-transfer").fill("2000");
+  const fee=(await page.locator("#lp-fee-total").innerText()).replace(/[^0-9.]/g,"");
+  if(Math.abs(Number(fee)-20)>0.01)failures.push("PROI example fee calculator failed: "+fee);
+  await page.locator(".lp-date-button").first().click();
+  if(!(await page.locator("#lp-selected-date").innerText()).trim())failures.push("Moon calendar selection did not update date");
+ }else failures.push("Moon slider absent on actual page");
  await page.goto("http://127.0.0.1:"+port+"/ru/",{waitUntil:"domcontentloaded"});
  if(await page.locator("html").getAttribute("lang")!=="ru")failures.push("Russian canonical page did not retain correct language");
  if(!await page.locator("html").getAttribute("lang"))failures.push("Missing language");
