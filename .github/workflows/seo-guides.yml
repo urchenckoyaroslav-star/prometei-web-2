@@ -1,0 +1,48 @@
+name: PROMETEI SEO guide checks
+on:
+  pull_request:
+    paths:
+      - "guides-data.json"
+      - "guides.css"
+      - "guides.js"
+      - "scripts/build-guides.mjs"
+      - "scripts/check-seo-guides.mjs"
+      - "scripts/build.mjs"
+      - "index.html"
+      - "portfolio.html"
+      - "styles.css"
+      - ".github/workflows/seo-guides.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "guides-data.json"
+      - "guides.css"
+      - "guides.js"
+      - "scripts/build-guides.mjs"
+      - "scripts/check-seo-guides.mjs"
+      - "scripts/build.mjs"
+      - "index.html"
+      - "portfolio.html"
+      - "styles.css"
+      - ".github/workflows/seo-guides.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate guide JavaScript
+        run: |
+          node --check guides.js
+          node --check scripts/build-guides.mjs
+          node --check scripts/check-seo-guides.mjs
+      - name: Build Cloudflare Pages output
+        run: npm run build
+      - name: Verify 9 bilingual guides, 20 URLs and sitemap
+        run: node scripts/check-seo-guides.mjs
