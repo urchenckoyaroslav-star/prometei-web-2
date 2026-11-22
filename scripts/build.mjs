@@ -142,7 +142,9 @@ for(const filename of docs){
  if(!fs.existsSync(path.join(source,filename)))continue;
  const old=fs.readFileSync(path.join(source,filename),'utf8');
  const titleMatch=old.match(/<title>([^<]+)<\/title>/i);
- const title=titleMatch?titleMatch[1].replace(/&(?:amp;)+/gi,'&'):'PROMETEI';
+ let title=titleMatch?titleMatch[1]:'PROMETEI';
+  // Source files may contain layered &amp;amp; entities: decode repeatedly, then escape once in metadata().
+  for(let attempt=0;attempt<4&&/&amp;/i.test(title);attempt++)title=title.replace(/&amp;/gi,'&');
  const url=base+filename.slice(0,-5);
  fs.writeFileSync(path.join(output,filename),metadata(old,{url,title,description:extraDescriptions[filename]||'Official PROMETEI documentation',lang:'en'}),'utf8');
 }
@@ -239,6 +241,21 @@ fs.writeFileSync(sponsorPath,fs.readFileSync(sponsorPath,'utf8').replaceAll(fall
 const guideUrls=generateGuides(output,base);
 const cryptoUrls=generateCryptoAtlas(output,base);
 const weeklyNewsUrls=generateWeeklyNews(output,base);
+// Apply consistent responsive and accessible controls to every generated static page,
+ // including translated home pages, FM charts, scientific articles and sponsor pages.
+function applyGlobalQualityStyles(directory){
+  for(const entry of fs.readdirSync(directory,{withFileTypes:true})){
+    const pathname=path.join(directory,entry.name);
+    if(entry.isDirectory()){applyGlobalQualityStyles(pathname);continue;}
+    if(!entry.isFile()||!entry.name.endsWith('.html'))continue;
+    let html=fs.readFileSync(pathname,'utf8');
+    if(!/<\/head>/i.test(html))throw Error('HTML head missing: '+pathname);
+    if(html.includes('href="/site-quality.css"'))continue;
+    html=html.replace(/<\/head>/i,'<link rel="stylesheet" href="/site-quality.css">\n</head>');
+    fs.writeFileSync(pathname,html,'utf8');
+  }
+}
+applyGlobalQualityStyles(output);
 const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls,...cryptoUrls,...weeklyNewsUrls,'advertise/'];
 const xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for(const item of urls){
