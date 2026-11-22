@@ -210,9 +210,9 @@
     ],
     "sources": [
       {
-        "name": "Equinor — official security statement",
-        "url": "https://www.equinor.com/news/20261711-equinor-detected-cyber-attack",
-        "role": "Primary incident notice"
+        "name": "Reuters — independent report on the incident",
+        "url": "https://www.reuters.com/business/energy/equinor-says-cyberattack-against-company-has-been-stopped-2026-11-20/",
+        "role": "Independent coverage"
       }
     ]
   },
