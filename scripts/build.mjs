@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import {urlFor} from '../fm-locales.js';
 import {chartPage} from './build-charts.mjs';
+import {generateGuides} from './build-guides.mjs';
 import path from 'node:path';
 import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
@@ -23,18 +24,18 @@ const localized=['uk','ru','de','es','zh','ja'];
 const mappings={en:'en',uk:'uk',ru:'ru',de:'de',es:'es',zh:'zh-CN',ja:'ja'};
 const ogLocales={en:'en_US',uk:'uk_UA',ru:'ru_RU',de:'de_DE',es:'es_ES',zh:'zh_CN',ja:'ja_JP'};
 const titles={
- en:'PROMETEI Offline Messenger for Android | Bluetooth & Wi-Fi',
+ en:'PROMETEI Messenger — Android Chat via Bluetooth and Wi-Fi',
  uk:'PROMETEI — месенджер без інтернету для Android',
- ru:'PROMETEI — мессенджер без интернета для Android',
+ ru:'PROMETEI — мессенджер без номера и SIM для Android',
  de:'PROMETEI Android-Messenger — Bluetooth & Internet',
  es:'PROMETEI Android — Mensajes por Bluetooth e Internet',
  zh:'PROMETEI Android 聊天应用 — 蓝牙、局域网与互联网连接',
  ja:'PROMETEI Androidメッセンジャー — Bluetooth・LAN・インターネット'
 };
 const descriptions={
- en:'Chat online, or message nearby Android phones without internet over Bluetooth or a reachable local Wi-Fi network. Get PROMETEI on Google Play.',
+ en:'PROMETEI Android messenger: Internet chat and nearby Bluetooth or local Wi-Fi/LAN messaging. Start without a phone number or email. Explore guides and limitations.',
  uk:'Відкрийте PROMETEI для Android: повідомлення через Bluetooth, локальну Wi-Fi/LAN мережу та інтернет. Дізнайтеся, як працює зв’язок без інтернету.',
- ru:'PROMETEI — мессенджер для Android. Отправляйте сообщения через Bluetooth, локальную Wi-Fi/LAN сеть и интернет. Узнайте, когда возможна связь без интернета.',
+ ru:'PROMETEI — Android-мессенджер без обязательного номера или SIM для локальной связи. Интернет, Bluetooth и Wi-Fi/LAN: способы переписки и ограничения.',
  de:'PROMETEI für Android verbindet über Bluetooth, lokales WLAN/LAN, Internet und gemischte Routen. Erfahren Sie, wann Nachrichten ohne Internet möglich sind.',
  es:'PROMETEI para Android combina Bluetooth, Wi-Fi/LAN local, Internet y modo mixto. Descubre cuándo es posible comunicarse sin conexión a Internet.',
  zh:'探索 PROMETEI 安卓通讯应用：通过蓝牙、本地 Wi-Fi 局域网、互联网及混合模式发送消息。了解何时可以离线连接，以及附近设备通信的条件、场景与限制。',
@@ -226,13 +227,20 @@ for(const lang of locales){
   fs.mkdirSync(path.dirname(dest),{recursive:true});
   fs.writeFileSync(dest,chartPage(catalog,lang,site.origin));
 }
-const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm')];
+const guideUrls=generateGuides(output,base);
+const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls];
 const xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for(const item of urls){
  xml.push('  <url><loc>'+base+item+'</loc>');
  if(item===''||localized.some(l=>item===l+'/')){
   for(const l of locales)xml.push(`    <xhtml:link rel="alternate" hreflang="${mappings[l]}" href="${base+(l==='en'?'':l+'/')}"/>`);
   xml.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${base}"/>`);
+ }
+ if(item.startsWith('guides/')||item.startsWith('ru/guides/')){
+   const suffix=item.startsWith('ru/')?item.slice(3):item;
+   xml.push('    <xhtml:link rel="alternate" hreflang="en" href="'+base+suffix+'"/>');
+   xml.push('    <xhtml:link rel="alternate" hreflang="ru" href="'+base+'ru/'+suffix+'"/>');
+   xml.push('    <xhtml:link rel="alternate" hreflang="x-default" href="'+base+suffix+'"/>');
  }
  if(item==='fm'||localized.some(l=>item===l+'/fm')){
   for(const l of locales)xml.push(`    <xhtml:link rel="alternate" hreflang="${mappings[l]}" href="${base+(l==='en'?'fm':l+'/fm')}"/>`);
