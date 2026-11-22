@@ -1,0 +1,49 @@
+name: PROMETEI Crypto Atlas checks
+on:
+  pull_request:
+    paths:
+      - "crypto-atlas*.json"
+      - "crypto-stories-*.json"
+      - "crypto-atlas.css"
+      - "crypto-atlas.js"
+      - "scripts/build-crypto-atlas.mjs"
+      - "scripts/check-crypto-atlas.mjs"
+      - "scripts/build.mjs"
+      - "index.html"
+      - "styles.css"
+      - ".github/workflows/crypto-atlas.yml"
+  push:
+    branches: [main]
+    paths:
+      - "crypto-atlas*.json"
+      - "crypto-stories-*.json"
+      - "crypto-atlas.css"
+      - "crypto-atlas.js"
+      - "scripts/build-crypto-atlas.mjs"
+      - "scripts/check-crypto-atlas.mjs"
+      - "scripts/build.mjs"
+      - "index.html"
+      - "styles.css"
+      - ".github/workflows/crypto-atlas.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax check
+        run: |
+          node --check scripts/build-crypto-atlas.mjs
+          node --check scripts/check-crypto-atlas.mjs
+          node --check crypto-atlas.js
+      - name: Generate static site
+        run: npm run build
+      - name: Verify 50 × 20 articles, PROI honesty, accessibility and sitemap
+        run: node scripts/check-crypto-atlas.mjs
+      - name: Confirm existing science atlas is intact
+        run: node scripts/check-seo-guides.mjs
