@@ -55,8 +55,9 @@ for(const lang of locales){
   assertLinks(html,rel);
   assert.ok(Object.keys(catalog[lang]||{}).length>=130,'incomplete '+lang+' catalog');
   if(lang!=='en'){
-    const translatedHero=catalog[lang]['YOUR MUSIC.'];
-    assert.ok(html.includes(translatedHero),'hero unlocalized '+lang);
+    // The current generated FM H1 is the localized station name + radio descriptor.
+    const radioLabel={uk:'Радіо онлайн',ru:'Радио онлайн',de:'Online-Radio',es:'Radio en línea',zh:'在线电台',ja:'オンラインラジオ'}[lang];
+    assert.ok(html.includes('<h1>')&&html.includes(radioLabel),'hero unlocalized '+lang);
     assert.ok(html.includes(catalog[lang]['ARTIST']),'request form unlocalized '+lang);
     assert.ok(html.includes(catalog[lang]['YOUR SONG.']),'requests section unlocalized '+lang);
   }
