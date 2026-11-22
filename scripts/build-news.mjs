@@ -18,9 +18,10 @@ for(const x of stories){
   if(!categories.includes(x.category)||x.category==="All"||x.body.length!==2||!photos[x.photo])throw Error("Invalid story "+x.slug);
   if(!/^2026-11-(1[5-9]|2[0-2])$/.test(x.date)||x.lead.length<65||x.body.join(" ").length<170||!/^https:\/\//.test(x.source.url))throw Error("Invalid reporting: "+x.slug);
 }
-function storyPhoto(story,hero=false){
+function storyPhoto(story,hero=false,inLinkedCard=false){
  const p=photos[story.photo];
- return '<figure class="news-photo '+(hero?"news-photo-hero":"")+'"><img src="'+esc(p.image)+'" alt="'+esc(p.alt)+'" loading="'+(hero?"eager":"lazy")+'" decoding="async" referrerpolicy="no-referrer"'+(hero?' fetchpriority="high"':'')+'><figcaption><span>Illustrative photo · Not a photograph of this reported event</span><span>Photo: <a href="'+esc(p.creditUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(p.credit)+'</a> · '+esc(p.license)+'</span></figcaption></figure>';
+ const credit=inLinkedCard?'<span class="nw-credit">'+esc(p.credit)+'</span>':'<a href="'+esc(p.creditUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(p.credit)+'</a>';
+ return '<figure class="news-photo '+(hero?"news-photo-hero":"")+'"><img src="'+esc(p.image)+'" alt="'+esc(p.alt)+'" loading="'+(hero?"eager":"lazy")+'" decoding="async" referrerpolicy="no-referrer"'+(hero?' fetchpriority="high"':'')+'><figcaption><span>Illustrative photo · Not a photograph of this reported event</span><span>Photo: '+credit+' · '+esc(p.license)+'</span></figcaption></figure>';
 }
 function header(base){return '<header class="nw-header"><div class="nw-wrap nw-header-content"><a class="nw-brand" href="'+base+'"><span class="nw-star">✦</span><span>PROMETEI<small>THE WEEK / ENGLISH</small></span></a><nav aria-label="Site navigation"><a href="'+base+'">Messenger</a><a href="'+base+'guides/">Science Atlas</a><a href="'+base+'crypto-atlas/">Crypto Atlas</a><a href="'+link(base)+'" aria-current="page">News</a><a class="nw-mobile-install" href="https://play.google.com/store/apps/details?id=com.meshnetwork.app" target="_blank" rel="noopener noreferrer">Get PROMETEI ↗</a></nav></div></header>'}
 function footer(base){return '<footer class="nw-footer"><div class="nw-wrap nw-footer-layout"><div><div class="nw-footer-logo">✦ PROMETEI</div><p>A small independent editorial digest summarizing reporting from named outlets. Headlines and summaries are original wording; source reporting is credited on every page. No affiliation with the news organizations shown.</p></div><nav aria-label="Footer links"><a href="'+base+'">PROMETEI Messenger</a><a href="'+base+'portfolio">Developer Portfolio</a><a href="'+base+'fm">PROMETEI FM</a><a href="'+link(base)+'">This Week in News</a></nav></div><div class="nw-wrap nw-copyright">Editorial snapshot: 15–22 November 2026 · English only · Photographs are illustrative, attributed, and reused under the Unsplash License.</div></footer>'}
@@ -34,7 +35,7 @@ function shell(base,opts){
 function prettyDate(s){return new Date(s+"T12:00:00Z").toLocaleDateString("en-US",{timeZone:"UTC",day:"numeric",month:"short",year:"numeric"})}
 function storyCard(base,s,isFeature=false){
 return '<a class="nw-card nw-reveal '+(isFeature?"nw-feature-card":"")+'" href="'+link(base,s.slug+"/")+'" data-text="'+esc([s.title,s.lead,s.category].join(" ").toLowerCase())+'" data-category="'+esc(s.category)+'" data-date="'+s.date+'">'+
- '<div class="nw-card-image">'+storyPhoto(s)+'</div><div class="nw-card-content"><span class="nw-meta"><span>'+esc(s.category)+'</span><time datetime="'+s.date+'">'+prettyDate(s.date)+'</time></span><h3>'+esc(s.title)+'</h3><p>'+esc(s.lead)+'</p><span class="nw-read-more">Read the story <b aria-hidden="true">↗</b></span></div></a>';
+ '<div class="nw-card-image">'+storyPhoto(s,false,true)+'</div><div class="nw-card-content"><span class="nw-meta"><span>'+esc(s.category)+'</span><time datetime="'+s.date+'">'+prettyDate(s.date)+'</time></span><h3>'+esc(s.title)+'</h3><p>'+esc(s.lead)+'</p><span class="nw-read-more">Read the story <b aria-hidden="true">↗</b></span></div></a>';
 }
 function index(base){
 const hero=stories[0];
