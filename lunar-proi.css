@@ -594,3 +594,27 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
  #lp-chart-trace{stroke:#111}
  .lp-analytics,.lp-moon-panel,.lp-input-panel{box-shadow:none}
 }
+
+
+/* OBSERVATORY VECTOR PHASE GLYPHS — no emoji-rendering variation across devices. */
+.lp-phase-icon{
+ display:block;
+ width:clamp(27px,3.3vw,34px);
+ height:clamp(27px,3.3vw,34px);
+ flex:none;
+ overflow:visible;
+ filter:drop-shadow(0 0 6px #98d7d62a);
+}
+.lp-phase-preset[aria-pressed=true] .lp-phase-icon{filter:drop-shadow(0 0 9px #9be6dc70)}
+.lp-day-moon{display:grid;place-items:center;width:100%;min-height:24px}
+.lp-day-moon svg{display:block;width:23px;height:23px;filter:drop-shadow(0 0 3px #7fb9c32a)}
+.lp-protocol-grid .lp-protocol-id{
+ display:inline-block;
+ font:700 .67rem/1.4 "Space Grotesk",Consolas,monospace;
+ color:#8cdbd3;
+ border-bottom:1px solid #366476;
+ letter-spacing:.14em;
+ padding:0 0 9px;
+}
+@media(max-width:390px){.lp-day-moon svg{width:20px;height:20px}}
+@media(forced-colors:active){.lp-phase-icon circle,.lp-day-moon svg circle{stroke:CanvasText}}
