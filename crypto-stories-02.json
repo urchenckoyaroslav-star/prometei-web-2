@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "xrp",
+    "facts": [
+      "The XRP Ledger started operating in 2012 as an alternative design for moving value across networks.",
+      "Early architects included David Schwartz, Jed McCaleb, and Arthur Britto.",
+      "XRP uses a consensus process that differs from Bitcoin's energy-intensive mining.",
+      "Ripple later became the commercial company most visibly associated with the ledger.",
+      "Ripple executives, including Brad Garlinghouse, promoted payment and institutional uses.",
+      "XRP itself is a ledger asset rather than equity in Ripple.",
+      "The XRP Ledger has long emphasized relatively rapid settlement of transactions.",
+      "Exchange listings and cross-border payment narratives helped attract a large global audience.",
+      "The relationship between Ripple and XRP sparked enduring debates about influence and decentralization.",
+      "United States securities litigation that began in 2020 became a defining chapter in its market history.",
+      "Major court developments repeatedly moved public sentiment around XRP.",
+      "The ledger has also supported tokenization and additional financial features beyond basic transfers.",
+      "Its validators and network governance differ from the open mining process used by Bitcoin.",
+      "XRP offers an example of how legal context can shape a technically functioning network."
+    ],
+    "bridge": "XRP is intended for network-level value transfer, whereas PROI presently acts as a reward counter for app participation."
+  },
+  {
+    "slug": "solana",
+    "facts": [
+      "Anatoly Yakovenko published an early Solana design in 2017 after working in wireless engineering.",
+      "Raj Gokal joined him among the founding figures behind Solana's development.",
+      "Solana's mainnet beta began in 2020 with an emphasis on high-throughput applications.",
+      "Its proof-of-history mechanism provides a way to order events within a larger consensus design.",
+      "The network attracted developers building exchanges, games, payments, and digital collectibles.",
+      "Periods of rapid activity showcased fast processing and often low user-facing fees.",
+      "Solana also experienced major outages that led to criticism of reliability.",
+      "The collapse of FTX in 2022 damaged confidence in parts of the Solana ecosystem.",
+      "Developers and communities continued building after that market shock.",
+      "Memecoin launches later drove substantial activity and controversy across its applications.",
+      "New validator-client research sought more resilience through implementation diversity.",
+      "Public figures such as Yakovenko remained prominent technical voices.",
+      "Solana's market cycles have been especially sensitive to developer enthusiasm and speculative activity.",
+      "Its real achievement is a live programmable network with meaningful performance trade-offs."
+    ],
+    "bridge": "Solana's network speed is an engineering reality to measure, while future PROI transfer speeds remain only a design question."
+  },
+  {
+    "slug": "hyperliquid",
+    "facts": [
+      "Hyperliquid was developed as an on-chain trading infrastructure project rather than a conventional payments coin.",
+      "Jeff Yan became a publicly recognizable builder associated with the project.",
+      "Its native environment aimed to combine an order-book experience with blockchain settlement.",
+      "The network's development accelerated during the period after the 2022 exchange failures.",
+      "Hyperliquid launched its mainnet in 2023 according to public regulatory materials.",
+      "The HYPE token was distributed to early participants in a major event in November 2024.",
+      "The large user allocation attracted attention to a model that emphasized community distribution.",
+      "HYPE connects to the Hyperliquid ecosystem and its network governance and utility.",
+      "Demand for on-chain derivatives exposed the project to intense scrutiny about risk management.",
+      "Concerns about validator concentration and operational dependence remain part of the discussion.",
+      "Public debates also focus on whether on-chain visibility truly reduces every exchange risk.",
+      "The project expanded beyond its first market format as its developer ecosystem evolved.",
+      "Rapid fluctuations in sentiment demonstrate how quickly a new trading narrative can change.",
+      "Hyperliquid is best understood as specialized financial infrastructure, not a generic digital dollar."
+    ],
+    "bridge": "HYPE is connected to a live financial network, whereas PROI is currently a non-tradable usage-reward idea."
+  },
+  {
+    "slug": "zcash",
+    "facts": [
+      "Zcash launched in 2016 after years of academic research into private digital payments.",
+      "Its underlying ideas grew from the Zerocash line of cryptographic work.",
+      "Zooko Wilcox became the best-known public founder associated with its early development.",
+      "The Electric Coin Company helped advance the initial software and privacy research.",
+      "Zcash uses zero-knowledge proofs to support transactions that can hide selected information.",
+      "Privacy is optional and depends on the type of addresses and transactions involved.",
+      "The network initially used proof-of-work mining in a Bitcoin-inspired monetary design.",
+      "Funding structures and developer organizations became central community governance questions.",
+      "Research on newer proof systems, including Halo, shaped later technology upgrades.",
+      "Privacy coins have faced exchange policies and regulatory attention different from many public-ledger assets.",
+      "ZEC trading has shown pronounced market cycles as interest in privacy waxed and waned.",
+      "Supporters emphasize financial confidentiality as a legitimate public need.",
+      "Critics discuss usability, auditability, and the tension between privacy and compliance.",
+      "Zcash demonstrates that privacy requires mathematics and implementation, not just an anonymous slogan."
+    ],
+    "bridge": "Zcash implements cryptographic privacy techniques, while PROI points alone should never be advertised as providing similar protection."
+  },
+  {
+    "slug": "dogecoin",
+    "facts": [
+      "Dogecoin appeared in December 2013 as a playful response to the growing cryptocurrency scene.",
+      "Software developers Billy Markus and Jackson Palmer are closely associated with its founding.",
+      "Its branding came from the Shiba Inu Doge meme rather than a corporate payments brand.",
+      "Dogecoin adopted a proof-of-work blockchain derived from earlier digital-currency designs.",
+      "Early enthusiasts built an unusually visible culture around tipping and charitable fundraising.",
+      "A community campaign helped support the Jamaican bobsled team during the 2014 Olympic period.",
+      "The project became famous for mixing internet humor with real transfers.",
+      "Unlike Bitcoin, Dogecoin does not use an identical fixed maximum-supply model.",
+      "Public comments by Elon Musk repeatedly amplified attention to DOGE.",
+      "Those comments should not be confused with guarantees or formal network control.",
+      "A major wave of social-media speculation pushed Dogecoin into the mainstream in 2021.",
+      "Wild price reversals subsequently reminded observers that memes do not remove market risk.",
+      "Its volunteer and open-source culture kept the project alive beyond its initial joke.",
+      "Dogecoin illustrates how collective identity can give a network significance beyond technical novelty."
+    ],
+    "bridge": "Dogecoin grew through community energy, a useful cultural comparison for PROMETEI's PROI recognition points without treating points as coins."
+  }
+]
