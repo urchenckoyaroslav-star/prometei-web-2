@@ -1,6 +1,6 @@
 {
   "title": "Mondphasen, Forschung und die mögliche Zukunft von PROI",
-  "description": "Wissenschaft über Mondphasen, Gezeiten, Tiere und menschlichen Schlaf: ein interaktiver Mond, ein Kalender und eine ausdrücklich hypothetische PROI-Ausgabe- und Gebührenmodellierung. PROI sind derzeit Punkte.",
+  "description": "PROI in PROMETEI: +0,5 je 10%-Mondmeilenstein beim Zunehmen und +0,1 beim Abnehmen; Internethilfe, ROOT-Gebühren und Relay Vault erklärt.",
   "ui": {
     "kicker": "PROMETEI MONDLABOR · FORSCHUNG & ZUKUNFTSKONZEPT",
     "headline": "Der Mond verändert sich. PROMETEI belohnt Meilensteine.",
@@ -144,7 +144,7 @@
       ]
     },
     {
-      "h": "09 · Wie der Mond künftig PROI „drucken“ könnte",
+      "h": "09 · So vergibt Lunar Pulse interne PROI",
       "p": [
         "Die Android-App PROMETEI nutzt für Lunar Pulse einen deterministischen UTC-Zeitplan mit einem mittleren synodischen Monat. Steigt die berechnete Beleuchtung über 10%, 20% bis 100%, erhält jeder Meilenstein eine globale Ereignis-ID; eine berechtigte erfolgreiche Einlösung bringt jeweils 0,5 interne PROI. Beim Abnehmen laufen die Grenzen von 90% bis 0% und bringen jeweils 0,1 PROI. Zusammen sind dies 20 Ereignisse und maximal 6 PROI je Zyklus, sofern alle Ansprüche zulässig und erfolgreich sind. Das ist keine tägliche Coin-Emission.",
         "Weitere App-Regeln geben 0,1 PROI für verifizierte Internethilfe mit höchstens zehn Tagesbelohnungen und Sperren gegen mehrfache Hilfe zwischen denselben Konten. Ein bestätigter Relay kann einen Gebührenanteil erhalten. ROOT verwaltet getrennte Gebühren für Zu- und Abnahme, wobei 50% der erhobenen Gebühr verbrannt werden und der Rest dem Relay Vault zufällt. Die Android-Standardwerte sind 10% und 15%, können jedoch geändert werden. Der Slider folgt der gleichen deterministischen Android-Rechnung, ohne Kontostände oder Live-Gebühren einzulesen."
