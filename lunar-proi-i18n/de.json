@@ -1,0 +1,141 @@
+{
+  "title": "Mondphasen, Forschung und die mögliche Zukunft von PROI",
+  "description": "Wissenschaft über Mondphasen, Gezeiten, Tiere und menschlichen Schlaf: ein interaktiver Mond, ein Kalender und eine ausdrücklich hypothetische PROI-Ausgabe- und Gebührenmodellierung. PROI sind derzeit Punkte.",
+  "ui": {
+    "kicker": "PROMETEI MONDLABOR · FORSCHUNG & ZUKUNFTSKONZEPT",
+    "headline": "Der Mond gibt den Takt vor. PROI denkt an die Zukunft.",
+    "lead": "Ein himmlischer Rhythmus, überprüfbare Wissenschaft und ein Entwurf: eine mögliche künftige PROI-Münze mit einer transparenten Ausgabe nach Mondphasen.",
+    "status": "PROI sind heute Bonuspunkte innerhalb der App, keine eingeführte Kryptowährung. Alle Zahlen dieses Labors sind frei gewählte Simulationsparameter, keine Guthaben oder tatsächlich erzeugten Coins.",
+    "now": "HEUTE · BONUSPUNKTE",
+    "future": "KÜNFTIGER TOKEN · KONZEPT",
+    "top10": "Top-10 als Vision · keine Prognose",
+    "moonTitle": "Erkunde den Mondmonat",
+    "moonIntro": "Bewege den Regler, tippe auf eine Phase oder wähle einen Kalendertag. Beleuchtung und hypothetische PROI-Ausgabe verändern sich gemeinsam.",
+    "slider": "Position im Mondzyklus",
+    "phase": "Phase",
+    "light": "Sichtbare Beleuchtung",
+    "age": "Ungefähres Mondalter",
+    "date": "Ausgewähltes Datum (UTC)",
+    "manual": "Manuelle Phasenansicht",
+    "estimate": "Modell-PROI-Einheiten / Tag",
+    "cycle": "Modell-Einheiten / 29,53-Tage-Zyklus",
+    "actual": "Tatsächlich geprägte Blockchain-PROI",
+    "zeroNote": "Null: Es existiert weder eine gestartete PROI-Blockchain noch eine aktive Mondemission.",
+    "mint": "MONDGETAKTETE PROI · HYPOTHETISCH",
+    "sim": "Nur ein Beispiel: 100 × (1 + 2 × beleuchteter Anteil). Neumond: 100, Vollmond: 300 Modelleinheiten pro Tag. Keine genehmigte Tokenökonomie.",
+    "phaseChoose": "Mondphase wählen",
+    "calendarTitle": "Interaktiver Mondkalender",
+    "calendarInfo": "Wähle einen Tag, um die ungefähre Phase und die simulierte Ausgabe zu betrachten. Keine genaue Ephemeride und kein persönlicher Kontostand.",
+    "prev": "Vormonat",
+    "next": "Nächster Monat",
+    "today": "Heute",
+    "selected": "Gewählt",
+    "approx": "Vereinfachte Berechnung; offizielle astronomische Zeiten können abweichen.",
+    "feeTitle": "Wie könnten Gebühren und Verbrennung funktionieren?",
+    "feeIntro": "Probiere eine hypothetische Überweisung: 1 % Gebühr, davon 0,25 % des Betrags dauerhaft verbrannt und 0,75 % für den Netzbetrieb. Heute wird nichts berechnet oder verbrannt.",
+    "amount": "Beispielüberweisung (Modelleinheiten)",
+    "totalFee": "Beispielgebühr",
+    "burned": "Im Modell verbrannt",
+    "network": "Für Netzwartung im Modell",
+    "feesNote": "Dieses Rechenbeispiel beschreibt keine gültigen PROI-Regeln und garantiert weder Knappheit noch Preisentwicklung.",
+    "learnTitle": "Die Wissenschaft hinter dem Mondtakt",
+    "sources": "Wissenschaftliche Quellen",
+    "sourcesIntro": "Verlinkt sind NASA, NOAA und wissenschaftliche Veröffentlichungen. Studien zu Schlaf und Mondphasen widersprechen sich teilweise.",
+    "model": "Konzept, keine aktive Blockchain",
+    "roadmap": "Was müsste vor einem möglichen Coin geschehen?",
+    "roadmapText": "Nötig wären eine öffentliche Spezifikation, Governance, unabhängige Sicherheitsprüfungen, nachvollziehbare astronomische Berechnungen, rechtliche Prüfung und eine klare Trennung von Punkten und möglichen Token. Eine Umwandlung der heutigen Punkte wird nicht zugesagt.",
+    "collect": "Nutze PROI-Punkte entsprechend den aktuellen App-Regeln, soweit die Funktion verfügbar ist; das Sammeln garantiert keinen Geldwert.",
+    "cta": "PROMETEI bei Google Play ansehen",
+    "back": "Krypto-Atlas",
+    "guides": "Kommunikationswissenschaft",
+    "news": "Wochennachrichten",
+    "portfolio": "Portfolio",
+    "fees": "Gebührenmodell",
+    "calendar": "Kalender",
+    "research": "Forschung",
+    "phases": [
+      "Neumond",
+      "Zunehmende Sichel",
+      "Erstes Viertel",
+      "Zunehmender Mond",
+      "Vollmond",
+      "Abnehmender Mond",
+      "Letztes Viertel",
+      "Abnehmende Sichel"
+    ],
+    "days": [
+      "So",
+      "Mo",
+      "Di",
+      "Mi",
+      "Do",
+      "Fr",
+      "Sa"
+    ]
+  },
+  "sections": [
+    {
+      "h": "01 · Mondphasen entstehen durch Geometrie",
+      "p": [
+        "Der Mond leuchtet nicht selbst, sondern reflektiert Sonnenlicht. Eine Hälfte der Mondkugel ist stets von der Sonne beleuchtet; von der Erde aus sehen wir jedoch je nach Position einen unterschiedlichen Teil dieser hellen Seite. Auf den Neumond folgen zunehmende Sichel, erstes Viertel, ein fast voller Mond und schließlich Vollmond. Danach nimmt die sichtbare helle Fläche wieder ab. Die acht Namen kennzeichnen Abschnitte eines kontinuierlichen Vorgangs.",
+        "Schwach beleuchtete Flächen einer dünnen Sichel können durch Erdschein sichtbar werden: Sonnenlicht wird von der Erde zum Mond reflektiert. Unsere Grafik vereinfacht die Ansicht der Nordhalbkugel und ersetzt kein astronomisches Instrument."
+      ]
+    },
+    {
+      "h": "02 · Warum ein Monat im Mittel 29,53 Tage dauert",
+      "p": [
+        "Gegenüber weit entfernten Sternen umrundet der Mond die Erde in etwa 27,3 Tagen. Gleichzeitig bewegt sich die Erde auf ihrer Bahn um die Sonne, sodass der Mond weiterlaufen muss, bis wieder dieselbe Stellung zu Sonne und Erde erreicht wird. Von Neumond zu Neumond vergehen deshalb durchschnittlich 29,53059 Tage. Einzelne Zyklen schwanken wegen der elliptischen Bahn und der gravitativen Einflüsse.",
+        "Solche Rhythmen dienten Menschen seit Jahrtausenden als Kalender. Auch ein Computerprotokoll könnte bestimmte astronomische Ereignisse als öffentliche Zeitmarken verwenden. Die Erzeugung von Geld wäre dennoch eine Entscheidung der Programmierer und keine physikalische Fähigkeit des Mondes."
+      ]
+    },
+    {
+      "h": "03 · Die Gezeiten sind ein realer Mondeinfluss",
+      "p": [
+        "Mond und Sonne erzeugen Gezeiten durch Unterschiede ihrer Gravitationswirkung über die Erde hinweg. Wie hoch das Wasser lokal steigt, hängt zusätzlich von Küstenform, Meerestiefe, Rotation und Wetter ab. Bei Neu- und Vollmond verstärken sich die Gezeiteneffekte häufig und führen zu größerem Tidenhub, den sogenannten Springtiden. Zu den Viertelphasen wirken sie teilweise gegeneinander, sodass die Unterschiede meist kleiner ausfallen.",
+        "Vollmond bedeutet nicht an jedem Ort eine gefährliche Flut. Für Sicherheit am Wasser sind amtliche örtliche Gezeitenvorhersagen entscheidend und niemals der künstlerische Kalender dieser Seite."
+      ]
+    },
+    {
+      "h": "04 · Eine Finsternis findet nicht jeden Monat statt",
+      "p": [
+        "Wieso gibt es nicht bei jedem Vollmond eine Mondfinsternis? Die Mondbahn ist um ungefähr fünf Grad gegen die Ebene der Erdbahn geneigt. Meistens zieht der Mond über oder unter der genauen Linie vorbei, die für eine Finsternis nötig wäre. Erst nahe den Schnittpunkten der Bahnebenen kann die erforderliche Ausrichtung entstehen.",
+        "Die dunkle Fläche einer normalen Mondsichel ist ihre Nachtseite und nicht der Erdschatten. Mondphasen und Finsternisse hängen beide mit der Himmelsmechanik zusammen, sind aber unterschiedliche Erscheinungen."
+      ]
+    },
+    {
+      "h": "05 · Meerestiere können Mondsignale nutzen",
+      "p": [
+        "Bei manchen Meerestieren wurden ungefähr monatliche oder halbmonatliche Rhythmen nachgewiesen. In Experimenten mit der Koralle Dipsastraea speciosa veränderten Forschende künstliches Mondlicht. Der Zeitpunkt des Mondaufgangs und eine dazwischenliegende Dunkelphase beeinflussten die Synchronisierung des Laichens. Das ist ein konkreter biologischer Lichteffekt, kein mystisches Gesetz für alle Lebewesen.",
+        "Gezeiten, Nachthelligkeit und Räuber-Beute-Beziehungen liefern manchen Arten wichtige Signale. Aber Arten reagieren sehr unterschiedlich; nicht alle Fische, Vögel oder Säugetiere vermehren sich bei Vollmond."
+      ]
+    },
+    {
+      "h": "06 · Menschlicher Schlaf: widersprüchliche Ergebnisse",
+      "p": [
+        "Die Forschung liefert kein einheitliches Bild. Eine kleine Laborstudie von 2013 beschrieb Änderungen einiger Schlafmerkmale um Vollmond. Eine Feldstudie aus dem Jahr 2021 fand Unterschiede beim Einschlafzeitpunkt in verschiedenen Gemeinschaften; natürliches Nachtlicht könnte ein Faktor sein. Daraus folgt jedoch nicht, dass die Mondphase den Schlaf jedes Menschen steuert.",
+        "Eine große Analyse von Schlaf-Tracker-Daten, 2024 als Konferenzabstract vorgestellt, fand dagegen keinen konsistenten Effekt auf die Gesamtschlafdauer. Messverfahren, Umgebungen und Teilnehmer unterscheiden sich stark. Wissenschaftlich unhaltbar ist die pauschale Behauptung, Mondphasen bestimmten Charakter, Glück oder Entscheidungen."
+      ]
+    },
+    {
+      "h": "07 · Ein helleres oder dunkleres Ökosystem",
+      "p": [
+        "Vor dem elektrischen Licht waren Nächte rund um Neumond dunkler und bei Vollmond heller. Für nachtaktive Tiere kann das Jagd, Tarnung, Bewegung oder Fortpflanzung beeinflussen. Menschen nutzten die gut sichtbaren Mondwechsel für Kalender, Navigation und kulturelle Traditionen. Der Mond bietet damit eine natürliche Uhr, die an vielen Orten beobachtet werden kann.",
+        "Wolken, Jahreszeit, Breitenlage, künstliche Beleuchtung und Lebensräume verändern diese Bedingungen. Wissenschaft trennt messbares Licht und Gravitation von Legenden und verwechselt statistische Zusammenhänge nicht mit Ursachen."
+      ]
+    },
+    {
+      "h": "08 · PROI heute: Punkte statt Investment",
+      "p": [
+        "Prometei Iskra, kurz PROI, wird derzeit als Belohnungspunktesystem innerhalb von PROMETEI beschrieben. Wo entsprechende Funktionen und Bedingungen aktiv sind, können Nutzer diese Punkte als Bestandteil der App kennenlernen. Es gibt keinen eingeführten PROI-Blockchain-Coin, keinen bestätigten Marktpreis und keine Zusage, dass heutige Punkte später gegen Token umgetauscht werden.",
+        "Wir können uns eine aussichtsreiche künftige Digitalmünze mit echtem Nutzwert vorstellen und langfristig von weltweiter Bekanntheit träumen. Eine Top-10-Platzierung wäre jedoch keine Vorhersage. Der Messenger soll unabhängig davon nützlich bleiben, ob eine Kryptowährung jemals startet."
+      ]
+    },
+    {
+      "h": "09 · Wie der Mond künftig PROI „drucken“ könnte",
+      "p": [
+        "Man könnte eine überprüfbare Software entwerfen, die Neumondtermine als öffentlich nachvollziehbare Marken für die Emission nutzt. Unsere rein illustrative Gleichung ergibt bei Dunkelmond 100 Modelleinheiten pro Tag, steigt mit der sichtbaren Beleuchtung bis zu 300 bei Vollmond und fällt wieder zurück. Der Schieberegler zeigt diese Rechnung anschaulich. Tatsächlich druckt der Mond nichts: Computer würden die programmierte Regel ausführen.",
+        "Eine weitere Beispielregel setzt eine Gebühr von 1 % an, wovon 0,25 % des Überweisungsbetrags unwiderruflich vernichtet und 0,75 % für das Netzwerk aufgewendet würden. Emission und Verbrennung sind getrennte Vorgänge; keiner verspricht Wertsteigerung. Vor einem Start wären offene Regeln, Sicherheit, Governance und Rechtsprüfung nötig. Heute wurden null echte PROI-Blockchain-Coins ausgegeben."
+      ]
+    }
+  ]
+}
