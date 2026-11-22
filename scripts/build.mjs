@@ -283,18 +283,18 @@ const proiNavLabels={
   ja:'PROI のすべて'
 };
 function putProiInMainMenu(html){
-  const lang=(html.match(/<html\\b[^>]*\\blang=["']([^"']+)["']/i)?.[1]||'en').slice(0,2).toLowerCase();
+  const lang=(html.match(/<html\b[^>]*\blang=["']([^"']+)["']/i)?.[1]||'en').slice(0,2).toLowerCase();
   const target=base+(lang==='en'?'':lang+'/')+'crypto-atlas/proi/';
-  const active=new URL(html.match(/<link\\s+rel=["']canonical["']\\s+href=["']([^"']+)["']/i)?.[1]||base).pathname.replace(/\\/?$/,'/')===new URL(target).pathname.replace(/\\/?$/,'/');
+  const active=new URL(html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1]||base).pathname.replace(/\/?$/,'/')===new URL(target).pathname.replace(/\/?$/,'/');
   const link='<a class="prometei-proi-nav" href="'+escapeAttr(target)+'"'+(active?' aria-current="page"':'')+'><span class="prometei-proi-glyph" aria-hidden="true">✦</span> '+escapeAttr(proiNavLabels[lang]||proiNavLabels.en)+'</a>';
   // Restrict modification to header navigation; never change article links, footer,
   // content or external ad blocks. Existing Moon & PROI links become this exact entry.
-  return html.replace(/<header\\b[^>]*>[\\s\\S]*?<\\/header>/i,header=>
-    header.replace(/<nav\\b[^>]*>[\\s\\S]*?<\\/nav>/gi,nav=>{
+  return html.replace(/<header\b[^>]*>[\s\S]*?<\/header>/i,header=>
+    header.replace(/<nav\b[^>]*>[\s\S]*?<\/nav>/gi,nav=>{
       if(/class=["'][^"']*prometei-proi-nav/.test(nav))return nav;
-      const old=/<a\\b[^>]*\\bhref=["'][^"']*\\/crypto-atlas\\/proi\\/["'][^>]*>[\\s\\S]*?<\\/a>/i;
+      const old=/<a\b[^>]*\bhref=["'][^"']*\/crypto-atlas\/proi\/["'][^>]*>[\s\S]*?<\/a>/i;
       if(old.test(nav))return nav.replace(old,link);
-      return nav.replace(/(<nav\\b[^>]*>)/i,'$1'+link);
+      return nav.replace(/(<nav\b[^>]*>)/i,'$1'+link);
     })
   );
 }
