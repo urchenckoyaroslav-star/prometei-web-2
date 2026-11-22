@@ -1,0 +1,78 @@
+{
+  "sources": [
+    [
+      "IEEE: Evolution of Wi-Fi",
+      "https://standards.ieee.org/beyond-standards/the-evolution-of-wi-fi-technology-and-standards/"
+    ],
+    [
+      "IEEE 802.11 timeline",
+      "https://www.ieee802.org/11/Reports/802.11_Timelines.htm"
+    ],
+    [
+      "IEEE Wi-Fi timeline",
+      "https://standards.ieee.org/wp-content/uploads/interactive/web/wi-fi-timeline/"
+    ]
+  ],
+  "timeline": [
+    [
+      1997,
+      "First IEEE 802.11 wireless LAN standard"
+    ],
+    [
+      1999,
+      "802.11b and industry interoperability work"
+    ],
+    [
+      2000,
+      "Wireless LANs expand in public spaces"
+    ],
+    [
+      2024,
+      "Wi-Fi 7 certification generation"
+    ]
+  ],
+  "languages": {
+    "en": {
+      "history": "Wireless local networks became practical through decades of radio experiments and shared standards. The IEEE published the original 802.11 standard in 1997; the 802.11b generation followed in 1999 and helped bring Wi-Fi into homes, universities and offices. Hotspots later made laptops and phones useful away from wired desks. The history matters because Wi-Fi is a local link technology, not another name for the public Internet. A router may continue managing local connections even when its Internet uplink is broken.",
+      "science": "A Wi-Fi network moves frames over radio between compatible devices, usually coordinated by an access point. The router may assign local IP addresses, forward packets between local clients and optionally send traffic to the provider. A guest network can deliberately isolate clients; the Wi-Fi symbol on both phones does not prove they can communicate. Interference, channel congestion, power-saving behavior and application permissions also affect latency and delivery.",
+      "today": "Modern Wi-Fi is used in homes, schools, transport and businesses, from web browsing to local printing and file transfer. PROMETEI explores a local LAN path so two compatible Android devices may exchange messages even without an external Internet service, if both remain mutually reachable. It is important to distinguish a working local network from a reachable distant contact: one does not imply the other.",
+      "future": "For future PROMETEI releases, engineering possibilities include more transparent LAN discovery, route quality measurements, faster local group messages and smarter use of available paths. Wi-Fi Direct or other device-to-device configurations would require explicit Android implementation and testing. There is no promise that every phone pair supports every network mode, nor that local Wi-Fi automatically creates an unlimited mesh."
+    },
+    "ru": {
+      "history": "Беспроводные локальные сети появились не в один день: за их развитием стоят эксперименты с радиопередачей и международные стандарты. В 1997 году IEEE опубликовал исходный стандарт 802.11; версия 802.11b 1999 года помогла сделать Wi-Fi массовой технологией для домов, университетов и офисов. Позже возникли публичные точки доступа. Важнейший вывод этой истории: Wi-Fi — способ организовать локальную связь, а не синоним внешнего интернета. Роутер может продолжать работать, когда линия провайдера отключена.",
+      "science": "Wi-Fi передаёт кадры данных по радиоканалу между совместимыми устройствами, обычно через точку доступа. Роутер может назначать локальные IP-адреса, пересылать пакеты между клиентами и обеспечивать выход к провайдеру. В гостевых сетях иногда специально запрещена связь между устройствами. Помехи, загруженность канала, энергосбережение и разрешения приложений влияют на доставку. Два значка Wi-Fi не гарантируют обмен сообщениями.",
+      "today": "Wi-Fi применяется дома, в школах, транспорте и компаниях: от браузера до локальной печати. PROMETEI исследует LAN-маршрут, позволяющий совместимым Android-устройствам обмениваться текстом без внешнего провайдера, если они достижимы в локальной сети. При этом получатель в другом городе по умолчанию недоступен: локальный канал не создаёт международного соединения.",
+      "future": "В планах развития PROMETEI — понятный поиск устройств в LAN, измерение качества соединения, ускорение сообщений в группах и более разумный выбор маршрута. Сценарии Wi-Fi Direct и другие режимы прямого соединения требуют отдельной реализации и тестов на реальных телефонах. Нельзя обещать, что любая пара устройств поддерживает произвольную локальную схему."
+    },
+    "uk": {
+      "history": "У 1997 році IEEE опублікував перший стандарт бездротової локальної мережі 802.11. Поява 802.11b у 1999 році допомогла поширити Wi-Fi в офісах, університетах і домівках. Згодом з’явилися публічні точки доступу. Ця історія нагадує: Wi-Fi є способом локального зв’язку, а не тотожним поняттю інтернету. Роутер може зберігати внутрішню мережу без провайдера.",
+      "science": "Wi-Fi передає кадри даних радіохвилями, часто через точку доступу. Роутер може надавати локальні IP-адреси та пересилати пакети між клієнтами. Гостьова мережа інколи блокує обмін між ними. Завади, навантаження, енергоощадний режим і дозволи Android впливають на роботу.",
+      "today": "Wi-Fi використовують удома, у школах, транспорті та на роботі. PROMETEI досліджує локальний шлях між сумісними телефонами за відсутності зовнішнього інтернету. Для цього потрібна реальна взаємна доступність пристроїв.",
+      "future": "Можливі напрямки розвитку — швидше виявлення пристроїв LAN, перевірка якості маршруту й прискорення групових повідомлень. Wi-Fi Direct та інші схеми потребують окремого впровадження й тестів."
+    },
+    "de": {
+      "history": "1997 veröffentlichte IEEE den ersten 802.11-Standard für drahtlose lokale Netze. Die Variante 802.11b von 1999 half, WLAN in Büros, Universitäten und Haushalten zu verbreiten. Später wurden öffentliche Hotspots üblich. Die entscheidende Erkenntnis: WLAN bezeichnet eine lokale Funkverbindung und nicht automatisch den Zugang zum öffentlichen Internet. Ein Router kann lokale Geräte auch bei ausgefallenem Anbieteranschluss verbinden.",
+      "science": "WLAN überträgt Datenrahmen per Funk, häufig über einen Access Point. Der Router kann lokale IP-Adressen vergeben und Pakete zwischen Geräten weiterleiten. Gastnetze dürfen diese Kommunikation absichtlich sperren. Funkstörungen, Kanalbelegung, Energiesparen und Berechtigungen beeinflussen die Übertragung.",
+      "today": "Heute wird WLAN zu Hause, in Bildungseinrichtungen, in Fahrzeugen und Betrieben eingesetzt. PROMETEI untersucht den lokalen LAN-Pfad zwischen erreichbaren Android-Geräten ohne externes Internet. Die gegenseitige Erreichbarkeit ist dabei entscheidend.",
+      "future": "Geplante Forschungsthemen sind bessere LAN-Erkennung, verständliche Verbindungsqualität und schnellere Gruppennachrichten. Wi-Fi Direct oder andere Direktmodi wären gesondert zu implementieren und auf realen Geräten zu prüfen."
+    },
+    "es": {
+      "history": "IEEE publicó el primer estándar 802.11 de redes inalámbricas locales en 1997. La variante 802.11b de 1999 ayudó a llevar el Wi-Fi a casas, universidades y oficinas. Después llegaron los puntos de acceso públicos. Esta evolución enseña una diferencia esencial: una red Wi-Fi local no es lo mismo que el Internet público. Un router puede seguir conectando equipos aunque el proveedor esté desconectado.",
+      "science": "Wi-Fi transmite tramas mediante ondas de radio, normalmente coordinadas por un punto de acceso. Un router puede asignar direcciones IP locales y transportar paquetes entre dispositivos. Las redes de invitados pueden impedir a propósito el contacto entre clientes. Interferencias, saturación, ahorro de energía y permisos afectan a la entrega.",
+      "today": "Actualmente Wi-Fi sirve para estudiar, trabajar, navegar y compartir datos en redes locales. PROMETEI investiga mensajes entre Android compatibles sin acceso exterior, siempre que ambos estén realmente conectados entre sí.",
+      "future": "Los objetivos de desarrollo incluyen mejor descubrimiento LAN, información clara sobre la calidad de la conexión y mensajes de grupo más rápidos. Wi-Fi Direct y otros modos requieren implementación y pruebas adicionales, no suposiciones."
+    },
+    "zh": {
+      "history": "IEEE 于 1997 年发布最初的 802.11 无线局域网标准。1999 年的 802.11b 帮助 Wi-Fi 进入家庭、大学和办公室，随后公共热点逐渐普及。历史告诉我们：Wi-Fi 是一种本地无线连接技术，并不等于公共互联网。即使服务商线路中断，路由器仍可能维持内部网络。",
+      "science": "Wi-Fi 通过无线电传送数据帧，通常由接入点协调。路由器可以分配本地 IP 地址，并在设备之间转发数据包。访客网络可能故意禁止客户端互通。信号干扰、信道拥挤、省电机制与 Android 权限也会影响结果。",
+      "today": "现在 Wi-Fi 被广泛用于家庭、学校、交通和办公场所。PROMETEI 研究的是在没有外部互联网时，处于互相可达的局域网中的兼容 Android 手机能否交换消息。局域网可用不等于能联系远方的人。",
+      "future": "未来研究方向包括更清晰的局域网设备发现、线路质量显示、加快群组消息，以及更合理的路线选择。Wi-Fi Direct 或其他直连模式必须单独实现和测试，不能假定所有手机都支持。"
+    },
+    "ja": {
+      "history": "IEEEは1997年に無線LANの最初の802.11規格を公開しました。1999年の802.11bは家庭、大学、職場へのWi-Fi普及を後押しし、その後公共ホットスポットも広がりました。重要なのは、Wi-Fiがローカルの接続技術であり、公共インターネットそのものではないことです。外部回線が止まってもルーター内部の通信は継続する場合があります。",
+      "science": "Wi-Fiではアクセスポイントを介して無線フレームをやり取りすることが一般的です。ルーターはローカルIPアドレスを割り当て、端末間のパケットを転送できます。ただしゲストネットワークの端末分離、電波干渉、混雑、省電力機能、権限設定が通信に影響します。",
+      "today": "現在のWi-Fiは家庭、学校、乗り物、職場などで使われています。PROMETEIは外部インターネットなしでも到達可能なAndroid端末同士でLANメッセージを送る仕組みを研究しています。遠くの利用者に届くとは限りません。",
+      "future": "今後の研究目標はLAN内の機器発見、経路品質の表示、グループメッセージの高速化です。Wi-Fi Directなどの構成は個別の実装と実機検証が必要です。"
+    }
+  }
+}
