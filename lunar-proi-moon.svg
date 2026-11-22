@@ -1,17 +1,58 @@
-<svg class="lp-moon-svg" viewBox="0 0 360 360" role="img" aria-label="Moon phase visualization" width="360" height="360" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<radialGradient id="lp-moon-dark" cx="30%" cy="30%" r="80%"><stop stop-color="#3b435d"/><stop offset=".74" stop-color="#171e31"/><stop offset="1" stop-color="#090d19"/></radialGradient>
-<radialGradient id="lp-moon-light" cx="30%" cy="29%" r="76%"><stop stop-color="#fffbd9"/><stop offset=".48" stop-color="#e9e4eb"/><stop offset=".84" stop-color="#aeb4ce"/><stop offset="1" stop-color="#687995"/></radialGradient>
-<clipPath id="lp-moon-clip"><path id="lp-moon-light-path" d="M 180 44 A 136 136 0 0 1 180 316 Q 452 180 180 44 Z"/></clipPath>
-</defs>
-<circle cx="180" cy="180" r="154" fill="none" stroke="#bdd8ff" stroke-opacity=".22" stroke-width="1.4"/>
-<circle cx="180" cy="180" r="143" fill="none" stroke="#d7e7ff" stroke-opacity=".12"/>
-<circle cx="180" cy="180" r="136" fill="url(#lp-moon-dark)"/>
-<g opacity=".27" fill="#626d8b"><circle cx="118" cy="126" r="22"/><circle cx="229" cy="116" r="13"/><ellipse cx="195" cy="231" rx="43" ry="26"/><circle cx="106" cy="242" r="20"/></g>
-<g clip-path="url(#lp-moon-clip)">
-<circle cx="180" cy="180" r="136" fill="url(#lp-moon-light)"/>
-<g fill="#717b9b" opacity=".34"><circle cx="116" cy="127" r="22"/><circle cx="237" cy="103" r="15"/><circle cx="254" cy="212" r="25"/><ellipse cx="192" cy="232" rx="44" ry="28"/><circle cx="106" cy="245" r="20"/><circle cx="170" cy="107" r="11"/><ellipse cx="151" cy="176" rx="27" ry="18"/></g>
-<g fill="none" stroke="#f5f8e9" stroke-opacity=".3" stroke-width="2"><circle cx="116" cy="127" r="18"/><circle cx="254" cy="212" r="20"/><circle cx="106" cy="245" r="14"/></g>
-</g>
-<circle cx="180" cy="180" r="136" fill="none" stroke="#fcf8f0" stroke-opacity=".42" stroke-width="1.2"/>
+<svg class="lp-moon-svg" viewBox="0 0 360 360" role="img" aria-label="Lunar illumination model" width="360" height="360" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <radialGradient id="lp-moon-dark" cx="36%" cy="28%" r="85%">
+   <stop stop-color="#303d50"/><stop offset=".50" stop-color="#192432"/><stop offset=".84" stop-color="#0a1523"/><stop offset="1" stop-color="#050d18"/>
+  </radialGradient>
+  <radialGradient id="lp-moon-light" cx="35%" cy="25%" r="88%">
+   <stop stop-color="#f3f0e8"/><stop offset=".28" stop-color="#d3d9de"/><stop offset=".61" stop-color="#9dabb7"/><stop offset=".83" stop-color="#6d8193"/><stop offset="1" stop-color="#334b61"/>
+  </radialGradient>
+  <linearGradient id="lp-moon-glint" x1="0" y1="0" x2="1" y2="1">
+   <stop stop-color="#e4f8ff" stop-opacity=".72"/><stop offset=".5" stop-color="#96cad7" stop-opacity=".08"/><stop offset="1" stop-color="#9be7e4" stop-opacity=".42"/>
+  </linearGradient>
+  <clipPath id="lp-moon-bound"><circle cx="180" cy="180" r="135.5"/></clipPath>
+  <clipPath id="lp-moon-clip"><path id="lp-moon-light-path" d="M 180 44 A 136 136 0 0 1 180 316 Q 452 180 180 44 Z"/></clipPath>
+ </defs>
+ <g fill="none" stroke="#79bfc6">
+  <circle cx="180" cy="180" r="172" stroke-opacity=".12" stroke-dasharray="2 10"/>
+  <circle cx="180" cy="180" r="156" stroke-opacity=".19"/>
+  <circle cx="180" cy="180" r="143" stroke-opacity=".20" stroke-dasharray="1 7"/>
+  <path d="M 180 9 V 24 M180 336 V351 M9 180 H24 M336 180 H351" stroke-opacity=".43" stroke-width="1.5"/>
+ </g>
+ <circle cx="180" cy="180" r="136" fill="url(#lp-moon-dark)"/>
+ <g clip-path="url(#lp-moon-bound)" fill="#829aac" opacity=".09">
+  <path d="M 84 157 Q 112 106 151 100 Q 173 123 153 148 Q 173 163 151 190 Q 115 205 84 157Z"/>
+  <path d="M 221 79 Q 273 97 282 134 Q 254 154 225 135 Q 204 109 221 79Z"/>
+  <path d="M 190 221 Q 232 199 267 241 Q 273 281 223 290 Q 187 271 190 221Z"/>
+  <path d="M 101 218 Q 143 205 161 247 Q 143 281 100 272 Q 78 251 101 218Z"/>
+ </g>
+ <g clip-path="url(#lp-moon-clip)">
+  <circle cx="180" cy="180" r="136" fill="url(#lp-moon-light)"/>
+  <g fill="#435d72" opacity=".24">
+   <path d="M89 122 Q119 94 150 107 Q170 124 152 151 Q182 173 155 196 Q123 210 95 186 Q78 163 89 122Z"/>
+   <path d="M207 77 Q254 76 284 113 Q277 150 241 147 Q214 136 205 109Z"/>
+   <path d="M178 230 Q208 202 246 211 Q274 229 273 255 Q244 290 204 281 Q180 259 178 230Z"/>
+   <path d="M87 235 Q115 211 147 236 Q159 269 133 289 Q103 286 87 263Z"/>
+   <path d="M155 152 Q179 137 199 156 Q202 174 185 190 Q161 191 155 171Z"/>
+  </g>
+  <g fill="#526779" opacity=".40">
+   <circle cx="120" cy="126" r="16"/><circle cx="226" cy="116" r="12"/><circle cx="255" cy="218" r="21"/>
+   <circle cx="110" cy="245" r="18"/><circle cx="189" cy="232" r="15"/><circle cx="170" cy="98" r="8"/>
+   <circle cx="147" cy="174" r="11"/><circle cx="282" cy="177" r="9"/><circle cx="195" cy="144" r="5"/>
+   <circle cx="236" cy="270" r="9"/><circle cx="126" cy="202" r="5"/><circle cx="270" cy="144" r="6"/>
+   <circle cx="220" cy="172" r="7"/><circle cx="187" cy="286" r="4"/><circle cx="94" cy="178" r="5"/>
+  </g>
+  <g fill="none" stroke="#f4f5ed" stroke-opacity=".3" stroke-width="2">
+   <circle cx="120" cy="126" r="18"/><circle cx="255" cy="218" r="23"/><circle cx="110" cy="245" r="20"/>
+   <circle cx="226" cy="116" r="13.5"/><circle cx="189" cy="232" r="16.5"/>
+   <circle cx="147" cy="174" r="12.5"/><circle cx="282" cy="177" r="10"/>
+  </g>
+  <g fill="#c7d5de" opacity=".3">
+   <circle cx="144" cy="98" r="2"/><circle cx="201" cy="100" r="2"/><circle cx="184" cy="189" r="2.5"/>
+   <circle cx="276" cy="198" r="2"/><circle cx="147" cy="277" r="1.7"/><circle cx="97" cy="207" r="1.8"/>
+   <circle cx="232" cy="188" r="1.5"/><circle cx="223" cy="251" r="1.6"/><circle cx="155" cy="223" r="1.7"/>
+   <circle cx="104" cy="142" r="2.2"/><circle cx="244" cy="154" r="1.8"/><circle cx="197" cy="265" r="1.5"/>
+  </g>
+ </g>
+ <circle cx="180" cy="180" r="136" fill="none" stroke="url(#lp-moon-glint)" stroke-width="1.45"/>
+ <circle cx="180" cy="180" r="134" fill="none" stroke="#d2f0f7" stroke-opacity=".12" stroke-width="1"/>
 </svg>
