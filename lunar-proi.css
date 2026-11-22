@@ -145,3 +145,58 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #ffe5
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.lp-button:hover,.lp-phase-preset:hover{transform:none!important}}
 @media(forced-colors:active){.lp-moon-panel,.lp-input-panel,.lp-stat,.lp-date-button,.lp-calendar-card{border:1px solid CanvasText}}
 @media print{.lp-header,.lp-deep-sky,.lp-orbit-art,.lp-cta,.lp-presets,.lp-calendar-nav,.lp-fee-block,.lp-footer{display:none!important}body{background:white!important;color:#111!important}.lp-article-section p{color:#111!important}a{color:#111;text-decoration:underline}}
+/* Android-source Lunar Pulse: twenty distinct UTC milestones, never continuous daily minting. */
+.lp-milestone-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin:11px 0 1px}
+.lp-milestone-heading strong{font-size:.78rem;color:#fee0a2}
+#lp-next-utc{font-size:.72rem;color:#b9d6e9;font-variant-numeric:tabular-nums}
+.lp-milestone-grid{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px;margin:5px 0 16px}
+.lp-milestone{display:grid;place-content:center;gap:2px;min-height:56px;min-width:0;border:1px solid #547391;border-radius:9px;background:#0b1a30;color:#b9cfdf;transition:background-color .2s,transform .2s,border-color .2s}
+.lp-milestone span{font-size:.68rem;line-height:1.2;font-weight:850;white-space:nowrap}
+.lp-milestone small{font-size:.62rem;color:#aec3d9}
+.lp-milestone.is-waxing.is-earned{background:#35546e;border-color:#f7d48c;color:#fff5db}
+.lp-milestone.is-waning{border-color:#816597}
+.lp-milestone.is-waning.is-earned{background:#493e68;border-color:#dcc3fe;color:#faf0ff}
+.lp-milestone.is-earned small{color:#ffde9b}
+.lp-milestone[aria-pressed=true]{outline:2px solid #fff2ce;outline-offset:1px}
+.lp-milestone:hover{transform:translateY(-2px);border-color:#d0f4f0}
+.lp-date-button.has-event{border-color:#b6a771;background:linear-gradient(145deg,#243c55,#252e44)}
+.lp-date-button.has-event .lp-day-count{color:#ffdf9c;font-weight:850}
+.lp-fee-content{grid-template-columns:minmax(220px,.35fr) minmax(0,1fr);align-items:start}
+.lp-fee-rates{display:grid;grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding-bottom:12px;border-bottom:1px solid #415776}
+.lp-fee-rates>div{min-width:0;display:flex;flex-direction:column;gap:7px}
+.lp-fee-rates label{font-size:.78rem;color:#e7d6ad;font-weight:800}
+.lp-fee-rates input{width:100%;min-height:44px;padding:10px 12px;border:1px solid #647f9d;border-radius:10px;background:#0d1a2e;color:#fff;font-variant-numeric:tabular-nums}
+.lp-fee-content>label{grid-column:1;grid-row:2}
+#lp-transfer{grid-column:1;grid-row:3}
+.lp-fee-stats{grid-column:2;grid-row:2/4;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.lp-fee-stats>div{padding:12px}
+.lp-fee-stats output{font-size:clamp(1.07rem,2vw,1.48rem)}
+.lp-protocol{padding-block:32px 65px;border-top:1px solid #344c6d}
+.lp-protocol-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.lp-protocol-grid article{min-width:0;border:1px solid #4c6583;border-radius:18px;padding:clamp(17px,2.4vw,27px);background:linear-gradient(145deg,#1a2a44,#111b31)}
+.lp-protocol-grid article>span{display:block;color:#ffe3ae;font-size:1.85rem}
+.lp-protocol-grid h3{font-size:clamp(1.2rem,1.7vw,1.55rem);margin:13px 0;color:#fbf0d7}
+.lp-protocol-grid p{color:#cbdced;font-size:.89rem;line-height:1.75;margin:0;overflow-wrap:break-word}
+@media(max-width:900px){
+ .lp-fee-content{grid-template-columns:1fr}
+ .lp-fee-rates,.lp-fee-content>label,#lp-transfer,.lp-fee-stats{grid-column:1;grid-row:auto}
+ .lp-fee-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .lp-protocol-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+ .lp-milestone-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+ .lp-milestone{min-height:52px}
+ .lp-fee-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .lp-fee-rates{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .lp-protocol{padding-block:25px 45px}
+}
+@media(max-width:390px){
+ .lp-milestone-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+ .lp-milestone span{font-size:.61rem}
+ .lp-milestone small{font-size:.58rem}
+ .lp-fee-rates{grid-template-columns:1fr}
+ .lp-milestone-heading strong{font-size:.72rem}
+}
+@media(pointer:coarse){.lp-milestone{min-height:48px;touch-action:manipulation}}
+@media(prefers-reduced-motion:reduce){.lp-milestone{transition:none}.lp-milestone:hover{transform:none}}
+@media(forced-colors:active){.lp-milestone,.lp-protocol-grid article{border:1px solid CanvasText}}
