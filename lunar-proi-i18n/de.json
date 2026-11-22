@@ -84,7 +84,12 @@
     "feeWane": "Beispielgebühr abnehmend (%)",
     "feeDebit": "Gesamtbetrag inkl. Gebühr",
     "feeRate": "Gebühr der ausgewählten Phase",
-    "protocolTitle": "So werden PROI wirklich verdient"
+    "protocolTitle": "So werden PROI wirklich verdient",
+    "instrument": "REFERENZINSTRUMENT / OFFLINE-MODELL",
+    "observatory": "MOND-MODUL",
+    "chartTitle": "LUNAR PULSE · KUMULIERTE BELOHNUNGEN",
+    "chartAria": "Stufendiagramm potenzieller PROI-Belohnungen über zwanzig Mond-Meilensteine",
+    "chartNote": "Ein berechneter Belohnungsplan, kein Kurschart und kein bestätigter Kontostand."
   },
   "sections": [
     {
