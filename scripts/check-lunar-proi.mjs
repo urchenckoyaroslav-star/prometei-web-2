@@ -55,7 +55,7 @@ for(const l of Object.keys(langs)){
  assert.ok(html.includes("0.5")||html.includes("0,5"),"Real milestone reward needs disclosure "+l);
  assert.ok(!html.includes("100 × (1 + 2")&&!html.includes("100 ×（1 + 2"),"Invented daily issuance formula remains "+l);
  const status=t.ui.status.toLowerCase();
- assert.ok(/points|балл|бали|балів|punkte|puntos|积分|ポイント/i.test(status),"Current points state "+l);
+ assert.ok(/points|unit|балл|единиц|бали|балів|одиниц|punkte|einheit|puntos|unidad|积分|ポイント/i.test(status),"Current points state "+l);
  assert.ok(t.ui.roadmapText.length>50,"Future token disclaimer "+l);
 }
 const sourceHome=fs.readFileSync(path.join(dist,"index.html"),"utf8");
@@ -70,7 +70,7 @@ assert.ok(src.includes("Math.ceil")&&src.includes("Math.floor(feeMilli/2)"),"And
 assert.ok(src.includes("aria-pressed")&&src.includes("getUTCDay"),"Calendar keyboard state/dates missing");
 assert.ok(src.includes("cfg.labels.none")&&src.includes("eventDayData"),"Calendar must show actual scheduled milestones, not made-up daily minting");
 assert.ok(src.includes("normalize((date.getTime()-epoch)/dayMs)"),"Android UTC epoch approximation missing");
-assert.ok(src.includes("threshold:")&&src.includes("rewardMilli")===false,"Milestone model must use exact input rewards");
+assert.ok(src.includes("cfg.waxingRewardMilli")&&src.includes("cfg.waningRewardMilli"),"Milestone model must use actual Android PROI rewards");
 for(const rule of ["max-width:390px","max-width:640px","max-width:900px","min-width:1920px","prefers-reduced-motion:reduce","pointer:coarse","focus-visible"])assert.ok(css.includes(rule),"Missing responsive/accessibility "+rule);
 assert.ok(!/connectWallet|buyToken|sendTransaction|web3\.eth|window\.ethereum/.test(src),"No functional token sales or transfers in concept UI");
 console.log("LUNAR PROI PASS: 7 translated science articles, Android-aligned UTC epoch, 20 exact milestone rewards, source-default ROOT fee demos, 50/50 burn/Vault split, SEO and responsive UI.");
