@@ -144,7 +144,7 @@ function paint(age,date=null){
  $("lp-selected-date").textContent=date?dateText.format(date):cfg.labels.manual;
  const baseLunation=lunationIndex(date?date.getTime():utcToday.getTime());
  const next=nextAfter(baseLunation,p);
- $("lp-next-threshold").textContent=(next.waxing?"↗ ":"↘ ")+next.threshold+"% · +"+one.format(next.milli/1000)+" PROI";
+ $("lp-next-threshold-label").textContent=(next.waxing?"↗ ":"↘ ")+next.threshold+"% · +"+one.format(next.milli/1000);
  $("lp-next-utc").textContent=utcText.format(next.at)+" UTC";
  const svg=document.querySelector(".lp-moon-svg");
  if(svg)svg.setAttribute("aria-label",cfg.phases[index]+", "+Math.floor(lit*100)+"%");
