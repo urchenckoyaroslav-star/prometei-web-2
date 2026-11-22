@@ -28,6 +28,12 @@ for(const l of Object.keys(langs)){
  assert.ok(html.includes('name="description"')&&html.includes('meta name="robots" content="index,follow'),"Meta "+l);
  assert.ok(html.includes('href="/site-quality.css"'),"Responsive CSS not injected "+l);
  assert.ok(html.includes('lunar-proi.css')&&html.includes('lunar-proi.js'),"Interactive assets "+l);
+ assert.ok(html.includes('class="lp-observatory-hero"')&&html.includes('class="lp-hero-plot"'),"Professional observatory hero missing "+l);
+ assert.ok(html.includes('class="lp-instrument-topline"')&&html.includes('class="lp-moon-reticle"'),"Moon instrument telemetry missing "+l);
+ for(const id of ["lp-emission-chart","lp-chart-trace","lp-chart-area","lp-chart-cursor","lp-chart-point"])
+  assert.ok(html.includes('id="'+id+'"'),"Interactive cumulative rewards chart missing "+l+":"+id);
+ for(const label of ["instrument","observatory","chartTitle","chartAria","chartNote"])
+  assert.ok(typeof t.ui[label]==="string"&&t.ui[label].length>10,"Observatory copy not localized "+l+":"+label);
  assert.ok(html.includes('site-ads.css')&&html.includes('data-ad-placement="lunarScience"'),"Lunar science sponsorship slot missing "+l);
  assert.ok(html.includes('class="site-ad-label"')&&html.includes('advertise/'),"Honest partner label/route missing "+l);
  assert.ok(!html.includes('pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'),"Unapproved live AdSense on lunar page "+l);
@@ -66,11 +72,17 @@ for(const l of Object.keys(langs).filter(l=>l!=="en")){
 }
 assert.ok(src.includes("cancelAnimationFrame")&&src.includes("requestAnimationFrame"),"Slider animation missing");
 assert.ok(src.includes("synodicDays")&&src.includes("waxingPhase")&&src.includes("momentFor"),"Android Moon-phase model missing");
+assert.ok(src.includes("renderRewardChart")&&src.includes("updateChartCursor"),"20-step rewards chart must be driven by Android milestone events");
+assert.ok(src.includes("pendingInput=requestAnimationFrame"),"Mobile slider must coalesce rapid input events");
 assert.ok(src.includes("Math.ceil")&&src.includes("Math.floor(feeMilli/2)"),"Android milli-PROI fee rounding missing");
 assert.ok(src.includes("aria-pressed")&&src.includes("getUTCDay"),"Calendar keyboard state/dates missing");
 assert.ok(src.includes("cfg.labels.none")&&src.includes("eventDayData"),"Calendar must show actual scheduled milestones, not made-up daily minting");
 assert.ok(src.includes("normalize((date.getTime()-epoch)/dayMs)"),"Android UTC epoch approximation missing");
 assert.ok(src.includes("cfg.waxingRewardMilli")&&src.includes("cfg.waningRewardMilli"),"Milestone model must use actual Android PROI rewards");
 for(const rule of ["max-width:390px","max-width:640px","max-width:900px","min-width:1920px","prefers-reduced-motion:reduce","pointer:coarse","focus-visible"])assert.ok(css.includes(rule),"Missing responsive/accessibility "+rule);
+for(const className of [".lp-observatory-hero",".lp-hero-orbital",".lp-moon-reticle",".lp-analytics",".lp-instrument-topline"])
+ assert.ok(css.includes(className),"Premium observatory visual system missing "+className);
+const svg=fs.readFileSync("lunar-proi-moon.svg","utf8");
+assert.ok(svg.includes('id="lp-moon-light-path"')&&svg.includes('id="lp-moon-bound"'),"Cratered moon must preserve dynamic illumination geometry");
 assert.ok(!/connectWallet|buyToken|sendTransaction|web3\.eth|window\.ethereum/.test(src),"No functional token sales or transfers in concept UI");
 console.log("LUNAR PROI PASS: 7 translated science articles, Android-aligned UTC epoch, 20 exact milestone rewards, source-default ROOT fee demos, 50/50 burn/Vault split, SEO and responsive UI.");
