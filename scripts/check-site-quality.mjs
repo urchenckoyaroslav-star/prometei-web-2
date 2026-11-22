@@ -50,6 +50,7 @@ for(const url of sitemapURLs){
  assert.ok(html.includes('class="prometei-install-band"'),"Universal Play download band missing: "+url);
  assert.ok(html.includes('class="prometei-install-button" href="https://play.google.com/store/apps/details?id=com.meshnetwork.app"'),"Direct official Google Play URL missing: "+url);
  assert.ok(html.includes('class="prometei-partner-link"'),"Sponsor contact route missing: "+url);
+ assert.ok(html.includes('class="prometei-directory-link" href="'+base+'site-map/"'),"Shared human-readable sitemap link missing: "+url);
  assert.equal((html.match(/class="prometei-install-band"/g)||[]).length,1,"Duplicate global install CTA: "+url);
  // Main menu, not merely a footer/article link: static, indexable and in the correct language.
  const mainHeader=html.match(/<header\b[^>]*>[\s\S]*?<\/header>/i)?.[0]||"";
@@ -111,6 +112,15 @@ for(const l of languages){
  assert.ok(page.includes('<html lang="'+expected+'"'),"FM language wrong "+l);
  assert.ok(page.includes('hreflang="x-default"'));
 }
+const directory=read(path.join(dist,"site-map","index.html"));
+assert.ok(directory.includes('<h1>All pages'),"Human-readable directory must have a visible heading");
+assert.ok(directory.includes('<link rel="canonical" href="'+base+'site-map/"'),"HTML directory canonical incorrect");
+const directoryAnchors=new Set([...directory.matchAll(/<a\b[^>]*href="([^"]+)"/gi)].map(m=>m[1].replaceAll("&amp;","&")));
+for(const url of sitemapURLs)assert.ok(directoryAnchors.has(url),"XML sitemap URL has no crawlable directory link: "+url);
+assert.ok(directoryAnchors.size>=sitemapURLs.length,"Site directory index unexpectedly incomplete");
+assert.ok(sitemapURLs.includes(base+"site-map/"),"HTML sitemap must be included in XML sitemap");
+const robots=read(path.join(dist,"robots.txt"));
+assert.ok(robots.includes("Allow: /")&&robots.includes("Sitemap: "+base+"sitemap.xml"),"Google crawler access/sitemap declaration missing");
 const siteCSS=read("site-quality.css");
 assert.ok(siteCSS.includes(".prometei-install-band")&&siteCSS.includes("@media (max-width:760px)"),"Responsive global install strip CSS missing");
 for(const term of ["max-width:320px","max-width:390px","max-width:640px","min-width:1920px","prefers-reduced-motion:reduce","pointer:coarse","focus-visible","forced-colors:active"]){
