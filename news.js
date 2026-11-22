@@ -5,6 +5,9 @@ const categoryButtons=[...document.querySelectorAll("[data-category-filter]")];
 const resultCount=document.getElementById("story-count");
 const empty=document.getElementById("empty-stories");
 let selected="All";
+const requested=new URLSearchParams(location.search).get("category");
+if(categoryButtons.some(b=>b.dataset.categoryFilter===requested))selected=requested;
+categoryButtons.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.categoryFilter===selected)));
 function updateNews(){
  const query=(search?.value||"").trim().toLocaleLowerCase("en");
  let count=0;
@@ -13,11 +16,13 @@ function updateNews(){
   card.hidden=!visible;
   if(visible)count++;
  }
- if(resultCount)resultCount.textContent=count+" of 40 stories shown";
+ if(resultCount)resultCount.textContent=count+" of "+cards.length stories shown";
  if(empty)empty.hidden=count!==0;
+ for(const unit of document.querySelectorAll("#story-grid .site-ad-placement"))unit.hidden=count===0;
 }
 search?.addEventListener("input",updateNews);
 categoryButtons.forEach(button=>button.addEventListener("click",()=>{selected=button.dataset.categoryFilter;categoryButtons.forEach(b=>b.setAttribute("aria-pressed",String(b===button)));updateNews()}));
+updateNews();
 if(search)document.addEventListener("keydown",event=>{if(event.key==="/"&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!["INPUT","TEXTAREA"].includes(document.activeElement?.tagName||"")){event.preventDefault();search.focus()}});
 const bar=document.getElementById("reading-progress");
 if(bar){let busy=false;const draw=()=>{const doc=document.documentElement;const max=Math.max(1,doc.scrollHeight-innerHeight);bar.style.width=(Math.max(0,Math.min(1,scrollY/max))*100).toFixed(2)+"%";busy=false};window.addEventListener("scroll",()=>{if(!busy){busy=true;requestAnimationFrame(draw)}},{passive:true});draw()}
