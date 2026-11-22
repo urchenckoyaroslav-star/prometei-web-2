@@ -84,7 +84,12 @@
     "feeWane": "渐亏阶段示例费率 (%)",
     "feeDebit": "含手续费总额",
     "feeRate": "当前所选月相费率",
-    "protocolTitle": "PROI 如何真正获得"
+    "protocolTitle": "PROI 如何真正获得",
+    "instrument": "参考仪表 / 离线计算模型",
+    "observatory": "月球观测核心",
+    "chartTitle": "LUNAR PULSE · 累计潜在奖励",
+    "chartAria": "二十个月相里程碑的 PROI 潜在奖励阶梯图",
+    "chartNote": "这是计算出的奖励时间表，不是市场价格曲线，也不是真实账户余额。"
   },
   "sections": [
     {
