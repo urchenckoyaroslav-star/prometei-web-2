@@ -84,7 +84,12 @@
     "feeWane": "Example waning fee (%)",
     "feeDebit": "Total reserved for transfer",
     "feeRate": "Phase rate used",
-    "protocolTitle": "How PROI is actually earned"
+    "protocolTitle": "How PROI is actually earned",
+    "instrument": "REFERENCE INSTRUMENT / OFFLINE MODEL",
+    "observatory": "LUNAR CORE",
+    "chartTitle": "LUNAR PULSE · ACCUMULATED REWARDS",
+    "chartAria": "Stepwise potential PROI reward graph over twenty lunar milestones",
+    "chartNote": "A modeled reward schedule, not a market chart or a record of credited balances."
   },
   "sections": [
     {
