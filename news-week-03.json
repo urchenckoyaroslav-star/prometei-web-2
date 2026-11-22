@@ -1,0 +1,172 @@
+[
+  {
+    "slug": "anthropic-record-breaking-ipo",
+    "title": "Anthropic's stock-market debut puts an extraordinary price on AI",
+    "category": "Technology",
+    "date": "2026-11-19",
+    "lead": "AI developer Anthropic entered public markets in a landmark offering, intensifying questions about how investors should value cutting-edge model companies.",
+    "body": [
+      "Reuters reported a record-setting IPO in which Anthropic raised roughly $81 billion and was valued around $1.5 trillion at the offering price. The scale revealed how aggressively capital markets were willing to finance future artificial-intelligence demand.",
+      "The debut also raised questions about spending on computing infrastructure, competition and the path from popular AI services to durable profits. A large valuation reflects investor expectations rather than a guarantee of future performance."
+    ],
+    "why": "The listing became a real-world test of the financial enthusiasm behind the AI economy.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/legal/transactional/anthropic-prices-blockbuster-ipo-83-share-source-says-2026-11-18/"
+    },
+    "photo": "server"
+  },
+  {
+    "slug": "anthropic-debut-tests-ai-optimism",
+    "title": "Anthropic's early trading shows the gap between excitement and valuation",
+    "category": "Technology",
+    "date": "2026-11-20",
+    "lead": "Following a historic debut, Anthropic shares became a focal point for arguments about how much optimism investors had already priced in.",
+    "body": [
+      "The company's public listing arrived during an unusually unsettled period for technology shares. Investors welcomed AI's long-term potential but debated the cost of data centers, the pace of adoption and the difficulty of predicting margins.",
+      "The contrast between enthusiasm for the technology and uncertainty over its price was visible almost immediately in the stock's trading. It was a reminder that promising technology and attractive valuations are different questions."
+    ],
+    "why": "Public markets now provide a more visible measure of investor expectations for frontier AI developers.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/business/finance/anthropics-historic-debut-put-ais-promise-peril-wall-st-test-2026-11-19/"
+    },
+    "photo": "market"
+  },
+  {
+    "slug": "nasdaq-widens-listing-lead",
+    "title": "Nasdaq expands its lead over the NYSE in major new listings",
+    "category": "Economy",
+    "date": "2026-11-19",
+    "lead": "Anthropic's IPO highlighted a growing imbalance between America's two best-known stock-exchange operators.",
+    "body": [
+      "Nasdaq's win added another high-profile technology company to its roster after a year of notable listings. Reuters reported that the exchange's share of money raised in IPOs had moved well ahead of the New York Stock Exchange.",
+      "Industry observers pointed to index membership, relationships with technology companies and years of investment in issuer services. The competition matters because public-market choices can shape visibility and liquidity for newly listed businesses."
+    ],
+    "why": "Where large companies list can influence financial services, market indexes and access to investors.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/business/finance/anthropic-listing-extends-nasdaqs-dominant-run-against-arch-rival-nyse-2026-11-19/"
+    },
+    "photo": "market"
+  },
+  {
+    "slug": "ipo-bank-fees-reach-billion-mark",
+    "title": "Mega-IPOs deliver a huge payday to Wall Street's underwriting banks",
+    "category": "Economy",
+    "date": "2026-11-20",
+    "lead": "Large offerings from Anthropic and SpaceX generated immense underwriting fees despite lower fee percentages than ordinary stock-market debuts.",
+    "body": [
+      "Reuters calculated that underwriting syndicates associated with the two giant offerings were set to collect more than $1 billion combined. The absolute amounts were enormous even though the negotiated fees represented a small fraction of the proceeds raised.",
+      "The economics reflect the unusual scale of a small group of technology listings. Many investment banks can share the work of bringing one company to the market while competing for future transactions."
+    ],
+    "why": "Record offerings can reshape investment-banking revenues and the balance of power among financial institutions.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/legal/government/wall-street-banks-set-banner-year-anthropic-spacex-ipos-generate-1-billion-fees-2026-11-20/"
+    },
+    "photo": "market"
+  },
+  {
+    "slug": "fed-warns-ai-investment-could-overheat-economy",
+    "title": "A Federal Reserve official warns the AI boom could add to inflation",
+    "category": "Economy",
+    "date": "2026-11-19",
+    "lead": "Chicago Fed President Austan Goolsbee argued that enormous investment in AI infrastructure could put pressure on economic capacity.",
+    "body": [
+      "Companies are committing large sums to computing equipment, data centers and electricity infrastructure. Goolsbee said the pace could strain supply and contribute to price pressures before productivity benefits have time to spread through the wider economy.",
+      "The comments underline an economic paradox: technology may increase efficiency over the long term while its construction and rollout temporarily raise demand for scarce resources. The Federal Reserve must assess both sides as it considers interest rates."
+    ],
+    "why": "Artificial intelligence is becoming important enough that central bankers discuss its direct effects on inflation.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/business/feds-goolsbee-says-ai-surge-could-strain-us-capacity-overheat-economy-2026-11-19/"
+    },
+    "photo": "server"
+  },
+  {
+    "slug": "republicans-push-us-open-weight-ai",
+    "title": "US lawmakers call for more affordable domestic AI alternatives",
+    "category": "Technology",
+    "date": "2026-11-20",
+    "lead": "Two Republican congressional leaders urged the White House to help US developers compete with widely used Chinese AI models.",
+    "body": [
+      "The lawmakers proposed giving domestic open-weight model builders access to federal computing capacity. They argued that lower-cost tools could reduce dependence on software supplied from abroad.",
+      "The appeal followed the president's meetings in China and highlighted a policy dilemma: governments want technological leadership, but developers also need access to affordable tools. The plan was a proposal, not an enacted national program."
+    ],
+    "why": "Competition between AI models now involves public infrastructure, national policy and software availability.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/legal/litigation/after-trumps-china-trip-us-house-republicans-push-ai-strategy-counter-beijing-2026-11-20/"
+    },
+    "photo": "server"
+  },
+  {
+    "slug": "us-weighs-disclosure-of-chinese-ai-models",
+    "title": "Washington considers disclosures for companies using Chinese AI models",
+    "category": "Technology",
+    "date": "2026-11-18",
+    "lead": "US officials discussed whether businesses should publicly identify their reliance on AI systems developed in China.",
+    "body": [
+      "Reuters reported early discussions involving the Treasury Department and the White House science office. The idea would favor transparency over an immediate blanket ban, potentially affecting companies that run publicly available Chinese models within their own systems.",
+      "Supporters frame disclosures as a way to identify strategic dependence; critics worry about politicizing software choices and burdening companies. The measure had not been finalized at the time of reporting."
+    ],
+    "why": "Decisions about AI suppliers increasingly mix questions of security, cost, competition and international trade.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/world/china/trump-administration-weighs-forcing-us-firms-disclose-chinese-ai-use-2026-11-18/"
+    },
+    "photo": "server"
+  },
+  {
+    "slug": "us-ai-chip-export-approvals-revealed",
+    "title": "Congressional figures reveal large US AI-chip export approvals to China",
+    "category": "Technology",
+    "date": "2026-11-19",
+    "lead": "A US House committee reported that nearly 900,000 advanced AI chips had been approved for export to Chinese companies over a six-month period.",
+    "body": [
+      "The approvals covered products made by Nvidia and AMD, according to figures released by the committee. The disclosure complicated political arguments about how strictly the United States should control sophisticated computing hardware.",
+      "Export approval does not necessarily mean every chip was physically shipped, and government policy can change. The report showed how technology trade sits at the center of economic and security debate between major powers."
+    ],
+    "why": "Advanced computing hardware is central to AI development, so access rules can shape global competition.",
+    "source": {
+      "name": "Reuters syndicated report",
+      "url": "https://wsau.com/2026/11/19/us-signed-off-on-sales-of-nearly-900000-ai-chips-to-china-in-six-months-committee/"
+    },
+    "photo": "server"
+  },
+  {
+    "slug": "signal-adds-defenses-against-screen-reading-agents",
+    "title": "Signal adds screenshot controls as AI agents challenge chat privacy",
+    "category": "Technology",
+    "date": "2026-11-20",
+    "lead": "Secure-messaging service Signal introduced additional defenses against AI agents that might read sensitive conversations through device interfaces.",
+    "body": [
+      "Signal said the growing integration of powerful assistants into operating systems creates new paths for messages to leave otherwise encrypted apps. Its response included screenshot restrictions intended to limit what agents can collect.",
+      "The company acknowledged that no single app-level measure solves the broader problem. The debate matters to all messengers: end-to-end encryption protects messages in transit, but software with access to an unlocked screen can create a separate privacy risk."
+    ],
+    "why": "Protecting communications also requires attention to device permissions and operating-system behavior.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/legal/litigation/signal-restricts-screenshots-block-ai-agents-reading-messages-2026-11-20/"
+    },
+    "photo": "phone"
+  },
+  {
+    "slug": "meta-muse-agent-faces-privacy-questions",
+    "title": "Meta's Muse AI agent faces questions after unexpected private-data references",
+    "category": "Technology",
+    "date": "2026-11-18",
+    "lead": "Internal reports reviewed by Reuters described AI-agent behavior that surprised users with references to messages and transactions they had not requested.",
+    "body": [
+      "Some Meta staff reported that the Muse assistant produced out-of-context notifications or appeared to surface information from other apps, including encrypted conversations. Reuters worked with outside specialists to investigate how device permissions might expose message content.",
+      "Meta called the documented episodes isolated and said users grant the relevant permissions; it also attributed some strange responses to AI hallucinations. The central question is whether people can understand and control what an AI assistant is allowed to access."
+    ],
+    "why": "As assistants act across apps, privacy safeguards must account for more than the security of each individual service.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/investigations/meta-bets-big-muse-ai-agent-early-safety-mishaps-surface-2026-11-18/"
+    },
+    "photo": "phone"
+  }
+]
