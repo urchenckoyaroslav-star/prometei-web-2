@@ -1,0 +1,78 @@
+{
+  "sources": [
+    [
+      "Bluetooth SIG: 20 Years of Bluetooth",
+      "https://www.bluetooth.com/wp-content/uploads/Sitecore-Media-Library/20year/default.html"
+    ],
+    [
+      "Intel: Bluetooth 1.0, July 1999",
+      "https://www.intel.com/pressroom/archive/releases/1999/Mp072699.htm"
+    ],
+    [
+      "Bluetooth Core specification history",
+      "https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core_v6.3/out/en/consolidated-table-of-contents%2C-acknowledgments%2C---core-configurations/version-history-and-acknowledgments.html"
+    ]
+  ],
+  "timeline": [
+    [
+      1994,
+      "Ericsson research begins"
+    ],
+    [
+      1998,
+      "Bluetooth SIG formed"
+    ],
+    [
+      1999,
+      "Bluetooth 1.0 published"
+    ],
+    [
+      2010,
+      "Bluetooth Low Energy arrives"
+    ]
+  ],
+  "languages": {
+    "en": {
+      "history": "The story begins in 1994 at Ericsson, where engineers explored a short-range wireless replacement for cables. In May 1998, Ericsson, IBM, Intel, Nokia and Toshiba formed the Bluetooth Special Interest Group. The Bluetooth 1.0 specification appeared in July 1999. This was not a messenger at first: early ideas centered on headsets, accessories and devices sharing small amounts of information. The arrival of Bluetooth Low Energy in 2010 extended the family toward sensors and energy-sensitive products.",
+      "science": "Radio waves carry carefully encoded bits between antennas in the 2.4 GHz band. A nearby device first needs to be discovered; software then establishes a compatible link and applies its own message-delivery rules. Classic Bluetooth and Bluetooth LE do not expose identical capabilities. Walls, interference, permissions and Android background limits influence outcomes. A visible device is not proof that an app can exchange messages with it.",
+      "today": "Bluetooth now appears in headphones, smart watches, wearables, cars and sensors. In PROMETEI the relevant idea is a local message path between compatible Android devices when a recipient is nearby. That specific path has to be tested with the current app release; the Bluetooth logo alone cannot prove delivery. Unlike a wide-area Internet service, this channel is limited by reachability and local radio conditions.",
+      "future": "PROMETEI's research direction includes easier discovery, lower battery use, understandable route status and faster text delivery where supported. Before treating relay or multi-hop schemes as a product feature, they would need real implementations and device tests. The aim is dependable nearby communication—not an unverified claim of infinite range or universal anonymity."
+    },
+    "ru": {
+      "history": "История Bluetooth начинается в 1994 году: инженеры Ericsson искали радиозамену коротким кабелям между устройствами. В мае 1998 года Ericsson, IBM, Intel, Nokia и Toshiba основали Bluetooth SIG. В июле 1999 года была опубликована спецификация Bluetooth 1.0. Поначалу технология предназначалась не для мессенджеров: прежде всего обсуждались гарнитуры, аксессуары и обмен небольшими объёмами данных. В 2010 году Bluetooth Low Energy открыл путь к датчикам и экономичным устройствам.",
+      "science": "Радиоволны переносят закодированные биты между антеннами в диапазоне 2,4 ГГц. Телефон сначала обнаруживает соседнее устройство, затем программа устанавливает совместимый канал и пытается доставить данные. Bluetooth Classic и BLE имеют разные режимы и возможности. Стены, помехи, разрешения Android и ограничения фоновых процессов влияют на результат. Увидеть устройство в списке — ещё не значит передать сообщение.",
+      "today": "Сегодня Bluetooth используется в наушниках, часах, автомобилях и датчиках. Для PROMETEI особенно интересна локальная переписка между совместимыми Android-телефонами поблизости. Реальную работу такого пути необходимо проверять на установленной версии приложения. Локальная радиосвязь отличается от интернет-сервисов тем, что её дальность определяется положением устройств и условиями передачи.",
+      "future": "В инженерных планах PROMETEI — более удобный поиск соседних телефонов, экономия заряда, понятный статус маршрута и быстрая доставка коротких сообщений при доступном канале. Передача через цепочку промежуточных устройств потребует отдельной реализации и испытаний; выдавать её за готовую возможность нельзя. Наша цель — надёжное локальное общение без необоснованных обещаний безграничной дальности."
+    },
+    "uk": {
+      "history": "Історія Bluetooth почалася 1994 року в Ericsson із пошуку заміни кабелів коротким радіозв’язком. У травні 1998 року Ericsson, IBM, Intel, Nokia і Toshiba заснували Bluetooth SIG. У липні 1999 року опублікували специфікацію Bluetooth 1.0. Перші сценарії стосувалися гарнітур, аксесуарів та обміну невеликими даними. У 2010 році Bluetooth Low Energy допоміг розвивати енергоощадні датчики.",
+      "science": "Антени передають закодовані біти радіохвилями в діапазоні 2,4 ГГц. Пристрої спершу знаходять один одного, далі програма має створити сумісне з’єднання. Bluetooth Classic і BLE мають різні можливості. Стіни, перешкоди, дозволи Android і фонова робота змінюють результат; видимість телефона не гарантує доставлення.",
+      "today": "Нині Bluetooth працює у навушниках, годинниках, автомобілях та датчиках. У PROMETEI важливий інший сценарій: локальна переписка між сумісними Android-телефонами поблизу. Конкретний маршрут треба випробовувати на актуальній збірці.",
+      "future": "Мета досліджень PROMETEI — простіший пошук пристроїв, менше витрат батареї, зрозумілий стан зв’язку й швидший текст. Багатокрокове ретранслювання можливе лише після окремої розробки й випробувань. Це плани, а не готові гарантії."
+    },
+    "de": {
+      "history": "1994 begannen Ingenieure bei Ericsson, nach einer drahtlosen Alternative zu kurzen Kabeln zu suchen. Im Mai 1998 gründeten Ericsson, IBM, Intel, Nokia und Toshiba die Bluetooth SIG. Im Juli 1999 erschien die Spezifikation Bluetooth 1.0. Ursprünglich standen Headsets, Zubehör und der kleine Datenaustausch im Vordergrund. Bluetooth Low Energy erweiterte die Technik ab 2010 für stromsparende Geräte.",
+      "science": "Antennen übertragen kodierte Bits über Funkwellen im 2,4-GHz-Band. Geräte müssen sich zunächst entdecken und anschließend eine kompatible Verbindung aufbauen. Bluetooth Classic und Bluetooth LE bieten unterschiedliche Fähigkeiten. Wände, Störungen, Android-Berechtigungen und Hintergrundbeschränkungen beeinflussen die Zustellung. Ein erkanntes Gerät ist noch kein erreichbarer Nachrichtenempfänger.",
+      "today": "Heute verbinden Bluetooth-Verbindungen Kopfhörer, Uhren, Fahrzeuge und Sensoren. PROMETEI erforscht vor allem den lokalen Nachrichtenaustausch zwischen kompatiblen Android-Geräten in der Nähe. Die Zuverlässigkeit muss für die tatsächlich installierte Version getestet werden.",
+      "future": "Zu den Entwicklungszielen gehören sparsamere Suche, verständliche Zustellanzeigen und zuverlässigere lokale Nachrichten. Eine automatische Weiterleitung über mehrere Geräte wäre ein gesondertes Entwicklungs- und Testprojekt. Sie darf nicht als vorhandene Funktion versprochen werden."
+    },
+    "es": {
+      "history": "En 1994, ingenieros de Ericsson empezaron a buscar una alternativa inalámbrica a los cables cortos. En mayo de 1998, Ericsson, IBM, Intel, Nokia y Toshiba fundaron Bluetooth SIG. La especificación Bluetooth 1.0 apareció en julio de 1999. Los primeros usos se centraban en auriculares, accesorios y pequeños intercambios de datos. Bluetooth Low Energy, incorporado en 2010, amplió las posibilidades para sensores de bajo consumo.",
+      "science": "Las antenas transmiten bits codificados mediante ondas de radio en la banda de 2,4 GHz. Antes de enviar, los equipos deben detectarse y establecer un enlace compatible. Bluetooth Classic y Bluetooth LE no ofrecen exactamente las mismas funciones. Paredes, interferencias, permisos Android y restricciones en segundo plano afectan a la entrega. Detectar un dispositivo no significa que una app pueda escribirle.",
+      "today": "Hoy Bluetooth aparece en auriculares, relojes, coches y sensores. PROMETEI explora una aplicación diferente: mensajes locales entre Android compatibles y próximos. El comportamiento debe comprobarse en la versión instalada, sin prometer alcance ilimitado.",
+      "future": "Entre los objetivos de investigación figuran un descubrimiento más sencillo, menos gasto de batería y estados de entrega comprensibles. Retransmitir a través de otros móviles exigiría desarrollo y pruebas específicas; todavía no debe anunciarse como una función garantizada."
+    },
+    "zh": {
+      "history": "1994 年，爱立信工程师开始研究用短距离无线电连接取代设备之间的电缆。1998 年 5 月，爱立信、IBM、英特尔、诺基亚和东芝共同成立 Bluetooth SIG。1999 年 7 月发布蓝牙 1.0 规范。早期应用主要包括耳机、配件和少量数据交换，而不是大型聊天网络。2010 年的 Bluetooth Low Energy 又推动了低功耗传感器的发展。",
+      "science": "蓝牙天线在 2.4 GHz 频段用无线电波传送编码后的比特。设备首先要互相发现，然后建立应用支持的连接。经典蓝牙与 BLE 的能力并不完全相同。墙体、干扰、Android 权限和后台限制都会影响结果。扫描列表里能看到一部手机，并不代表某个应用可以成功向它发送消息。",
+      "today": "如今蓝牙广泛用于耳机、手表、汽车和传感器。PROMETEI 研究的是另一个场景：兼容 Android 手机之间的近距离本地消息交换。能否送达必须在实际安装的版本和设备上测试，不能凭蓝牙标志推断。",
+      "future": "PROMETEI 的研发方向包括更方便地发现设备、降低耗电、显示清晰的线路状态，以及改善短消息的传送。通过多个中继设备转发消息需要单独实现并验证，不能提前当作已经稳定可用的功能。"
+    },
+    "ja": {
+      "history": "1994年、Ericssonの技術者は機器をつなぐ短いケーブルを無線化する研究を始めました。1998年5月にEricsson、IBM、Intel、Nokia、ToshibaがBluetooth SIGを設立し、1999年7月にBluetooth 1.0仕様が公開されました。初期はヘッドセットや周辺機器、小規模データ転送が中心でした。2010年のBluetooth Low Energyは省電力センサーの利用を広げました。",
+      "science": "Bluetoothのアンテナは2.4GHz帯の電波で符号化したデータを送ります。機器同士が発見され、対応する接続を確立して初めてアプリが送信を試みます。ClassicとLEは機能が異なり、壁や干渉、Android権限、バックグラウンド制限も影響します。端末の検出とメッセージの到達は別です。",
+      "today": "現在Bluetoothはイヤホン、時計、車、センサーなどで使われています。PROMETEIは対応するAndroid端末同士の近距離メッセージ経路として研究しています。実際の到達性はインストール済みの版と使用環境で確かめる必要があります。",
+      "future": "今後の研究課題は、周辺機器の発見、電池消費の低減、分かりやすい経路表示、短文の確実な送受信です。複数端末による中継は別途実装と検証が必要であり、すでに動く機能として説明すべきではありません。"
+    }
+  }
+}

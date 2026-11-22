@@ -1,0 +1,82 @@
+{
+  "sources": [
+    [
+      "Internet Society: A Brief History of the Internet",
+      "https://www.internetsociety.org/internet/history-internet/brief-history-internet/"
+    ],
+    [
+      "Internet Society: Brief History of Internet and Related Networks",
+      "https://www.internetsociety.org/internet/history-internet/brief-history-internet-related-networks/"
+    ],
+    [
+      "RFC 793: Transmission Control Protocol (1981)",
+      "https://www.rfc-editor.org/info/rfc793"
+    ],
+    [
+      "W3C: Timeline of the World Wide Web",
+      "https://www.w3.org/2005/01/timelines/description"
+    ]
+  ],
+  "timeline": [
+    [
+      1969,
+      "Early ARPANET connects four hosts"
+    ],
+    [
+      1981,
+      "TCP protocol documented in RFC 793"
+    ],
+    [
+      1983,
+      "ARPANET transitions to TCP/IP"
+    ],
+    [
+      1989,
+      "Tim Berners-Lee proposes the World Wide Web"
+    ]
+  ],
+  "languages": {
+    "en": {
+      "history": "The Internet was not invented in a single flash of inspiration. ARPANET linked its first four host computers by the end of 1969, showing how packet-switched networks could share resources. The Transmission Control Protocol was documented in RFC 793 in 1981, and ARPANET transitioned to TCP/IP in January 1983. In 1989 Tim Berners-Lee proposed the World Wide Web, a separate application layer that made documents easier to link and navigate. None of these milestones was originally a smartphone messenger; together they formed the world in which online conversations became possible.",
+      "science": "Modern applications exchange small units of data called packets. Routers move them through interconnected networks, and transport protocols help applications manage delivery, ordering and loss according to their design. Chat can tolerate some waiting, while calls are sensitive to delay, jitter and missing packets. Internet and radio are not opposites: a phone can reach Internet services through cellular data or Wi-Fi. The distinction is whether traffic needs a route beyond the local network.",
+      "today": "Today people use Telegram, WhatsApp, Signal and Viber for Internet-based conversations, communities and calls. Their architectures and security guarantees differ and can evolve. PROMETEI also offers online communication while exploring local Bluetooth and LAN paths for nearby use. Those extra routes do not establish that every feature is decentralized, that all traffic is anonymous or that voice calls necessarily work offline.",
+      "future": "PROMETEI's development goals include quicker message delivery, more reliable background reception, clearer route indicators and improved group-message performance. Automatic route switching and adaptive sending need robust implementation, measurement and failure reporting. One long-term research direction is reducing dependence on a single Internet path where technically feasible, while being precise about the limits of each transport."
+    },
+    "ru": {
+      "history": "Интернет не появился за одну ночь. К концу 1969 года сеть ARPANET соединила четыре компьютера и показала возможности пакетной передачи данных. Протокол TCP подробно описали в документе RFC 793 в 1981 году, а 1 января 1983-го ARPANET перешла на TCP/IP. В 1989 году Тим Бернерс-Ли предложил Всемирную паутину — систему связанных документов поверх интернета. Всё это возникло задолго до смартфонных мессенджеров, но стало их технической основой.",
+      "science": "Современные приложения передают данные небольшими порциями — пакетами. Маршрутизаторы проводят их через соединённые сети, а транспортные протоколы помогают следить за порядком, потерями и доставкой. Короткий текст может пережить небольшую задержку, тогда как звонок чувствителен к потере пакетов и колебаниям времени прихода. Интернет и радио не противопоставлены: телефон может подключаться к сети через мобильную связь либо Wi-Fi. Вопрос в том, выходит ли маршрут за пределы локальной сети.",
+      "today": "Сегодня Telegram, WhatsApp, Signal и Viber используются для переписки, групп и звонков через интернет. Их архитектуры, регистрация и правила безопасности отличаются. PROMETEI развивает обычное онлайн-общение, а также изучает локальные маршруты Bluetooth и LAN. Это не означает, что все функции работают офлайн или что приложение гарантирует абсолютную анонимность.",
+      "future": "Среди целей PROMETEI — ускорение доставки, надёжный приём сообщений в фоне, понятный выбор канала и более быстрые группы. Для автоматического перехода между путями требуются реализация, измерения и достоверная обработка ошибок. Долгосрочное направление — уменьшить зависимость от единственного маршрута при доступных технических средствах, не скрывая ограничений каждого канала."
+    },
+    "uk": {
+      "history": "Інтернет виникав поступово. Наприкінці 1969 року ARPANET з’єднала чотири комп’ютери, демонструючи пакетну передачу. У 1981 році протокол TCP описали в RFC 793, а в січні 1983-го ARPANET перейшла на TCP/IP. У 1989 році Тім Бернерс-Лі запропонував Всесвітню павутину — систему пов’язаних документів поверх інтернету. Ці події заклали основу сучасного онлайн-спілкування.",
+      "science": "Дані передаються пакетами через маршрутизатори й мережі. Текст може витримати певну затримку, а голосові та відеодзвінки чутливі до втрат, затримок і їхніх коливань. Телефон отримує інтернет через мобільну мережу або Wi-Fi; важливо відрізняти зовнішній маршрут від локального.",
+      "today": "Telegram, WhatsApp, Signal і Viber відомі онлайн-чатами та дзвінками. Їхні способи захисту різняться. PROMETEI підтримує онлайн-сценарії та досліджує локальні Bluetooth/LAN шляхи поблизу. Це не доводить, що всі функції працюють офлайн.",
+      "future": "Для майбутніх версій PROMETEI важливі швидке доставлення, надійніший прийом у фоні, прозорий вибір каналу та прискорення груп. Автоматичне перемикання потребує окремої перевіреної реалізації."
+    },
+    "de": {
+      "history": "Das Internet entstand schrittweise. Ende 1969 verband ARPANET vier Rechner und demonstrierte paketvermittelte Kommunikation. 1981 wurde TCP in RFC 793 dokumentiert, und im Januar 1983 stellte ARPANET auf TCP/IP um. 1989 schlug Tim Berners-Lee das World Wide Web vor, eine verlinkte Dokumentenwelt auf dem Internet. Diese Schritte ermöglichten später moderne Nachrichtendienste.",
+      "science": "Anwendungen transportieren Daten in Paketen über Router und verbundene Netze. Ein kurzer Text kann Verzögerungen eher verkraften als ein Live-Anruf: Sprach- und Videoströme reagieren empfindlich auf Verluste und schwankende Laufzeiten. Internetdienste sind sowohl über Mobilfunk als auch über Wi-Fi erreichbar. Entscheidend ist, ob das Ziel außerhalb des lokalen Netzes liegt.",
+      "today": "Telegram, WhatsApp, Signal und Viber sind bekannte Internet-Messenger mit unterschiedlichen Sicherheitsmodellen. PROMETEI erforscht zusätzlich lokale Wege über Bluetooth und LAN. Daraus folgt weder eine Garantie vollständiger Anonymität noch die Offline-Verfügbarkeit sämtlicher Funktionen.",
+      "future": "Zu den Zielen gehören schnellere Zustellung, zuverlässigerer Empfang im Hintergrund, klare Routenanzeigen und bessere Gruppenleistung. Automatische Umschaltung zwischen Netzen benötigt gesonderte Implementierung und echte Messungen."
+    },
+    "es": {
+      "history": "Internet surgió paso a paso. A finales de 1969 ARPANET conectó cuatro ordenadores y mostró el potencial de la conmutación de paquetes. TCP fue documentado en el RFC 793 en 1981, y ARPANET adoptó TCP/IP en enero de 1983. En 1989 Tim Berners-Lee propuso la World Wide Web, una capa de documentos enlazados sobre Internet. Esta evolución hizo posibles los mensajeros modernos.",
+      "science": "Las aplicaciones transmiten paquetes por routers y redes conectadas. Los mensajes breves toleran ciertas esperas, pero las llamadas necesitan poco retraso y pocas pérdidas. Un teléfono puede acceder a Internet por datos móviles o Wi-Fi; la diferencia fundamental está en si los datos salen de la red local.",
+      "today": "Telegram, WhatsApp, Signal y Viber son servicios conocidos de chats y llamadas por Internet, con modelos de seguridad distintos. PROMETEI también explora rutas cercanas de Bluetooth y LAN. Eso no garantiza anonimato absoluto ni funcionamiento sin Internet de todas las funciones.",
+      "future": "Los objetivos incluyen mensajes más rápidos, recepción más estable en segundo plano, indicaciones claras de ruta y mejores grupos. Cambiar automáticamente entre redes requiere desarrollo y mediciones específicas."
+    },
+    "zh": {
+      "history": "互联网经历了长期发展，并非某个人在某一天突然发明。到 1969 年底，ARPANET 已连接四台主机，展示了分组交换网络的潜力。1981 年的 RFC 793 描述了 TCP 协议；1983 年 1 月，ARPANET 迁移到 TCP/IP。1989 年，蒂姆·伯纳斯-李提出万维网，使网络文档能够彼此链接。这些成果为今天的通讯应用奠定了基础。",
+      "science": "现代应用把数据分成数据包，由路由器在互连的网络中转发。短文字可以容忍一定等待，而实时语音和视频对延迟、抖动与丢包更敏感。手机可通过蜂窝数据或 Wi-Fi 接入互联网。关键区别在于消息是否需要经过本地网络之外的路径。",
+      "today": "Telegram、WhatsApp、Signal 和 Viber 是广为人知的互联网聊天服务，但其注册与安全设计各不相同。PROMETEI 除了在线通信，还研究附近设备的蓝牙与 LAN 路径。这并不表示所有功能都能离线使用，也不意味着绝对匿名。",
+      "future": "PROMETEI 的研发方向包括更快的消息送达、更可靠的后台接收、清晰的路径状态以及更高效的群组通信。自动切换不同通道需要实际实现、测量与故障处理，不能仅凭概念图作出保证。"
+    },
+    "ja": {
+      "history": "インターネットは一日で発明されたものではありません。1969年末までにARPANETは4台のコンピューターを接続し、パケット交換の可能性を示しました。1981年のRFC 793でTCPが文書化され、1983年1月にはARPANETがTCP/IPへ移行しました。1989年にティム・バーナーズ＝リーがWorld Wide Webを提案し、文書をリンクして閲覧する世界が広がりました。",
+      "science": "現代のアプリはデータをパケットとして送信し、ルーターが複数のネットワークを経由して転送します。短い文章は多少の遅れに耐えられますが、音声や動画は遅延、ジッター、損失に敏感です。携帯回線とWi-Fiのどちらからでもインターネットに接続できます。ローカル通信との違いは外部ネットワークを通る必要があるかどうかです。",
+      "today": "Telegram、WhatsApp、Signal、Viberはよく知られたインターネット通信サービスですが、安全性や登録方法はそれぞれ異なります。PROMETEIはオンラインに加え近距離BluetoothとLANの経路を研究しています。すべての機能がオフラインで利用できるわけではありません。",
+      "future": "目標はメッセージの迅速な配信、安定したバックグラウンド受信、経路表示の改善、グループ通信の効率化です。経路の自動切り替えには個別の実装、測定、エラー処理の検証が必要です。"
+    }
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "bluetooth": {
+    "en": [
+      "Research starts at Ericsson",
+      "Bluetooth SIG is founded",
+      "Bluetooth 1.0 specification is published",
+      "Bluetooth Low Energy appears"
+    ],
+    "ru": [
+      "В Ericsson начинаются исследования",
+      "Создана организация Bluetooth SIG",
+      "Опубликована спецификация Bluetooth 1.0",
+      "Появляется Bluetooth Low Energy"
+    ],
+    "uk": [
+      "Початок досліджень в Ericsson",
+      "Засновано Bluetooth SIG",
+      "Опубліковано стандарт Bluetooth 1.0",
+      "З’являється Bluetooth Low Energy"
+    ],
+    "de": [
+      "Forschungsbeginn bei Ericsson",
+      "Bluetooth SIG wird gegründet",
+      "Bluetooth 1.0 wird veröffentlicht",
+      "Bluetooth Low Energy erscheint"
+    ],
+    "es": [
+      "Comienzan los estudios en Ericsson",
+      "Se funda Bluetooth SIG",
+      "Se publica Bluetooth 1.0",
+      "Llega Bluetooth Low Energy"
+    ],
+    "zh": [
+      "爱立信启动研究",
+      "Bluetooth SIG 成立",
+      "发布蓝牙 1.0 规范",
+      "低功耗蓝牙出现"
+    ],
+    "ja": [
+      "Ericssonで研究開始",
+      "Bluetooth SIG設立",
+      "Bluetooth 1.0仕様公開",
+      "Bluetooth Low Energy登場"
+    ]
+  },
+  "wifi": {
+    "en": [
+      "Original IEEE 802.11 standard",
+      "802.11b and Wi-Fi compatibility efforts",
+      "IEEE 802.11g extends Wi-Fi speed",
+      "Wi-Fi 7 certification era"
+    ],
+    "ru": [
+      "Первый стандарт IEEE 802.11",
+      "802.11b и развитие совместимости Wi-Fi",
+      "IEEE 802.11g повышает скорость Wi-Fi",
+      "Эпоха сертификации Wi-Fi 7"
+    ],
+    "uk": [
+      "Перший стандарт IEEE 802.11",
+      "802.11b та розвиток сумісності Wi-Fi",
+      "IEEE 802.11g прискорює Wi-Fi",
+      "Початок сертифікації Wi-Fi 7"
+    ],
+    "de": [
+      "Erster IEEE-802.11-Standard",
+      "802.11b und Wi-Fi-Kompatibilität",
+      "IEEE 802.11g erhöht WLAN-Datenraten",
+      "Ära der Wi-Fi-7-Zertifizierung"
+    ],
+    "es": [
+      "Primer estándar IEEE 802.11",
+      "802.11b y compatibilidad Wi-Fi",
+      "IEEE 802.11g amplía la velocidad de Wi-Fi",
+      "Certificaciones de Wi-Fi 7"
+    ],
+    "zh": [
+      "首版 IEEE 802.11 标准",
+      "802.11b 与 Wi-Fi 兼容性发展",
+      "IEEE 802.11g 提高无线局域网速度",
+      "Wi-Fi 7 认证时代"
+    ],
+    "ja": [
+      "初のIEEE 802.11規格",
+      "802.11bとWi-Fi互換性の発展",
+      "IEEE 802.11gでWi-Fiを高速化",
+      "Wi-Fi 7認証の時代"
+    ]
+  },
+  "internet": {
+    "en": [
+      "ARPANET connects its first four hosts",
+      "TCP documented in RFC 793",
+      "ARPANET moves to TCP/IP",
+      "World Wide Web proposed"
+    ],
+    "ru": [
+      "В ARPANET соединены первые четыре компьютера",
+      "TCP описан в RFC 793",
+      "ARPANET переходит на TCP/IP",
+      "Предложена Всемирная паутина"
+    ],
+    "uk": [
+      "ARPANET з’єднує перші чотири комп’ютери",
+      "TCP описано в RFC 793",
+      "ARPANET переходить на TCP/IP",
+      "Запропоновано Всесвітню павутину"
+    ],
+    "de": [
+      "ARPANET verbindet vier Rechner",
+      "TCP in RFC 793 dokumentiert",
+      "ARPANET stellt auf TCP/IP um",
+      "World Wide Web vorgeschlagen"
+    ],
+    "es": [
+      "ARPANET conecta cuatro ordenadores",
+      "TCP se documenta en RFC 793",
+      "ARPANET adopta TCP/IP",
+      "Se propone la World Wide Web"
+    ],
+    "zh": [
+      "ARPANET 连接最早的四台主机",
+      "RFC 793 描述 TCP",
+      "ARPANET 迁移至 TCP/IP",
+      "提出万维网设想"
+    ],
+    "ja": [
+      "ARPANETが4台のコンピューターを接続",
+      "RFC 793でTCPを文書化",
+      "ARPANETがTCP/IPへ移行",
+      "World Wide Webを提案"
+    ]
+  }
+}
