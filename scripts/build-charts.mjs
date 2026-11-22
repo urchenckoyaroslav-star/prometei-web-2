@@ -9,6 +9,16 @@ const editorialLabels = {
   ja: ['アーティストについて', 'YouTube で見る', '出典', '広告']
 };
 
+const pendingEditorial = {
+  en: 'Artist credits and career milestones are being checked for this new entry.',
+  uk: 'Для нової позиції перевіряємо виконавців і факти про їхню кар’єру.',
+  ru: 'Для новой позиции уточняем состав исполнителей и факты об их карьере.',
+  de: 'Für diesen neuen Titel werden die Mitwirkenden und ihre Karriere geprüft.',
+  es: 'Estamos verificando los créditos y la trayectoria de esta nueva entrada.',
+  zh: '这首新上榜歌曲的艺人信息和经历正在核实。',
+  ja: '新しく入った曲の参加アーティストと経歴を確認中です。'
+};
+
 const alternateVideos = {
   'mtTZ_-VbS30': 'https://www.youtube.com/watch?v=58u-zkDLNPg',
   'hQ8HPxk4AkA': 'https://music.apple.com/us/music-video/bby-wow/6823341383',
@@ -43,7 +53,8 @@ export function chartPage(catalog,lang,base,editorial,adSlot){
     const clipLabel = clipUrl.includes('music.apple.com') ? 'Apple Music · Video' : watch;
     const note = editorial[track.id];
     const artist = note ? `<strong class="track-artist">${escape(note[0])}</strong>` : '';
-    const details = note ? `<details class="track-editorial"><summary>${about}</summary><article aria-labelledby="artist-${track.id}"><h2 id="artist-${track.id}">${escape(note[0])}</h2><p lang="${lang === 'ru' ? 'ru' : 'en'}">${escape(note[lang === 'ru' ? 2 : 1])}</p><div class="editorial-links"><a class="video-link" href="${escape(clipUrl)}" target="_blank" rel="noopener"><span aria-hidden="true">▶</span> ${clipLabel}</a><ul aria-label="${sources}">${note.slice(3).map(url => `<li><a href="${escape(url)}" target="_blank" rel="noopener">${escape(new URL(url).hostname.replace(/^www\./, ''))}</a></li>`).join('')}</ul></div></article></details>` : '';
+    const pending = !note ? `<details class="track-editorial"><summary>${about}</summary><article><h2>${escape(track.title)}</h2><p>${pendingEditorial[lang]}</p><div class="editorial-links"><a class="video-link" href="${videoUrl}" target="_blank" rel="noopener"><span aria-hidden="true">▶</span> ${watch}</a></div></article></details>` : '';
+    const details = note ? `<details class="track-editorial"><summary>${about}</summary><article aria-labelledby="artist-${track.id}"><h2 id="artist-${track.id}">${escape(note[0])}</h2><p lang="${lang === 'ru' ? 'ru' : 'en'}">${escape(note[lang === 'ru' ? 2 : 1])}</p><div class="editorial-links"><a class="video-link" href="${escape(clipUrl)}" target="_blank" rel="noopener"><span aria-hidden="true">▶</span> ${clipLabel}</a><ul aria-label="${sources}">${note.slice(3).map(url => `<li><a href="${escape(url)}" target="_blank" rel="noopener">${escape(new URL(url).hostname.replace(/^www\./, ''))}</a></li>`).join('')}</ul></div></article></details>` : pending;
     return `<li data-id="${track.id}" data-seed="${index}" data-origin="${track.region}"><div class="track-title"><a data-track-title href="${videoUrl}" target="_blank" rel="noopener">${escape(track.title)}</a>${artist}</div><output aria-label="${t.share}">—</output><button disabled data-vote>${t.vote}</button>${details}</li>`;
   }).join('');
   const publisher = 'ca-pub-7195249956747821';
