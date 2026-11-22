@@ -130,3 +130,118 @@ img { height:auto; }
 @media (max-width:370px) {
   .story-heading h2 { font-size:clamp(1.85rem,8.7vw,2.65rem);line-height:1.08;overflow-wrap:anywhere;word-break:normal; }
 }
+
+/* Universal Google Play install footer: visible, lightweight, accessible and not sticky. */
+.prometei-install-band,
+.prometei-install-band * { box-sizing:border-box; }
+.prometei-install-band {
+  display:block;
+  width:calc(100% - 32px);
+  max-width:1120px;
+  margin:clamp(26px,4vw,64px) auto;
+  padding:clamp(18px,2.5vw,30px);
+  border:1px solid rgba(137,170,221,.42);
+  border-radius:22px;
+  background:linear-gradient(112deg,#101d35 0%,#122441 57%,#14233a 100%);
+  box-shadow:0 14px 44px rgba(0,0,0,.2);
+  color:#eff6ff;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.prometei-install-inner {
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) minmax(190px,auto);
+  gap:clamp(12px,2vw,24px);
+  align-items:center;
+}
+.prometei-install-mark {
+  display:grid;
+  place-items:center;
+  flex:none;
+  width:56px;
+  height:56px;
+  border:1px solid rgba(255,216,135,.58);
+  border-radius:18px;
+  background:rgba(255,199,96,.1);
+  color:#ffdc94;
+  font-size:2rem;
+}
+.prometei-install-copy,
+.prometei-install-actions { min-width:0; }
+.prometei-install-eyebrow {
+  display:block;
+  margin-bottom:5px;
+  color:#ffd890;
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+.prometei-install-copy strong {
+  display:block;
+  color:#fff;
+  font-size:clamp(1.05rem,1.6vw,1.4rem);
+  font-weight:800;
+  line-height:1.3;
+  overflow-wrap:break-word;
+}
+.prometei-install-copy p {
+  margin:7px 0 0;
+  color:#c3d1e7;
+  font-size:.9rem;
+  line-height:1.6;
+  overflow-wrap:break-word;
+}
+.prometei-install-actions {
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:10px;
+}
+.prometei-install-button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:12px 17px;
+  border:1px solid #ffe0a3;
+  border-radius:12px;
+  background:#ffcf79;
+  color:#142038 !important;
+  font-size:.91rem;
+  font-weight:800;
+  line-height:1.3;
+  text-align:center;
+  text-decoration:none !important;
+  gap:9px;
+  overflow-wrap:anywhere;
+  transition:background-color .18s ease,transform .18s ease;
+}
+.prometei-install-button:hover { background:#ffe3aa; transform:translateY(-1px); }
+.prometei-partner-link {
+  align-self:center;
+  color:#d4e4fa !important;
+  font-size:.8rem;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.prometei-install-band a:focus-visible {
+  outline:3px solid #fff;
+  outline-offset:4px;
+}
+@media (max-width:760px) {
+  .prometei-install-inner { grid-template-columns:auto minmax(0,1fr); }
+  .prometei-install-actions { grid-column:1/-1; }
+  .prometei-install-button { width:100%; }
+}
+@media (max-width:390px) {
+  .prometei-install-band { width:calc(100% - 20px);padding:16px;border-radius:16px; }
+  .prometei-install-mark { width:42px;height:42px;font-size:1.5rem;border-radius:12px; }
+  .prometei-install-inner { gap:12px; }
+  .prometei-install-copy p { font-size:.85rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .prometei-install-button { transition:none; }
+  .prometei-install-button:hover { transform:none; }
+}
+@media print {
+  .prometei-install-band { display:none!important; }
+}
