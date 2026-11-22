@@ -1,0 +1,54 @@
+name: PROMETEI Site Quality and Mobile SEO
+on:
+  pull_request:
+    paths:
+      - "app.js"
+      - "index.html"
+      - "site-quality.css"
+      - "scripts/build.mjs"
+      - "scripts/build-news.mjs"
+      - "scripts/check-site-quality.mjs"
+      - "scripts/check-fm-ux.mjs"
+      - ".github/workflows/site-quality.yml"
+      - "scripts/check-responsive-browser.mjs"
+  push:
+    branches: [main]
+    paths:
+      - "app.js"
+      - "index.html"
+      - "site-quality.css"
+      - "scripts/build.mjs"
+      - "scripts/build-news.mjs"
+      - "scripts/check-site-quality.mjs"
+      - "scripts/check-fm-ux.mjs"
+      - ".github/workflows/site-quality.yml"
+      - "scripts/check-responsive-browser.mjs"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax checks
+        run: |
+          node --check app.js
+          node --check scripts/build.mjs
+          node --check scripts/build-news.mjs
+          node --check scripts/check-site-quality.mjs
+      - name: Generate entire seven-language website
+        run: npm run build
+      - name: Audit all 211 sitemap destinations, titles, canonicals, translations and images
+        run: node scripts/check-site-quality.mjs
+      - name: Test seven-language science content
+        run: node scripts/check-seo-guides.mjs
+      - name: Test news, sources, disclosures and sponsorship blocks
+        run: node scripts/check-weekly-news.mjs
+      - name: Test 50 cryptocurrency histories and PROI disclaimers
+        run: node scripts/check-crypto-atlas.mjs
+      - name: Test current FM controls and seven-language pages
+        run: node scripts/check-fm-ux.mjs
