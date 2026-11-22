@@ -46,6 +46,7 @@ const descriptions={
 };
 const extraDescriptions={
  'how-it-works.html':'Learn how to test offline messaging on two Android phones with Bluetooth or local Wi-Fi, and troubleshoot why messages may not arrive.',
+ 'fm-privacy.html':'How PROMETEI FM handles chart votes, embedded videos, advertising and cookie choices.',
  'portfolio.html':'Android and web developer portfolio: PROMETEI Messenger on Google Play, PHANTOM GPS testing, multilingual website and PROMETEI FM radio. Remote development services and verifiable case studies.',
  'privacy.html':'PROMETEI Messenger privacy information and data handling disclosure. Review notice: policy details are being verified against the Android release.',
  'privacy-phantom.html':'PHANTOM GPS privacy information for the Android mock-location utility in closed testing.',
@@ -140,7 +141,7 @@ for(const locale of localized){
   page=metadata(page,{url:base+locale+'/',title:titles[locale],description:descriptions[locale],lang:locale,app:true,alternate:true});
   const folder=path.join(output,locale);fs.mkdirSync(folder,{recursive:true});fs.writeFileSync(path.join(folder,'index.html'),page,'utf8');
 }
-const docs=['portfolio.html','privacy.html','privacy-phantom.html','privacy-pokonap.html','account-deletion.html','child-safety.html','terms.html','support.html','how-it-works.html'];
+const docs=['portfolio.html','fm-privacy.html','privacy.html','privacy-phantom.html','privacy-pokonap.html','account-deletion.html','child-safety.html','terms.html','support.html','how-it-works.html'];
 for(const filename of docs){
  if(!fs.existsSync(path.join(source,filename)))continue;
  const old=fs.readFileSync(path.join(source,filename),'utf8');

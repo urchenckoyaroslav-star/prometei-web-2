@@ -19,7 +19,7 @@
           ],
           [
             "A practical check",
-            "Enable Bluetooth on two nearby Android phones, grant the permissions requested by the installed app, select an available nearby route and send a short text. Change one condition at a time and record the result. Offline connectivity does not automatically mean anonymity or identical encryption across every route."
+            "Use two nearby Android phones with different PROMETEI accounts and the required Nearby devices permission. Turn off Wi-Fi and mobile data on both, keep Bluetooth on, and select the Bluetooth route where offered. Send different short test messages in both directions. Record the Android and app versions, attempt counts and delivery time measured when the text appears on the receiving phone. Note timeouts and permission prompts separately."
           ]
         ]
       ],
@@ -38,7 +38,7 @@
           ],
           [
             "Как проверить на практике",
-            "Включите Bluetooth на двух Android-телефонах, предоставьте необходимые разрешения, выберите доступный режим и отправьте короткий текст. Затем меняйте условия по одному. Отсутствие интернета не равнозначно полной анонимности или гарантиям шифрования."
+            "Возьмите два Android-телефона с разными аккаунтами PROMETEI и разрешите доступ к устройствам поблизости. На обоих отключите Wi-Fi и мобильные данные, оставьте Bluetooth и выберите Bluetooth-маршрут, если он доступен. Отправьте разные короткие сообщения в обе стороны. Запишите версии Android и приложения, число попыток и время до появления текста на телефоне получателя. Тайм-ауты и запросы разрешений отмечайте отдельно."
           ]
         ]
       ]
@@ -183,7 +183,7 @@
           ],
           [
             "Change only the uplink",
-            "Send a short test message with normal Internet access. Then disconnect the router's Internet uplink while leaving its Wi-Fi running. Repeat the same message test. This is a diagnostic result for your devices, not a guarantee for all networks."
+            "Send a short baseline message. Keep both phones on the same Wi-Fi network, disable mobile data and Bluetooth on both, then disconnect only the router’s Internet uplink. Verify that a public webpage fails to load, then send fresh short messages in both directions. Count a delivery when the new text appears on the receiving phone."
           ],
           [
             "Record the useful facts",
@@ -202,7 +202,7 @@
           ],
           [
             "Отключите только внешний канал",
-            "Отправьте короткий текст при обычном подключении. Затем отключите у роутера интернет провайдера, сохранив Wi-Fi, и повторите тест. Результат показывает поведение именно этой конфигурации."
+            "Отправьте короткий текст для сравнения. Оставьте оба телефона в одной Wi-Fi-сети, отключите на обоих мобильные данные и Bluetooth, затем отключите только внешний канал роутера. Проверьте, что внешний сайт не открывается, и отправьте новые короткие сообщения в обе стороны. Засчитывайте доставку, когда новый текст появился на телефоне получателя."
           ],
           [
             "Запишите наблюдения",
