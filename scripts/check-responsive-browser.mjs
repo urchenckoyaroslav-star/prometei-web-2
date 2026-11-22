@@ -28,7 +28,20 @@ const port=server.address().port;
 const browser=await chromium.launch({headless:true,args:["--no-sandbox","--disable-dev-shm-usage"]});
 const context=await browser.newContext({reducedMotion:"reduce",deviceScaleFactor:1,locale:"en-US"});
 // Test first-party markup and layout deterministically; external font/photo services may be unavailable in CI.
-await context.route("**/*",route=>{const url=new URL(route.request().url());if(url.hostname==="127.0.0.1")route.continue();else route.abort()});
+await context.route("**/*",route=>{
+ const url=new URL(route.request().url());
+ if(url.hostname==="127.0.0.1")return route.continue();
+ // Production pages use absolute canonical origins for CSS and JS. Serve our newly built
+ // local assets so this QA tests REAL styles and working client interactions, not an
+ // unstyled mock caused by blocking those first-party absolute URLs.
+ if(url.hostname==="prometei-web-2.pages.dev"){
+  const slug=decodeURIComponent(url.pathname).replace(/^\\/+/, "");
+  const candidates=[path.join(dist,slug),path.join(dist,slug+".html"),path.join(dist,slug,"index.html")];
+  const file=candidates.find(file=>file.startsWith(dist+path.sep)&&fs.existsSync(file)&&fs.statSync(file).isFile());
+  if(file)return route.fulfill({status:200,contentType:types[path.extname(file)]||"application/octet-stream",body:fs.readFileSync(file)});
+ }
+ return route.abort();
+});
 const primary=["/","/news/","/news/signal-adds-defenses-against-screen-reading-agents/","/crypto-atlas/","/crypto-atlas/bitcoin/","/guides/","/advertise/","/portfolio","/fm"];
 const localized=["/uk/","/ru/","/de/","/es/","/zh/","/ja/"];
 const sizes=[{width:320,height:720},{width:360,height:760},{width:390,height:844},{width:430,height:932},{width:768,height:1024},{width:1024,height:768},{width:1440,height:900},{width:1920,height:1080},{width:2560,height:1440}];
