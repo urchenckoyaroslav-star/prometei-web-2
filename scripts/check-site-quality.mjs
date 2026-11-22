@@ -51,6 +51,18 @@ for(const url of sitemapURLs){
  assert.ok(html.includes('class="prometei-install-button" href="https://play.google.com/store/apps/details?id=com.meshnetwork.app"'),"Direct official Google Play URL missing: "+url);
  assert.ok(html.includes('class="prometei-partner-link"'),"Sponsor contact route missing: "+url);
  assert.equal((html.match(/class="prometei-install-band"/g)||[]).length,1,"Duplicate global install CTA: "+url);
+ // Main menu, not merely a footer/article link: static, indexable and in the correct language.
+ const mainHeader=html.match(/<header\b[^>]*>[\s\S]*?<\/header>/i)?.[0]||"";
+ const mainNavs=[...mainHeader.matchAll(/<nav\b[^>]*>[\s\S]*?<\/nav>/gi)].map(x=>x[0]);
+ if(mainNavs.length){
+   const lang=(html.match(/<html\b[^>]*\blang="([^"]+)"/i)?.[1]||"en").slice(0,2);
+   const expectedHref=base+(lang==="en"?"":lang+"/")+"crypto-atlas/proi/";
+   for(const nav of mainNavs){
+     assert.equal((nav.match(/class="prometei-proi-nav"/g)||[]).length,1,"PROI entry missing/duplicated in main nav: "+url);
+     assert.ok(nav.includes('href="'+expectedHref+'"'),"PROI main nav must point to the language-matched page: "+url);
+   }
+ }
+
  for(const img of html.matchAll(/<img\b[^>]*>/gi)){
    assert.ok(/\balt="[^"]*"/.test(img[0]),"Image without alt: "+url+" "+img[0].slice(0,140));
  }
@@ -84,6 +96,11 @@ for(const l of languages){
  assert.ok(page.includes('<html lang="'+mappings[l]+'"'),"Incorrect homepage language "+l);
  assert.ok(page.includes('<link rel="canonical" href="'+base+(l==="en"?"":l+"/")+'">'),"Wrong home canonical "+l);
  assert.ok(page.includes('hreflang="x-default"'),"Missing home language alternatives "+l);
+ const expectedLabels={en:"All about PROI",uk:"Усе про PROI",ru:"Всё о PROI",de:"Alles über PROI",es:"Todo sobre PROI",zh:"PROI 完整指南",ja:"PROI のすべて"};
+ const destination=base+(l==="en"?"":l+"/")+"crypto-atlas/proi/";
+ assert.ok(page.includes('class="prometei-proi-nav" href="'+destination+'"'),"Homepage main menu PROI link missing "+l);
+ assert.equal((page.match(/class="prometei-proi-nav"/g)||[]).length,2,"Desktop and mobile PROI links should both exist "+l);
+ assert.ok(page.includes(expectedLabels[l]),"Main menu PROI label not translated: "+l);
  const hero=entry.heroLine1;
  assert.ok(page.includes(hero.replaceAll("&","&amp;"))||page.includes(hero),"Server-generated homepage isn't translated: "+l);
  assert.ok(page.includes('href="/site-quality.css"'),"Unpolished homepage "+l);
