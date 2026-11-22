@@ -260,6 +260,10 @@ const installMessages={
   zh:{region:'PROMETEI 安卓应用',headline:'使用 PROMETEI 保持联系',copy:'在兼容的安卓设备上体验互联网聊天、近距离蓝牙通信及本地 Wi-Fi 消息。',button:'前往 Google Play 安装',partner:'广告与合作'},
   ja:{region:'Android用 PROMETEI',headline:'PROMETEI でつながろう',copy:'対応する Android 端末で、インターネット、近距離 Bluetooth、ローカル Wi-Fi のメッセージ機能をご覧ください。',button:'Google Play でインストール',partner:'広告・パートナーシップ'}
 };
+const directoryLabels={
+ en:'All site pages',uk:'Карта сторінок',ru:'Карта сайта',de:'Seitenübersicht',
+ es:'Mapa del sitio',zh:'网站目录',ja:'サイトマップ'
+};
 function installationBand(html){
   const lang=(html.match(/<html\b[^>]*\blang="([^"]+)"/i)?.[1]||'en').slice(0,2).toLowerCase();
   const t=installMessages[lang]||installMessages.en;
@@ -268,7 +272,8 @@ function installationBand(html){
     '<span class="prometei-install-mark" aria-hidden="true">✦</span>'+
     '<div class="prometei-install-copy"><span class="prometei-install-eyebrow">PROMETEI · ANDROID</span><strong>'+a(t.headline)+'</strong><p>'+a(t.copy)+'</p></div>'+
     '<div class="prometei-install-actions"><a class="prometei-install-button" href="'+playStoreURL+'" target="_blank" rel="noopener noreferrer">'+a(t.button)+' <span aria-hidden="true">↗</span></a>'+
-    '<a class="prometei-partner-link" href="'+a(base+'advertise/')+'">'+a(t.partner)+'</a></div></div></aside>';
+    '<a class="prometei-partner-link" href="'+a(base+'advertise/')+'">'+a(t.partner)+'</a>'+
+    '<a class="prometei-directory-link" href="'+a(base+'site-map/')+'">'+a(directoryLabels[lang]||directoryLabels.en)+'</a></div></div></aside>';
 }
 // Promote PROI to a first-class, crawlable main-menu destination on EVERY generated page.
 // This is independent of JavaScript, correctly localized, and points at the existing
