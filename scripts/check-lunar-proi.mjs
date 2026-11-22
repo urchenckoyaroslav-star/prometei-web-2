@@ -48,7 +48,7 @@ for(const l of Object.keys(langs)){
  assert.ok(sitemap.includes("<loc>"+canonical+"</loc>"),"Sitemap "+l);
  assert.ok(html.includes("100 × (1 + 2")||html.includes("100 ×（1 + 2"),"Emission formula disclosure "+l);
  const status=t.ui.status.toLowerCase();
- assert.ok(/points|балл|балів|punkte|puntos|积分|ポイント/i.test(status),"Current points state "+l);
+ assert.ok(/points|балл|бали|балів|punkte|puntos|积分|ポイント/i.test(status),"Current points state "+l);
  assert.ok(t.ui.roadmapText.length>100,"Future token disclaimer "+l);
 }
 const sourceHome=fs.readFileSync(path.join(dist,"index.html"),"utf8");
