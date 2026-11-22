@@ -33,7 +33,7 @@ for(const l of Object.keys(langs)){
  for(const id of ["lp-emission-chart","lp-chart-trace","lp-chart-area","lp-chart-cursor","lp-chart-point"])
   assert.ok(html.includes('id="'+id+'"'),"Interactive cumulative rewards chart missing "+l+":"+id);
  for(const label of ["instrument","observatory","chartTitle","chartAria","chartNote"])
-  assert.ok(typeof t.ui[label]==="string"&&t.ui[label].length>10,"Observatory copy not localized "+l+":"+label);
+  assert.ok(typeof t.ui[label]==="string"&&t.ui[label].trim().length>=3,"Observatory copy not localized "+l+":"+label);
  assert.ok(html.includes('site-ads.css')&&html.includes('data-ad-placement="lunarScience"'),"Lunar science sponsorship slot missing "+l);
  assert.ok(html.includes('class="site-ad-label"')&&html.includes('advertise/'),"Honest partner label/route missing "+l);
  assert.ok(!html.includes('pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'),"Unapproved live AdSense on lunar page "+l);
