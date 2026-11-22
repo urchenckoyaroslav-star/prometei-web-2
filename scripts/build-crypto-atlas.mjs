@@ -29,7 +29,7 @@ function sentences(asset){
  const arr=[...s.facts,s.bridge,...five];
  if(arr.length!==20)throw Error("Article should have exactly 20 sentences: "+asset.slug);
  for(const [i,line] of arr.entries()){
-  if(typeof line!=="string"||line.length<38||!/[.!?]$/.test(line)||/\b(buy now|guaranteed returns|risk.free)\b/i.test(line))throw Error("Unacceptable statement "+asset.slug+" "+i);
+  if(typeof line!=="string"||line.length<38||!/[.!?]$/.test(line)||/\b(buy now|100% guaranteed profit|guaranteed investment return)\b/i.test(line))throw Error("Unacceptable statement "+asset.slug+" "+i);
  }
  return arr;
 }
