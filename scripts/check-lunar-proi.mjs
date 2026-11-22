@@ -47,9 +47,13 @@ for(const l of Object.keys(langs)){
   assert.ok(html.includes('href="'+url+'"'),"Science link absent "+l+":"+url);
  }
  assert.ok(html.includes('Google Play')&&html.includes('play.google.com/store/apps/details?id=com.meshnetwork.app'));
- assert.ok(html.includes("illustrativeDailyBase")&&html.includes("exampleBurnPercent"));
+ assert.ok(html.includes('"epochMs":1704974220000')&&html.includes('"synodicDays":29.53058867'),"Android UTC lunar epoch mismatch "+l);
+ assert.ok(html.includes('"waxingRewardMilli":500')&&html.includes('"waningRewardMilli":100'),"Lunar Pulse rewards mismatch "+l);
+ assert.ok(html.includes('"defaultWaxingFeeBps":1000')&&html.includes('"defaultWaningFeeBps":1500'),"Android fee defaults missing "+l);
+ for(const id of ["lp-milestones","lp-fee-waxing","lp-fee-waning","lp-fee-debit","lp-protocol-title"])assert.ok(html.includes('id="'+id+'"'),"Lunar protocol UI missing "+l+":"+id);
  assert.ok(sitemap.includes("<loc>"+canonical+"</loc>"),"Sitemap "+l);
- assert.ok(html.includes("100 × (1 + 2")||html.includes("100 ×（1 + 2"),"Emission formula disclosure "+l);
+ assert.ok(html.includes("0.5")||html.includes("0,5"),"Real milestone reward needs disclosure "+l);
+ assert.ok(!html.includes("100 × (1 + 2")&&!html.includes("100 ×（1 + 2"),"Invented daily issuance formula remains "+l);
  const status=t.ui.status.toLowerCase();
  assert.ok(/points|балл|бали|балів|punkte|puntos|积分|ポイント/i.test(status),"Current points state "+l);
  assert.ok(t.ui.roadmapText.length>50,"Future token disclaimer "+l);
@@ -61,10 +65,12 @@ for(const l of Object.keys(langs).filter(l=>l!=="en")){
  assert.ok(html.includes('href="/'+l+'/crypto-atlas/proi/"'),"Localized homepage Moon link missing "+l);
 }
 assert.ok(src.includes("cancelAnimationFrame")&&src.includes("requestAnimationFrame"),"Slider animation missing");
-assert.ok(src.includes("synodicDays")&&src.includes("exampleFeePercent"),"Moon model missing");
+assert.ok(src.includes("synodicDays")&&src.includes("waxingPhase")&&src.includes("momentFor"),"Android Moon-phase model missing");
+assert.ok(src.includes("Math.ceil")&&src.includes("Math.floor(feeMilli/2)"),"Android milli-PROI fee rounding missing");
 assert.ok(src.includes("aria-pressed")&&src.includes("getUTCDay"),"Calendar keyboard state/dates missing");
-assert.ok(src.includes("cfg.labels.estimate"),"Calendar day descriptions must use localized units");
-assert.ok(src.includes("normalize((date.getTime()-epoch)/dayMs)"),"Astronomical epoch approximation missing");
+assert.ok(src.includes("cfg.labels.none")&&src.includes("eventDayData"),"Calendar must show actual scheduled milestones, not made-up daily minting");
+assert.ok(src.includes("normalize((date.getTime()-epoch)/dayMs)"),"Android UTC epoch approximation missing");
+assert.ok(src.includes("threshold:")&&src.includes("rewardMilli")===false,"Milestone model must use exact input rewards");
 for(const rule of ["max-width:390px","max-width:640px","max-width:900px","min-width:1920px","prefers-reduced-motion:reduce","pointer:coarse","focus-visible"])assert.ok(css.includes(rule),"Missing responsive/accessibility "+rule);
 assert.ok(!/connectWallet|buyToken|sendTransaction|web3\.eth|window\.ethereum/.test(src),"No functional token sales or transfers in concept UI");
-console.log("LUNAR PROI PASS: 7 scientifically sourced articles, 9 sections each, 7×8 phases, 7 interactive calendars, hypothetical issuance/fee maths, SEO/hreflang, all local homepage links.");
+console.log("LUNAR PROI PASS: 7 translated science articles, Android-aligned UTC epoch, 20 exact milestone rewards, source-default ROOT fee demos, 50/50 burn/Vault split, SEO and responsive UI.");
