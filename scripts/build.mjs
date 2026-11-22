@@ -249,7 +249,7 @@ function applyGlobalQualityStyles(directory){
     if(entry.isDirectory()){applyGlobalQualityStyles(pathname);continue;}
     if(!entry.isFile()||!entry.name.endsWith('.html'))continue;
     let html=fs.readFileSync(pathname,'utf8');
-    if(!/<\/head>/i.test(html))throw Error('HTML head missing: '+pathname);
+    if(!/<\/head>/i.test(html))continue; // Google ownership-verification and HTML fragments are not site pages.
     if(html.includes('href="/site-quality.css"'))continue;
     html=html.replace(/<\/head>/i,'<link rel="stylesheet" href="/site-quality.css">\n</head>');
     fs.writeFileSync(pathname,html,'utf8');
