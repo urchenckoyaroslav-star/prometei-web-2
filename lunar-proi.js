@@ -102,7 +102,7 @@ function renderCalendar(){
   button.className="lp-date-button";
   button.dataset.day=iso;
   button.setAttribute("aria-pressed",String(iso===lastDay));
-  button.setAttribute("aria-label",dateLabel.format(date)+", "+cfg.phases[index]+", "+pct+"%, "+number.format(amount)+" PROI model units per day");
+  button.setAttribute("aria-label",dateLabel.format(date)+", "+cfg.phases[index]+", "+pct+"%, "+number.format(amount)+", "+cfg.labels.estimate);
   if(iso===utcToday.toISOString().slice(0,10))button.classList.add("is-today");
   const numeral=document.createElement("span");numeral.className="lp-day-number";numeral.textContent=String(day);
   const moon=document.createElement("span");moon.className="lp-day-moon";moon.setAttribute("aria-hidden","true");moon.textContent=["🌑","🌒","🌓","🌔","🌕","🌖","🌗","🌘"][index];
