@@ -317,7 +317,7 @@ function applyGlobalQualityStyles(directory){
   }
 }
 applyGlobalQualityStyles(output);
-const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls,...cryptoUrls,...lunarUrls,...weeklyNewsUrls,'advertise/','services/'];
+const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls,...cryptoUrls,...lunarUrls,...weeklyNewsUrls,'advertise/','services/','site-map/'];
 const xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for(const item of urls){
  xml.push('  <url><loc>'+base+item+'</loc>');
@@ -342,6 +342,75 @@ for(const item of urls){
 }
 xml.push('</urlset>');
 fs.writeFileSync(path.join(output,'sitemap.xml'),xml.join('\n')+'\n');
+
+// Human-friendly HTML directory: every XML-sitemap destination has a plain HTML link.
+// This augments article collections and XML discovery; it does not guarantee indexing.
+function buildSiteDirectory(){
+ const groups={
+  core:{name:'PROMETEI · Messenger & projects / Главные разделы',items:[]},
+  proi:{name:'PROI · Lunar Observatory / Лунная лаборатория',items:[]},
+  guides:{name:'Connection Science · Seven languages / Наука о связи',items:[]},
+  crypto:{name:'Crypto Atlas · 50 histories / Истории криптовалют',items:[]},
+  news:{name:'World News · Original briefs / Новости',items:[]},
+  fm:{name:'PROMETEI FM · Radio & charts / Радио',items:[]},
+  languages:{name:'Language homepages / Другие языки',items:[]}
+ };
+ const fileForSlug=slug=>{
+  const clean=String(slug).replace(/^\/+/,'');
+  const choices=clean.endsWith('/')||clean===''?
+   [path.join(output,clean,'index.html')]:
+   [path.join(output,clean,'index.html'),path.join(output,clean+'.html'),path.join(output,clean)];
+  return choices.find(p=>fs.existsSync(p)&&fs.statSync(p).isFile())||null;
+ };
+ const titleForSlug=slug=>{
+  const location=fileForSlug(slug);
+  if(!location)return slug||'PROMETEI';
+  const contents=fs.readFileSync(location,'utf8');
+  return (contents.match(/<title>([\s\S]*?)<\/title>/i)?.[1]||slug||'PROMETEI')
+   .replace(/<[^>]+>/g,'').replaceAll('&amp;','&').trim();
+ };
+ for(const slug of urls){
+  let category='core';
+  if(/crypto-atlas\/proi\/$/.test(slug))category='proi';
+  else if(/guides\//.test(slug))category='guides';
+  else if(/crypto-atlas\//.test(slug))category='crypto';
+  else if(/news\//.test(slug))category='news';
+  else if(/(?:^|\/)fm(?:-|\/|$)/.test(slug))category='fm';
+  else if(/^(?:uk|ru|de|es|zh|ja)\/$/.test(slug))category='languages';
+  groups[category].items.push({url:base+slug,title:titleForSlug(slug)});
+ }
+ const sections=Object.values(groups).filter(group=>group.items.length).map(group=>
+  '<section class="sd-section"><h2>'+escapeAttr(group.name)+' <span>'+group.items.length+'</span></h2>'+
+  '<ul>'+group.items.map(item=>'<li><a href="'+escapeAttr(item.url)+'">'+escapeAttr(item.title)+'</a></li>').join('')+'</ul></section>'
+ ).join('\n');
+ const canonical=base+'site-map/';
+ const description='Browse all PROMETEI Messenger pages, PROI Lunar Lab, 7-language connection guides, 50 crypto histories, FM and news. Direct links to every published sitemap URL.';
+ const schema={'@context':'https://schema.org','@type':'CollectionPage','name':'PROMETEI website directory','description':description,'url':canonical,'inLanguage':'en','isPartOf':{'@type':'WebSite','name':'PROMETEI','url':base}};
+ const html='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'+
+  '<meta name="theme-color" content="#081624"><meta name="robots" content="index,follow,max-image-preview:large">'+
+  '<title>PROMETEI — All pages & articles | Website Directory</title>'+
+  '<meta name="description" content="'+escapeAttr(description)+'"><link rel="canonical" href="'+escapeAttr(canonical)+'">'+
+  '<meta property="og:type" content="website"><meta property="og:title" content="PROMETEI — All pages & articles">'+
+  '<meta property="og:description" content="'+escapeAttr(description)+'"><meta property="og:url" content="'+escapeAttr(canonical)+'">'+
+  '<link rel="icon" type="image/svg+xml" href="'+base+'assets/mark.svg">'+
+  '<script type="application/ld+json">'+q(schema)+'</script></head>'+
+  '<body class="sd-page"><a class="sd-skip" href="#main">Skip to content</a>'+
+  '<header class="sd-header"><div class="sd-wrap sd-header-inner"><a class="sd-brand" href="'+base+'">✦ PROMETEI</a>'+
+  '<nav aria-label="Main navigation"><a href="'+base+'">Messenger</a><a href="'+base+'guides/">Science Atlas</a></nav></div></header>'+
+  '<main id="main" class="sd-wrap"><section class="sd-hero"><span class="sd-eyebrow">PROMETEI / KNOWLEDGE NAVIGATION</span>'+
+  '<h1>All pages <span lang="ru">/ Карта сайта</span></h1>'+
+  '<p>Browse every published page in the site map, including translated guides, PROI Lunar Pulse, crypto research, radio and news. <span lang="ru">Здесь собраны прямые ссылки на все страницы и статьи PROMETEI.</span></p>'+
+  '<div class="sd-summary"><strong>'+urls.length+'</strong><span>Indexable URLs listed in our sitemap · адресов в XML-карте</span></div></section>'+
+  '<div class="sd-sections">'+sections+'</div><p class="sd-note">A published URL is not a promise of Google indexing. / Наличие страницы не гарантирует её индексацию Google.</p></main>'+
+  '<footer class="sd-footer sd-wrap"><a href="'+base+'">PROMETEI Messenger</a> · <a href="'+base+'crypto-atlas/proi/">PROI Lunar Lab</a> · <a href="'+base+'sitemap.xml">XML Sitemap</a></footer>'+
+  '</body></html>';
+ const dest=path.join(output,'site-map');
+ fs.mkdirSync(dest,{recursive:true});
+ fs.writeFileSync(path.join(dest,'index.html'),html,'utf8');
+ applyGlobalQualityStyles(dest);
+}
+buildSiteDirectory();
+
 const fmUrls=locales.map(lang=>base+urlFor(lang,'fm').slice(1));
 const fmSitemap=[
   '<?xml version="1.0" encoding="UTF-8"?>',
