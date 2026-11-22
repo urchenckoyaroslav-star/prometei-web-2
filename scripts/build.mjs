@@ -235,6 +235,9 @@ for(const lang of locales){
   fs.writeFileSync(dest,chartPage(catalog,lang,site.origin));
 }
 // Keep the sponsor-page canonical URLs aligned if SITE_URL changes to a custom domain.
+const servicePath=path.join(output,'services','index.html');
+if(!fs.existsSync(servicePath))throw Error('Services landing page missing');
+fs.writeFileSync(servicePath,fs.readFileSync(servicePath,'utf8').replaceAll(fallback,base),'utf8');
 const sponsorPath=path.join(output,'advertise','index.html');
 if(!fs.existsSync(sponsorPath))throw Error('Sponsorship landing page missing');
 fs.writeFileSync(sponsorPath,fs.readFileSync(sponsorPath,'utf8').replaceAll(fallback,base),'utf8');
@@ -256,7 +259,7 @@ function applyGlobalQualityStyles(directory){
   }
 }
 applyGlobalQualityStyles(output);
-const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls,...cryptoUrls,...weeklyNewsUrls,'advertise/'];
+const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls,...cryptoUrls,...weeklyNewsUrls,'advertise/','services/'];
 const xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for(const item of urls){
  xml.push('  <url><loc>'+base+item+'</loc>');
