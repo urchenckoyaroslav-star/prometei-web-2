@@ -1,0 +1,59 @@
+{
+  "language": "de",
+  "titles": [
+    "Bluetooth-Nachrichten ohne Internet: So funktioniert es",
+    "Bluetooth-Reichweite und Android-Berechtigungen verstehen",
+    "Bluetooth oder Wi-Fi: Welche Offline-Verbindung passt?",
+    "Lokales Wi-Fi ohne Internet: Nachrichten im LAN",
+    "Experiment: Zwei Android-Handys im WLAN ohne Internet",
+    "Messenger ohne SIM-Karte und Telefonnummer",
+    "Wie Internet-Messenger Nachrichten und Anrufe übertragen",
+    "Gemischte Verbindungen: Internet, Bluetooth und WLAN",
+    "Messenger ohne Telefonnummer: PROMETEI im Vergleich"
+  ],
+  "intros": [
+    "Bluetooth entstand aus der Idee, Kabel zwischen Geräten überflüssig zu machen. Heute lässt sich die Funktechnik auch als lokaler Weg für Textnachrichten untersuchen, wenn kein Internet verfügbar ist.",
+    "Zwei Geräte stehen nahe beieinander, aber eine Nachricht kommt nicht an. Neben der Entfernung entscheiden Berechtigungen, Hindernisse und der Zustand der Android-Anwendung über den Erfolg.",
+    "Beide Technologien funken, aber ihre Regeln unterscheiden sich. Ob Bluetooth oder ein lokales WLAN besser geeignet ist, hängt von der tatsächlich erreichbaren Gegenstelle ab.",
+    "Ein Router kann ein lokales Netz weiter betreiben, auch wenn die Verbindung zum Internetanbieter ausfällt. Das eröffnet besondere Möglichkeiten für die Kommunikation in unmittelbarer Nähe.",
+    "Ein guter Versuch trennt verschiedene Ursachen. Mit zwei eigenen Telefonen und einem vertrauenswürdigen Router lässt sich ein lokaler Nachrichtenweg systematisch untersuchen.",
+    "Eine SIM-Karte dient der Anmeldung beim Mobilfunkanbieter. Bluetooth und Wi-Fi können auf kompatiblen Android-Geräten auch ohne aktive SIM genutzt werden.",
+    "Eine kurze Nachricht passiert mehrere Netzwerkstationen. Für die kontinuierliche Übertragung von Sprache und Video gelten deutlich strengere Anforderungen an Verzögerung und Stabilität.",
+    "Fällt das Internet aus, müssen nicht alle lokalen Verbindungen verschwinden. Die Idee gemischter Wege setzt genau bei dieser Beobachtung an.",
+    "Ein Messenger ohne Nummer ist nicht automatisch anonym. Registrierung, SIM-Karte, Verschlüsselung, Metadaten und lokale Kommunikation sind verschiedene Fragen."
+  ],
+  "focus": [
+    "Für eine Bluetooth-Nachricht muss ein geeignetes Gerät zunächst gefunden und anschließend eine unterstützte Verbindung aufgebaut werden. Erst danach kann die App Daten senden. PROMETEI untersucht Bluetooth als lokalen Transport, dessen Erreichbarkeit von beiden Telefonen, Android-Berechtigungen und Funkbedingungen abhängt. Eine Verbindung über große Entfernungen entsteht dadurch nicht automatisch. Prüfen Sie zunächst kurze Textnachrichten auf zwei Geräten.",
+    "Die nutzbare Funkreichweite hängt von Antennen, Wänden, Störungen und Bluetooth-Modi ab. Sichtbarkeit eines Geräts bedeutet noch nicht erfolgreiche Zustellung. Android schränkt zudem bestimmte Hintergrundaktivitäten ein. Ein belastbarer Test dokumentiert Telefonmodell, Betriebssystem, Anwendungsstand, Abstand und Hindernisse. So lassen sich Behauptungen von reproduzierbaren Ergebnissen unterscheiden.",
+    "Bluetooth kann ohne gemeinsamen Router auskommen, benötigt aber eine kompatible lokale Verbindung. WLAN/LAN kann größere Datenmengen transportieren, setzt jedoch oft ein erreichbares Netz voraus. Gastnetze mit Client-Isolation können die direkte Kommunikation verhindern. PROMETEI verfolgt beide Ansätze, ohne eine universelle Siegertechnologie zu behaupten. Text, Medien und Anrufe sollten getrennt getestet werden.",
+    "Der Router verbindet Geräte innerhalb des lokalen Netzes, während der Internetanbieter den Weg zu entfernten Diensten bereitstellt. Ein Ausfall des externen Anschlusses muss die interne LAN-Verbindung nicht abschalten. Für PROMETEI sind erreichbare Android-Teilnehmer, passende Berechtigungen und ein unterstützter Transport erforderlich. Das WLAN-Symbol allein garantiert keine Nachrichtenübertragung.",
+    "Verbinden Sie zwei eigene Android-Telefone mit einem vertrauenswürdigen Router. Senden Sie einen kurzen Text mit vorhandenem Internetzugang. Trennen Sie danach ausschließlich die externe Internetverbindung des Routers und wiederholen Sie den Versuch bei weiterhin aktivem WLAN. Dokumentieren Sie Einstellungen und Ergebnisse. Ein Erfolg gilt zunächst nur für diese Gerätekombination.",
+    "Ein Handy ohne SIM kann sich mit einem WLAN verbinden und über Bluetooth kommunizieren. Die Installation aus Google Play und die Anmeldung innerhalb eines Messengers sind davon unabhängige Fragen. PROMETEI ist auf einen Einstieg ohne verpflichtende Telefonnummer oder E-Mail ausgelegt. Vollständige Anonymität folgt daraus nicht: Netzwerk-Metadaten und Profile können Informationen offenlegen.",
+    "Der Druck auf „Senden“ bedeutet nicht, dass der Empfänger bereits erreicht wurde. Dienste können Nachrichten zwischenspeichern und erneut zustellen. Bei Sprache und Video fallen Paketverluste, Jitter und hohe Verzögerungen schneller auf. Telegram, WhatsApp, Signal und Viber verfügen über etablierte Internetfunktionen; PROMETEI erforscht ergänzende lokale Transportwege. Ein pauschaler Sicherheitsvergleich wäre unredlich.",
+    "Eine gemischte Verbindung muss erkennen, welcher Empfänger über welchen Weg erreichbar ist. Berechtigungen, Hintergrundzustand und Netzstörungen beeinflussen diese Entscheidung. Die Bezeichnung Mixed verspricht keine automatische Umschaltung in jedem Fall. Für spätere PROMETEI-Versionen sind bessere Pfad-Diagnosen, sparsamere Wiederholungen und verständlichere Zustellanzeigen sinnvolle Entwicklungsziele.",
+    "WhatsApp, Telegram, Signal und Viber sind vor allem durch Internetkommunikation bekannt; ihre aktuellen Anmelderegeln sollten auf offiziellen Seiten geprüft werden. PROMETEI will den Einstieg ohne Pflichtnummer mit lokalen Funkwegen verbinden. Entscheidend sind konkrete Anforderungen: Reichweite, Sprachanrufe, Kontowiederherstellung, Sicherungen und überprüfte Verschlüsselung. „Anonym“ allein ist kein ausreichendes Qualitätsmerkmal."
+  ],
+  "labels": {
+    "guides": "Wissensatlas",
+    "home": "Startseite",
+    "fm": "PROMETEI FM",
+    "portfolio": "Portfolio",
+    "all": "Alle Artikel",
+    "bluetooth": "Bluetooth",
+    "wifi": "Lokales WLAN",
+    "internet": "Internet & Mixed",
+    "back": "Alle Guides",
+    "play": "PROMETEI installieren",
+    "more": "Mehr erfahren",
+    "toc": "Inhalt",
+    "related": "Weitere Artikel",
+    "note": "Wichtig",
+    "notice": "Die Verfügbarkeit hängt von Geräten, Berechtigungen und der installierten Version ab. PROMETEI ersetzt keinen Notrufdienst.",
+    "updated": "Aktualisiert am 22. November 2026",
+    "language": "Sprache",
+    "indexTitle": "Geschichte und Technik der Kommunikation: Bluetooth, WLAN, Internet",
+    "indexDesc": "Neun Beiträge über Bluetooth, WLAN ohne Internet, Nachrichten, Anrufe und die Entwicklung von PROMETEI.",
+    "indexIntro": "Von den Anfängen der Funknetze bis zu Android: historische Wendepunkte, technische Grundlagen, Experimente und Entwicklungsziele.",
+    "how": "Zwei-Telefone-Test"
+  }
+}
