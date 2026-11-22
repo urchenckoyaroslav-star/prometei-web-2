@@ -1,6 +1,6 @@
 {
   "title": "La Luna, sus fases y el futuro posible de PROI",
-  "description": "Un artículo científico sobre fases lunares, mareas, animales y sueño humano. Explora la Luna interactiva, un calendario y un modelo hipotético de emisión y quema de comisiones PROI. Hoy PROI son puntos.",
+  "description": "PROI en PROMETEI: +0,5 por cada hito lunar del 10% creciente y +0,1 menguante; Proof of Help, tasas ROOT y Relay Vault.",
   "ui": {
     "kicker": "LABORATORIO LUNAR PROMETEI · CIENCIA Y DISEÑO",
     "headline": "La Luna cambia. PROMETEI recompensa hitos.",
@@ -144,7 +144,7 @@
       ]
     },
     {
-      "h": "09 · Cómo la Luna podría «imprimir» PROI en el futuro",
+      "h": "09 · Cómo Lunar Pulse otorga PROI internos",
       "p": [
         "PROMETEI para Android utiliza un calendario UTC determinista basado en el mes sinódico medio para Lunar Pulse. Cuando la iluminación calculada cruza el 10%, 20% y sucesivamente el 100% mientras crece, cada evento recibe un ID global y puede abonar 0,5 PROI internos si la reclamación es válida. En menguante, los niveles bajan de 90% a 0% y asignan 0,1 PROI cada uno. Son veinte eventos y un máximo teórico de 6 PROI por ciclo si se reciben todos. No existe una emisión continua o diaria de monedas.",
         "También existen 0,1 PROI por ayuda verificada de Internet con un límite de diez premios al día y medidas contra duplicados por pareja. Un retransmisor confirmado puede recibir parte de una comisión. ROOT define tasas independientes para las dos mitades del mes lunar: la mitad de cada comisión se quema y el resto va a Relay Vault. El código Android incluye valores predeterminados del 10% y el 15%, pero ROOT puede cambiarlos. Este simulador utiliza el mismo cálculo determinista; no muestra balances o tasas en vivo."
