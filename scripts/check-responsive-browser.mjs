@@ -113,18 +113,31 @@ try{
  await page.goto("http://127.0.0.1:"+port+"/crypto-atlas/proi/",{waitUntil:"domcontentloaded"});
  const lunarSlider=page.locator("#lp-slider");
  if(await lunarSlider.count()){
-  const first=Number((await page.locator("#lp-issuance").innerText()).replace(/[^0-9.]/g,""));
-  await lunarSlider.evaluate(el=>{el.value="14.75";el.dispatchEvent(new Event("input",{bubbles:true}))});
-  const second=Number((await page.locator("#lp-issuance").innerText()).replace(/[^0-9.]/g,""));
-  if(!(second>first))failures.push("Moon slider did not change projected PROI emission: "+first+" -> "+second);
+  // Avoid dependence on today's lunar phase: select known positions explicitly.
+  await lunarSlider.evaluate(el=>{el.value="0";el.dispatchEvent(new Event("input",{bubbles:true}))});
+  const first=(await page.locator("#lp-issuance").innerText()).trim();
+  await lunarSlider.evaluate(el=>{el.value="14.76";el.dispatchEvent(new Event("input",{bubbles:true}))});
+  const second=(await page.locator("#lp-issuance").innerText()).trim();
+  if(!first.includes("0")||!second.includes("5"))failures.push("Lunar Pulse threshold totals incorrect: "+first+" -> "+second);
+  if(await page.locator(".lp-milestone").count()!==20)failures.push("Expected twenty official lunar milestone buttons");
+  await lunarSlider.evaluate(el=>{el.value="29.53";el.dispatchEvent(new Event("input",{bubbles:true}))});
+  const full=(await page.locator("#lp-issuance").innerText()).trim();
+  if(!full.includes("6"))failures.push("Expected six possible PROI per completed lunar cycle: "+full);
   const lunarGrid=await page.locator(".lp-date-button").count();
   if(lunarGrid<28||lunarGrid>31)failures.push("Moon calendar did not render valid month: "+lunarGrid);
   await page.locator("#lp-month-next").click();
   const nextCount=await page.locator(".lp-date-button").count();
   if(nextCount<28||nextCount>31)failures.push("Next-month calendar button failed: "+nextCount);
+  // Waxing Android default is 10%, waning default 15%, both 50% burn / 50% Vault.
+  await lunarSlider.evaluate(el=>{el.value="7.38";el.dispatchEvent(new Event("input",{bubbles:true}))});
   await page.locator("#lp-transfer").fill("2000");
-  const fee=(await page.locator("#lp-fee-total").innerText()).replace(/[^0-9.]/g,"");
-  if(Math.abs(Number(fee)-20)>0.01)failures.push("PROI example fee calculator failed: "+fee);
+  let fee=(await page.locator("#lp-fee-total").innerText()).replace(/[^0-9.]/g,"");
+  if(Math.abs(Number(fee)-200)>0.001)failures.push("PROI waxing ROOT source-default fee mismatch: "+fee);
+  await lunarSlider.evaluate(el=>{el.value="22.14";el.dispatchEvent(new Event("input",{bubbles:true}))});
+  fee=(await page.locator("#lp-fee-total").innerText()).replace(/[^0-9.]/g,"");
+  const burn=(await page.locator("#lp-fee-burn").innerText()).replace(/[^0-9.]/g,"");
+  const vault=(await page.locator("#lp-fee-network").innerText()).replace(/[^0-9.]/g,"");
+  if(Math.abs(Number(fee)-300)>0.001||Math.abs(Number(burn)-150)>0.001||Math.abs(Number(vault)-150)>0.001)failures.push("PROI waning fee/burn/Vault mismatch: "+fee+"/"+burn+"/"+vault);
   await page.locator(".lp-date-button").first().click();
   if(!(await page.locator("#lp-selected-date").innerText()).trim())failures.push("Moon calendar selection did not update date");
  }else failures.push("Moon slider absent on actual page");
