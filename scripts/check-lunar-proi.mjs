@@ -30,6 +30,11 @@ for(const l of Object.keys(langs)){
  assert.ok(html.includes('lunar-proi.css')&&html.includes('lunar-proi.js'),"Interactive assets "+l);
  assert.ok(html.includes('class="lp-observatory-hero"')&&html.includes('class="lp-hero-plot"'),"Professional observatory hero missing "+l);
  assert.ok(html.includes('class="lp-instrument-topline"')&&html.includes('class="lp-moon-reticle"'),"Moon instrument telemetry missing "+l);
+ assert.ok(html.includes('id="lp-issuance-number" class="lp-amount-number"'),"Gold numeric emission display missing "+l);
+ assert.ok(html.includes('class="lp-coin-unit">PROI</span>'),"Emerald PROI unit missing "+l);
+ assert.ok(html.includes('id="lp-cycle-number"'),"Cycle reward amount must remain independently styled "+l);
+ assert.ok(html.includes('id="lp-next-threshold-label"'),"Next lunar milestone must preserve distinct gold number "+l);
+ assert.ok(html.includes('family=IBM+Plex+Mono'),"Financial mono font with fallback missing "+l);
  for(const id of ["lp-emission-chart","lp-chart-trace","lp-chart-area","lp-chart-cursor","lp-chart-point"])
   assert.ok(html.includes('id="'+id+'"'),"Interactive cumulative rewards chart missing "+l+":"+id);
  for(const label of ["instrument","observatory","chartTitle","chartAria","chartNote"])
@@ -73,6 +78,8 @@ for(const l of Object.keys(langs).filter(l=>l!=="en")){
 assert.ok(src.includes("cancelAnimationFrame")&&src.includes("requestAnimationFrame"),"Slider animation missing");
 assert.ok(src.includes("synodicDays")&&src.includes("waxingPhase")&&src.includes("momentFor"),"Android Moon-phase model missing");
 assert.ok(src.includes("renderRewardChart")&&src.includes("updateChartCursor"),"20-step rewards chart must be driven by Android milestone events");
+assert.ok(src.includes("showPotentialReward")&&src.includes("previouslyDisplayedMilli"),"Milestone amount must refresh without losing currency styles");
+assert.ok(src.includes('!reduced && valueOutput?.animate'),"Reward feedback must obey reduced-motion preference");
 assert.ok(src.includes("pendingInput=requestAnimationFrame"),"Mobile slider must coalesce rapid input events");
 assert.ok(src.includes("Math.ceil")&&src.includes("Math.floor(feeMilli/2)"),"Android milli-PROI fee rounding missing");
 assert.ok(src.includes("aria-pressed")&&src.includes("getUTCDay"),"Calendar keyboard state/dates missing");
@@ -80,6 +87,9 @@ assert.ok(src.includes("cfg.labels.none")&&src.includes("eventDayData"),"Calenda
 assert.ok(src.includes("normalize((date.getTime()-epoch)/dayMs)"),"Android UTC epoch approximation missing");
 assert.ok(src.includes("cfg.waxingRewardMilli")&&src.includes("cfg.waningRewardMilli"),"Milestone model must use actual Android PROI rewards");
 for(const rule of ["max-width:390px","max-width:640px","max-width:900px","min-width:1920px","prefers-reduced-motion:reduce","pointer:coarse","focus-visible"])assert.ok(css.includes(rule),"Missing responsive/accessibility "+rule);
+for(const variable of ["--lp-emerald","--lp-bullion","--lp-mono"])assert.ok(css.includes(variable),"PROI signature color/font token missing "+variable);
+assert.ok(css.includes("LUNAR SIGNATURE / FINANCIAL COLOR SYSTEM V3"),"Premium emerald/gold layer missing");
+assert.ok(css.includes("prefers-contrast:more")&&css.includes("prefers-reduced-motion:reduce"),"Accessible contrast and reduced-motion layers missing");
 for(const className of [".lp-observatory-hero",".lp-hero-orbital",".lp-moon-reticle",".lp-analytics",".lp-instrument-topline"])
  assert.ok(css.includes(className),"Premium observatory visual system missing "+className);
 const svg=fs.readFileSync("lunar-proi-moon.svg","utf8");
