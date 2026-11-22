@@ -89,7 +89,7 @@ async function inspect(route,size){
  if(!measurement.installVisible)failures.push(route+" @"+size.width+": universal Google Play install CTA is not visible");
  if(measurement.installClip)failures.push(route+" @"+size.width+": install button is horizontally clipped");
  results.push(route+" "+size.width+"px OK H1="+measurement.mainHeading+" font="+measurement.fontSize+" scroll="+measurement.scrollWidth);
- if((route==="/"||route==="/news/"||route==="/crypto-atlas/"||route==="/advertise/")&&(size.width===390||size.width===1440)){
+ if((route==="/"||route==="/news/"||route==="/crypto-atlas/"||route==="/crypto-atlas/proi/"||route==="/advertise/")&&(size.width===390||size.width===1440)){
    await page.screenshot({path:path.join(screenshots,(route.replace(/\W/g,"-")||"home")+"-"+size.width+".png"),fullPage:false});
  }
 }
@@ -120,6 +120,13 @@ try{
   const second=(await page.locator("#lp-issuance").innerText()).trim();
   if(!first.startsWith("0")||!second.includes("4")&&!second.includes("5"))failures.push("Lunar Pulse threshold totals incorrect: "+first+" -> "+second);
   if(await page.locator(".lp-milestone").count()!==20)failures.push("Expected twenty official lunar milestone buttons");
+  const trace=await page.locator("#lp-chart-trace").getAttribute("d");
+  if(!trace||trace.split("V").length<19)failures.push("Cumulative PROI chart missing twenty stepped reward changes");
+  const cursorStart=await page.locator("#lp-chart-point").getAttribute("cx");
+  await lunarSlider.evaluate(el=>{el.value="22.14";el.dispatchEvent(new Event("input",{bubbles:true}))});
+  await page.waitForTimeout(100);
+  const cursorNext=await page.locator("#lp-chart-point").getAttribute("cx");
+  if(!(Number(cursorNext)>Number(cursorStart)))failures.push("Chart crosshair not following lunar slider: "+cursorStart+" -> "+cursorNext);
   await page.locator(".lp-milestone").last().click();
   const full=(await page.locator("#lp-issuance").innerText()).trim();
   if(!full.includes("6"))failures.push("Expected six possible PROI per completed lunar cycle: "+full);
