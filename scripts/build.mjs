@@ -232,10 +232,14 @@ for(const lang of locales){
   fs.mkdirSync(path.dirname(dest),{recursive:true});
   fs.writeFileSync(dest,chartPage(catalog,lang,site.origin));
 }
+// Keep the sponsor-page canonical URLs aligned if SITE_URL changes to a custom domain.
+const sponsorPath=path.join(output,'advertise','index.html');
+if(!fs.existsSync(sponsorPath))throw Error('Sponsorship landing page missing');
+fs.writeFileSync(sponsorPath,fs.readFileSync(sponsorPath,'utf8').replaceAll(fallback,base),'utf8');
 const guideUrls=generateGuides(output,base);
 const cryptoUrls=generateCryptoAtlas(output,base);
 const weeklyNewsUrls=generateWeeklyNews(output,base);
-const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls,...cryptoUrls,...weeklyNewsUrls];
+const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls,...cryptoUrls,...weeklyNewsUrls,'advertise/'];
 const xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for(const item of urls){
  xml.push('  <url><loc>'+base+item+'</loc>');

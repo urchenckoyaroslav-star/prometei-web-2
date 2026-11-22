@@ -5,6 +5,9 @@ on:
       - "news-week-*.json"
       - "news-depth-*.json"
       - "site-ad-config.json"
+      - "advertise/**"
+      - "advertise.css"
+      - "scripts/check-sponsorship.mjs"
       - "site-ads.css"
       - "scripts/ad-slots.mjs"
       - "news-images.json"
@@ -23,6 +26,9 @@ on:
       - "news-week-*.json"
       - "news-depth-*.json"
       - "site-ad-config.json"
+      - "advertise/**"
+      - "advertise.css"
+      - "scripts/check-sponsorship.mjs"
       - "site-ads.css"
       - "scripts/ad-slots.mjs"
       - "news-images.json"
@@ -50,13 +56,16 @@ jobs:
         run: |
           node --check scripts/build-news.mjs
           node --check scripts/ad-slots.mjs
+          node --check scripts/check-sponsorship.mjs
           node --check scripts/build-crypto-atlas.mjs
           node --check scripts/check-weekly-news.mjs
           node --check news.js
       - name: Build static site
         run: npm run build
-      - name: Audit 40 articles and sources
+      - name: Audit 50 articles and sources
         run: node scripts/check-weekly-news.mjs
+      - name: Audit sponsor page and inactive account safeguards
+        run: node scripts/check-sponsorship.mjs
       - name: Ensure science atlas remains intact
         run: node scripts/check-seo-guides.mjs
       - name: Ensure crypto atlas remains intact

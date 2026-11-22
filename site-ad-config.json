@@ -1,5 +1,5 @@
 {
-  "note": "Publisher AdSense IDs are not available. Sponsor/house slots render until an approved publisher account, real slot IDs and legally required consent controls are configured.",
+  "note": "AdSense is not active. The current signed-in Google account cannot access AdSense. Paid Google ads require an eligible publisher, verified approved website, actual publisher and slot IDs, and a properly integrated certified consent solution where required. App AdMob credentials cannot be used as website AdSense verification.",
   "adsense": {
     "enabled": false,
     "consentReady": false,
@@ -15,7 +15,7 @@
   },
   "house": {
     "headline": "Advertise with PROMETEI",
-    "description": "Editorial sponsorship placements for brands in technology, software, communication, science and creativity. All paid placements are labelled and kept separate from our reporting.",
-    "contactUrl": "/portfolio"
+    "description": "Explore clearly labelled sponsorship opportunities across our technology news and educational pages. Advertising never changes our editorial reporting.",
+    "contactUrl": "/advertise/"
   }
 }
