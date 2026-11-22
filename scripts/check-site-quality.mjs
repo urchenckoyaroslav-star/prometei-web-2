@@ -47,6 +47,10 @@ for(const url of sitemapURLs){
  assert.ok(/<h1\b[^>]*>/i.test(html),"H1 missing: "+url);
  assert.ok(!/<meta[^>]*name="robots"[^>]*noindex/i.test(html),"Indexable sitemap page is noindex: "+url);
  assert.ok(html.includes('href="/site-quality.css"'),"Shared responsive layer missing: "+url);
+ assert.ok(html.includes('class="prometei-install-band"'),"Universal Play download band missing: "+url);
+ assert.ok(html.includes('class="prometei-install-button" href="https://play.google.com/store/apps/details?id=com.meshnetwork.app"'),"Direct official Google Play URL missing: "+url);
+ assert.ok(html.includes('class="prometei-partner-link"'),"Sponsor contact route missing: "+url);
+ assert.equal((html.match(/class="prometei-install-band"/g)||[]).length,1,"Duplicate global install CTA: "+url);
  for(const img of html.matchAll(/<img\b[^>]*>/gi)){
    assert.ok(/\balt="[^"]*"/.test(img[0]),"Image without alt: "+url+" "+img[0].slice(0,140));
  }
@@ -91,6 +95,7 @@ for(const l of languages){
  assert.ok(page.includes('hreflang="x-default"'));
 }
 const siteCSS=read("site-quality.css");
+assert.ok(siteCSS.includes(".prometei-install-band")&&siteCSS.includes("@media (max-width:760px)"),"Responsive global install strip CSS missing");
 for(const term of ["max-width:320px","max-width:390px","max-width:640px","min-width:1920px","prefers-reduced-motion:reduce","pointer:coarse","focus-visible","forced-colors:active"]){
  assert.ok(siteCSS.includes(term),"Responsive or accessible design rule missing: "+term);
 }
