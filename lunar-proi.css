@@ -200,3 +200,397 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #ffe5
 @media(pointer:coarse){.lp-milestone{min-height:48px;touch-action:manipulation}}
 @media(prefers-reduced-motion:reduce){.lp-milestone{transition:none}.lp-milestone:hover{transform:none}}
 @media(forced-colors:active){.lp-milestone,.lp-protocol-grid article{border:1px solid CanvasText}}
+
+
+/* ===== PROMETEI OBSERVATORY UI V2: institutional space-tech, not a trading product ===== */
+:root{
+ --lp-bg:#050b15;
+ --lp-ink:#edf5fa;
+ --lp-sub:#bed1df;
+ --lp-muted:#8bacc0;
+ --lp-line:#2a4358;
+ --lp-cyan:#75eee7;
+ --lp-gold:#ebc68e;
+ --lp-pink:#bba6e3;
+ --lp-max:1380px;
+ --lp-panel:#0b1828;
+ --lp-edge:#244055;
+ --lp-focus:#b5f5ed;
+}
+html{scrollbar-color:#31566a #050b15}
+body{
+ background:
+  radial-gradient(ellipse 63% 33% at 84% 0%,#17344b80,transparent 82%),
+  radial-gradient(ellipse 60% 34% at 3% 30%,#0e294080,transparent 81%),
+  linear-gradient(180deg,#050b15 0%,#07111c 37%,#050d17 100%);
+ color:var(--lp-ink);
+}
+.lp-deep-sky{
+ position:fixed;
+ opacity:.3;
+ background-image:
+  radial-gradient(circle,#87b4c2 0.8px,transparent 1.3px),
+  radial-gradient(circle,#b6cde3 .6px,transparent 1px);
+ background-size:179px 173px,291px 263px;
+ background-position:27px 39px,143px 108px;
+}
+.lp-wrap{max-width:var(--lp-max)}
+.lp-header{
+ background:rgba(5,13,23,.96);
+ border-bottom:1px solid #36516b7a;
+ backdrop-filter:blur(12px);
+}
+.lp-header-inner{min-height:75px}
+.lp-brand{letter-spacing:.16em}
+.lp-brand>span{
+ border-radius:12px;
+ border-color:#418e98a8;
+ color:#75eee7;
+ box-shadow:inset 0 0 16px #2f9d9821,0 0 22px #2f9d9820;
+ background:linear-gradient(145deg,#0c2638,#0e1a30);
+}
+.lp-brand small{letter-spacing:.2em;color:#9cbac9}
+.lp-overline{
+ color:#8ff1e9;
+ font-size:.67rem;
+ letter-spacing:.22em;
+}
+.lp-hero{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);padding-block:clamp(40px,6vw,95px) clamp(44px,6vw,92px)}
+.lp-hero h1{
+ font-size:clamp(2.35rem,4.6vw,5.15rem);
+ max-width:18ch;
+ font-weight:800;
+ letter-spacing:-.06em;
+ line-height:1.11;
+ background:linear-gradient(110deg,#fff 4%,#d5e9f2 52%,#91dedb 100%);
+ -webkit-background-clip:text;
+ background-clip:text;
+}
+.lp-lead{font-family:Manrope,system-ui,sans-serif;font-size:clamp(1.03rem,1.4vw,1.21rem);line-height:1.78;color:#c6d9e6}
+.lp-badges span{
+ border:1px solid #35586b;
+ background:#0c1e31;
+ color:#c1dbdf;
+ border-radius:6px;
+ padding:7px 11px;
+ letter-spacing:.08em;
+}
+.lp-badges span:nth-child(2){border-color:#6a6984;color:#c1bfe1}
+.lp-status,.lp-warning{
+ background:linear-gradient(105deg,#112338dd,#0c1a2dbb);
+ border:1px solid #28495d;
+ border-left:3px solid #80cfd0;
+ border-radius:8px;
+ color:#bacfe0;
+}
+.lp-button{
+ border-radius:8px;
+ font-size:.78rem;
+ letter-spacing:.035em;
+ transition:transform .18s ease,background-color .18s ease,border-color .18s ease;
+}
+.lp-primary{
+ color:#071a21;
+ border-color:#a7f0e3;
+ background:linear-gradient(115deg,#8df4e3,#c4f4dd 60%,#eed2a2);
+ box-shadow:0 6px 22px #62c7bb26;
+}
+.lp-secondary{
+ border-color:#375e70;
+ background:#0c2133;
+ color:#d7edf2;
+}
+.lp-button:hover{transform:translateY(-2px);box-shadow:0 6px 24px #4fd7c626}
+.lp-observatory-hero{
+ display:grid;
+ position:relative;
+ min-width:0;
+ width:100%;
+ min-height:400px;
+ place-items:center;
+ isolation:isolate;
+ overflow:hidden;
+ border:1px solid #294a5d;
+ border-radius:20px;
+ background:
+  repeating-linear-gradient(0deg,transparent,transparent 41px,#739ead06 42px),
+  repeating-linear-gradient(90deg,transparent,transparent 41px,#739ead06 42px),
+  radial-gradient(circle at 50% 49%,#163449 0%,#0b2132 33%,#091726 64%,#081321 100%);
+ box-shadow:inset 0 0 0 1px #7ed3d00c,0 20px 80px #02081095;
+}
+.lp-observatory-hero::before{
+ content:"";
+ position:absolute;
+ inset:16px;
+ border:1px solid #3e607b55;
+ border-radius:9px;
+ clip-path:polygon(0 0,100% 0,100% 100%,0 100%);
+ pointer-events:none;
+}
+.lp-observatory-hero::after{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:linear-gradient(120deg,transparent 20%,#81b8be0b 49%,transparent 63%);
+ pointer-events:none;
+}
+.lp-hero-coordinate,.lp-hero-telemetry{
+ position:absolute;
+ z-index:2;
+ font:600 .66rem/1.6 "Space Grotesk",Consolas,monospace;
+ letter-spacing:.15em;
+ color:#8eafbc;
+}
+.lp-hero-coordinate{top:24px;left:30px}
+.lp-hero-telemetry{
+ display:flex;
+ justify-content:space-between;
+ flex-wrap:wrap;
+ gap:6px;
+ bottom:21px;
+ left:30px;
+ right:30px;
+ border-top:1px solid #37556a;
+ padding-top:12px;
+}
+.lp-hero-telemetry strong{color:#bcece7;font-weight:700}
+.lp-hero-plot{width:min(100%,520px);height:auto;max-height:450px;display:block;overflow:visible;filter:drop-shadow(0 0 20px #70bcc012)}
+.lp-hero-orbital{transform-origin:260px 219px;animation:lp-station-orbit 78s linear infinite}
+@keyframes lp-station-orbit{to{transform:rotate(360deg)}}
+.lp-section-intro{max-width:920px}
+.lp-section-intro h2{letter-spacing:-.05em;font-weight:800;color:#f5faff}
+.lp-simulator,.lp-calendar-block,.lp-fee-block{border-color:#254356}
+.lp-instrument-topline{
+ display:flex;
+ align-items:center;
+ flex-wrap:wrap;
+ gap:12px;
+ min-height:52px;
+ margin-bottom:14px;
+ padding:12px 20px;
+ border:1px solid #33566c;
+ border-radius:10px;
+ background:linear-gradient(90deg,#0b2534,#0c1929 65%,#0b1624);
+ font:700 .69rem/1.5 "Space Grotesk",Manrope,system-ui,sans-serif;
+ letter-spacing:.14em;
+ color:#aee7e1;
+}
+.lp-instrument-topline>span:last-child{margin-left:auto;color:#8eacbd;font-variant-numeric:tabular-nums;font-size:.67rem}
+.lp-instrument-indicator{width:7px;height:7px;border-radius:50%;background:#8cf1da;box-shadow:0 0 13px #83ebd88c;animation:lp-signal 4s ease-in-out infinite;flex-shrink:0}
+@keyframes lp-signal{50%{opacity:.48;box-shadow:0 0 4px #83ebd83c}}
+.lp-sim-layout{grid-template-columns:minmax(0,.91fr) minmax(0,1.09fr);gap:clamp(14px,1.8vw,25px)}
+.lp-moon-panel,.lp-input-panel,.lp-calendar-card,.lp-calendar-note,.lp-fee-content,.lp-protocol-grid article{
+ background:linear-gradient(154deg,#112437 0%,#0b1929 48%,#091422 100%);
+ border:1px solid #2b4b60;
+ border-radius:14px;
+ box-shadow:inset 0 1px 0 #a8e6f20a,0 18px 45px #02081254;
+}
+.lp-moon-panel{
+ position:relative;
+ overflow:hidden;
+ background:
+  radial-gradient(circle at 50% 36%,#16405555,transparent 57%),
+  linear-gradient(155deg,#10283a,#081827 78%);
+}
+.lp-moon-instrument-label{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ flex-wrap:wrap;
+ gap:8px;
+ color:#8edfd8;
+ letter-spacing:.15em;
+ font-size:.65rem;
+ font-weight:850;
+ padding-bottom:6px;
+}
+.lp-moon-instrument-label span:last-child{color:#718fa6}
+.lp-moon-scene{
+ height:clamp(300px,31vw,425px);
+ position:relative;
+ overflow:hidden;
+ background:
+  linear-gradient(0deg,transparent 49.88%,#7eb6c216 50%,transparent 50.12%),
+  linear-gradient(90deg,transparent 49.88%,#7eb6c216 50%,transparent 50.12%),
+  radial-gradient(circle at 50% 50%,#2361761f,transparent 65%);
+}
+.lp-moon-scene::before,.lp-moon-scene::after{
+ content:"";
+ position:absolute;
+ width:min(96%,420px);
+ aspect-ratio:1;
+ top:50%;left:50%;
+ border-radius:50%;
+ transform:translate(-50%,-50%);
+ pointer-events:none;
+}
+.lp-moon-scene::before{border:1px solid #9adbd229;box-shadow:0 0 40px #57d2ca0c inset}
+.lp-moon-scene::after{width:min(84%,360px);border:1px dashed #a4d3d21b}
+.lp-halo{
+ filter:blur(16px);
+ background:radial-gradient(circle,#65c5c033,#285d8950 43%,transparent 70%);
+}
+.lp-moon-svg{
+ width:min(100%,380px);
+ position:relative;
+ z-index:2;
+ filter:drop-shadow(0 0 20px #74d1e022);
+}
+.lp-moon-watermark{
+ bottom:1px;
+ color:#8cb9c0;
+ font-family:"Space Grotesk",monospace;
+ font-size:.65rem;
+ letter-spacing:.18em;
+}
+.lp-moon-reticle{position:absolute;inset:14px;pointer-events:none;z-index:3}
+.lp-moon-reticle i{position:absolute;display:block;width:19px;height:19px;opacity:.62}
+.lp-moon-reticle i:nth-child(1){top:0;left:0;border-left:1px solid #90e6e3;border-top:1px solid #90e6e3}
+.lp-moon-reticle i:nth-child(2){top:0;right:0;border-right:1px solid #90e6e3;border-top:1px solid #90e6e3}
+.lp-moon-reticle i:nth-child(3){bottom:0;left:0;border-left:1px solid #90e6e3;border-bottom:1px solid #90e6e3}
+.lp-moon-reticle i:nth-child(4){bottom:0;right:0;border-right:1px solid #90e6e3;border-bottom:1px solid #90e6e3}
+.lp-phase-detail{border-color:#2c4c60;justify-content:flex-start}
+.lp-phase-detail strong{font-family:"Space Grotesk",sans-serif;color:#e9f6f8;font-weight:750}
+.lp-phase-detail span:last-child{margin-left:auto;font-variant-numeric:tabular-nums}
+.lp-phase-active{width:6px;height:6px;border-radius:50%;background:#8de9d5;box-shadow:0 0 7px #78e5d5}
+.lp-observation>div{background:#061321b5;border:1px solid #29485e;border-radius:9px}
+.lp-observation small,.lp-stat small,.lp-fee-stats small{color:#9eb7c9;font-weight:650;letter-spacing:.025em}
+.lp-observation strong{color:#f2f7fa;font-variant-numeric:tabular-nums}
+.lp-input-panel{gap:11px}
+.lp-form-label,.lp-presets-label{font-size:.75rem;color:#c6dde3;letter-spacing:.055em}
+#lp-slider{
+ appearance:none;-webkit-appearance:none;
+ height:8px;
+ border:1px solid #496978;
+ border-radius:999px;
+ margin:16px 0 6px;
+ background:linear-gradient(90deg,#1b3746 0%,#80ddd1 var(--lp-cycle-progress,50%),#294052 var(--lp-cycle-progress,50%),#1c293a 100%);
+ cursor:ew-resize;
+}
+#lp-slider::-webkit-slider-thumb{
+ width:24px;height:24px;border:3px solid #eafaf4;background:#407d87;
+ box-shadow:0 0 0 5px #5caead34,0 0 18px #4cf3d55e;
+}
+#lp-slider::-moz-range-thumb{border:3px solid #eafaf4;background:#407d87;box-shadow:0 0 0 5px #5caead34}
+.lp-presets{gap:6px}
+.lp-phase-preset,.lp-milestone,.lp-date-button{
+ background:#091827;border:1px solid #2c4b5e;color:#c4d8df;
+ border-radius:7px;
+ transition:background-color .17s ease,border-color .17s ease,transform .17s ease;
+}
+.lp-phase-preset{min-height:70px}
+.lp-phase-preset span{font-size:1.2rem;filter:saturate(.56)}
+.lp-phase-preset small{font-size:clamp(.57rem,.8vw,.7rem)}
+.lp-phase-preset:hover,.lp-milestone:hover,.lp-date-button:hover{background:#132a3e;border-color:#72c7c4;transform:translateY(-1px)}
+.lp-phase-preset[aria-pressed=true]{border-color:#8be6d5;background:#17384a;box-shadow:inset 0 0 0 1px #8be6d526}
+.lp-milestone-grid{gap:5px}
+.lp-milestone{border-radius:5px;min-height:54px}
+.lp-milestone.is-waxing.is-earned{background:#123c42;border-color:#70d7c7;color:#dbfff8}
+.lp-milestone.is-waning.is-earned{background:#2d2d4a;border-color:#a79cdd;color:#e6e0f7}
+.lp-milestone.is-earned small{color:#d6f9df}
+.lp-milestone[aria-pressed=true]{outline:2px solid #e6c58d;outline-offset:2px}
+.lp-stats{gap:8px}
+.lp-stat{border-radius:8px;background:#091829;border-color:#2d4b60;min-height:86px}
+.lp-main-stat{background:linear-gradient(117deg,#173c4e,#0b273a);border-color:#39868a}
+.lp-stat strong{font-weight:750;color:#e6f2f5}
+.lp-main-stat strong{color:#abf1e3}
+.lp-zero-stat{background:#0c2030}
+.lp-zero-stat strong{color:#9bbfce}
+.lp-milestone-heading strong{color:#dbecd9}
+.lp-milestone-heading #lp-next-utc{color:#b1c6d3}
+.lp-analytics{
+ margin-top:5px;
+ border:1px solid #365264;
+ border-radius:10px;
+ padding:14px 16px 10px;
+ background:
+  repeating-linear-gradient(90deg,transparent,transparent 60px,#a1c8d606 61px),
+  linear-gradient(160deg,#071a29,#0b2031);
+}
+.lp-chart-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.lp-chart-header h3{color:#cde6e6;font:800 .69rem/1.4 Manrope,system-ui,sans-serif;letter-spacing:.085em;margin:0}
+.lp-chart-header>span{color:#84aebc;font:.66rem/1.5 "Space Grotesk",monospace;white-space:nowrap}
+#lp-emission-chart{width:100%;height:auto;max-height:210px;display:block;overflow:visible}
+.lp-chart-grid{stroke:#47657a;stroke-opacity:.3;stroke-width:1;stroke-dasharray:3 6;fill:none}
+#lp-chart-trace{filter:drop-shadow(0 0 3px #7aeade45)}
+#lp-chart-point{filter:drop-shadow(0 0 5px #f7c98681)}
+.lp-analytics p{font-size:.69rem;line-height:1.65;color:#8eb0c0;margin:-2px 0 0}
+.lp-calendar-card,.lp-fee-content{border-radius:12px}
+.lp-calendar-nav button{background:#122b3e;border-color:#365b70;border-radius:7px}
+.lp-date-button{min-height:72px}
+.lp-date-button.has-event{background:#17333e;border-color:#5c9e9c}
+.lp-date-button.has-event .lp-day-count{color:#baf6da}
+.lp-date-button[aria-pressed=true]{background:#25545b;border-color:#aff3e4;box-shadow:0 0 0 1px #75e2d188}
+.lp-day-moon{filter:saturate(.45)}
+.lp-calendar-note{background:linear-gradient(135deg,#132b3d,#0a1828)}
+.lp-calendar-note strong{color:#e7eff3}
+.lp-calendar-note>span{font-size:2rem;color:#8cd9cc;animation:none}
+.lp-fee-rates input,#lp-transfer{border-color:#36576e;border-radius:7px;background:#071624;font-variant-numeric:tabular-nums}
+.lp-fee-stats>div{background:#0a2031;border-color:#2c5361}
+.lp-fee-stats output{color:#a3eddf;font-variant-numeric:tabular-nums}
+.lp-protocol-grid article{border-radius:12px}
+.lp-protocol-grid h3{color:#e9f5f6}
+.lp-protocol-grid p{color:#b8d0df}
+.lp-research,.lp-protocol{border-color:#254356}
+.lp-article-section{border-color:#2c4356}
+.lp-article-section p{color:#c8d5e1}
+.lp-languages a{background:#0f2536;border-color:#325168;border-radius:6px}
+.lp-languages a[aria-current=page]{background:#a7efde;border-color:#a7efde;color:#0b252c}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--lp-focus);outline-offset:3px}
+@media(max-width:1120px){
+ .lp-sim-layout{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+ .lp-moon-scene{height:clamp(275px,34vw,390px)}
+ .lp-observatory-hero{min-height:340px}
+}
+@media(max-width:900px){
+ .lp-hero{grid-template-columns:1fr;gap:18px}
+ .lp-observatory-hero{width:min(100%,560px);min-height:320px;justify-self:center}
+ .lp-sim-layout{grid-template-columns:1fr}
+ .lp-moon-scene{height:clamp(280px,56vw,430px)}
+ .lp-fee-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:640px){
+ .lp-hero{padding-top:28px}
+ .lp-hero h1{font-size:clamp(2.1rem,8.8vw,3.5rem)}
+ .lp-observatory-hero{min-height:265px}
+ .lp-hero-plot{max-height:320px}
+ .lp-hero-coordinate{left:18px;top:16px}
+ .lp-hero-telemetry{left:18px;right:18px;bottom:14px;font-size:.58rem}
+ .lp-instrument-topline{padding:12px;gap:8px}
+ .lp-instrument-topline strong{flex-basis:calc(100% - 18px)}
+ .lp-instrument-topline>span:last-child{margin-left:15px}
+ .lp-moon-scene{height:clamp(260px,66vw,380px)}
+ .lp-moon-svg{width:min(100%,350px)}
+ .lp-analytics{padding:12px 10px 9px}
+ .lp-chart-header>span{white-space:normal}
+ .lp-fee-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .lp-milestone{min-height:50px}
+ .lp-calendar-nav strong{font-size:clamp(.86rem,4vw,1.1rem)}
+}
+@media(max-width:390px){
+ .lp-observatory-hero{min-height:230px}
+ .lp-moon-instrument-label{font-size:.59rem}
+ .lp-moon-scene{height:260px}
+ .lp-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .lp-milestone-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+ .lp-milestone span{font-size:.61rem}
+ .lp-chart-header h3{font-size:.62rem}
+ .lp-hero-telemetry{letter-spacing:.07em}
+}
+@media(pointer:coarse){
+ .lp-phase-preset,.lp-milestone,.lp-date-button{min-height:48px;touch-action:manipulation}
+ .lp-phase-preset:hover,.lp-milestone:hover,.lp-date-button:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .lp-hero-orbital,.lp-instrument-indicator{animation:none!important}
+ .lp-phase-preset,.lp-milestone,.lp-date-button{transition:none!important}
+ .lp-button:hover,.lp-phase-preset:hover,.lp-milestone:hover,.lp-date-button:hover{transform:none!important}
+}
+@media(forced-colors:active){
+ .lp-observatory-hero,.lp-instrument-topline,.lp-analytics,.lp-moon-scene,.lp-fee-content{border:1px solid CanvasText}
+}
+@media print{
+ .lp-observatory-hero{display:none!important}
+ #lp-chart-trace{stroke:#111}
+ .lp-analytics,.lp-moon-panel,.lp-input-panel{box-shadow:none}
+}
