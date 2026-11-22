@@ -1,0 +1,82 @@
+{
+  "conference": {
+    "image": "https://images.unsplash.com/photo-1778876091112-f7e985acdb01?auto=format&fit=crop&w=1280&q=82",
+    "credit": "Ufoma Ojo",
+    "creditUrl": "https://unsplash.com/photos/a-large-auditorium-filled-with-people-attending-a-conference-XoDAeWaymCg",
+    "alt": "Conference auditorium",
+    "disclaimer": "Illustrative photograph; not a photo of this specific news event.",
+    "license": "Unsplash License"
+  },
+  "climate": {
+    "image": "https://images.unsplash.com/photo-1789169771019-b13f66a2a17d?auto=format&fit=crop&w=1280&q=82",
+    "credit": "Remigiusz Dettlaff",
+    "creditUrl": "https://unsplash.com/photos/wind-turbines-in-agricultural-landscape-9bsQjIt12h0",
+    "alt": "Wind turbines and rural energy landscape",
+    "disclaimer": "Illustrative photograph; not a photo of this specific news event.",
+    "license": "Unsplash License"
+  },
+  "wind": {
+    "image": "https://images.unsplash.com/photo-1789169771019-b13f66a2a17d?auto=format&fit=crop&w=1280&q=82",
+    "credit": "Remigiusz Dettlaff",
+    "creditUrl": "https://unsplash.com/photos/wind-turbines-in-agricultural-landscape-9bsQjIt12h0",
+    "alt": "Wind turbines in the countryside",
+    "disclaimer": "Illustrative photograph; not a photo of this specific news event.",
+    "license": "Unsplash License"
+  },
+  "urban": {
+    "image": "https://images.unsplash.com/photo-1788927790265-bc20503d4118?auto=format&fit=crop&w=1280&q=82",
+    "credit": "Vincent Yap",
+    "creditUrl": "https://unsplash.com/photos/city-skyline-under-warm-low-sun-etdGU9Xttm0",
+    "alt": "City skyline at golden hour",
+    "disclaimer": "Illustrative photograph; not a photo of this specific news event.",
+    "license": "Unsplash License"
+  },
+  "protest": {
+    "image": "https://images.unsplash.com/photo-1793566058579-1760a2e2c035?auto=format&fit=crop&w=1280&q=82",
+    "credit": "vegonaise",
+    "creditUrl": "https://unsplash.com/photos/crowd-of-people-on-city-street-PxzXQspYomk",
+    "alt": "A street protest, photographed before this news event",
+    "disclaimer": "Illustrative photograph; not a photo of this specific news event.",
+    "license": "Unsplash License"
+  },
+  "server": {
+    "image": "https://images.unsplash.com/photo-1782094673136-5198a372980c?auto=format&fit=crop&w=1280&q=82",
+    "credit": "Winston Chen",
+    "creditUrl": "https://unsplash.com/photos/close-up-of-server-cooling-fans-in-a-vibrant-data-center-iZe21DzHnUg",
+    "alt": "Server infrastructure",
+    "disclaimer": "Illustrative photograph; not a photo of this specific news event.",
+    "license": "Unsplash License"
+  },
+  "market": {
+    "image": "https://images.unsplash.com/photo-1793957735618-f786f11cb771?auto=format&fit=crop&w=1280&q=82",
+    "credit": "chilldude",
+    "creditUrl": "https://unsplash.com/photos/curved-digital-financial-market-display-R7YrpkXpMwU",
+    "alt": "Electronic market display",
+    "disclaimer": "Illustrative photograph; not a photo of this specific news event.",
+    "license": "Unsplash License"
+  },
+  "phone": {
+    "image": "https://images.unsplash.com/photo-1778010955372-fbf7a4a0207b?auto=format&fit=crop&w=1280&q=82",
+    "credit": "Gavin Phillips",
+    "creditUrl": "https://unsplash.com/photos/hand-holding-a-smartphone-displaying-a-colorful-user-interface-7-OfZyW1nH8",
+    "alt": "Android smartphone interface",
+    "disclaimer": "Illustrative photograph; not a photo of this specific news event.",
+    "license": "Unsplash License"
+  },
+  "space": {
+    "image": "https://images.unsplash.com/photo-1789712614256-016cebdddff0?auto=format&fit=crop&w=1280&q=82",
+    "credit": "krisna azie",
+    "creditUrl": "https://unsplash.com/photos/milky-way-galaxy-in-night-sky-g-RlY8sinKI",
+    "alt": "Star-filled sky over Earth; not the spacecraft",
+    "disclaimer": "Illustrative photograph; not a photo of this specific news event.",
+    "license": "Unsplash License"
+  },
+  "nature": {
+    "image": "https://images.unsplash.com/photo-1781516204303-9b0161d78a3f?auto=format&fit=crop&w=1280&q=82",
+    "credit": "Paarth Sigdel",
+    "creditUrl": "https://unsplash.com/photos/a-hippopotamus-partially-submerged-in-dark-water-63hnUe0vfqc",
+    "alt": "A hippopotamus photographed in another location; not Fiona",
+    "disclaimer": "Illustrative photograph; not a photo of this specific news event.",
+    "license": "Unsplash License"
+  }
+}

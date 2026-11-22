@@ -1,0 +1,172 @@
+[
+  {
+    "slug": "nvidia-beats-forecasts-amid-uncertain-leadership",
+    "title": "Nvidia's strong earnings struggle to calm a nervous AI market",
+    "category": "Technology",
+    "date": "2026-11-18",
+    "lead": "A powerful earnings report was not enough to eliminate questions surrounding the chipmaker's leadership and access to international markets.",
+    "body": [
+      "Nvidia reported another strong quarter as demand for advanced AI computing remained significant. Yet investors were also watching changes at the top of the company, reports of regulatory scrutiny and restrictions on chip sales.",
+      "The share-price reaction was more muted than an ordinary earnings surprise might suggest. The moment illustrates how a successful product business can still face uncertainty over governance, geopolitics and how future growth will be financed."
+    ],
+    "why": "One company's chips sit at the center of the global AI buildout, so shifts in confidence can affect many other businesses.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/podcasts/reuters-morning-bid/nvidia-good-earnings-bad-timing-2026-11-18/"
+    },
+    "photo": "server"
+  },
+  {
+    "slug": "us-cyber-director-removed-after-outages",
+    "title": "US cyber director removed as technology outages raise fresh questions",
+    "category": "Technology",
+    "date": "2026-11-20",
+    "lead": "The White House changed leadership in its cyber office after disruptive failures affected major technology and transport systems.",
+    "body": [
+      "The removal came as the administration faced questions about its response to outages involving air travel, Microsoft services and parts of government networks. Officials said the incidents were separate technical disruptions rather than evidence of one coordinated campaign.",
+      "That distinction is important: systems can fail during maintenance, software changes or ordinary operational mistakes without being hacked. The broader issue is whether essential institutions can restore services quickly and communicate clearly when they fail."
+    ],
+    "why": "Public trust in digital infrastructure depends on resilience as well as defenses against attackers.",
+    "source": {
+      "name": "Reuters via GMA News",
+      "url": "https://www.gmanetwork.com/news/topstories/world/1010169/white-house-ousts-cyber-director-after-tech-outages-spark-criticism/story/"
+    },
+    "photo": "server"
+  },
+  {
+    "slug": "gta-six-release-becomes-global-cultural-event",
+    "title": "Grand Theft Auto VI arrives after a long wait and captures global attention",
+    "category": "Culture",
+    "date": "2026-11-21",
+    "lead": "Rockstar Games' new release became one of the week's biggest entertainment events, with unusually strong reviews and attention to its detailed open world.",
+    "body": [
+      "Players and critics praised the scale of the game's virtual environment and the range of activities it makes possible. Its release followed more than a decade of anticipation, turning a video game launch into a cultural and commercial milestone.",
+      "Industry observers also pointed to the developers' work on characters, storytelling and interactive simulation. For game designers, the reaction demonstrates how craftsmanship and long-term expectations can combine to make an enormous launch."
+    ],
+    "why": "Major game releases influence entertainment spending, technical expectations and the wider interactive-media industry.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/world/europe/how-grand-theft-auto-vis-launch-surpassed-expectations-2026-11-21/"
+    },
+    "photo": "urban"
+  },
+  {
+    "slug": "take-two-shares-rise-on-gta-six-reviews",
+    "title": "Take-Two shares climb as early GTA VI reviews impress players",
+    "category": "Economy",
+    "date": "2026-11-18",
+    "lead": "Investors responded enthusiastically to early reactions to the new blockbuster game, raising expectations for its publisher.",
+    "body": [
+      "Take-Two Interactive rose strongly as the first wave of reviews and sales indicators suggested very high demand. Analysts increased some forecasts, but those projections still depended on how long the excitement would last.",
+      "The release also highlighted how a single entertainment product can influence console makers, retailers and the broader gaming economy. Market expectations are not the same as final sales results, however, and forecasts can change."
+    ],
+    "why": "Big entertainment launches can affect public companies and the surrounding technology ecosystem.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/business/gta-vi-publisher-take-two-jumps-gamers-relish-blockbuster-release-2026-11-18/"
+    },
+    "photo": "market"
+  },
+  {
+    "slug": "bepicolombo-reaches-mercury-orbit",
+    "title": "BepiColombo reaches Mercury as a new era of planetary study begins",
+    "category": "Science",
+    "date": "2026-11-21",
+    "lead": "A European-Japanese spacecraft mission reached a crucial milestone at the innermost planet after a demanding journey through the solar system.",
+    "body": [
+      "BepiColombo's arrival around Mercury brings scientists closer to sustained observations of a planet that is unusually difficult to reach and study. Its path required careful flight planning because spacecraft near the Sun must manage powerful gravity and demanding thermal conditions.",
+      "The mission's instruments are intended to investigate Mercury's surface, magnetic environment and geological history. The achievement is a reminder that exploring nearby planets can be among the most technically challenging tasks in spaceflight."
+    ],
+    "why": "Mercury offers clues about how rocky planets formed and evolved under extreme conditions.",
+    "source": {
+      "name": "Associated Press",
+      "url": "https://www.audacy.com/kcbsradio/news/national/mercury-bepicolombo-space-planet-esa-0c80bbf2039ed4f6ee4a34426b3594a0"
+    },
+    "photo": "space"
+  },
+  {
+    "slug": "cincinnati-zoo-remembers-fiona-the-hippo",
+    "title": "Cincinnati Zoo remembers Fiona, the hippo who inspired millions",
+    "category": "Culture",
+    "date": "2026-11-19",
+    "lead": "The zoo announced the loss of Fiona, an animal whose early survival story turned her into a globally recognized figure.",
+    "body": [
+      "Fiona arrived prematurely in 2017 and became familiar to millions through the zoo's updates about her care. Years later, her popularity had grown far beyond Cincinnati, attracting people who followed her development and celebrated her resilience.",
+      "The zoo's announcement prompted an outpouring of affection and remembrance. Her story also brought attention to the dedication of animal-care teams and the connection people can form with wildlife they follow from afar."
+    ],
+    "why": "Animal stories can build interest in conservation, veterinary care and the work of accredited zoos.",
+    "source": {
+      "name": "Cincinnati Zoo & Botanical Garden",
+      "url": "https://cincinnatizoo.org/beloved-hippo-fiona-has-passed-away/"
+    },
+    "photo": "nature"
+  },
+  {
+    "slug": "india-warns-of-unauthorized-digital-payments",
+    "title": "India's cyber agency flags unauthorized transactions in payment services",
+    "category": "Technology",
+    "date": "2026-11-20",
+    "lead": "Authorities reported problematic transactions linked to service providers supporting financial institutions and government-related payments.",
+    "body": [
+      "India's cybersecurity organization said it had identified unauthorized payment activity involving providers connected with banking and digital financial services. The announcement did not itself establish the full scope of the issue or how individual transactions occurred.",
+      "The report emphasizes that digital-payment reliability depends on a chain of organizations, not just an app on someone's phone. Financial institutions and technical service providers must investigate problems while protecting customers and payment integrity."
+    ],
+    "why": "Confidence in electronic payments is essential for households, businesses and public services.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/world/india-cyber-agency-reports-unauthorised-transactions-payment-firms-2026-11-20/"
+    },
+    "photo": "phone"
+  },
+  {
+    "slug": "equinor-says-cyberattack-has-been-stopped",
+    "title": "Energy company Equinor says it halted a cyber incident",
+    "category": "Technology",
+    "date": "2026-11-20",
+    "lead": "Norway's Equinor reported that an attack affecting parts of its information-technology environment had been stopped.",
+    "body": [
+      "The company said the incident had not affected production and that it had found no indication of data being stolen or altered. It also described cooperation with security authorities while restoring confidence in its systems.",
+      "The episode underlines how energy businesses must protect both digital operations and industrial continuity. A successful response is measured not only by stopping an incident, but also by checking system integrity afterward."
+    ],
+    "why": "Energy infrastructure depends on dependable digital systems, so resilience efforts matter even when production continues.",
+    "source": {
+      "name": "Equinor",
+      "url": "https://www.equinor.com/news/20261711-equinor-detected-cyber-attack"
+    },
+    "photo": "server"
+  },
+  {
+    "slug": "us-chip-curbs-push-china-toward-local-suppliers",
+    "title": "New US AI-chip restrictions pressure Chinese technology companies",
+    "category": "Technology",
+    "date": "2026-11-20",
+    "lead": "A wave of US restrictions on access to sophisticated AI hardware weighed on China's technology shares and intensified the push toward local alternatives.",
+    "body": [
+      "Companies and investors assessed how rules on advanced chips and computing services could affect the expansion of AI projects. The measures were meant to restrict access to certain capabilities, but they also created incentives for domestic chipmakers to develop replacements.",
+      "The result is a complicated technology race: short-term limits may slow particular projects, while long-term investment could accelerate efforts to build a more independent supply chain."
+    ],
+    "why": "The location of advanced computing capacity can shape research, business investment and global competition.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/business/retail-consumer/us-ai-chip-curbs-hit-china-tech-stocks-spur-self-sufficiency-push-2026-11-20/"
+    },
+    "photo": "server"
+  },
+  {
+    "slug": "nvidia-succession-debate-after-huang-departure",
+    "title": "Nvidia's leadership search becomes a major technology-industry story",
+    "category": "Technology",
+    "date": "2026-11-15",
+    "lead": "Following the departure of a defining figure at Nvidia, policymakers and market observers debated what kind of leader the company needed next.",
+    "body": [
+      "US Treasury Secretary Scott Bessent argued that Nvidia should consider appointing a chief executive from outside the company. The remarks came at a difficult time for the AI-chip producer, with scrutiny over compliance and questions about corporate governance.",
+      "The conversation showed how leadership at a major technology company can become a public-policy issue when its products underpin critical industries. The company's board, rather than outside commentators, is responsible for its succession decisions."
+    ],
+    "why": "A leadership transition at a central AI supplier may influence the confidence of developers, investors and customers.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/world/bessent-says-nvidia-must-go-outside-company-find-new-ceo-2026-11-15/"
+    },
+    "photo": "server"
+  }
+]
