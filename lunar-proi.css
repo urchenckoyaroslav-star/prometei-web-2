@@ -1043,3 +1043,17 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
  .lp-amount-number{-webkit-text-fill-color:initial!important;color:#6b4a11!important}
  .lp-coin-unit,.lp-coin-word{color:#176b43!important}
 }
+
+
+/* OBSERVATORY STICKY TELEMETRY: moon stays present beside the terminal
+   on sufficiently tall desktop viewports; shorter screens use natural flow. */
+@media(min-width:1000px){
+ .lp-sim-layout{align-items:start}
+ .lp-moon-panel{align-self:start}
+}
+@media(min-width:1000px) and (min-height:850px){
+ .lp-moon-panel{position:sticky;top:90px}
+}
+@media(max-width:999px), (max-height:849px){
+ .lp-moon-panel{position:relative;top:auto}
+}
