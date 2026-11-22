@@ -232,10 +232,13 @@ for(const lang of localized){
 }
 
 const catalog=JSON.parse(fs.readFileSync(path.join(source,'fm-ballot.json'),'utf8'));
+const chartEditorial=JSON.parse(fs.readFileSync(path.join(source,'fm-editorial.json'),'utf8'));
+// Set this only after AdSense approval and the site's consent message is published.
+const chartAdSlot=process.env.FM_CHART_ADSENSE_SLOT || '';
 for(const lang of locales){
   const dest=path.join(output,urlFor(lang,'fm-charts')+'.html');
   fs.mkdirSync(path.dirname(dest),{recursive:true});
-  fs.writeFileSync(dest,chartPage(catalog,lang,site.origin));
+  fs.writeFileSync(dest,chartPage(catalog,lang,site.origin,chartEditorial,chartAdSlot));
 }
 // Keep the sponsor-page canonical URLs aligned if SITE_URL changes to a custom domain.
 const servicePath=path.join(output,'services','index.html');
@@ -424,7 +427,26 @@ const fmSitemap=[
   '</urlset>'
 ].join('\n');
 fs.writeFileSync(path.join(output,'sitemap-fm.xml'),fmSitemap+'\n');
-fs.writeFileSync(path.join(output,'robots.txt'),'User-agent: *\nAllow: /\nSitemap: '+base+'sitemap.xml\nSitemap: '+base+'sitemap-fm.xml\n');
+const featuredPaths = [
+  '', 'portfolio', 'how-it-works', 'guides/',
+  'guides/bluetooth-messaging-without-internet/',
+  'guides/wifi-router-without-uplink-test/',
+  'ru/guides/bluetooth-messaging-without-internet/',
+  'ru/guides/wifi-router-without-uplink-test/',
+  'uk/guides/bluetooth-messaging-without-internet/',
+  'uk/guides/wifi-router-without-uplink-test/',
+  'fm-charts'
+];
+if (featuredPaths.some(page => !urls.includes(page))) throw new Error('Missing featured sitemap route');
+const featuredSitemap = [
+  '<?xml version="1.0" encoding="UTF-8"?>',
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+  ...featuredPaths.map(page => '<url><loc>' + escapeAttr(base + page) + '</loc></url>'),
+  '</urlset>'
+];
+fs.writeFileSync(path.join(output,'sitemap-featured.xml'),featuredSitemap.join('\n')+'\n');
+
+fs.writeFileSync(path.join(output,'robots.txt'),'User-agent: *\nAllow: /\nSitemap: '+base+'sitemap.xml\nSitemap: '+base+'sitemap-fm.xml\nSitemap: '+base+'sitemap-featured.xml\n');
 fs.writeFileSync(path.join(output,'_headers'),`/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n\n/assets/*\n  Cache-Control: public, max-age=3600\n`);
 // Restrict Cloudflare Pages Functions invocation to the station API.
 fs.writeFileSync(path.join(output,'_routes.json'),JSON.stringify({version:1,include:['/api/fm/*',...locales.map(l=>urlFor(l,'fm-history'))],exclude:[]},null,2)+'\n');

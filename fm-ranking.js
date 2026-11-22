@@ -14,7 +14,7 @@ function paint(scores){
   const percent=new Intl.NumberFormat(document.documentElement.lang,{style:'percent',maximumFractionDigits:1});
   for(const row of rows){
     row.querySelector('output').value=percent.format(total?votes(row)/total:0);
-    const button=row.querySelector('button');
+    const button=row.querySelector('[data-vote]');
     row.style.setProperty('--vote-share',(total?100*votes(row)/total:0)+'%');
     row.classList.toggle('selected',choice.split('/').pop()===row.dataset.id);
     button.disabled=pending||!!choice||!week;
@@ -83,7 +83,7 @@ function playFrom(index){
   screen.replaceChildren(frame);
 }
 playChart.addEventListener('click',()=>{
-  sessionTracks=[...document.querySelectorAll('#chart > li')].map(row=>({id:row.dataset.id,title:row.querySelector('a').textContent}));
+  sessionTracks=[...document.querySelectorAll('#chart > li')].map(row=>({id:row.dataset.id,title:row.querySelector('[data-track-title]').textContent}));
   if(!sessionTracks.length)return;
   jump.length=1;
   sessionTracks.forEach((track,i)=>jump.add(new Option((i+1)+'. '+track.title,String(i))));
@@ -106,3 +106,11 @@ document.querySelector('#close-chart').addEventListener('click',()=>{
   playChart.setAttribute('aria-expanded','false');
   playChart.focus({preventScroll:true});
 });
+
+const chart = document.querySelector('#chart');
+chart.addEventListener('toggle', event => {
+  if (!event.target.matches('.track-editorial[open]')) return;
+  for (const details of chart.querySelectorAll('.track-editorial[open]')) {
+    if (details !== event.target) details.open = false;
+  }
+}, true);

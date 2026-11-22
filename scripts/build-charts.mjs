@@ -1,5 +1,21 @@
 import {labels,urlFor,alternate,languages} from '../fm-locales.js';
-export function chartPage(catalog,lang,base){
+const editorialLabels = {
+  en: ['About the artists', 'Watch on YouTube', 'Sources', 'Advertisement'],
+  uk: ['Про виконавців', 'Дивитися на YouTube', 'Джерела', 'Реклама'],
+  ru: ['Об исполнителях', 'Смотреть на YouTube', 'Источники', 'Реклама'],
+  de: ['Über die Künstler', 'Auf YouTube ansehen', 'Quellen', 'Werbung'],
+  es: ['Sobre los artistas', 'Ver en YouTube', 'Fuentes', 'Publicidad'],
+  zh: ['艺人介绍', '在 YouTube 观看', '来源', '广告'],
+  ja: ['アーティストについて', 'YouTube で見る', '出典', '広告']
+};
+
+const alternateVideos = {
+  'mtTZ_-VbS30': 'https://www.youtube.com/watch?v=58u-zkDLNPg',
+  'hQ8HPxk4AkA': 'https://music.apple.com/us/music-video/bby-wow/6823341383',
+  'tDH5ec1F_uQ': 'https://www.youtube.com/watch?v=up5nHOguw7I'
+};
+
+export function chartPage(catalog,lang,base,editorial,adSlot){
   const t=labels(lang);
   const escape=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
   const clips=new Map();
@@ -16,7 +32,20 @@ export function chartPage(catalog,lang,base){
     es:['Escuchar el Top','Cerrar reproductor','Ir a la canción'],zh:['播放排行榜','关闭播放器','跳至歌曲'],ja:['トップを再生','プレーヤーを閉じる','曲を選ぶ']
   }[lang];
   const player=`<section class="chart-playback"><button id="play-chart" type="button" aria-expanded="false" aria-controls="chart-player">▶ ${controls[0]} ${tracks.length}</button><div id="chart-player" hidden><div id="chart-screen"></div><div class="queue-tools"><select id="chart-jump" aria-label="${controls[2]}"><option value="">${controls[2]}</option></select><button type="button" id="close-chart">${controls[1]}</button></div></div></section>`;
-  const rows=tracks.map((v,i)=>`<li data-id="${v.id}" data-seed="${i}" data-origin="${v.region}"><a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">${escape(v.title)}</a><output aria-label="${t.share}">—</output><button disabled data-vote>${t.vote}</button></li>`).join('');
+  const [about, watch, sources, advertisement] = editorialLabels[lang];
+  const rows = tracks.map((track, index) => {
+    const videoUrl = 'https://www.youtube.com/watch?v=' + track.id;
+    const clipUrl = alternateVideos[track.id] || videoUrl;
+    const clipLabel = clipUrl.includes('music.apple.com') ? 'Apple Music · Video' : watch;
+    const note = editorial[track.id];
+    const artist = note ? `<strong class="track-artist">${escape(note[0])}</strong>` : '';
+    const details = note ? `<details class="track-editorial"><summary>${about}</summary><article aria-labelledby="artist-${track.id}"><h2 id="artist-${track.id}">${escape(note[0])}</h2><p lang="${lang === 'ru' ? 'ru' : 'en'}">${escape(note[lang === 'ru' ? 2 : 1])}</p><div class="editorial-links"><a class="video-link" href="${escape(clipUrl)}" target="_blank" rel="noopener"><span aria-hidden="true">▶</span> ${clipLabel}</a><ul aria-label="${sources}">${note.slice(3).map(url => `<li><a href="${escape(url)}" target="_blank" rel="noopener">${escape(new URL(url).hostname.replace(/^www\./, ''))}</a></li>`).join('')}</ul></div></article></details>` : '';
+    return `<li data-id="${track.id}" data-seed="${index}" data-origin="${track.region}"><div class="track-title"><a data-track-title href="${videoUrl}" target="_blank" rel="noopener">${escape(track.title)}</a>${artist}</div><output aria-label="${t.share}">—</output><button disabled data-vote>${t.vote}</button>${details}</li>`;
+  }).join('');
+  const publisher = 'ca-pub-7195249956747821';
+  const hasAd = /^\d{10}$/.test(adSlot || '');
+  const adScript = hasAd ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${publisher}" crossorigin="anonymous"></script>` : '';
+  const ad = hasAd ? `<aside class="chart-ad" aria-label="${advertisement}"><p>${advertisement}</p><ins class="adsbygoogle" style="display:block" data-ad-client="${publisher}" data-ad-slot="${adSlot}" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(window.adsbygoogle = window.adsbygoogle || []).push({});</script></aside>` : '';
   const install={ru:'Установить из Google Play',uk:'Встановити з Google Play',en:'Install from Google Play',de:'Bei Google Play installieren',es:'Instalar desde Google Play',zh:'从 Google Play 安装',ja:'Google Play からインストール'}[lang];
   const messenger=`<aside class="messenger-card" aria-label="PROMETEI Messenger"><div class="orbital-art" aria-hidden="true"><i></i><i></i><i></i><span></span></div><div class="messenger-content"><strong>PROMETEI Messenger</strong><a class="install-app" href="https://play.google.com/store/apps/details?id=com.meshnetwork.app"><span aria-hidden="true">▶</span> ${install}</a></div></aside>`;
   const intros={
@@ -31,5 +60,5 @@ export function chartPage(catalog,lang,base){
   const desc='PROMETEI FM — '+intros[lang];
   const intro='<p class="chart-intro">'+escape(intros[lang])+'</p>';
   const schema={'@context':'https://schema.org','@type':'ItemList',name:t.chart+' · PROMETEI FM',itemListOrder:'https://schema.org/ItemListUnordered',numberOfItems:tracks.length,itemListElement:tracks.map(t=>({'@type':'CreativeWork',name:t.title,url:'https://www.youtube.com/watch?v='+t.id}))};
-  return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${t.chart} | PROMETEI FM</title><meta name="description" content="${escape(desc)}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:title" content="${escape(t.chart)} | PROMETEI FM"><meta property="og:description" content="${escape(desc)}"><meta property="og:url" content="${base}${urlFor(lang,'fm-charts')}"><link rel="canonical" href="${base}${urlFor(lang,"fm-charts")}"><link rel="stylesheet" href="/fm-ranking.css?v=queue"><script defer src="/fm-ranking.js?v=queue"></script><script type="application/ld+json">${JSON.stringify(schema).replaceAll('<','\\u003c')}</script>${alternate("fm-charts",base)}</head><body><main>${languages("fm-charts",lang)}<nav><a href="${urlFor(lang,"fm")}">← ${t.radio}</a><a href="${urlFor(lang,"fm-history")}">${t.history}</a></nav><h1>${t.pick}</h1>${intro}${messenger}${player}<p id="vote-message" data-vote="${t.vote}" data-yours="${t.yours}" data-saved="${t.saved}" data-retry="${t.retry}" role="status"></p><ol id="chart">${rows}</ol><small><a href="https://kworb.net/youtube/trending_countries.html">${t.source} — Kworb</a></small></main></body></html>`;
+  return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${t.chart} | PROMETEI FM</title><meta name="description" content="${escape(desc)}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:title" content="${escape(t.chart)} | PROMETEI FM"><meta property="og:description" content="${escape(desc)}"><meta property="og:url" content="${base}${urlFor(lang,'fm-charts')}"><link rel="canonical" href="${base}${urlFor(lang,"fm-charts")}"><link rel="stylesheet" href="/fm-ranking.css?v=editorial"><script defer src="/fm-ranking.js?v=editorial"></script><script type="application/ld+json">${JSON.stringify(schema).replaceAll('<','\\u003c')}</script>${alternate("fm-charts",base)}${adScript}</head><body><main>${languages("fm-charts",lang)}<nav><a href="${urlFor(lang,"fm")}">← ${t.radio}</a><a href="${urlFor(lang,"fm-history")}">${t.history}</a></nav><h1>${t.pick}</h1>${intro}${messenger}${player}<p id="vote-message" data-vote="${t.vote}" data-yours="${t.yours}" data-saved="${t.saved}" data-retry="${t.retry}" role="status"></p><ol id="chart">${rows}</ol>${ad}<small><a href="https://kworb.net/youtube/trending_countries.html">${t.source} — Kworb</a></small></main></body></html>`;
 }
