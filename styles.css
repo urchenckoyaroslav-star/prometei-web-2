@@ -144,3 +144,26 @@ html,body{overflow-x:clip}
 @media(max-width:800px){.crypto-portal-panel{grid-template-columns:1fr}.crypto-portal-art{min-height:250px;max-width:360px;justify-self:center;width:100%}.crypto-portal-core{width:120px;height:120px}}
 @media(max-width:550px){.crypto-portal-panel{padding:21px}.crypto-portal-actions .button{width:100%}.crypto-portal-art{min-height:210px}.crypto-portal-orbit{width:205px}.crypto-portal-moon{font-size:1.55rem}.crypto-portal-core{width:102px;height:102px;font-size:2.8rem}}
 @media(prefers-reduced-motion:reduce){.crypto-portal-orbit:before,.crypto-portal-moon{animation:none!important}}
+
+/* PROMETEI Weekly News front-page feature — English-language editorial */
+.weekly-news-nav{color:#f7dbac!important}
+.weekly-news-home{position:relative;isolation:isolate}
+.weekly-news-home-inner{display:grid;grid-template-columns:1.38fr .62fr;align-items:center;gap:30px;overflow:hidden;border:1px solid #826d92a1;border-radius:28px;background:radial-gradient(circle at 89% 35%,#3e456f88,transparent 50%),linear-gradient(133deg,#1a2b4c,#17192e);padding:clamp(25px,5vw,59px);box-shadow:0 25px 65px #090c2255}
+.weekly-news-overline{font-size:.74rem;letter-spacing:.19em;color:#a4ebf2;font-weight:900}
+.weekly-news-home-inner h2{font-family:"Space Grotesk",Manrope,system-ui,sans-serif;font-size:clamp(2rem,4.2vw,3.8rem);letter-spacing:-.045em;line-height:1.18;margin:13px 0 22px;color:white}
+.weekly-news-home-inner h2 em{font-style:normal;background:linear-gradient(110deg,#f6cf9b,#f5b4cb,#8ce9f0);background-clip:text;color:transparent}
+.weekly-news-home-inner p{font-size:.98rem;color:#d4e0ef;line-height:1.85;max-width:66ch}
+.weekly-news-home-inner .weekly-news-clarifier{font-size:.83rem;border-left:3px solid #ffdeaa;padding:9px 14px;background:#101a318c;border-radius:7px}
+.weekly-news-ctas{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-top:22px}
+.weekly-news-ctas .button{display:inline-flex;align-items:center;justify-content:center}
+.weekly-news-decoration{min-height:295px;display:grid;place-items:center;position:relative;isolation:isolate}
+.weekly-news-decoration:before{content:"";position:absolute;width:min(93%,280px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#46709870,#20285148 55%,transparent 75%);filter:blur(10px)}
+.weekly-news-globe{position:relative;display:grid;place-items:center;width:165px;height:165px;border-radius:50%;font-size:7rem;line-height:1;color:#a1e9f1;text-shadow:0 0 25px #9ec9ff,0 0 45px #bd9affaa;background:radial-gradient(circle at 35% 20%,#3d587c,#1a2b4d 55%,#0c1a34);border:1px solid #bedbf391;box-shadow:0 0 60px #74b2e650;animation:weeklyNewsBreathe 5.7s ease-in-out infinite}
+.weekly-news-orbit{display:grid;place-items:center;text-align:center;position:absolute;inset:8%;font-size:.66rem;font-weight:850;color:#f7dcae;letter-spacing:.12em;border:1px dashed #92bfe088;border-radius:50%;animation:weeklyNewsTurn 32s linear infinite;pointer-events:none}
+.weekly-news-dot{position:absolute;top:3%;left:46%;width:13px;height:13px;background:#e9dba4;border:2px solid white;border-radius:50%;box-shadow:0 0 20px #f4d9aa;animation:weeklyNewsGlow 3.2s ease-in-out infinite}
+@keyframes weeklyNewsBreathe{50%{transform:scale(1.04);box-shadow:0 0 80px #9a94d47c}}
+@keyframes weeklyNewsTurn{to{transform:rotate(360deg)}}
+@keyframes weeklyNewsGlow{50%{opacity:.45;transform:scale(.75)}}
+@media(max-width:820px){.weekly-news-home-inner{grid-template-columns:1fr}.weekly-news-decoration{min-height:235px;width:100%;max-width:330px;justify-self:center}.weekly-news-globe{width:145px;height:145px;font-size:5.8rem}}
+@media(max-width:570px){.weekly-news-home-inner{padding:21px;gap:5px}.weekly-news-ctas .button{width:100%}.weekly-news-decoration{min-height:190px}.weekly-news-globe{width:115px;height:115px;font-size:4.5rem}.weekly-news-orbit{inset:5%}}
+@media(prefers-reduced-motion:reduce){.weekly-news-globe,.weekly-news-orbit,.weekly-news-dot{animation:none!important}}
