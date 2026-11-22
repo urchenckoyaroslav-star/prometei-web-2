@@ -41,7 +41,10 @@ for(const lang of locales){
   for(const option of locales)assert.ok(html.includes('value="'+option+'"'),'missing '+option+' option');
   assert.ok(html.includes('id="play-btn"'),'missing Listen button');
   assert.ok(html.includes('id="request-form"'),'missing song request form');
-  assert.ok(html.includes('id="playlist-list"'),'missing playlist list');
+  // The current FM UI shows live source, track details and recent history, not a separate playlist list.
+  // Verify real working controls instead of requiring a removed, non-interactive placeholder.
+  assert.ok(html.includes('id="listen-heading"'),'missing live radio heading');
+  assert.ok(html.includes('id="track-title"'),'missing current-track display');
   assert.ok(html.includes('id="history-list"'),'missing history list');
   assert.ok(html.includes('href="/fm.css"'),'missing FM CSS');
   assert.ok(html.includes('src="/fm-i18n.js"'),'missing client i18n');
