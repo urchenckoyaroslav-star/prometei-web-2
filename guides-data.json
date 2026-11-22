@@ -1,0 +1,131 @@
+{
+  "updated": "2026-11-22",
+  "guides": [
+    {
+      "slug": "bluetooth-messaging-without-internet",
+      "group": "bluetooth",
+      "en": [
+        "How Bluetooth Messaging Works Without Internet",
+        "How Bluetooth messaging on Android works: nearby discovery, sending messages without mobile data and realistic limitations.",
+        "Bluetooth connects nearby compatible Android devices through local radio. A message can travel between phones without a mobile data subscription or a public Internet connection when the app supports that route.",
+        [
+          [
+            "From discovery to delivery",
+            "First, devices must detect a compatible nearby peer. Next they establish an available connection. Only then can the application attempt to deliver its message. Each stage depends on Android permissions, radio conditions and the recipient's device state."
+          ],
+          [
+            "What PROMETEI does",
+            "PROMETEI explores Bluetooth as one of its nearby transport paths. Whether the current release can deliver a particular message depends on both devices, granted permissions and a reachable participant. Bluetooth is not a promise of cross-city or unlimited-range delivery."
+          ],
+          [
+            "A practical check",
+            "Enable Bluetooth on two nearby Android phones, grant the permissions requested by the installed app, select an available nearby route and send a short text. Change one condition at a time and record the result. Offline connectivity does not automatically mean anonymity or identical encryption across every route."
+          ]
+        ]
+      ],
+      "ru": [
+        "Как работает мессенджер через Bluetooth без интернета",
+        "Как Android передаёт сообщения по Bluetooth без интернета, SIM-карты и мобильных данных: условия и ограничения PROMETEI.",
+        "Bluetooth связывает совместимые телефоны поблизости с помощью радиоволн. При поддержке приложением такого маршрута сообщение может пройти без мобильного интернета и SIM-карты.",
+        [
+          [
+            "От обнаружения до доставки",
+            "Сначала устройство должно найти соседний телефон, затем установить поддерживаемое соединение. Только после этого приложение может попытаться доставить текст. На каждом этапе влияют разрешения Android, расстояние, радиопомехи и доступность адресата."
+          ],
+          [
+            "Как это используется в PROMETEI",
+            "PROMETEI исследует Bluetooth как один из каналов локальной переписки. Результат зависит от двух устройств, настроек и версии приложения. Радиоканал поблизости сам по себе не даёт связь между городами."
+          ],
+          [
+            "Как проверить на практике",
+            "Включите Bluetooth на двух Android-телефонах, предоставьте необходимые разрешения, выберите доступный режим и отправьте короткий текст. Затем меняйте условия по одному. Отсутствие интернета не равнозначно полной анонимности или гарантиям шифрования."
+          ]
+        ]
+      ]
+    },
+    {
+      "slug": "bluetooth-range-and-android-permissions",
+      "group": "bluetooth",
+      "en": [
+        "Bluetooth Range, Android Permissions and Message Delivery",
+        "Why nearby Bluetooth messages fail: distance, walls, device permissions, background operation and a two-phone test.",
+        "Turning Bluetooth on is only one part of nearby messaging. Devices also need an application-compatible route, permissions and suitable radio conditions.",
+        [
+          [
+            "Range changes in the real world",
+            "The useful distance varies with phone models, antenna placement, interference, barriers and Bluetooth mode. Working at a desk does not prove that delivery will succeed through thick walls."
+          ],
+          [
+            "Permission and state matter",
+            "Android versions differ in how nearby-device and Bluetooth access is approved. Discovery alone is not delivery. An app running in the background might also face different limits from an app open on screen."
+          ],
+          [
+            "Repeatable test",
+            "Try a short message with both apps open and phones close together. Increase the distance gradually, noting Android and app versions. If the devices stop communicating, check permissions and reachability before blaming the Internet."
+          ]
+        ]
+      ],
+      "ru": [
+        "Дальность Bluetooth и разрешения Android: почему сообщения не доходят",
+        "Радиус Bluetooth, стены, помехи, разрешения Android и понятная проверка переписки на двух телефонах.",
+        "Одна включённая кнопка Bluetooth ещё не означает, что мессенджер доставит текст. Нужны поддерживаемый маршрут и подходящие условия.",
+        [
+          [
+            "Почему нет фиксированной дальности",
+            "Радиус зависит от модели телефона, антенны, помех, препятствий и режима Bluetooth. Если связь работает за столом, это не доказательство работы через несколько толстых стен."
+          ],
+          [
+            "Разрешения и режим приложения",
+            "Версии Android отличаются системой разрешений для устройств поблизости. Обнаружить телефон — ещё не значит доставить ему сообщение. Фоновый режим приложения также может накладывать ограничения."
+          ],
+          [
+            "Повторяемый опыт",
+            "Отправьте короткое сообщение при открытых приложениях и минимальной дистанции. Постепенно увеличивайте расстояние, отмечая версии Android и PROMETEI. При сбое сначала проверьте разрешения и доступность адресата."
+          ]
+        ]
+      ]
+    },
+    {
+      "slug": "bluetooth-versus-wifi-messaging",
+      "group": "bluetooth",
+      "en": [
+        "Bluetooth vs Wi-Fi: Which Is Better for Offline Messages?",
+        "Compare local Bluetooth chat and Wi-Fi LAN messaging: setup, reachability, network isolation and practical trade-offs.",
+        "Bluetooth and Wi-Fi are different radio technologies. Both can carry local data without the public Internet, but neither works in every location.",
+        [
+          [
+            "Bluetooth without a shared router",
+            "Nearby phones may connect through a supported Bluetooth path without joining the same Wi-Fi network. Permission and radio conditions are essential."
+          ],
+          [
+            "Wi-Fi on a local network",
+            "A local Wi-Fi path normally requires both devices to reach a suitable LAN. A router can keep that LAN running when the provider's uplink disappears; guest-network client isolation may still block communication."
+          ],
+          [
+            "Choosing a PROMETEI route",
+            "Choose the channel that actually reaches the recipient in the installed release. Test text before media, and test calls separately where supported. Mixed-mode design should not be confused with a guarantee of automatic fallback."
+          ]
+        ]
+      ],
+      "ru": [
+        "Bluetooth или Wi-Fi: какой канал лучше для сообщений без интернета?",
+        "Честное сравнение Bluetooth и Wi-Fi/LAN: подключение, дальность, локальная сеть и ограничения Android.",
+        "Bluetooth и Wi-Fi — разные радиотехнологии. Обе могут передавать локальные данные без внешнего интернета, но условия подключения отличаются.",
+        [
+          [
+            "Bluetooth без общего роутера",
+            "Находящиеся рядом телефоны могут использовать поддерживаемый Bluetooth-маршрут, даже если нет общей сети Wi-Fi. Нужны разрешения Android и устойчивое радио-соединение."
+          ],
+          [
+            "Wi-Fi внутри локальной сети",
+            "Обычно оба устройства должны находиться в доступной LAN. Даже когда провайдер отключён, роутер может поддерживать локальную сеть. Но гостевая изоляция клиентов мешает прямому обмену."
+          ],
+          [
+            "Выбор маршрута PROMETEI",
+            "Используйте реально доступный канал в текущем релизе. Сначала проверяйте текст, отдельно медиа и звонки, если поддерживаются. Идея смешанного режима не означает гарантированного автоматического переключения."
+          ]
+        ]
+      ]
+    }
+  ]
+}
