@@ -84,7 +84,12 @@
     "feeWane": "Comisión de ejemplo menguante (%)",
     "feeDebit": "Total con comisión",
     "feeRate": "Tasa de la fase elegida",
-    "protocolTitle": "Cómo se obtienen realmente PROI"
+    "protocolTitle": "Cómo se obtienen realmente PROI",
+    "instrument": "INSTRUMENTO DE REFERENCIA / MODELO SIN CONEXIÓN",
+    "observatory": "NÚCLEO LUNAR",
+    "chartTitle": "LUNAR PULSE · RECOMPENSAS ACUMULADAS",
+    "chartAria": "Gráfico escalonado de posibles recompensas PROI en veinte hitos lunares",
+    "chartNote": "Calendario calculado de recompensas, no cotizaciones ni saldo acreditado."
   },
   "sections": [
     {
