@@ -1,6 +1,6 @@
 {
   "title": "The Moon, its phases & the future of PROI",
-  "description": "PROMETEI PROI Lunar Pulse explained: +0.5 waxing and +0.1 waning at UTC moon illumination milestones, 20 events per cycle, Proof of Help, ROOT transfer fees, 50% burn and Relay Vault.",
+  "description": "PROI Lunar Pulse in PROMETEI Android: +0.5 per waxing 10% moon milestone, +0.1 per waning 10% milestone; Proof of Help, ROOT fees and Relay Vault explained.",
   "ui": {
     "kicker": "PROMETEI LUNAR LAB · SCIENCE & FUTURE DESIGN",
     "headline": "The Moon moves. PROMETEI rewards milestones.",
@@ -144,7 +144,7 @@
       ]
     },
     {
-      "h": "09 · How the Moon could 'print' future PROI",
+      "h": "09 · How Lunar Pulse really awards in-app PROI",
       "p": [
         "In the PROMETEI Android implementation, Lunar Pulse uses one deterministic UTC clock based on a mean synodic lunar month. A shared milestone ID is produced whenever the computed illuminated fraction crosses 10%, 20% and so on up to 100% while waxing; each eligible claim awards 0.5 internal PROI. During waning, the milestones run from 90% through 0% and award 0.1 each. This gives a theoretical maximum of 6 PROI across 20 events in a full cycle, provided they are eligible and successfully claimed—not an amount minted daily, a wallet promise or a blockchain emission.",
         "The app additionally awards 0.1 PROI for verified Internet assistance, subject to a daily limit of ten and per-partner safeguards; a confirmed relay may receive part of the transfer-fee pool. ROOT configures a fee separately for waxing and waning, while each charged fee is split between burning and Relay Vault. The source defaults are 10% and 15% respectively, but ROOT may change them, so the website cannot state the live fee. On-chain PROI has not launched. The slider demonstrates app mechanics using Android's deterministic approximation, not real credited balances."
