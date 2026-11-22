@@ -1,0 +1,51 @@
+name: PROMETEI Weekly News checks
+on:
+  pull_request:
+    paths:
+      - "news-week-*.json"
+      - "news-images.json"
+      - "news.css"
+      - "news.js"
+      - "scripts/build-news.mjs"
+      - "scripts/check-weekly-news.mjs"
+      - "scripts/build.mjs"
+      - "index.html"
+      - "styles.css"
+      - ".github/workflows/weekly-news.yml"
+  push:
+    branches: [main]
+    paths:
+      - "news-week-*.json"
+      - "news-images.json"
+      - "news.css"
+      - "news.js"
+      - "scripts/build-news.mjs"
+      - "scripts/check-weekly-news.mjs"
+      - "scripts/build.mjs"
+      - "index.html"
+      - "styles.css"
+      - ".github/workflows/weekly-news.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse English newsroom modules
+        run: |
+          node --check scripts/build-news.mjs
+          node --check scripts/check-weekly-news.mjs
+          node --check news.js
+      - name: Build static site
+        run: npm run build
+      - name: Audit 40 articles and sources
+        run: node scripts/check-weekly-news.mjs
+      - name: Ensure science atlas remains intact
+        run: node scripts/check-seo-guides.mjs
+      - name: Ensure crypto atlas remains intact
+        run: node scripts/check-crypto-atlas.mjs
