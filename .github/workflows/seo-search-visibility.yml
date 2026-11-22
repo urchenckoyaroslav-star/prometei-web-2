@@ -1,0 +1,35 @@
+name: PROMETEI Live Googlebot Access Monitor
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/check-live-seo.mjs"
+      - ".github/workflows/seo-search-visibility.yml"
+      - "scripts/build.mjs"
+      - "robots.txt"
+  schedule:
+    - cron: '14 6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  live-visibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate monitoring code
+        run: node --check scripts/check-live-seo.mjs
+      - name: Check real production responses, sitemaps, redirects and robots directives
+        run: node scripts/check-live-seo.mjs
+      - name: Preserve public crawl access diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: prometei-search-access-report
+          path: seo-health-report.json
+          if-no-files-found: warn
+          retention-days: 14
