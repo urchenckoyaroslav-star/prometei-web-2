@@ -84,7 +84,12 @@
     "feeWane": "欠けていく期間の例示手数料 (%)",
     "feeDebit": "手数料を含む総額",
     "feeRate": "選択した月相の料率",
-    "protocolTitle": "PROI はどう付与されるか"
+    "protocolTitle": "PROI はどう付与されるか",
+    "instrument": "参照計器 / オフライン計算モデル",
+    "observatory": "月面観測コア",
+    "chartTitle": "LUNAR PULSE · 累積報酬",
+    "chartAria": "20の月の節目における PROI 受取可能額の階段グラフ",
+    "chartNote": "計算上の報酬スケジュールです。相場グラフや実際の残高ではありません。"
   },
   "sections": [
     {
