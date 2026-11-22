@@ -29,6 +29,7 @@ const scienceTitles={
 const supplemental=Object.fromEntries(locales.filter(l=>!["en","ru"].includes(l)).map(l=>[l,JSON.parse(fs.readFileSync(path.join(root,"guides-"+l+".json"),"utf8"))]));
 for(const lang of Object.keys(supplemental))labels[lang]=supplemental[lang].labels;
 const histories=Object.fromEntries(groups.map(group=>[group,JSON.parse(fs.readFileSync(path.join(root,"guides-history-"+group+".json"),"utf8"))]));
+const timelineI18n=JSON.parse(fs.readFileSync(path.join(root,"guides-timeline-i18n.json"),"utf8"));
 function groupGuides(group){return guides.filter(g=>g.group===group)}
 function topicIndex(g){return guides.indexOf(g)}
 function topic(g,lang){if(g[lang])return {title:g[lang][0],description:g[lang][1],intro:g[lang][2],sections:g[lang][3]};
@@ -62,7 +63,7 @@ function indexPage(base,lang){const t=labels[lang],url=slugURL(base,lang),count=
 }
 function articlePage(base,lang,g){const a=topic(g,lang),t=labels[lang],j=scienceTitles[lang],url=slugURL(base,lang,g.slug),history=histories[g.group],h=history.languages[lang];
  const sourceLinks=history.sources.map(([name,href])=>'<li><a href="'+esc(href)+'" target="_blank" rel="noopener noreferrer">'+esc(name)+' ↗</a></li>').join("");
- const milestones=history.timeline.map(([year,event],i)=>'<li><span class="milestone-date">'+year+'</span><span class="milestone-dot" aria-hidden="true"></span><span class="milestone-label">'+esc(event)+'</span></li>').join("");
+ const milestones=history.timeline.map(([year,event],i)=>'<li><span class="milestone-date">'+year+'</span><span class="milestone-dot" aria-hidden="true"></span><span class="milestone-label">'+esc(timelineI18n[g.group][lang][i]||event)+'</span></li>').join("");
  const sec=[
  {id:"story",title:j.history,content:'<p>'+esc(h.history)+'</p><div class="historical-timeline" aria-label="'+esc(j.timeline)+'"><ol>'+milestones+'</ol></div>'},
  {id:"physics",title:j.science,content:'<p>'+esc(h.science)+'</p>'},
