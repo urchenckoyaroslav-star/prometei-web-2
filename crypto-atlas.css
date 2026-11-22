@@ -123,3 +123,18 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:"Space Grotesk",Manrope,sans-serif;
 @media(max-width:790px){.ca-header-inner{justify-content:flex-start}.ca-header nav{width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:5px}.ca-hero-grid,.ca-moon-section,.ca-read-layout{grid-template-columns:minmax(0,1fr)}.ca-hero-grid .lunar-visual{max-width:325px}.ca-hero{padding-top:48px}.ca-intro-band{display:block}.ca-proi-mini{margin-top:20px;display:inline-flex}.ca-aside{position:static;display:flex;gap:12px;flex-wrap:wrap;align-items:center}.ca-aside strong{width:100%}.ca-aside hr{display:none}.ca-aside a{border:1px solid #375574;border-radius:9px;padding:6px 10px!important}.ca-aside-snapshot{width:100%}.ca-footer-grid{flex-direction:column}.ca-moon-section>div:first-child{order:2}}
 @media(max-width:570px){.ca-container{padding-inline:18px}.ca-asset-grid,.ca-related-list,.ca-concept-grid{grid-template-columns:1fr}.ca-header-inner{min-height:64px}.ca-brand{font-size:.88rem}.ca-hero h1{font-size:clamp(2.6rem,10vw,3.9rem)}.ca-intro-band{margin-bottom:52px}.ca-article-mast{align-items:flex-start;gap:12px}.coin-mark-large{width:73px;height:73px}.coin-mark-large .coin-glyph{font-size:1.75rem}.ca-article h1{font-size:clamp(1.95rem,8.2vw,3.1rem)}.ca-proi-chapter{padding:19px}.ca-concept-card{min-height:auto;padding:22px}.ca-article-meta{margin-top:19px}.ca-hero-grid .lunar-visual{width:min(325px,88vw)}.ca-related{padding-bottom:55px}.ca-moon-section{padding-block:55px}.ca-next{display:grid}.ca-story-block p{font-size:.98rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.js .ca-reveal{opacity:1!important;transform:none!important}.ca-button:hover,.asset-card:hover,.ca-proi-mini:hover{transform:none!important}}
+
+
+/* Focusable eight-phase lunar research explorer */
+.ca-phase-explorer{margin:0 auto 56px;padding:29px;border:1px solid #6e658f;border-radius:24px;background:linear-gradient(135deg,#251d4299,#142d4799)}
+.ca-phase-explorer h2{font-size:clamp(1.65rem,3vw,2.5rem);margin:10px 0 23px}
+.ca-phase-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:24px}
+.ca-phase-grid button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:105px;padding:12px;border:1px solid #536385;border-radius:16px;color:#d7e7fc;background:#101e37;transition:transform .2s,border-color .2s,box-shadow .2s}
+.ca-phase-grid button span{font-size:2.4rem;filter:drop-shadow(0 0 6px #7187bd66)}
+.ca-phase-grid button small{font-size:.73rem;font-weight:750;text-align:center}
+.ca-phase-grid button:hover,.ca-phase-grid button[aria-pressed=true]{border-color:#dcd6a8;background:#263253;box-shadow:0 0 24px #9b85bb38}
+.ca-phase-grid button:hover{transform:translateY(-3px)}
+#phase-explanation{border-left:3px solid #b9e8ed;padding:13px 17px;background:#0e1e38;color:#deebfb;border-radius:7px;margin:0 0 12px}
+.ca-phase-disclaimer{font-size:.79rem;color:#f3d7ab;margin:0}
+@media(max-width:640px){.ca-phase-explorer{padding:19px}.ca-phase-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ca-phase-grid button{min-height:93px}}
+@media(prefers-reduced-motion:reduce){.ca-phase-grid button:hover{transform:none}}
