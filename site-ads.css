@@ -1,0 +1,14 @@
+/* PROMETEI sponsored placements: visually distinct from editorial links and cards. */
+.site-ad-placement{grid-column:1/-1;position:relative;padding:21px 25px;border:1px solid #6e7b91;border-radius:20px;background:linear-gradient(135deg,#172943,#17233d 55%,#28304c);color:#e5edfa;margin:4px 0 10px;min-height:140px}
+.site-ad-label{display:inline-block;font:800 .66rem Manrope,system-ui,sans-serif;letter-spacing:.19em;color:#ffe0ac;border:1px solid #977f6c;border-radius:5px;padding:3px 9px;background:#42342977;margin-bottom:12px}
+.site-ad-inner{display:flex;align-items:center;gap:23px}
+.site-ad-spark{flex-shrink:0;width:72px;height:72px;display:grid;place-items:center;font-size:2.65rem;color:#ffdda8;border-radius:50%;border:1px solid #dfc4908a;background:radial-gradient(circle at 30% 30%,#716992a3,#172b47);box-shadow:0 0 28px #a6a9fa33}
+.site-ad-copy strong{font-size:1.2rem;letter-spacing:-.015em;color:#f8f4ee}
+.site-ad-copy p{font-size:.84rem;line-height:1.6;color:#ced9e8;margin:6px 0 10px}
+.site-ad-copy a{color:#a6e9f0;font-size:.81rem;font-weight:850;text-decoration:underline;text-decoration-color:#a6e9f077;text-underline-offset:3px}
+.site-ad-disclaimer{display:block;margin-top:10px;font-size:.67rem;color:#9eafc4}
+.site-ad-inline{margin:25px 0 34px}
+.site-ad-end{margin:34px 0}
+.site-ad-feed{margin:0}
+@media(max-width:640px){.site-ad-placement{padding:17px}.site-ad-inner{align-items:flex-start;gap:12px}.site-ad-spark{width:50px;height:50px;font-size:1.8rem}.site-ad-copy strong{font-size:1rem}.site-ad-copy p{font-size:.78rem}}
+@media(prefers-reduced-motion:reduce){.site-ad-placement *{animation:none!important;transition:none!important}}

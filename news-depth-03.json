@@ -1,0 +1,257 @@
+[
+  {
+    "slug": "anthropic-record-breaking-ipo",
+    "sections": [
+      {
+        "heading": "The scale of the listing",
+        "paragraph": "Anthropic's offering drew attention because its valuation placed a frontier AI developer among the most highly anticipated new public companies. A record figure is memorable, but it tells readers more about investor expectations than about whether every model deployment will be profitable."
+      },
+      {
+        "heading": "The people and business behind the numbers",
+        "paragraph": "Dario and Daniela Amodei became prominent public faces of the company after years in AI research and commercial development. Training advanced models requires substantial computing power and specialized talent. That means rapid revenue growth can coexist with high costs and uncertainty over eventual margins."
+      },
+      {
+        "heading": "What public ownership changes",
+        "paragraph": "A listed company must communicate regularly with shareholders, publish results and respond to market expectations. Investors can evaluate financial disclosures more directly, but a public ticker does not settle questions about AI safety, competition or future regulation. Those remain important independent lines of scrutiny."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Associated Press — IPO scale and leadership",
+        "url": "https://apnews.com/article/70b660ddf900d90bbf484ecdf1fb441c",
+        "role": "Independent coverage"
+      },
+      {
+        "name": "Reuters — founder profile",
+        "url": "https://www.reuters.com/world/anti-war-physicist-ai-power-broker-amodei-takes-his-safety-approach-public-2026-11-19/",
+        "role": "Background"
+      }
+    ]
+  },
+  {
+    "slug": "anthropic-debut-tests-ai-optimism",
+    "sections": [
+      {
+        "heading": "A public experiment in valuation",
+        "paragraph": "Before a listing, a startup's value is shaped by private financing rounds and negotiated terms. Once shares begin trading, a far wider group of investors can express changing views throughout the day. That transition can produce volatility even if the company itself has not changed overnight."
+      },
+      {
+        "heading": "Why enthusiasm and doubt coexist",
+        "paragraph": "Advances in AI models are real technical events, but financial returns depend on pricing, customer retention, the cost of computing and whether businesses can build dependable products. Investors may simultaneously believe AI will transform software and worry that a particular stock is expensive."
+      },
+      {
+        "heading": "Beyond the first trading week",
+        "paragraph": "Quarterly disclosures, customer adoption and investment in infrastructure will offer a more durable picture than the excitement of launch day. A strong debut is a significant moment for a company; it is not proof that its market value will follow a straight upward path."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Associated Press — listing overview",
+        "url": "https://apnews.com/article/70b660ddf900d90bbf484ecdf1fb441c",
+        "role": "Independent coverage"
+      },
+      {
+        "name": "Reuters — market reaction",
+        "url": "https://www.reuters.com/commentary/breakingviews/global-markets-breakingviews-2026-11-21/",
+        "role": "Market analysis"
+      }
+    ]
+  },
+  {
+    "slug": "nasdaq-widens-listing-lead",
+    "sections": [
+      {
+        "heading": "Why the exchange matters",
+        "paragraph": "When a company becomes publicly traded, it chooses an exchange with financial, technical and brand implications. The venue provides market infrastructure and visibility, but it does not set the company's value on its own. Competition between exchanges includes issuer services, investor networks and listing fees."
+      },
+      {
+        "heading": "A technology-sector identity",
+        "paragraph": "Nasdaq has long been closely associated with many high-profile technology companies, while the New York Stock Exchange has its own institutional history and relationships. Anthropic's choice fit a recognizable pattern without implying that every growing company should list in the same place."
+      },
+      {
+        "heading": "What the figures can and cannot show",
+        "paragraph": "Comparing the amount raised by companies listed on different exchanges can reveal which venue attracts big offerings in a particular year. It may not reveal the experience of smaller firms or predict which exchange will lead next year. The competitive picture changes with the IPO calendar."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Associated Press — Anthropic market debut",
+        "url": "https://apnews.com/article/70b660ddf900d90bbf484ecdf1fb441c",
+        "role": "Market context"
+      }
+    ]
+  },
+  {
+    "slug": "ipo-bank-fees-reach-billion-mark",
+    "sections": [
+      {
+        "heading": "What underwriters actually do",
+        "paragraph": "Banks involved in an IPO help prepare the offering, assess investor demand and distribute shares. They may also advise companies on market conditions and the structure of the transaction. Their fees compensate for this work but are negotiated within a competitive financial industry."
+      },
+      {
+        "heading": "Why very large offerings are different",
+        "paragraph": "A fee percentage that looks modest can create an enormous absolute payment when the transaction raises tens of billions of dollars. That is why a small number of blockbuster listings can significantly influence annual investment-banking revenue."
+      },
+      {
+        "heading": "The broader lesson",
+        "paragraph": "The number in an underwriting-fee headline should be separated from the amount raised by the issuing company and from the subsequent market performance of the shares. These are three different measures, and none guarantees the others."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Associated Press — Anthropic offering",
+        "url": "https://apnews.com/article/70b660ddf900d90bbf484ecdf1fb441c",
+        "role": "Offering background"
+      }
+    ]
+  },
+  {
+    "slug": "fed-warns-ai-investment-could-overheat-economy",
+    "sections": [
+      {
+        "heading": "The short-run demand question",
+        "paragraph": "Data centers require chips, building materials, electricity equipment, workers and new connections to power grids. If many companies demand those resources at once, some prices may rise before new capacity can be supplied. That is the inflationary risk being discussed."
+      },
+      {
+        "heading": "The long-run productivity question",
+        "paragraph": "Artificial intelligence could help firms produce more with fewer hours or improve the quality of some services. But productivity gains take time to become visible and do not necessarily offset every near-term construction expense. Both effects can exist at the same time."
+      },
+      {
+        "heading": "Why central bankers care",
+        "paragraph": "Policymakers monitor whether demand is running ahead of an economy's ability to supply goods and services. A speech highlighting a risk does not by itself announce an interest-rate decision. Look for subsequent economic data and official policy statements to assess what changes."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Reuters — AI-sector investment concerns",
+        "url": "https://www.reuters.com/commentary/breakingviews/global-markets-breakingviews-2026-11-21/",
+        "role": "Broader market context"
+      }
+    ]
+  },
+  {
+    "slug": "republicans-push-us-open-weight-ai",
+    "sections": [
+      {
+        "heading": "Open weights are not a simple definition of open source",
+        "paragraph": "A model with downloadable parameters may allow researchers to inspect and adapt parts of its behavior, but training data, tooling or licensing restrictions can remain private. Policymakers discussing open-weight competition are therefore not necessarily calling for all AI components to be disclosed."
+      },
+      {
+        "heading": "Why computing access matters",
+        "paragraph": "Training and evaluating advanced models can require substantial processing capacity. Advocates of publicly accessible infrastructure argue that smaller research teams could compete more effectively if they were not entirely dependent on a few large cloud providers."
+      },
+      {
+        "heading": "Policy ideas face practical limits",
+        "paragraph": "A government program would need funding, clear eligibility rules, security assessments and ways to measure whether public resources are useful. A congressional letter should be understood as a proposal in a wider policy debate, not an enacted entitlement to free computing."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Reuters — Chinese-model disclosure discussion",
+        "url": "https://www.reuters.com/world/china/trump-administration-weighs-forcing-us-firms-disclose-chinese-ai-use-2026-11-18/",
+        "role": "Related policy debate"
+      }
+    ]
+  },
+  {
+    "slug": "us-weighs-disclosure-of-chinese-ai-models",
+    "sections": [
+      {
+        "heading": "What disclosure could mean",
+        "paragraph": "Businesses use AI in many different ways, from experimenting with a public chatbot to embedding a model inside customer support software. Any reporting rule would have to specify what counts as using a covered system and what information companies must provide."
+      },
+      {
+        "heading": "Why officials are interested",
+        "paragraph": "Supporters see greater transparency as a tool for understanding technology dependencies and potential security exposure. Critics worry about bureaucracy, uncertain definitions and the risk of conflating a model's country of origin with the behavior of every product built using it."
+      },
+      {
+        "heading": "The distinction between discussion and law",
+        "paragraph": "The Reuters report described consideration of possible rules. It did not establish that all businesses had become subject to a new reporting obligation. Readers should check final agency documents and official implementation guidance before treating a proposal as binding."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Reuters — open-weight AI debate",
+        "url": "https://www.reuters.com/legal/litigation/after-trumps-china-trip-us-house-republicans-push-ai-strategy-counter-beijing-2026-11-20/",
+        "role": "Related reporting"
+      }
+    ]
+  },
+  {
+    "slug": "us-ai-chip-export-approvals-revealed",
+    "sections": [
+      {
+        "heading": "An approval is not a shipment",
+        "paragraph": "Export rules govern which goods may be sold or transferred under particular conditions. A license approval can authorize activity without proving that every approved unit crossed the border. The number of applications, final shipments and changing policies are separate pieces of evidence."
+      },
+      {
+        "heading": "Why advanced chips are politically sensitive",
+        "paragraph": "AI accelerators support high-end model training and other demanding computing tasks. Policymakers consider their commercial importance alongside national-security concerns, while technology companies care about access to global customers."
+      },
+      {
+        "heading": "What a complete picture requires",
+        "paragraph": "A reliable analysis would examine the time period covered, chip categories, license terms and physical deliveries. The committee figures are newsworthy, but they should not be compressed into a claim that the government made every transfer described."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Reuters — chip restrictions and local suppliers",
+        "url": "https://www.reuters.com/business/retail-consumer/us-ai-chip-curbs-hit-china-tech-stocks-spur-self-sufficiency-push-2026-11-20/",
+        "role": "Industry response"
+      }
+    ]
+  },
+  {
+    "slug": "signal-adds-defenses-against-screen-reading-agents",
+    "sections": [
+      {
+        "heading": "Encryption has a boundary",
+        "paragraph": "End-to-end encryption helps protect the contents of messages while they travel between devices and services. It cannot automatically stop software that already has permission to look at an unlocked screen. This difference becomes increasingly important when assistants can act on behalf of users."
+      },
+      {
+        "heading": "What Signal changed",
+        "paragraph": "Signal described additional restrictions intended to limit the capture of conversations by operating-system AI features. The company also discussed earlier screenshot controls on Windows. Its position is not that one setting solves every privacy problem, but that access to sensitive communications should require meaningful user control."
+      },
+      {
+        "heading": "The wider challenge",
+        "paragraph": "Developers of messaging systems, operating systems and AI agents must consider permissions, notification previews, screenshots and data retention together. Readers should examine the platform-specific details: a change on one operating system may not behave identically on another."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Signal — official privacy engineering explanation",
+        "url": "https://signal.org/blog/protecting-your-privacy/",
+        "role": "Primary technical statement"
+      },
+      {
+        "name": "Reuters — broader AI-agent privacy concerns",
+        "url": "https://www.reuters.com/investigations/meta-bets-big-muse-ai-agent-early-safety-mishaps-surface-2026-11-18/",
+        "role": "Related reporting"
+      }
+    ]
+  },
+  {
+    "slug": "meta-muse-agent-faces-privacy-questions",
+    "sections": [
+      {
+        "heading": "Why assistants can see more than chatbots",
+        "paragraph": "An assistant that operates across apps may need permission to read screens, notifications or other interface information. Those capabilities can make it useful, but they also expand the opportunities for sensitive content to be mishandled."
+      },
+      {
+        "heading": "What remains disputed",
+        "paragraph": "Reuters described unusual behavior observed during testing and Meta's explanations, including the possibility that some outputs were hallucinations. A generated statement that appears to contain private information is not, by itself, proof that data was actually retrieved from the source imagined by the observer."
+      },
+      {
+        "heading": "How to assess the risk",
+        "paragraph": "Users and regulators need clear descriptions of permissions, retention and limits. Independent testing can distinguish accidental hallucination from real unauthorized access. Strong technical protections are more useful than vague promises that an assistant will always understand a user's privacy preferences."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Signal — independent privacy engineering discussion",
+        "url": "https://signal.org/blog/protecting-your-privacy/",
+        "role": "Technical context"
+      }
+    ]
+  }
+]

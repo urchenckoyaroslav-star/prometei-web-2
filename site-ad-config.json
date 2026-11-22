@@ -1,0 +1,21 @@
+{
+  "note": "Publisher AdSense IDs are not available. Sponsor/house slots render until an approved publisher account, real slot IDs and legally required consent controls are configured.",
+  "adsense": {
+    "enabled": false,
+    "consentReady": false,
+    "publisherId": "",
+    "slots": {
+      "newsFeed": "",
+      "newsArticleInline": "",
+      "newsArticleEnd": "",
+      "cryptoFeed": "",
+      "cryptoArticleInline": "",
+      "cryptoArticleEnd": ""
+    }
+  },
+  "house": {
+    "headline": "Advertise with PROMETEI",
+    "description": "Editorial sponsorship placements for brands in technology, software, communication, science and creativity. All paid placements are labelled and kept separate from our reporting.",
+    "contactUrl": "/portfolio"
+  }
+}

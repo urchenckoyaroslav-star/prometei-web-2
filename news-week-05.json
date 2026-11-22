@@ -1,0 +1,287 @@
+[
+  {
+    "slug": "small-island-nations-demand-climate-action",
+    "title": "Small island nations bring an urgent warning to COP31",
+    "category": "Climate",
+    "date": "2026-11-18",
+    "lead": "Small island states used the Antalya climate summit to explain why abstract temperature targets translate into immediate questions about their homes, infrastructure and survival.",
+    "body": [
+      "At COP31, delegates from small island countries asked larger economies to make more ambitious commitments. Their voice can be easy to overlook in a room filled with much bigger states, yet many of them face outsized risks from rising seas, stronger storms and changing coastal ecosystems.",
+      "These governments are not simply requesting symbolic sympathy. They have to plan for roads, drinking-water systems, ports, schools and homes that may be damaged by hazards linked to warming, while also financing ordinary development.",
+      "The debate connects emission cuts with adaptation funding. Even if warming is limited, some impacts demand preparation now; if global emissions remain high, those costs and pressures can grow.",
+      "The challenge for diplomats is to transform shared concern into decisions about funding, accountability and measurable action. The outcome should be judged through future implementation, rather than treating a moving speech or a short summit declaration as a complete solution."
+    ],
+    "why": "Low-lying island communities provide a vivid test of whether global climate diplomacy reflects the needs of those with the least room to absorb environmental shocks.",
+    "source": {
+      "name": "Associated Press",
+      "url": "https://apnews.com/article/6d0afe638c93be3150b5bb3b5cd3fd23"
+    },
+    "sources": [
+      {
+        "name": "UNFCCC — COP31 conference overview",
+        "url": "https://unfccc.int/cop31",
+        "role": "Conference background"
+      },
+      {
+        "name": "Reuters — final negotiations",
+        "url": "https://www.reuters.com/sustainability/cop/cop31-climate-talks-close-final-deal-says-summit-president-2026-11-21/",
+        "role": "Related reporting"
+      }
+    ],
+    "photo": "climate"
+  },
+  {
+    "slug": "un-secretary-general-succession-vote",
+    "title": "A disputed informal UN leadership poll reveals diplomatic deadlock",
+    "category": "World",
+    "date": "2026-11-20",
+    "lead": "Reports that two veto-holding powers had rejected a candidate in informal consultations highlighted the unusually difficult search for the next United Nations secretary-general.",
+    "body": [
+      "Diplomats told Reuters that Costa Rican candidate Rebeca Grynspan met opposition during an informal round of consultations about succession at the United Nations. Such discussions are not the same as a final appointment, but they offer a glimpse into how great-power diplomacy shapes the choices available.",
+      "Choosing a secretary-general is not simply a popularity contest among member countries. The Security Council recommends a candidate before the wider General Assembly makes the appointment, which gives the council's permanent members a decisive role in the process.",
+      "The contest is unfolding while the UN faces serious disputes over conflicts, financing and its effectiveness. A successful next leader would have to operate across deep divisions without assuming all member countries share the same priorities.",
+      "The immediate question is whether governments can move beyond blocking individual names and settle on a credible choice. The longer-term question is how to restore confidence in multilateral institutions whose responsibilities remain enormous."
+    ],
+    "why": "The UN's leadership affects diplomacy, humanitarian coordination and the public credibility of international institutions.",
+    "source": {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/world/americas/two-veto-wielding-powers-reject-costa-ricas-grynspan-un-chief-informal-poll-2026-11-20/"
+    },
+    "sources": [
+      {
+        "name": "United Nations — Secretary-General selection",
+        "url": "https://www.un.org/sg/en/content/selection-and-appointment",
+        "role": "Institutional background"
+      }
+    ],
+    "photo": "conference"
+  },
+  {
+    "slug": "nasa-dragon-science-returns-from-station",
+    "title": "SpaceX Dragon brings experiments back from the International Space Station",
+    "category": "Science",
+    "date": "2026-11-20",
+    "lead": "NASA outlined the departure of a cargo spacecraft carrying research samples and equipment back to Earth after weeks serving astronauts aboard the orbiting laboratory.",
+    "body": [
+      "A SpaceX Dragon cargo vehicle was prepared to leave the International Space Station with scientific samples and equipment, according to NASA updates published this week. The schedule was subject to operating conditions and a later advisory refined the expected splashdown time.",
+      "Returning cargo from orbit is a different task from delivering fresh supplies. Scientists on Earth can examine samples with laboratory equipment that is far too large or specialized to install permanently on the station.",
+      "Research in microgravity helps investigators study how materials, biological systems and physical processes behave when the familiar effects of Earth's gravity are reduced. These experiments can inform both future space exploration and selected research questions on the ground.",
+      "The news also illustrates the quiet logistical work that supports headline-making missions. Spaceflight depends on coordinated launch vehicles, docking systems, ground crews, weather conditions and careful tracking of every returned sample."
+    ],
+    "why": "Regular cargo returns make the orbital research program useful to scientists beyond the astronauts living on the station.",
+    "source": {
+      "name": "NASA — cargo return advisory",
+      "url": "https://www.nasa.gov/news-release/nasa-to-cover-35th-spacex-resupply-mission-space-station-departure/"
+    },
+    "sources": [
+      {
+        "name": "NASA — ISS crew and cargo update",
+        "url": "https://www.nasa.gov/blogs/spacestation/2026/11/19/science-and-suits-fill-schedule-as-crew-preps-for-cargo-missions/",
+        "role": "Mission operations"
+      },
+      {
+        "name": "NASA — Dragon departure update",
+        "url": "https://www.nasa.gov/blogs/general-blog/2026/11/20/dragon-prepares-to-depart-station-for-earth-return/",
+        "role": "Mission update"
+      }
+    ],
+    "photo": "space"
+  },
+  {
+    "slug": "voyager-one-interstellar-photo-of-the-day",
+    "title": "NASA revisits Voyager 1, a remarkable messenger from interstellar space",
+    "category": "Science",
+    "date": "2026-11-20",
+    "lead": "A NASA Astronomy Picture of the Day feature drew attention to the distant Voyager 1 spacecraft and the extraordinary endurance of its radio link to Earth.",
+    "body": [
+      "NASA's November 20 feature highlighted Voyager 1, a spacecraft launched decades ago and now travelling in interstellar space. The mission's longevity has changed the meaning of spacecraft engineering: instruments, power systems and communications equipment have continued working far beyond the time scale of many consumer technologies.",
+      "The distance involved is difficult to imagine. A radio signal from such a spacecraft takes many hours to reach Earth, and the signal received by ground antennas is extremely faint by the time it arrives.",
+      "Scientists rely on carefully designed radio systems and powerful tracking facilities to detect and interpret transmissions. Communication with deep-space probes is therefore a lesson in both physics and extraordinary engineering patience.",
+      "Voyager's story is relevant even to readers who never follow astronomy. It shows that communication is not determined by one magic antenna or unlimited energy; successful links depend on distance, sensitivity, power, encoding and a receiving infrastructure."
+    ],
+    "why": "Voyager 1 is an enduring example of how rigorous communications engineering lets people learn about places far beyond the planets.",
+    "source": {
+      "name": "NASA Science — Astronomy Picture of the Day",
+      "url": "https://science.nasa.gov/image-article/apod-2026-november-20-v-g-r/"
+    },
+    "sources": [
+      {
+        "name": "NASA — Voyager mission",
+        "url": "https://science.nasa.gov/mission/voyager/",
+        "role": "Mission background"
+      }
+    ],
+    "photo": "space"
+  },
+  {
+    "slug": "gta-six-official-soundtrack-album",
+    "title": "A blockbuster game's official soundtrack becomes a story of its own",
+    "category": "Culture",
+    "date": "2026-11-20",
+    "lead": "Rockstar Games announced the official Grand Theft Auto VI soundtrack album alongside the latest chapter in one of the world's best-known entertainment franchises.",
+    "body": [
+      "The music associated with a major open-world game is no longer merely background audio. Rockstar promoted a standalone soundtrack project and additional cultural programming around the November launch of its latest title.",
+      "Music helps shape a game's sense of time, geography and social atmosphere. Soundtracks also connect gaming to recording artists, distributors, physical editions and live events, creating a second creative ecosystem outside the playable experience.",
+      "The company said the album would be available through major streaming platforms and selected physical formats. For fans of interactive media, this shows how the launch of a game can stimulate attention across multiple entertainment industries.",
+      "There is a broader business lesson here. When a project becomes culturally prominent, its design, music, visual identity and community conversation can generate interest in their own right. That does not mean every licensed song or related product will be a commercial success."
+    ],
+    "why": "Soundtrack releases underline the growing overlap between games, music publishing and wider entertainment culture.",
+    "source": {
+      "name": "Rockstar Games — official newsroom",
+      "url": "https://www.rockstargames.com/newswire?tag=vi"
+    },
+    "sources": [
+      {
+        "name": "Rockstar — soundtrack announcement",
+        "url": "https://www.rockstargames.com/newswire/article/7599a881942544/announcing-grand-theft-auto-vi-the-album-coming-november-19",
+        "role": "Background"
+      },
+      {
+        "name": "Take-Two — launch announcement",
+        "url": "https://www.take2games.com/ir/news/rockstar-games-announces-grand-theft-auto-vi-now-available",
+        "role": "Launch context"
+      }
+    ],
+    "photo": "urban"
+  },
+  {
+    "slug": "gta-six-opening-day-entertainment-record",
+    "title": "Publisher reports a record first day for Grand Theft Auto VI",
+    "category": "Culture",
+    "date": "2026-11-20",
+    "lead": "Take-Two said Grand Theft Auto VI generated an extraordinary first-day retail-sales total, turning the long-awaited release into a significant entertainment-industry milestone.",
+    "body": [
+      "Take-Two Interactive said that Grand Theft Auto VI reached an estimated $3.79 billion in worldwide retail sales during its first day. The publisher described the launch as a record across entertainment, while explaining that the figure reflected its own estimates for the first 24 hours.",
+      "The result followed years of anticipation and major preparation for a worldwide release. Large entertainment launches depend on distribution, reliable infrastructure, marketing, and the ability to support millions of interested customers.",
+      "A major opening does not settle every question about long-term performance. Reviews, ongoing updates, spending by players and the durability of audience interest help determine how an entertainment product develops after launch day.",
+      "For the broader games industry, the headline illustrates the scale of modern interactive entertainment and the commercial influence of products that unite storytelling, sound, animation and complex software engineering."
+    ],
+    "why": "The report provides a snapshot of how large the global market for interactive entertainment has become.",
+    "source": {
+      "name": "Take-Two — day-one sales statement",
+      "url": "https://www.take2games.com/ir/news/grand-theft-auto-vi-shatters-entertainment-box-office-records"
+    },
+    "sources": [
+      {
+        "name": "Rockstar — launch notice",
+        "url": "https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available",
+        "role": "Official release"
+      },
+      {
+        "name": "Take-Two — quarterly results",
+        "url": "https://www.take2games.com/ir/news/take-two-interactive-software-inc-reports-results-fiscal-4",
+        "role": "Business context"
+      }
+    ],
+    "photo": "market"
+  },
+  {
+    "slug": "us-markets-slide-amid-ai-repricing",
+    "title": "US stock markets fall as investors reassess the AI boom",
+    "category": "Economy",
+    "date": "2026-11-20",
+    "lead": "A steep stock-market retreat focused attention on whether expectations for artificial-intelligence profits had moved ahead of what companies could yet demonstrate.",
+    "body": [
+      "The Associated Press described a difficult session in which major US benchmarks fell sharply and technology shares bore heavy selling pressure. Market participants were weighing unusually large spending plans for computing facilities against the uncertainty surrounding future returns.",
+      "A sell-off is not, by itself, a verdict on whether artificial intelligence works. Share prices incorporate expectations about interest rates, corporate profit margins, competition and the time it will take new products to generate cash.",
+      "The different fortunes of software developers, chip manufacturers and data-center operators can also make the market hard to interpret. They share an AI theme but have very different business costs and risks.",
+      "The episode illustrates why financial headlines require context. One bad session can alter valuations quickly, while technological adoption and infrastructure projects unfold over a much longer period."
+    ],
+    "why": "Market repricing affects companies seeking capital and households exposed to broad investment markets.",
+    "source": {
+      "name": "Associated Press",
+      "url": "https://apnews.com/article/c4c3f4878b12989347f8a930ed813dad"
+    },
+    "sources": [
+      {
+        "name": "Reuters — AI market context",
+        "url": "https://www.reuters.com/commentary/breakingviews/global-markets-breakingviews-2026-11-21/",
+        "role": "Market analysis"
+      }
+    ],
+    "photo": "market"
+  },
+  {
+    "slug": "anthropic-amodei-profile-ipo",
+    "title": "The human story behind Anthropic's record-breaking IPO",
+    "category": "Technology",
+    "date": "2026-11-19",
+    "lead": "Dario Amodei's path from scientific research to the leadership of a major AI company became a focus of public attention after Anthropic's unprecedented listing.",
+    "body": [
+      "A Reuters profile described Dario Amodei's journey through research and technology leadership as Anthropic reached the stock market. The IPO offered an unusually public view into a company working on frontier AI models.",
+      "Amodei and co-founder Daniela Amodei have discussed safety and responsibility as important parts of their company's identity. Bringing a firm like this onto public markets introduces another audience with its own expectations: shareholders who want measurable growth.",
+      "A stock offering can create resources for computing infrastructure and future development, but public investors still face uncertainty about costs, competition and long-term financial sustainability.",
+      "The story is bigger than one executive's biography. It asks whether businesses building powerful AI systems can combine safety research, broad access and commercial pressures without allowing any one goal to erase the others."
+    ],
+    "why": "Leadership choices at frontier AI developers influence both technical priorities and public debate about responsible AI.",
+    "source": {
+      "name": "Reuters — Amodei profile",
+      "url": "https://www.reuters.com/world/anti-war-physicist-ai-power-broker-amodei-takes-his-safety-approach-public-2026-11-19/"
+    },
+    "sources": [
+      {
+        "name": "Associated Press — IPO report",
+        "url": "https://apnews.com/article/70b660ddf900d90bbf484ecdf1fb441c",
+        "role": "Independent coverage"
+      }
+    ],
+    "photo": "server"
+  },
+  {
+    "slug": "un-climate-chief-urges-cop31-action",
+    "title": "UN climate leadership warns that COP31 cannot afford to lose momentum",
+    "category": "Climate",
+    "date": "2026-11-19",
+    "lead": "UN climate chief Simon Stiell urged participants in Antalya to focus on practical progress while disagreements over a draft agreement remained unresolved.",
+    "body": [
+      "During the last days of COP31, UN Climate Change Executive Secretary Simon Stiell addressed reporters and emphasized the urgency of continued cooperation. The discussion came as diplomats were reviewing competing proposals about energy transition and adaptation.",
+      "Negotiators needed to reconcile concerns from countries that rely heavily on fossil-fuel production with demands from those facing immediate climate damages. That is one reason the final stages of conferences often involve painstaking work over individual passages.",
+      "The release of another draft did not mean that a deal had already been reached. Governments still had to assess the text, consult with their delegations and decide whether the words reflected a balance they could accept.",
+      "The practical test will arrive after the summit: national policies, infrastructure investment and financial transfers will determine how much these negotiations influence real-world emissions and resilience."
+    ],
+    "why": "UN climate talks provide a forum for agreements, but implementation is necessary for any meaningful effect.",
+    "source": {
+      "name": "UNFCCC — Stiell's COP31 remarks",
+      "url": "https://unfccc.int/news/these-are-crucial-days-ahead-for-climate-cooperation-and-we-have-no-time-to-lose-un-climate-chief-at"
+    },
+    "sources": [
+      {
+        "name": "Reuters — negotiations in overtime",
+        "url": "https://www.reuters.com/sustainability/cop/cop31-climate-summit-risks-failure-talks-go-deep-into-overtime-2026-11-21/",
+        "role": "Independent reporting"
+      },
+      {
+        "name": "UNFCCC — draft decision",
+        "url": "https://docs.unfccc.int/documents/10000397",
+        "role": "Primary document"
+      }
+    ],
+    "photo": "climate"
+  },
+  {
+    "slug": "nvidia-board-leadership-transition",
+    "title": "Nvidia faces an unusual leadership test after a major executive departure",
+    "category": "Technology",
+    "date": "2026-11-17",
+    "lead": "A board statement on Nvidia's leadership search framed one of the AI industry's largest governance questions during a difficult earnings period.",
+    "body": [
+      "Reuters reported that Nvidia board chair Harvey Jones told investors the company would not reappoint former chief executive Jensen Huang. The comments came amid an earnings discussion and scrutiny of the chipmaker's role in advanced computing.",
+      "The board also emphasized governance and the process for selecting leadership. When a company is central to a fast-growing industry, succession is more than an internal personnel question: customers, employees and investors may all rethink what to expect.",
+      "The chipmaker's business remains tied to demand for AI infrastructure, but that demand intersects with trade rules, manufacturing supply and changing market expectations. A profitable quarter cannot resolve every strategic concern overnight.",
+      "The episode demonstrates how technical leadership, public trust, regulatory attention and board oversight become connected as software and hardware platforms grow to global scale."
+    ],
+    "why": "Nvidia's products influence the broader AI supply chain, so leadership uncertainty can have effects beyond one company's stock.",
+    "source": {
+      "name": "Reuters — Nvidia chair's remarks",
+      "url": "https://www.reuters.com/business/nvidia-forecasts-quarterly-revenue-above-estimates-first-report-since-huangs-2026-11-17/"
+    },
+    "sources": [
+      {
+        "name": "Reuters — market reaction context",
+        "url": "https://www.reuters.com/markets/europe/global-markets-view-europe-2026-11-16/",
+        "role": "Background"
+      }
+    ],
+    "photo": "server"
+  }
+]

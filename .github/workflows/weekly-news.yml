@@ -3,10 +3,15 @@ on:
   pull_request:
     paths:
       - "news-week-*.json"
+      - "news-depth-*.json"
+      - "site-ad-config.json"
+      - "site-ads.css"
+      - "scripts/ad-slots.mjs"
       - "news-images.json"
       - "news.css"
       - "news.js"
       - "scripts/build-news.mjs"
+      - "scripts/build-crypto-atlas.mjs"
       - "scripts/check-weekly-news.mjs"
       - "scripts/build.mjs"
       - "index.html"
@@ -16,10 +21,15 @@ on:
     branches: [main]
     paths:
       - "news-week-*.json"
+      - "news-depth-*.json"
+      - "site-ad-config.json"
+      - "site-ads.css"
+      - "scripts/ad-slots.mjs"
       - "news-images.json"
       - "news.css"
       - "news.js"
       - "scripts/build-news.mjs"
+      - "scripts/build-crypto-atlas.mjs"
       - "scripts/check-weekly-news.mjs"
       - "scripts/build.mjs"
       - "index.html"
@@ -39,6 +49,8 @@ jobs:
       - name: Parse English newsroom modules
         run: |
           node --check scripts/build-news.mjs
+          node --check scripts/ad-slots.mjs
+          node --check scripts/build-crypto-atlas.mjs
           node --check scripts/check-weekly-news.mjs
           node --check news.js
       - name: Build static site
