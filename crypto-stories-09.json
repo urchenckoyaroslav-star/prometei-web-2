@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "sky",
+    "facts": [
+      "Sky emerged from the long-running MakerDAO project during its 2024 rebranding.",
+      "Rune Christensen was among Maker's most visible founders and governance voices.",
+      "Maker had become famous for creating the DAI decentralized stablecoin.",
+      "The new Sky identity introduced changes involving the governance asset and USDS stablecoin.",
+      "SKY is tied to governance and ecosystem incentives rather than a simple dollar redemption promise.",
+      "The proposed migration from MKR created important choices for existing community participants.",
+      "Token-based voting became a central theme in how the system allocated risk and resources.",
+      "Debates about centralization, collateral choices, and compliance persisted through the transition.",
+      "DeFi communities compared the new branding with Maker's earlier decentralization ideals.",
+      "The role of USDS differs from that of SKY despite their shared ecosystem.",
+      "Governance value can fluctuate sharply even when an associated stablecoin targets one dollar.",
+      "Contract upgrades and migration programs require careful security and communication.",
+      "Some supporters saw a chance to broaden the ecosystem's audience and products.",
+      "The story of Sky shows that blockchain governance can involve difficult organizational redesign."
+    ],
+    "bridge": "SKY is a governance asset connected to a stablecoin ecosystem, whereas PROI points do not currently vote on a chain."
+  },
+  {
+    "slug": "pump-fun",
+    "facts": [
+      "Pump.fun emerged on Solana during 2024 as a platform associated with meme-token creation.",
+      "Alon Cohen, Dylan Kerler, and Noah Tweedale have been identified in reporting as its founders.",
+      "The platform became prominent during a wave of unusually rapid meme-asset launches.",
+      "Easy token creation drew both curious communities and concerns about financial speculation.",
+      "Public data showed large bursts of activity during several market cycles.",
+      "Critics emphasized scams, manipulation, and the difficulty of evaluating newly created tokens.",
+      "Supporters described a new style of online community experimentation.",
+      "The project introduced its own PUMP token in July 2025.",
+      "A token associated with an application does not prove that its underlying content is safe.",
+      "High public interest made the platform controversial far beyond technical cryptocurrency circles.",
+      "Legal and moderation debates formed part of its ongoing history.",
+      "Launchpad fees and incentive structures can create conflicts between operators and participants.",
+      "Many meme assets do not survive after their initial attention fades.",
+      "Pump.fun's story is better understood as a lesson in viral market behavior than as a recommendation to participate."
+    ],
+    "bridge": "PUMP's link to rapid speculative token launches is a reason to distinguish PROI's non-financial rewards from trading incentives."
+  },
+  {
+    "slug": "openusd",
+    "facts": [
+      "OpenUSD is a comparatively new dollar-token project connected to Open Standard.",
+      "The OUSD rollout occurred during 2026 as the market for institutional stablecoins broadened.",
+      "Open Standard emphasized sharing portions of reserve economics with distribution partners.",
+      "Zach Abrams was named publicly as a senior executive associated with the stablecoin initiative.",
+      "Coinbase, Mastercard, Shopify, Stripe, and Visa were identified among founding partners.",
+      "The project promoted interoperability across multiple blockchain infrastructures.",
+      "OUSD is designed to track the dollar rather than increase because of engineered scarcity.",
+      "Digital-dollar products require reserve, custody, and redemption arrangements.",
+      "Revenue-sharing models raise questions about governance and partner incentives.",
+      "The participation of major brands should not be misconstrued as a promise of risk-free ownership.",
+      "OpenUSD's brief operating history cannot yet support sweeping claims about resilience across decades.",
+      "The token became visible in a crowded field containing USDC, USDT, and other dollar instruments.",
+      "Regulatory differences between jurisdictions may affect distribution and usage.",
+      "OUSD illustrates how payment networks and blockchain settlement are becoming increasingly connected."
+    ],
+    "bridge": "OUSD is a recently issued dollar stablecoin, while PROI has no issuer-backed dollar claim and remains only points."
+  },
+  {
+    "slug": "morpho",
+    "facts": [
+      "Morpho grew from efforts to make decentralized lending markets more efficient.",
+      "Paul Frambot became one of the project's recognizable founders.",
+      "Early designs focused on improving lending-rate matching around established DeFi infrastructure.",
+      "The protocol later evolved toward more modular lending markets.",
+      "Morpho Blue introduced a distinct design for creating narrowly configured credit markets.",
+      "Market curators and collateral rules became important elements of the surrounding ecosystem.",
+      "The MORPHO token is connected with project governance.",
+      "Protocol development attracted attention from investors and DeFi engineering teams.",
+      "Lower overhead does not eliminate liquidation, oracle, or smart-contract risk.",
+      "Borrowing and lending through software require careful definitions of collateral and insolvency.",
+      "Governance decisions can affect markets with very different risk profiles.",
+      "Morpho's public narrative often emphasizes permissionless infrastructure rather than a conventional bank.",
+      "Market valuations responded to the growth and competition of decentralized finance.",
+      "Morpho offers a clear example of financial infrastructure that cannot be reduced to one token price."
+    ],
+    "bridge": "Morpho manages lending-market governance, whereas PROI points are not collateral and do not authorize borrowing."
+  },
+  {
+    "slug": "ethereum-classic",
+    "facts": [
+      "Ethereum Classic emerged from the bitter disagreement surrounding Ethereum's 2016 DAO exploit.",
+      "Some participants rejected rewriting blockchain history to reverse effects of the incident.",
+      "The chain that retained the earlier rule set became known as Ethereum Classic.",
+      "ETC and ETH therefore share an origin but have separate modern networks.",
+      "The event became a foundational debate over immutability and community governance.",
+      "Supporters argued that blockchain history should remain unchanged even after painful events.",
+      "Critics argued that exceptional interventions could protect users in unprecedented circumstances.",
+      "Ethereum Classic continued as a proof-of-work system while Ethereum later adopted proof of stake.",
+      "Barry Silbert and other public figures have been associated with historical support for ETC.",
+      "Like other proof-of-work networks, ETC has faced questions about the security of mining power.",
+      "Several reported chain-reorganization incidents intensified those concerns.",
+      "Application ecosystems and developer resources diverged sharply between the two Ethereum networks.",
+      "ETC has experienced major market cycles without simply following every Ethereum upgrade.",
+      "Its story demonstrates that technical protocols are also shaped by human choices about governance."
+    ],
+    "bridge": "Ethereum Classic is a real alternative chain formed by a historical fork, unlike PROI points, which have never launched a chain."
+  }
+]
