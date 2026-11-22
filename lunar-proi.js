@@ -115,6 +115,7 @@ function paint(age,date=null){
  const index=phaseIndex(view);
  currentPhase=p;
  slider.value=safeAge.toFixed(3);
+ slider.style.setProperty("--lp-cycle-progress",(Math.max(0,Math.min(1,p))*100).toFixed(2)+"%");
  $("lp-moon-light-path").setAttribute("d",moonPath(view));
  $("lp-phase-name").textContent=cfg.phases[index];
  $("lp-lit-percent").textContent=Math.floor(lit*100)+"%";
@@ -192,7 +193,12 @@ function renderCalendar(){
   if(items.length)b.classList.add("has-event");
   if(iso===utcToday.toISOString().slice(0,10))b.classList.add("is-today");
   const numeral=document.createElement("span");numeral.className="lp-day-number";numeral.textContent=String(day);
-  const moon=document.createElement("span");moon.className="lp-day-moon";moon.setAttribute("aria-hidden","true");moon.textContent=["🌑","🌒","🌓","🌔","🌕","🌖","🌗","🌘"][phaseIndex(p)];
+  const moon=document.createElement("span");moon.className="lp-day-moon";moon.setAttribute("aria-hidden","true");
+  const ns="http://www.w3.org/2000/svg",icon=document.createElementNS(ns,"svg");
+  icon.setAttribute("viewBox","0 0 360 360");icon.setAttribute("focusable","false");
+  const disk=document.createElementNS(ns,"circle");disk.setAttribute("cx","180");disk.setAttribute("cy","180");disk.setAttribute("r","136");disk.setAttribute("fill","#162c3c");disk.setAttribute("stroke","#729fae");disk.setAttribute("stroke-width","9");
+  const light=document.createElementNS(ns,"path");light.setAttribute("d",moonPath(p));light.setAttribute("fill","#d9e4e6");
+  icon.append(disk,light);moon.append(icon);
   const count=document.createElement("small");count.className="lp-day-count";count.textContent=items.length?"+"+one.format(sum/1000):"—";
   b.append(numeral,moon,count);b.addEventListener("click",()=>animate(ageAt(date),date));
   container.append(b);
