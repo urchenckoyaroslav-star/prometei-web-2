@@ -28,6 +28,9 @@ for(const l of Object.keys(langs)){
  assert.ok(html.includes('name="description"')&&html.includes('meta name="robots" content="index,follow'),"Meta "+l);
  assert.ok(html.includes('href="/site-quality.css"'),"Responsive CSS not injected "+l);
  assert.ok(html.includes('lunar-proi.css')&&html.includes('lunar-proi.js'),"Interactive assets "+l);
+ assert.ok(html.includes('site-ads.css')&&html.includes('data-ad-placement="lunarScience"'),"Lunar science sponsorship slot missing "+l);
+ assert.ok(html.includes('class="site-ad-label"')&&html.includes('advertise/'),"Honest partner label/route missing "+l);
+ assert.ok(!html.includes('pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'),"Unapproved live AdSense on lunar page "+l);
  for(const x of Object.keys(langs)){
   const alt=base+pathFor(x);
   assert.ok(html.includes('hreflang="'+langs[x]+'" href="'+alt+'"'),"Missing hreflang "+l+" -> "+x);
