@@ -42,8 +42,8 @@ await context.route("**/*",route=>{
  }
  return route.abort();
 });
-const primary=["/","/news/","/news/signal-adds-defenses-against-screen-reading-agents/","/crypto-atlas/","/crypto-atlas/bitcoin/","/guides/","/advertise/","/services/","/portfolio","/fm"];
-const localized=["/uk/","/ru/","/de/","/es/","/zh/","/ja/"];
+const primary=["/","/news/","/news/signal-adds-defenses-against-screen-reading-agents/","/crypto-atlas/","/crypto-atlas/bitcoin/","/crypto-atlas/proi/","/guides/","/advertise/","/services/","/portfolio","/fm"];
+const localized=["/uk/","/ru/","/de/","/es/","/zh/","/ja/","/uk/crypto-atlas/proi/","/ru/crypto-atlas/proi/","/de/crypto-atlas/proi/","/es/crypto-atlas/proi/","/zh/crypto-atlas/proi/","/ja/crypto-atlas/proi/"];
 const sizes=[{width:320,height:720},{width:360,height:760},{width:390,height:844},{width:430,height:932},{width:768,height:1024},{width:1024,height:768},{width:1440,height:900},{width:1920,height:1080},{width:2560,height:1440}];
 const failures=[],results=[];
 const page=await context.newPage();
