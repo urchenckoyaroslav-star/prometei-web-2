@@ -40,7 +40,7 @@ function icon(asset,cls=""){
  return '<span class="coin-mark '+cls+'" style="--coin-hue:'+hue.toFixed(1)+'" role="img" aria-label="'+esc(asset.name)+' editorial symbol"><span class="coin-ring"></span><span class="coin-glyph">'+esc(glyph)+'</span></span>';
 }
 function nav(base,active){
- const links=[["PROMETEI",base],["MESSENGER",base],["SCIENCE ATLAS",base+"guides/"],["CRYPTO ATLAS",siteHref(base)],["PROI · THE SPARK",siteHref(base,"proi/")]];
+ const links=[["PROMETEI",base],["MESSENGER",base],["SCIENCE ATLAS",base+"guides/"],["CRYPTO ATLAS",siteHref(base)],["PROI · THE SPARK",siteHref(base,"proi/")],["WEEKLY NEWS",base+"news/"],["PROMETEI FM",base+"fm"],["PORTFOLIO",base+"portfolio"],["DOWNLOAD", "https://play.google.com/store/apps/details?id=com.meshnetwork.app"]];
  return '<header class="ca-header"><div class="ca-container ca-header-inner"><a href="'+base+'" class="ca-brand"><span class="ca-brand-star">✦</span><span>PROMETEI <small>KNOWLEDGE UNIVERSE</small></span></a><nav aria-label="Main navigation">'+links.slice(1).map(([name,url])=>'<a href="'+esc(url)+'"'+(name===active?' aria-current="page"':'')+'>'+esc(name)+'</a>').join("")+'</nav></div></header>';
 }
 function moon(){
