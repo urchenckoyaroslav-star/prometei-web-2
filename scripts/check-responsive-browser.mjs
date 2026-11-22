@@ -77,12 +77,17 @@ async function inspect(route,size){
   }).slice(0,7).map(el=>({tag:el.tagName,cls:String(el.className||"").slice(0,60),label:(el.textContent||el.getAttribute("aria-label")||"").trim().slice(0,55),right:Math.round(el.getBoundingClientRect().right)}));
   const heading=document.querySelector("main h1");
   const headings=heading?getComputedStyle(heading):null;
-  return {viewport:width,scrollWidth:document.documentElement.scrollWidth,mainHeading:!!heading,headingVisible:!!heading&&visible(heading),clipped,fontSize:headings?.fontSize||"",hasLang:!!document.documentElement.lang};
+  const installBand=document.querySelector(".prometei-install-band");
+  const installButton=document.querySelector(".prometei-install-button");
+  const installRect=installButton?.getBoundingClientRect();
+  return {viewport:width,scrollWidth:document.documentElement.scrollWidth,mainHeading:!!heading,headingVisible:!!heading&&visible(heading),clipped,fontSize:headings?.fontSize||"",hasLang:!!document.documentElement.lang,installVisible:!!installBand&&visible(installBand)&&!!installButton&&visible(installButton),installClip:!!installRect&&(installRect.left<-2||installRect.right>width+2)};
  });
  if(!measurement.mainHeading)failures.push(route+" @"+size.width+": no visible H1");
  if(measurement.scrollWidth>size.width+4)failures.push(route+" @"+size.width+": horizontal document overflow "+measurement.scrollWidth);
  if(measurement.clipped.length)failures.push(route+" @"+size.width+": clipped interactive/heading elements "+JSON.stringify(measurement.clipped));
  if(!measurement.hasLang)failures.push(route+" @"+size.width+": missing html language");
+ if(!measurement.installVisible)failures.push(route+" @"+size.width+": universal Google Play install CTA is not visible");
+ if(measurement.installClip)failures.push(route+" @"+size.width+": install button is horizontally clipped");
  results.push(route+" "+size.width+"px OK H1="+measurement.mainHeading+" font="+measurement.fontSize+" scroll="+measurement.scrollWidth);
  if((route==="/"||route==="/news/"||route==="/crypto-atlas/"||route==="/advertise/")&&(size.width===390||size.width===1440)){
    await page.screenshot({path:path.join(screenshots,(route.replace(/\W/g,"-")||"home")+"-"+size.width+".png"),fullPage:false});
