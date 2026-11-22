@@ -1,0 +1,383 @@
+{
+  "updated": "2026-11-22",
+  "guides": [
+    {
+      "slug": "bluetooth-messaging-without-internet",
+      "group": "bluetooth",
+      "en": [
+        "How Bluetooth Messaging Works Without Internet",
+        "How Bluetooth messaging on Android works: nearby discovery, sending messages without mobile data and realistic limitations.",
+        "Bluetooth connects nearby compatible Android devices through local radio. A message can travel between phones without a mobile data subscription or a public Internet connection when the app supports that route.",
+        [
+          [
+            "From discovery to delivery",
+            "First, devices must detect a compatible nearby peer. Next they establish an available connection. Only then can the application attempt to deliver its message. Each stage depends on Android permissions, radio conditions and the recipient's device state."
+          ],
+          [
+            "What PROMETEI does",
+            "PROMETEI explores Bluetooth as one of its nearby transport paths. Whether the current release can deliver a particular message depends on both devices, granted permissions and a reachable participant. Bluetooth is not a promise of cross-city or unlimited-range delivery."
+          ],
+          [
+            "A practical check",
+            "Enable Bluetooth on two nearby Android phones, grant the permissions requested by the installed app, select an available nearby route and send a short text. Change one condition at a time and record the result. Offline connectivity does not automatically mean anonymity or identical encryption across every route."
+          ]
+        ]
+      ],
+      "ru": [
+        "Как работает мессенджер через Bluetooth без интернета",
+        "Как Android передаёт сообщения по Bluetooth без интернета, SIM-карты и мобильных данных: условия и ограничения PROMETEI.",
+        "Bluetooth связывает совместимые телефоны поблизости с помощью радиоволн. При поддержке приложением такого маршрута сообщение может пройти без мобильного интернета и SIM-карты.",
+        [
+          [
+            "От обнаружения до доставки",
+            "Сначала устройство должно найти соседний телефон, затем установить поддерживаемое соединение. Только после этого приложение может попытаться доставить текст. На каждом этапе влияют разрешения Android, расстояние, радиопомехи и доступность адресата."
+          ],
+          [
+            "Как это используется в PROMETEI",
+            "PROMETEI исследует Bluetooth как один из каналов локальной переписки. Результат зависит от двух устройств, настроек и версии приложения. Радиоканал поблизости сам по себе не даёт связь между городами."
+          ],
+          [
+            "Как проверить на практике",
+            "Включите Bluetooth на двух Android-телефонах, предоставьте необходимые разрешения, выберите доступный режим и отправьте короткий текст. Затем меняйте условия по одному. Отсутствие интернета не равнозначно полной анонимности или гарантиям шифрования."
+          ]
+        ]
+      ]
+    },
+    {
+      "slug": "bluetooth-range-and-android-permissions",
+      "group": "bluetooth",
+      "en": [
+        "Bluetooth Range, Android Permissions and Message Delivery",
+        "Why nearby Bluetooth messages fail: distance, walls, device permissions, background operation and a two-phone test.",
+        "Turning Bluetooth on is only one part of nearby messaging. Devices also need an application-compatible route, permissions and suitable radio conditions.",
+        [
+          [
+            "Range changes in the real world",
+            "The useful distance varies with phone models, antenna placement, interference, barriers and Bluetooth mode. Working at a desk does not prove that delivery will succeed through thick walls."
+          ],
+          [
+            "Permission and state matter",
+            "Android versions differ in how nearby-device and Bluetooth access is approved. Discovery alone is not delivery. An app running in the background might also face different limits from an app open on screen."
+          ],
+          [
+            "Repeatable test",
+            "Try a short message with both apps open and phones close together. Increase the distance gradually, noting Android and app versions. If the devices stop communicating, check permissions and reachability before blaming the Internet."
+          ]
+        ]
+      ],
+      "ru": [
+        "Дальность Bluetooth и разрешения Android: почему сообщения не доходят",
+        "Радиус Bluetooth, стены, помехи, разрешения Android и понятная проверка переписки на двух телефонах.",
+        "Одна включённая кнопка Bluetooth ещё не означает, что мессенджер доставит текст. Нужны поддерживаемый маршрут и подходящие условия.",
+        [
+          [
+            "Почему нет фиксированной дальности",
+            "Радиус зависит от модели телефона, антенны, помех, препятствий и режима Bluetooth. Если связь работает за столом, это не доказательство работы через несколько толстых стен."
+          ],
+          [
+            "Разрешения и режим приложения",
+            "Версии Android отличаются системой разрешений для устройств поблизости. Обнаружить телефон — ещё не значит доставить ему сообщение. Фоновый режим приложения также может накладывать ограничения."
+          ],
+          [
+            "Повторяемый опыт",
+            "Отправьте короткое сообщение при открытых приложениях и минимальной дистанции. Постепенно увеличивайте расстояние, отмечая версии Android и PROMETEI. При сбое сначала проверьте разрешения и доступность адресата."
+          ]
+        ]
+      ]
+    },
+    {
+      "slug": "bluetooth-versus-wifi-messaging",
+      "group": "bluetooth",
+      "en": [
+        "Bluetooth vs Wi-Fi: Which Is Better for Offline Messages?",
+        "Compare local Bluetooth chat and Wi-Fi LAN messaging: setup, reachability, network isolation and practical trade-offs.",
+        "Bluetooth and Wi-Fi are different radio technologies. Both can carry local data without the public Internet, but neither works in every location.",
+        [
+          [
+            "Bluetooth without a shared router",
+            "Nearby phones may connect through a supported Bluetooth path without joining the same Wi-Fi network. Permission and radio conditions are essential."
+          ],
+          [
+            "Wi-Fi on a local network",
+            "A local Wi-Fi path normally requires both devices to reach a suitable LAN. A router can keep that LAN running when the provider's uplink disappears; guest-network client isolation may still block communication."
+          ],
+          [
+            "Choosing a PROMETEI route",
+            "Choose the channel that actually reaches the recipient in the installed release. Test text before media, and test calls separately where supported. Mixed-mode design should not be confused with a guarantee of automatic fallback."
+          ]
+        ]
+      ],
+      "ru": [
+        "Bluetooth или Wi-Fi: какой канал лучше для сообщений без интернета?",
+        "Честное сравнение Bluetooth и Wi-Fi/LAN: подключение, дальность, локальная сеть и ограничения Android.",
+        "Bluetooth и Wi-Fi — разные радиотехнологии. Обе могут передавать локальные данные без внешнего интернета, но условия подключения отличаются.",
+        [
+          [
+            "Bluetooth без общего роутера",
+            "Находящиеся рядом телефоны могут использовать поддерживаемый Bluetooth-маршрут, даже если нет общей сети Wi-Fi. Нужны разрешения Android и устойчивое радио-соединение."
+          ],
+          [
+            "Wi-Fi внутри локальной сети",
+            "Обычно оба устройства должны находиться в доступной LAN. Даже когда провайдер отключён, роутер может поддерживать локальную сеть. Но гостевая изоляция клиентов мешает прямому обмену."
+          ],
+          [
+            "Выбор маршрута PROMETEI",
+            "Используйте реально доступный канал в текущем релизе. Сначала проверяйте текст, отдельно медиа и звонки, если поддерживаются. Идея смешанного режима не означает гарантированного автоматического переключения."
+          ]
+        ]
+      ]
+    },
+    {
+      "slug": "local-wifi-messaging-without-internet",
+      "group": "wifi",
+      "en": [
+        "Local Wi-Fi Messenger Without Internet: How LAN Chat Works",
+        "Learn how local Wi-Fi/LAN messaging can operate without the provider's Internet connection and what PROMETEI needs.",
+        "A Wi-Fi router may keep a local network running when the Internet provider's connection is unavailable. Devices on that LAN can sometimes exchange data directly through supported apps.",
+        [
+          [
+            "Local network vs the Internet",
+            "A router creates connections among local devices; its uplink connects them to external networks. Losing the uplink does not always break local connectivity. This is why LAN-based communication may work during an Internet outage."
+          ],
+          [
+            "Conditions for PROMETEI",
+            "Both Android devices need a suitable local path, compatible app versions and necessary permissions. Guest Wi-Fi networks may isolate connected clients. If the router blocks device-to-device traffic, a Wi-Fi symbol alone will not make messages deliver."
+          ],
+          [
+            "The limitations",
+            "A local LAN does not provide unlimited range or send messages across cities without additional infrastructure. Voice or video features have different requirements from short text messages, so test them separately when supported."
+          ]
+        ]
+      ],
+      "ru": [
+        "Локальный Wi-Fi без интернета: как работает LAN-мессенджер",
+        "Переписка по локальному Wi-Fi без провайдера: почему LAN может работать без интернета и что требуется PROMETEI.",
+        "Wi-Fi-роутер может продолжать объединять телефоны в локальную сеть, даже когда внешний интернет отключился. При поддерживаемом маршруте устройства иногда могут обмениваться сообщениями напрямую.",
+        [
+          [
+            "Чем LAN отличается от интернета",
+            "Роутер организует связь внутри дома или офиса, а провайдер обеспечивает выход во внешнюю сеть. Потеря провайдера не всегда отключает локальные адреса и обмен между устройствами."
+          ],
+          [
+            "Что необходимо PROMETEI",
+            "Два Android-телефона должны иметь доступный LAN-маршрут, разрешения и совместимые версии приложения. В гостевых сетях часто включена изоляция клиентов: значок Wi-Fi при этом есть, но передача между устройствами блокируется."
+          ],
+          [
+            "Границы технологии",
+            "Локальная сеть сама по себе не даёт связь между городами. Для звонков и видео обычно важны другие параметры сети, чем для коротких текстов, поэтому каждый сценарий нужно проверять отдельно."
+          ]
+        ]
+      ]
+    },
+    {
+      "slug": "wifi-router-without-uplink-test",
+      "group": "wifi",
+      "en": [
+        "Test Two Android Phones on Wi-Fi Without Internet",
+        "A reproducible two-phone test for local messaging with an active Wi-Fi router and no Internet uplink.",
+        "You can separate local-network messaging from Internet messaging by testing two phones connected to the same trusted router while its external uplink is disabled.",
+        [
+          [
+            "Establish a baseline",
+            "Connect both phones to a trusted Wi-Fi router, make sure they can see the local network, and check that client isolation is not enabled. Open PROMETEI on both phones and select an available local route."
+          ],
+          [
+            "Change only the uplink",
+            "Send a short test message with normal Internet access. Then disconnect the router's Internet uplink while leaving its Wi-Fi running. Repeat the same message test. This is a diagnostic result for your devices, not a guarantee for all networks."
+          ],
+          [
+            "Record the useful facts",
+            "Note phone models, Android versions, installed app versions, router isolation settings and success or failure. Avoid including private message contents or identifying network data in public reports."
+          ]
+        ]
+      ],
+      "ru": [
+        "Эксперимент: два телефона в Wi-Fi-сети при отключённом интернете",
+        "Проверяем локальную доставку PROMETEI на двух Android-телефонах, когда роутер включён, а провайдер недоступен.",
+        "Можно отдельно проверить работу локальной сети и интернета: подключить два телефона к одному роутеру и отключить только его внешний канал.",
+        [
+          [
+            "Проверьте исходные условия",
+            "Подключите оба телефона к доверенной Wi-Fi-сети, убедитесь, что роутер не изолирует клиентов, и откройте PROMETEI на обоих устройствах. Выберите доступный локальный режим."
+          ],
+          [
+            "Отключите только внешний канал",
+            "Отправьте короткий текст при обычном подключении. Затем отключите у роутера интернет провайдера, сохранив Wi-Fi, и повторите тест. Результат показывает поведение именно этой конфигурации."
+          ],
+          [
+            "Запишите наблюдения",
+            "Отметьте модель, Android, версию приложения, настройки изоляции и статус доставки. Не публикуйте чужую переписку или частные данные сети."
+          ]
+        ]
+      ]
+    },
+    {
+      "slug": "local-network-vs-mobile-data",
+      "group": "wifi",
+      "en": [
+        "Wi-Fi, Mobile Data and SIM Cards: What Does a Messenger Need?",
+        "Can Android messaging work without a SIM or phone number? Compare Bluetooth, local Wi-Fi and Internet needs.",
+        "A SIM card connects a device to a mobile operator, but compatible Android phones can operate Wi-Fi and Bluetooth radios without an active SIM.",
+        [
+          [
+            "Without SIM is not the same as without Internet",
+            "A phone without a SIM can use a local Wi-Fi network, Bluetooth and even an Internet connection supplied over Wi-Fi. Android installation and the app's account-creation requirements are separate questions."
+          ],
+          [
+            "Number-free onboarding",
+            "PROMETEI is designed so users can begin without providing a phone number or email address. This does not establish total anonymity; network metadata, device settings and visible profile activity can still disclose information."
+          ],
+          [
+            "Which paths need mobile data",
+            "An Internet path uses available Internet access, either mobile data or Wi-Fi broadband. A Bluetooth or local-LAN hop need not consume mobile operator data for that local exchange. Test actual app behavior before relying on this distinction."
+          ]
+        ]
+      ],
+      "ru": [
+        "Мессенджер без SIM-карты и номера телефона: нужен ли интернет?",
+        "Как работают Bluetooth и Wi-Fi на Android без SIM-карты, а PROMETEI — без обязательной регистрации по номеру.",
+        "SIM-карта связывает телефон с оператором, но на совместимом Android-устройстве Wi-Fi и Bluetooth могут работать без установленной активной SIM.",
+        [
+          [
+            "Без SIM не означает без интернета",
+            "Телефон может использовать локальную Wi-Fi-сеть, Bluetooth и даже интернет через Wi-Fi, не подключаясь к мобильному оператору. Установка приложения и его собственная регистрация — отдельные условия."
+          ],
+          [
+            "Запуск без телефонного номера",
+            "PROMETEI задуман с началом общения без обязательного номера или электронной почты. Это не обещание полной анонимности: метаданные сети, устройство и опубликованный профиль могут выдавать информацию."
+          ],
+          [
+            "Расход мобильного трафика",
+            "Интернет-маршрут использует доступный мобильный или Wi-Fi-интернет. Для локального участка Bluetooth либо LAN связь оператора не нужна. Проверяйте, как ведёт себя именно установленная версия PROMETEI."
+          ]
+        ]
+      ]
+    },
+    {
+      "slug": "how-internet-messengers-deliver-messages",
+      "group": "internet",
+      "en": [
+        "How Internet Messengers Deliver Messages and Calls",
+        "Understand online chat delivery, reachability, retry queues and why voice/video calls need different network conditions.",
+        "An Internet messenger delivers data through a network path that can include service infrastructure. Application protocols, privacy designs and offline queues differ between products.",
+        [
+          [
+            "Sending is not delivery",
+            "The sender prepares a message and transmits it through the available Internet path. An app may queue, retry or synchronize a message later if the recipient is unreachable. The exact behavior depends on the messenger's architecture."
+          ],
+          [
+            "Why calls are different",
+            "Voice and video require a reasonably stable stream of data. Delay, packet loss and jitter affect calls more immediately than short text. A successful text test does not prove that a call will work under the same conditions."
+          ],
+          [
+            "PROMETEI and familiar apps",
+            "WhatsApp, Telegram, Signal and Viber offer extensive Internet communication features. PROMETEI also explores nearby Bluetooth and LAN messaging. That is a distinct use case, not proof of faster calls, better encryption or stronger anonymity than the established alternatives."
+          ]
+        ]
+      ],
+      "ru": [
+        "Как интернет-мессенджеры доставляют сообщения и звонки",
+        "Как работают сообщения, очереди и звонки в интернет-мессенджерах, а также чем отличается подход PROMETEI.",
+        "Интернет-мессенджер передаёт данные по сетевому маршруту, в котором могут участвовать серверы. Способы доставки и защиты данных отличаются у разных приложений.",
+        [
+          [
+            "Отправить — не значит доставить",
+            "Приложение формирует сообщение и передаёт его по интернету. Если получатель недоступен, система иногда сохраняет текст и пытается доставить позднее. Это зависит от конкретной архитектуры."
+          ],
+          [
+            "Почему звонки работают иначе",
+            "Голосовые и видеозвонки чувствительны к задержкам, потерям пакетов и нестабильности сети. Успешная доставка короткого текста не гарантирует надёжный звонок."
+          ],
+          [
+            "PROMETEI и известные мессенджеры",
+            "WhatsApp, Telegram, Signal и Viber предлагают развитое общение через интернет. PROMETEI дополнительно исследует Bluetooth и LAN поблизости. Это другое применение, а не доказательство лучшего шифрования, звонков или анонимности."
+          ]
+        ]
+      ]
+    },
+    {
+      "slug": "mixed-routes-and-offline-fallback",
+      "group": "internet",
+      "en": [
+        "Mixed Messaging Routes: Internet, Bluetooth and Local Wi-Fi",
+        "What mixed messaging means, what route selection depends on and why fallback cannot be promised without real device tests.",
+        "Different connection types can become available or disappear independently. Exploring more than one route helps a messenger address scenarios where Internet-only delivery is not sufficient.",
+        [
+          [
+            "Why mixed paths matter",
+            "The public Internet may fail while a local router continues working. Bluetooth may remain available when no Wi-Fi network is shared. A practical app must recognize which destination can actually be reached."
+          ],
+          [
+            "Route selection is implementation-specific",
+            "The selected route may depend on recipient reachability, phone permissions, background state and feature type. The label Mixed does not by itself guarantee automatic failover, delivery between cities without infrastructure or identical security on every path."
+          ],
+          [
+            "How to test a fallback claim",
+            "Try text on each supported route independently, then change one factor at a time: router uplink, local Wi-Fi, Bluetooth or foreground state. Record delivery timestamps and failures. PROMETEI is an evolving tool, not an emergency service."
+          ]
+        ]
+      ],
+      "ru": [
+        "Смешанный режим связи: интернет, Bluetooth и Wi-Fi в одном мессенджере",
+        "Зачем мессенджеру несколько маршрутов, от чего зависит их выбор и почему нет гарантии автоматического переключения.",
+        "Разные виды связи могут исчезать независимо друг от друга. Использование нескольких маршрутов помогает исследовать сценарии, в которых одного интернета недостаточно.",
+        [
+          [
+            "Зачем несколько путей",
+            "Интернет может пропасть, хотя локальный роутер продолжает работать. Bluetooth может быть доступен при отсутствии общей сети Wi-Fi. Приложению важно понимать достижимость получателя."
+          ],
+          [
+            "Выбор зависит от реализации",
+            "На маршрут влияют разрешения Android, состояние приложения и тип сообщения. Название Mixed не обещает автоматического переключения во всех случаях, связи между городами без инфраструктуры и одинаковой защиты каждого канала."
+          ],
+          [
+            "Проверка на практике",
+            "Отправьте короткий текст отдельно через каждый доступный путь, затем меняйте по одному условию: интернет роутера, локальный Wi-Fi, Bluetooth и фоновое состояние. Сравнивайте фактическую доставку. PROMETEI не заменяет экстренные службы."
+          ]
+        ]
+      ]
+    },
+    {
+      "slug": "messenger-without-phone-number-comparison",
+      "group": "internet",
+      "en": [
+        "Messenger Without a Phone Number: PROMETEI and Popular Apps",
+        "No SIM, no phone-number signup and offline chat are different concepts. Compare PROMETEI with Telegram, WhatsApp, Signal and Viber.",
+        "The phrase anonymous messenger can mean several distinct things: no phone number during signup, no SIM card in the phone, no Internet for nearby chat or strong privacy protections.",
+        [
+          [
+            "Number-free account setup",
+            "PROMETEI is designed for onboarding without requiring a phone number or email address. Compatible Android phones can still use Wi-Fi and Bluetooth without a SIM. Neither fact guarantees absolute anonymity or free communication across any distance."
+          ],
+          [
+            "Compared with familiar messengers",
+            "WhatsApp, Telegram, Signal and Viber are established Internet communication services. Their signup and phone-number policies can change; check current official guidance. PROMETEI explores additional local Bluetooth/LAN routes rather than claiming that the other apps are always inferior."
+          ],
+          [
+            "Choosing based on real needs",
+            "For distant contacts, check online reachability and supported calling features. For a nearby outage, try local text delivery on two devices. For privacy, examine encryption details, metadata, account recovery and backups rather than relying on the word anonymous alone."
+          ]
+        ]
+      ],
+      "ru": [
+        "Анонимный мессенджер без номера: PROMETEI, Telegram, WhatsApp, Signal, Viber",
+        "Чем мессенджер без SIM и обязательной регистрации по номеру отличается от обычных приложений: честное сравнение PROMETEI.",
+        "Под фразой «анонимный мессенджер» скрываются разные потребности: не вводить номер, пользоваться телефоном без SIM, переписываться рядом без интернета или защищать приватность.",
+        [
+          [
+            "Начало общения без номера",
+            "PROMETEI задуман так, чтобы начинать пользоваться без обязательного ввода номера телефона или электронной почты. Wi-Fi и Bluetooth способны работать без SIM на совместимом Android. Но это не гарантирует полной анонимности или связи на любом расстоянии."
+          ],
+          [
+            "Сравнение с известными продуктами",
+            "WhatsApp, Telegram, Signal и Viber — развитые сервисы для интернет-общения. Их правила регистрации могут меняться, поэтому проверяйте официальные условия. PROMETEI исследует дополнительные локальные Bluetooth/LAN-маршруты, а не заявляет о безусловном превосходстве."
+          ],
+          [
+            "Как выбирать",
+            "Для дальнего общения проверьте доступность контакта и звонков. При локальной аварии протестируйте текст на двух телефонах. Для приватности важны реализация шифрования, метаданные, восстановление аккаунта и резервные копии, а не одно слово «анонимный»."
+          ]
+        ]
+      ]
+    }
+  ]
+}

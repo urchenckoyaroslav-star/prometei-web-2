@@ -101,3 +101,23 @@ html,body{overflow-x:clip}
 @media(max-width:930px){.career-head{flex-direction:column;align-items:stretch}.career-availability{align-self:flex-start;max-width:100%;font-size:12px}.career-proof-grid{grid-template-columns:1fr 1fr}.career-proof-card:last-child{grid-column:1/-1}}
 @media(max-width:570px){.career-overview{padding:23px 17px;border-radius:19px}.career-overview h2{font-size:clamp(25px,8vw,36px)}.career-proof-grid{grid-template-columns:1fr}.career-proof-card:last-child{grid-column:auto}.career-proof-card{min-height:94px;padding:12px 15px}.career-quicklinks{flex-direction:column;gap:1px}.career-quicklinks a{font-size:11px}.case-evidence{padding:18px 15px}.portfolio-case{overflow-wrap:anywhere}}
 @media(prefers-reduced-motion:reduce){.career-proof-card,.career-quicklinks a{transition:none!important}.career-proof-card:hover{transform:none!important}}
+
+/* SEO connection library: accessible animated cards, consistent with PROMETEI design */
+.seo-knowledge{position:relative;isolation:isolate}
+.seo-knowledge::before{content:"";pointer-events:none;position:absolute;inset:14% -5% 0;z-index:-1;opacity:.4;background:radial-gradient(circle at 18% 30%,#3c57b055,transparent 43%),radial-gradient(circle at 85% 75%,#44d9ef35,transparent 45%)}
+.seo-knowledge .section-head{align-items:end}
+.seo-knowledge .section-head h2{max-width:700px}
+.seo-knowledge .section-head p{max-width:500px;color:#bccce5;line-height:1.8}
+.knowledge-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px}
+.knowledge-card{color:#f3f7ff;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;min-height:230px;padding:27px;border:1px solid rgba(117,162,235,.27);background:linear-gradient(145deg,rgba(26,44,78,.9),rgba(12,20,39,.94));border-radius:22px;text-decoration:none;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+.knowledge-card:before{content:"";position:absolute;inset:-30%;pointer-events:none;background:radial-gradient(circle at 90% 5%,rgba(77,216,255,.16),transparent 42%);transition:transform .4s}
+.knowledge-card:hover{transform:translateY(-7px);box-shadow:0 22px 42px rgba(0,0,0,.22);border-color:#83e9ff;text-decoration:none}
+.knowledge-card:hover:before{transform:translate(-4%,8%)}
+.knowledge-icon{width:49px;height:49px;display:grid;place-items:center;border-radius:14px;border:1px solid rgba(113,223,250,.45);font-size:1.9rem;color:#92f0ff;background:rgba(31,98,152,.17)}
+.knowledge-card strong{font-size:clamp(1.08rem,1.5vw,1.35rem);line-height:1.35;font-weight:750;z-index:1}
+.knowledge-card small{font-size:.92rem;color:#b9cce3;line-height:1.5;z-index:1}
+.knowledge-card b{margin-top:auto;align-self:end;color:#a9edff;font-size:1.18rem}
+.knowledge-all{margin-top:25px;display:inline-flex;align-items:center;gap:10px}
+@media(max-width:840px){.knowledge-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.knowledge-cards{grid-template-columns:1fr;gap:14px}.knowledge-card{min-height:175px;padding:20px}.knowledge-all{width:100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){.knowledge-card,.knowledge-card:before{transition:none}.knowledge-card:hover{transform:none}}

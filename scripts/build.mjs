@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import {urlFor} from '../fm-locales.js';
 import {chartPage} from './build-charts.mjs';
+import {generateGuides} from './build-guides.mjs';
 import path from 'node:path';
 import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
@@ -23,18 +24,18 @@ const localized=['uk','ru','de','es','zh','ja'];
 const mappings={en:'en',uk:'uk',ru:'ru',de:'de',es:'es',zh:'zh-CN',ja:'ja'};
 const ogLocales={en:'en_US',uk:'uk_UA',ru:'ru_RU',de:'de_DE',es:'es_ES',zh:'zh_CN',ja:'ja_JP'};
 const titles={
- en:'PROMETEI Offline Messenger for Android | Bluetooth & Wi-Fi',
+ en:'PROMETEI Messenger — Android Chat via Bluetooth and Wi-Fi',
  uk:'PROMETEI — месенджер без інтернету для Android',
- ru:'PROMETEI — мессенджер без интернета для Android',
+ ru:'PROMETEI — мессенджер без номера и SIM для Android',
  de:'PROMETEI Android-Messenger — Bluetooth & Internet',
  es:'PROMETEI Android — Mensajes por Bluetooth e Internet',
  zh:'PROMETEI Android 聊天应用 — 蓝牙、局域网与互联网连接',
  ja:'PROMETEI Androidメッセンジャー — Bluetooth・LAN・インターネット'
 };
 const descriptions={
- en:'Chat online, or message nearby Android phones without internet over Bluetooth or a reachable local Wi-Fi network. Get PROMETEI on Google Play.',
+ en:'PROMETEI Android messenger: Internet chat and nearby Bluetooth or local Wi-Fi/LAN messaging. Start without a phone number or email. Explore guides and limitations.',
  uk:'Відкрийте PROMETEI для Android: повідомлення через Bluetooth, локальну Wi-Fi/LAN мережу та інтернет. Дізнайтеся, як працює зв’язок без інтернету.',
- ru:'PROMETEI — мессенджер для Android. Отправляйте сообщения через Bluetooth, локальную Wi-Fi/LAN сеть и интернет. Узнайте, когда возможна связь без интернета.',
+ ru:'PROMETEI — Android-мессенджер без обязательного номера или SIM для локальной связи. Интернет, Bluetooth и Wi-Fi/LAN: способы переписки и ограничения.',
  de:'PROMETEI für Android verbindet über Bluetooth, lokales WLAN/LAN, Internet und gemischte Routen. Erfahren Sie, wann Nachrichten ohne Internet möglich sind.',
  es:'PROMETEI para Android combina Bluetooth, Wi-Fi/LAN local, Internet y modo mixto. Descubre cuándo es posible comunicarse sin conexión a Internet.',
  zh:'探索 PROMETEI 安卓通讯应用：通过蓝牙、本地 Wi-Fi 局域网、互联网及混合模式发送消息。了解何时可以离线连接，以及附近设备通信的条件、场景与限制。',
@@ -106,6 +107,9 @@ function metadata(html,{url,title,description,lang='en',app=false,alternate=fals
 function localize(html,locale){
   const dict=translations[locale];
   html=html.replace(/<([a-z][a-z\d-]*)([^>]*\bdata-i18n="([^"]+)"[^>]*)>([\s\S]*?)<\/\1>/gi,(match,tag,attrs,key)=>dict[key]===undefined?match:`<${tag}${attrs}>${dict[key]}</${tag}>`);
+  const guideText={"ru":{"nav":"Статьи","eyebrow":"БИБЛИОТЕКА СВЯЗИ","title":"КАК РАБОТАЕТ СВЯЗЬ В МЕССЕНДЖЕРАХ.","lead":"Девять статей о Bluetooth, локальном Wi-Fi, интернете и смешанном режиме. Когда не нужны SIM-карта и номер телефона, а когда требуется сеть.","bt":"Bluetooth без интернета","btText":"Сообщения поблизости, разрешения Android и ограничения.","wifi":"Локальный Wi-Fi без интернета","wifiText":"Связь по LAN, даже если провайдер недоступен.","privacy":"Мессенджер без номера","privacyText":"PROMETEI, Telegram, WhatsApp, Signal и Viber: честное сравнение.","all":"Читать все девять статей"},"uk":{"nav":"Статті","eyebrow":"БІБЛІОТЕКА ЗВ’ЯЗКУ","title":"ЯК ПРАЦЮЄ ЗВ’ЯЗОК У МЕСЕНДЖЕРАХ.","lead":"Дев’ять матеріалів про Bluetooth, локальний Wi-Fi, інтернет і змішані маршрути. Коли можливий зв’язок без SIM-картки чи номера.","bt":"Bluetooth без інтернету","btText":"Повідомлення поблизу, дозволи Android і обмеження.","wifi":"Локальний Wi-Fi без інтернету","wifiText":"LAN-зв’язок без доступу до провайдера.","privacy":"Месенджер без номера","privacyText":"PROMETEI, Telegram, WhatsApp, Signal і Viber: чесне порівняння.","all":"Читати дев’ять статей"},"de":{"nav":"Ratgeber","eyebrow":"WISSEN ZUR VERBINDUNG","title":"SO FUNKTIONIERT MESSAGING.","lead":"Neun Ratgeber über Bluetooth, lokales WLAN, Internet und gemischte Verbindungen – mit Grenzen und Tests.","bt":"Bluetooth ohne Internet","btText":"Nachrichten in der Nähe, Android-Berechtigungen und Grenzen.","wifi":"Lokales WLAN ohne Internet","wifiText":"LAN-Kommunikation auch bei Ausfall des Internetanbieters.","privacy":"Messenger ohne Nummer","privacyText":"PROMETEI, Telegram, WhatsApp, Signal und Viber im fairen Vergleich.","all":"Alle neun Ratgeber ansehen"},"es":{"nav":"Guías","eyebrow":"BIBLIOTECA DE CONEXIONES","title":"CÓMO FUNCIONA LA MENSAJERÍA.","lead":"Nueve guías sobre Bluetooth, Wi-Fi local, Internet y rutas mixtas: usos reales y límites.","bt":"Bluetooth sin Internet","btText":"Mensajes cercanos, permisos Android y limitaciones.","wifi":"Wi-Fi local sin Internet","wifiText":"Comunicación LAN cuando no funciona el proveedor.","privacy":"Mensajero sin número","privacyText":"Comparación equilibrada de PROMETEI, Telegram, WhatsApp, Signal y Viber.","all":"Explorar las nueve guías"},"zh":{"nav":"通信指南","eyebrow":"连接知识库","title":"即时通信究竟如何工作？","lead":"九篇指南介绍蓝牙、本地 Wi-Fi、互联网与混合连接，说明真实的使用条件及限制。","bt":"无互联网蓝牙通信","btText":"近距离消息、Android 权限与实际限制。","wifi":"无互联网本地 Wi-Fi","wifiText":"没有外部互联网时的局域网通信。","privacy":"无需电话号码的通信","privacyText":"客观比较 PROMETEI、Telegram、WhatsApp、Signal 与 Viber。","all":"阅读全部九篇指南"},"ja":{"nav":"通信ガイド","eyebrow":"接続の知識","title":"メッセージはどう届くのか。","lead":"Bluetooth、ローカルWi-Fi、インターネット、混合ルートを9本の記事で解説。条件と制限も説明します。","bt":"インターネット不要のBluetooth","btText":"近距離のメッセージ、Android権限と制約。","wifi":"インターネット不要のローカルWi-Fi","wifiText":"外部回線がなくても利用できるLAN通信。","privacy":"電話番号なしで始める","privacyText":"PROMETEI、Telegram、WhatsApp、Signal、Viberを公平に比較。","all":"9本のガイドを読む"}};
+  html=html.replace(/(<span data-guide="([^"]+)">)([^<]*)(<\/span>)/g,(match,open,key,content,close)=>open+(guideText[locale]?.[key]??content)+close);
+  if(locale==='ru')html=html.replaceAll('href="/guides/','href="/ru/guides/');
   // Only the six localized homepage variants use ../ relative resource links.
   const resources=['styles.css','app.js','manifest.webmanifest','privacy.html','privacy-phantom.html','privacy-pokonap.html','child-safety.html','account-deletion.html','terms.html','support.html','portfolio.html','how-it-works.html','fm.html'];
   for(const f of resources){html=html.replaceAll('href="'+f+'"','href="../'+f+'"').replaceAll('src="'+f+'"','src="../'+f+'"');}
@@ -226,13 +230,20 @@ for(const lang of locales){
   fs.mkdirSync(path.dirname(dest),{recursive:true});
   fs.writeFileSync(dest,chartPage(catalog,lang,site.origin));
 }
-const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm')];
+const guideUrls=generateGuides(output,base);
+const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls];
 const xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for(const item of urls){
  xml.push('  <url><loc>'+base+item+'</loc>');
  if(item===''||localized.some(l=>item===l+'/')){
   for(const l of locales)xml.push(`    <xhtml:link rel="alternate" hreflang="${mappings[l]}" href="${base+(l==='en'?'':l+'/')}"/>`);
   xml.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${base}"/>`);
+ }
+ if(item.startsWith('guides/')||item.startsWith('ru/guides/')){
+   const suffix=item.startsWith('ru/')?item.slice(3):item;
+   xml.push('    <xhtml:link rel="alternate" hreflang="en" href="'+base+suffix+'"/>');
+   xml.push('    <xhtml:link rel="alternate" hreflang="ru" href="'+base+'ru/'+suffix+'"/>');
+   xml.push('    <xhtml:link rel="alternate" hreflang="x-default" href="'+base+suffix+'"/>');
  }
  if(item==='fm'||localized.some(l=>item===l+'/fm')){
   for(const l of locales)xml.push(`    <xhtml:link rel="alternate" hreflang="${mappings[l]}" href="${base+(l==='en'?'fm':l+'/fm')}"/>`);
