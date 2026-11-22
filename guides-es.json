@@ -1,0 +1,59 @@
+{
+  "language": "es",
+  "titles": [
+    "Cómo enviar mensajes por Bluetooth sin Internet",
+    "Alcance del Bluetooth y permisos de Android: por qué falla un mensaje",
+    "Bluetooth o Wi-Fi: ¿qué conexión local conviene?",
+    "Mensajería por Wi-Fi local sin Internet: así funciona una LAN",
+    "Experimento: dos móviles Android conectados sin Internet",
+    "Mensajero sin tarjeta SIM ni número de teléfono",
+    "Cómo se entregan mensajes y llamadas por Internet",
+    "Conexiones mixtas: Internet, Bluetooth y Wi-Fi local",
+    "Mensajería sin número: PROMETEI y las aplicaciones conocidas"
+  ],
+  "intros": [
+    "Bluetooth nació para eliminar cables entre dispositivos cercanos. Hoy esa misma idea permite explorar mensajes locales entre teléfonos Android incluso cuando la red del operador no está disponible.",
+    "Dos teléfonos pueden verse y, aun así, no lograr enviar un mensaje. Para entenderlo hay que conocer las ondas de radio, el entorno y los permisos del sistema.",
+    "Ambas tecnologías emplean ondas de radio, pero necesitan condiciones distintas. Una conexión local útil es la que realmente alcanza al destinatario.",
+    "Un router puede continuar conectando aparatos dentro de casa aunque haya fallado la conexión del proveedor. La red local y el Internet público son cosas distintas.",
+    "Los experimentos interesantes cambian una sola variable. Con dos teléfonos propios y un router de confianza podemos comprobar la comunicación local.",
+    "La tarjeta SIM registra el equipo en la red móvil. Los módulos Bluetooth y Wi-Fi de un Android compatible pueden funcionar aunque esa tarjeta no esté instalada.",
+    "Enviar un mensaje no es teletransportarlo: los datos atraviesan redes y pueden esperar en colas. Las llamadas de voz y vídeo presentan dificultades adicionales.",
+    "La conexión externa puede desaparecer mientras dos móviles continúan cerca. Por eso tiene sentido investigar varias rutas de comunicación.",
+    "Sin número, sin SIM y anónimo no significan lo mismo. Comparar aplicaciones exige separar registro, transporte, metadatos y seguridad."
+  ],
+  "focus": [
+    "Para entregar un texto por Bluetooth el móvil necesita descubrir un dispositivo cercano, crear una conexión compatible y transferir datos. Cada fase depende de los permisos Android, la distancia y el estado del destinatario. PROMETEI estudia esa vía como transporte local, no como una promesa de cobertura entre ciudades. Prueba primero mensajes cortos con dos dispositivos y registra qué ocurre cuando cambian las condiciones.",
+    "El alcance práctico cambia según antenas, paredes, interferencias y modo Bluetooth. Detectar un móvil no equivale a poder enviarle datos desde una aplicación. Android también puede restringir procesos en segundo plano. Una prueba reproducible indica modelos, versión del sistema, distancia, obstáculos y resultado. Las mediciones reales valen más que una cifra de alcance anunciada sin contexto.",
+    "Bluetooth puede comunicarse con dispositivos cercanos sin un router compartido. Wi-Fi/LAN suele necesitar una red local accesible y puede ofrecer otro caudal de datos, pero el aislamiento de clientes impide a veces conectar móviles. PROMETEI explora ambos caminos. Conviene probar mensajes, archivos y llamadas por separado si la versión instalada admite esas funciones.",
+    "El router organiza los dispositivos de una red local y el proveedor conecta esa red con servicios lejanos. Perder el enlace exterior no siempre rompe el intercambio entre aparatos locales. Para PROMETEI importan la compatibilidad de ambos Android, una ruta LAN accesible y los permisos correspondientes. El icono Wi-Fi no es una garantía de entrega, especialmente en redes de invitados aisladas.",
+    "Conecta dos teléfonos tuyos al mismo router de confianza. Envía primero un texto con Internet activo. Luego desconecta únicamente el acceso exterior del router, manteniendo su Wi-Fi encendido, y repite el envío. Apunta modelos, versiones Android, configuración de aislamiento y si llegó el mensaje. Es un resultado válido para esa prueba, no para todas las redes.",
+    "Sin SIM no significa necesariamente sin Internet: un teléfono puede utilizar Wi-Fi y Bluetooth, e incluso conectarse a Internet a través de Wi-Fi. El registro en una app es una cuestión diferente. PROMETEI está concebido para comenzar sin exigir número ni correo electrónico. Sin embargo, la información técnica de las conexiones y los perfiles puede revelar datos; no hay anonimato absoluto.",
+    "Pulsar Enviar no significa que el texto ya haya llegado. Un servicio puede almacenar mensajes o reintentar la entrega. La voz y el vídeo son especialmente sensibles al retraso y la pérdida de paquetes. WhatsApp, Telegram, Signal y Viber ofrecen ecosistemas consolidados de comunicación por Internet; PROMETEI investiga además enlaces locales. Son escenarios diferentes, no pruebas de superioridad universal.",
+    "Un sistema de rutas mixtas debería determinar si el destinatario puede alcanzarse por Internet, LAN o Bluetooth. Influyen los permisos, la ejecución en segundo plano y la disponibilidad real de cada enlace. El nombre Mixed no garantiza un cambio automático en todas las circunstancias. Entre los objetivos futuros de PROMETEI figuran diagnósticos de ruta más claros y reintentos más eficientes.",
+    "WhatsApp, Telegram, Signal y Viber son populares para conversar por Internet; sus políticas actuales de registro deben consultarse en sus fuentes oficiales. PROMETEI explora el acceso sin número obligatorio y la comunicación local cercana. Para elegir, compara alcance real, copias de seguridad, llamadas, recuperación de cuenta y propiedades de privacidad comprobadas. La palabra anónimo por sí sola no basta."
+  ],
+  "labels": {
+    "guides": "Atlas de comunicación",
+    "home": "Inicio",
+    "fm": "PROMETEI FM",
+    "portfolio": "Portafolio",
+    "all": "Todos los artículos",
+    "bluetooth": "Bluetooth",
+    "wifi": "Wi-Fi local",
+    "internet": "Internet y Mixed",
+    "back": "Volver a los artículos",
+    "play": "Instalar PROMETEI",
+    "more": "Leer artículo",
+    "toc": "Contenido",
+    "related": "Otros artículos",
+    "note": "Importante",
+    "notice": "Las funciones dependen de los dispositivos, los permisos y la versión instalada. PROMETEI no sustituye a los servicios de emergencia.",
+    "updated": "Actualizado el 22 de noviembre de 2026",
+    "language": "Idioma",
+    "indexTitle": "Historia y ciencia de las comunicaciones: Bluetooth, Wi-Fi e Internet",
+    "indexDesc": "Nueve artículos sobre Bluetooth, Wi-Fi sin Internet, mensajes, llamadas, SIM y el desarrollo de PROMETEI.",
+    "indexIntro": "De las primeras redes al Android moderno: fechas importantes, física de las señales, experimentos y proyectos futuros.",
+    "how": "Prueba con dos teléfonos"
+  }
+}
