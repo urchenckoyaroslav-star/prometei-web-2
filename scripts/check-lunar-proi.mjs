@@ -60,6 +60,7 @@ for(const l of Object.keys(langs).filter(l=>l!=="en")){
 assert.ok(src.includes("cancelAnimationFrame")&&src.includes("requestAnimationFrame"),"Slider animation missing");
 assert.ok(src.includes("synodicDays")&&src.includes("exampleFeePercent"),"Moon model missing");
 assert.ok(src.includes("aria-pressed")&&src.includes("getUTCDay"),"Calendar keyboard state/dates missing");
+assert.ok(src.includes("cfg.labels.estimate"),"Calendar day descriptions must use localized units");
 assert.ok(src.includes("normalize((date.getTime()-epoch)/dayMs)"),"Astronomical epoch approximation missing");
 for(const rule of ["max-width:390px","max-width:640px","max-width:900px","min-width:1920px","prefers-reduced-motion:reduce","pointer:coarse","focus-visible"])assert.ok(css.includes(rule),"Missing responsive/accessibility "+rule);
 assert.ok(!/connectWallet|buyToken|sendTransaction|web3\.eth|window\.ethereum/.test(src),"No functional token sales or transfers in concept UI");
