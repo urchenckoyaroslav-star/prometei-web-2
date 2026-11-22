@@ -113,6 +113,19 @@ try{
  await page.goto("http://127.0.0.1:"+port+"/crypto-atlas/proi/",{waitUntil:"domcontentloaded"});
  const lunarSlider=page.locator("#lp-slider");
  if(await lunarSlider.count()){
+  const palette=await page.evaluate(()=>{
+   const gold=document.getElementById("lp-issuance-number");
+   const green=document.querySelector("#lp-issuance .lp-coin-unit");
+   if(!gold||!green)return null;
+   const toRgb=el=>(getComputedStyle(el).color.match(/[\d.]+/g)||[]).slice(0,3).map(Number);
+   return {gold:toRgb(gold),green:toRgb(green),font:getComputedStyle(gold).fontFamily,chartWidth:document.getElementById("lp-emission-chart")?.getBoundingClientRect().width||0};
+  });
+  if(!palette)failures.push("PROI financial display has no distinct numeral/unit markup");
+  else {
+   if(!(palette.gold[0]>palette.gold[1] && palette.gold[1]>palette.gold[2]))failures.push("PROI amount must display in a warm gold color: "+palette.gold);
+   if(!(palette.green[1]>palette.green[0] && palette.green[1]>palette.green[2]))failures.push("PROI currency symbol must display in green: "+palette.green);
+   if(palette.chartWidth<180)failures.push("Cumulative chart collapsed inside stat grid");
+  }
   // Avoid dependence on today's lunar phase: select known positions explicitly.
   await lunarSlider.evaluate(el=>{el.value="0";el.dispatchEvent(new Event("input",{bubbles:true}))});
   const first=(await page.locator("#lp-issuance").innerText()).trim();
