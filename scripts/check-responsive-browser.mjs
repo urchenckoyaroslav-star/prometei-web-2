@@ -35,7 +35,7 @@ await context.route("**/*",route=>{
  // local assets so this QA tests REAL styles and working client interactions, not an
  // unstyled mock caused by blocking those first-party absolute URLs.
  if(url.hostname==="prometei-web-2.pages.dev"){
-  const slug=decodeURIComponent(url.pathname).replace(/^\\/+/, "");
+  const slug=decodeURIComponent(url.pathname).replace(/^\/+/, "");
   const candidates=[path.join(dist,slug),path.join(dist,slug+".html"),path.join(dist,slug,"index.html")];
   const file=candidates.find(file=>file.startsWith(dist+path.sep)&&fs.existsSync(file)&&fs.statSync(file).isFile());
   if(file)return route.fulfill({status:200,contentType:types[path.extname(file)]||"application/octet-stream",body:fs.readFileSync(file)});
