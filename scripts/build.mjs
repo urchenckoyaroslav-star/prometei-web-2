@@ -234,8 +234,8 @@ for(const lang of localized){
 
 const catalog=JSON.parse(fs.readFileSync(path.join(source,'fm-ballot.json'),'utf8'));
 const chartEditorial=JSON.parse(fs.readFileSync(path.join(source,'fm-editorial.json'),'utf8'));
-// Set this only after AdSense approval and the site's consent message is published.
-const chartAdSlot=process.env.FM_CHART_ADSENSE_SLOT || '';
+// The domain's consent message is published. AdSense controls serving eligibility.
+const chartAdSlot=process.env.FM_CHART_ADSENSE_SLOT ?? '5686204734';
 for(const lang of locales){
   const dest=path.join(output,urlFor(lang,'fm-charts')+'.html');
   fs.mkdirSync(path.dirname(dest),{recursive:true});
