@@ -39,5 +39,12 @@ for(const [name,html] of [["news",news],["news article",story],["crypto",crypto]
  assert.ok(html.includes('href="'+base+'advertise/"'),"Sponsor link missing "+name);
  assert.ok(!html.includes("pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"),"Cannot load unapproved live ads "+name);
 }
+for(const lang of ["en","uk","ru","de","es","zh","ja"]){
+ const slug=(lang==="en"?"":lang+"/")+"crypto-atlas/proi/index.html";
+ const lunar=text(path.join(root,slug));
+ assert.ok(lunar.includes('data-ad-placement="lunarScience"'),"No sponsorship placement on "+lang+" Lunar Lab");
+ assert.ok(lunar.includes("advertise/"),"No sponsor enquiry route on "+lang+" Lunar Lab");
+ assert.ok(!lunar.includes("pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"),"Cannot load unapproved ads on "+lang+" Lunar Lab");
+}
 assert.ok(news.includes("50 source-linked articles"));
 console.log("SPONSORSHIP QA PASS: standalone English media kit, clear editor/advertiser separation, direct contact and ad CTA, 1 new crawlable URL, reduced motion, no live AdSense while account approval is unverified.");
