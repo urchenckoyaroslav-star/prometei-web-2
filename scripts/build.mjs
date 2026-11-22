@@ -8,6 +8,7 @@ import {chartPage} from './build-charts.mjs';
 import {generateGuides} from './build-guides.mjs';
 import {generateCryptoAtlas} from './build-crypto-atlas.mjs';
 import {generateWeeklyNews} from './build-news.mjs';
+import {generateLunarProi} from './build-lunar-proi.mjs';
 import path from 'node:path';
 import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
@@ -134,6 +135,8 @@ let root=metadata(home,{url:base,title:titles.en,description:descriptions.en,lan
 fs.writeFileSync(path.join(output,'index.html'),root,'utf8');
 for(const locale of localized){
   let page=localize(home,locale);
+  const lunarLabels={"uk":"Місяць і PROI","ru":"Луна и PROI","de":"Mond & PROI","es":"Luna y PROI","zh":"月球与 PROI","ja":"月と PROI"};
+  page=page.replaceAll('<a href="/crypto-atlas/proi/" lang="en">Moon & PROI</a>','<a href="/'+locale+'/crypto-atlas/proi/" lang="'+mappings[locale]+'">'+lunarLabels[locale]+'</a>');
   page=metadata(page,{url:base+locale+'/',title:titles[locale],description:descriptions[locale],lang:locale,app:true,alternate:true});
   const folder=path.join(output,locale);fs.mkdirSync(folder,{recursive:true});fs.writeFileSync(path.join(folder,'index.html'),page,'utf8');
 }
@@ -243,6 +246,7 @@ if(!fs.existsSync(sponsorPath))throw Error('Sponsorship landing page missing');
 fs.writeFileSync(sponsorPath,fs.readFileSync(sponsorPath,'utf8').replaceAll(fallback,base),'utf8');
 const guideUrls=generateGuides(output,base);
 const cryptoUrls=generateCryptoAtlas(output,base);
+const lunarUrls=generateLunarProi(output,base);
 const weeklyNewsUrls=generateWeeklyNews(output,base);
 // Apply consistent responsive and accessible controls to every generated static page,
  // including translated home pages, FM charts, scientific articles and sponsor pages.
@@ -259,7 +263,7 @@ function applyGlobalQualityStyles(directory){
   }
 }
 applyGlobalQualityStyles(output);
-const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls,...cryptoUrls,...weeklyNewsUrls,'advertise/','services/'];
+const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls,...cryptoUrls,...lunarUrls,...weeklyNewsUrls,'advertise/','services/'];
 const xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for(const item of urls){
  xml.push('  <url><loc>'+base+item+'</loc>');
@@ -271,6 +275,10 @@ for(const item of urls){
    const suffix=item.replace(/^(uk|ru|de|es|zh|ja)\//,'');
    for(const l of locales)xml.push('    <xhtml:link rel="alternate" hreflang="'+mappings[l]+'" href="'+base+(l==='en'?'':l+'/')+suffix+'"/>');
    xml.push('    <xhtml:link rel="alternate" hreflang="x-default" href="'+base+suffix+'"/>');
+ }
+ if(/^(?:(?:uk|ru|de|es|zh|ja)\/)?crypto-atlas\/proi\/$/.test(item)){
+  for(const l of locales)xml.push('    <xhtml:link rel="alternate" hreflang="'+mappings[l]+'" href="'+base+(l==='en'?'':l+'/')+'crypto-atlas/proi/"/>');
+  xml.push('    <xhtml:link rel="alternate" hreflang="x-default" href="'+base+'crypto-atlas/proi/"/>');
  }
  if(item==='fm'||localized.some(l=>item===l+'/fm')){
   for(const l of locales)xml.push(`    <xhtml:link rel="alternate" hreflang="${mappings[l]}" href="${base+(l==='en'?'fm':l+'/fm')}"/>`);

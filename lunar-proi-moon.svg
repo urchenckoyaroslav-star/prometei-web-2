@@ -1,0 +1,17 @@
+<svg class="lp-moon-svg" viewBox="0 0 360 360" role="img" aria-label="Moon phase visualization" width="360" height="360" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialGradient id="lp-moon-dark" cx="30%" cy="30%" r="80%"><stop stop-color="#3b435d"/><stop offset=".74" stop-color="#171e31"/><stop offset="1" stop-color="#090d19"/></radialGradient>
+<radialGradient id="lp-moon-light" cx="30%" cy="29%" r="76%"><stop stop-color="#fffbd9"/><stop offset=".48" stop-color="#e9e4eb"/><stop offset=".84" stop-color="#aeb4ce"/><stop offset="1" stop-color="#687995"/></radialGradient>
+<clipPath id="lp-moon-clip"><path id="lp-moon-light-path" d="M 180 44 A 136 136 0 0 1 180 316 Q 452 180 180 44 Z"/></clipPath>
+</defs>
+<circle cx="180" cy="180" r="154" fill="none" stroke="#bdd8ff" stroke-opacity=".22" stroke-width="1.4"/>
+<circle cx="180" cy="180" r="143" fill="none" stroke="#d7e7ff" stroke-opacity=".12"/>
+<circle cx="180" cy="180" r="136" fill="url(#lp-moon-dark)"/>
+<g opacity=".27" fill="#626d8b"><circle cx="118" cy="126" r="22"/><circle cx="229" cy="116" r="13"/><ellipse cx="195" cy="231" rx="43" ry="26"/><circle cx="106" cy="242" r="20"/></g>
+<g clip-path="url(#lp-moon-clip)">
+<circle cx="180" cy="180" r="136" fill="url(#lp-moon-light)"/>
+<g fill="#717b9b" opacity=".34"><circle cx="116" cy="127" r="22"/><circle cx="237" cy="103" r="15"/><circle cx="254" cy="212" r="25"/><ellipse cx="192" cy="232" rx="44" ry="28"/><circle cx="106" cy="245" r="20"/><circle cx="170" cy="107" r="11"/><ellipse cx="151" cy="176" rx="27" ry="18"/></g>
+<g fill="none" stroke="#f5f8e9" stroke-opacity=".3" stroke-width="2"><circle cx="116" cy="127" r="18"/><circle cx="254" cy="212" r="20"/><circle cx="106" cy="245" r="14"/></g>
+</g>
+<circle cx="180" cy="180" r="136" fill="none" stroke="#fcf8f0" stroke-opacity=".42" stroke-width="1.2"/>
+</svg>

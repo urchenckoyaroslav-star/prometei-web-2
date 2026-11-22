@@ -1,0 +1,141 @@
+{
+  "title": "La Luna, sus fases y el futuro posible de PROI",
+  "description": "Un artículo científico sobre fases lunares, mareas, animales y sueño humano. Explora la Luna interactiva, un calendario y un modelo hipotético de emisión y quema de comisiones PROI. Hoy PROI son puntos.",
+  "ui": {
+    "kicker": "LABORATORIO LUNAR PROMETEI · CIENCIA Y DISEÑO",
+    "headline": "La Luna marca el ritmo. PROI imagina su futuro.",
+    "lead": "Un ciclo celeste, ciencia verificable y una idea singular: una posible moneda PROI futura cuya emisión siga un calendario lunar público.",
+    "status": "Hoy PROI son puntos de recompensa en la aplicación, no una criptomoneda lanzada. Todas las cifras son supuestos ilustrativos: no representan saldo, inversión ni monedas reales.",
+    "now": "HOY · PUNTOS",
+    "future": "FUTURA MONEDA · CONCEPTO",
+    "top10": "Ambición de estar entre las diez primeras · no es una predicción",
+    "moonTitle": "Viaja por un mes lunar",
+    "moonIntro": "Mueve el control, elige una fase o pulsa un día del calendario. La iluminación y la emisión PROI hipotética cambian a la vez.",
+    "slider": "Posición del ciclo lunar",
+    "phase": "Fase",
+    "light": "Iluminación visible",
+    "age": "Edad lunar aproximada",
+    "date": "Fecha elegida (UTC)",
+    "manual": "Vista manual de fase",
+    "estimate": "Unidades PROI ilustrativas / día",
+    "cycle": "Unidades ilustrativas / ciclo de 29,53 días",
+    "actual": "Monedas PROI realmente emitidas en blockchain",
+    "zeroNote": "Cero: no se ha lanzado una blockchain PROI ni una emisión lunar automática.",
+    "mint": "EMISIÓN PROI LUNAR · HIPÓTESIS",
+    "sim": "Solo un ejemplo: 100 × (1 + 2 × fracción iluminada). Luna nueva: 100 unidades/día; luna llena: 300. No existe una política de emisión aprobada.",
+    "phaseChoose": "Selecciona una fase lunar",
+    "calendarTitle": "Calendario lunar interactivo",
+    "calendarInfo": "Elige un día para ver la fase aproximada y la emisión de ejemplo. No es una efeméride exacta ni tu saldo.",
+    "prev": "Mes anterior",
+    "next": "Mes siguiente",
+    "today": "Hoy",
+    "selected": "Seleccionado",
+    "approx": "Modelo visual aproximado; las fechas pueden diferir de las efemérides oficiales.",
+    "feeTitle": "¿Cómo funcionarían las comisiones y la quema?",
+    "feeIntro": "Prueba una transferencia hipotética. Comisión total del 1 %: un 0,25 % del importe se destruye y un 0,75 % se destina a la red. Hoy no se cobra ni se quema nada.",
+    "amount": "Transferencia de ejemplo (unidades)",
+    "totalFee": "Comisión de ejemplo",
+    "burned": "Quema de ejemplo",
+    "network": "Mantenimiento de red de ejemplo",
+    "feesNote": "Son parámetros simulados, no reglas vigentes de PROI ni garantía de escasez, precio o conversión futura.",
+    "learnTitle": "La ciencia del reloj lunar",
+    "sources": "Fuentes científicas",
+    "sourcesIntro": "Enlaces directos a NASA, NOAA e investigaciones. Las pruebas sobre el sueño humano siguen siendo contradictorias.",
+    "model": "Modelo propuesto, no blockchain activa",
+    "roadmap": "¿Qué se necesita antes de una moneda real?",
+    "roadmapText": "Harían falta una especificación pública, gobernanza, auditoría de seguridad, cálculos astronómicos verificables, revisión legal y separación clara entre puntos y cualquier activo futuro. No se promete convertir los puntos actuales.",
+    "collect": "Los puntos PROI se usan según las normas vigentes cuando la función está disponible; acumularlos no garantiza ganancias monetarias.",
+    "cta": "Descubre PROMETEI en Google Play",
+    "back": "Atlas cripto",
+    "guides": "Ciencia de la comunicación",
+    "news": "Noticias semanales",
+    "portfolio": "Portafolio",
+    "fees": "Comisiones",
+    "calendar": "Calendario",
+    "research": "Investigación",
+    "phases": [
+      "Luna nueva",
+      "Creciente",
+      "Cuarto creciente",
+      "Gibosa creciente",
+      "Luna llena",
+      "Gibosa menguante",
+      "Cuarto menguante",
+      "Menguante"
+    ],
+    "days": [
+      "Do",
+      "Lu",
+      "Ma",
+      "Mi",
+      "Ju",
+      "Vi",
+      "Sá"
+    ]
+  },
+  "sections": [
+    {
+      "h": "01 · Las fases nacen de la geometría de la luz",
+      "p": [
+        "La Luna no produce luz: refleja la del Sol. Aproximadamente un hemisferio de la Luna está iluminado en todo momento, pero desde la Tierra solo vemos una parte variable de esa superficie. Cerca de la luna nueva, el lado iluminado mira principalmente en dirección contraria a nosotros. Después crece una fina media luna, aparece el cuarto creciente, la fase gibosa y finalmente la luna llena. El proceso se invierte durante la segunda mitad del ciclo.",
+        "La parte oscura de una luna creciente puede verse tenuemente gracias a la luz reflejada por la Tierra. Nuestra ilustración simplifica la orientación del hemisferio norte y no sustituye una observación telescópica."
+      ]
+    },
+    {
+      "h": "02 · Por qué el mes sinódico dura unos 29,53 días",
+      "p": [
+        "La Luna completa una órbita respecto a las estrellas lejanas en unos 27,3 días. Mientras tanto, la Tierra avanza alrededor del Sol y la Luna debe recorrer algo más para recuperar la misma alineación solar. Por eso el intervalo medio entre dos lunas nuevas es de 29,53059 días. Los meses reales varían un poco debido a la órbita elíptica y las perturbaciones gravitatorias.",
+        "Durante milenios hemos usado ese ritmo para crear calendarios. Un sistema informático también podría utilizar fechas lunares verificables como referencias públicas, pero la emisión de una moneda sería una regla humana programada y no un poder físico de la Luna."
+      ]
+    },
+    {
+      "h": "03 · Mareas: una influencia lunar comprobada",
+      "p": [
+        "La Luna y el Sol generan mareas porque su gravedad varía de un lugar a otro de la Tierra. También intervienen la forma de la costa, la profundidad, la rotación y el tiempo atmosférico. Durante la luna nueva y llena los efectos se refuerzan y suelen producir un rango mayor entre pleamar y bajamar. Cerca de los cuartos se contrarrestan en parte y aparecen mareas muertas de rango menor.",
+        "Una luna llena no significa una marea peligrosa en todas las playas. Para tomar decisiones de seguridad en el mar hay que consultar pronósticos oficiales locales, nunca el calendario artístico de esta web."
+      ]
+    },
+    {
+      "h": "04 · Por qué no hay un eclipse cada mes",
+      "p": [
+        "El plano de la órbita lunar está inclinado unos cinco grados respecto al plano orbital de la Tierra. Por eso, incluso en luna llena, la Luna suele pasar por encima o por debajo de la alineación necesaria para un eclipse. Los eclipses solo son posibles cerca de los nodos donde se cruzan ambos planos.",
+        "La zona oscura de una media luna normal corresponde a su noche lunar; no es la sombra de la Tierra. Fases y eclipses derivan de la geometría orbital, pero son fenómenos diferentes."
+      ]
+    },
+    {
+      "h": "05 · Los animales sí pueden seguir señales lunares",
+      "p": [
+        "En varias especies marinas se han estudiado ritmos mensuales o quincenales. En experimentos con el coral Dipsastraea speciosa, los investigadores modificaron la luz nocturna artificial y encontraron que la hora de salida de la Luna y un intervalo de oscuridad influían en la sincronización del desove. Es una respuesta biológica concreta a la iluminación ambiental, no una ley mágica de toda la naturaleza.",
+        "Las mareas, la luz nocturna y la actividad de depredadores pueden servir de señales para algunas especies costeras. No significa que todos los peces, aves o mamíferos se reproduzcan con luna llena."
+      ]
+    },
+    {
+      "h": "06 · Sueño humano: resultados científicos mixtos",
+      "p": [
+        "Los estudios no coinciden plenamente. Una pequeña investigación de laboratorio publicada en 2013 detectó cambios en ciertas medidas del sueño cerca de la luna llena. Otro trabajo de campo de 2021 observó variaciones en el momento de dormirse en comunidades diferentes; la iluminación nocturna podría contribuir. Son resultados interesantes, pero no prueban que la Luna controle el sueño de todo el mundo.",
+        "Un gran análisis de dispositivos de seguimiento del sueño, presentado como resumen de congreso en 2024, no halló un efecto constante de las fases sobre la duración total del descanso. Los métodos, poblaciones y factores externos varían. Tampoco hay evidencia fiable de que las fases determinen personalidad, suerte o decisiones humanas."
+      ]
+    },
+    {
+      "h": "07 · La vida bajo noches claras y oscuras",
+      "p": [
+        "Antes de la luz eléctrica, las noches cercanas a la luna nueva eran más oscuras y alrededor de la llena más luminosas. Para algunos animales nocturnos esto modifica las condiciones de caza, camuflaje, desplazamiento y reproducción. Las personas también emplearon los cambios del cielo en calendarios y tradiciones durante generaciones.",
+        "Sin embargo, las nubes, la estación, la latitud, la iluminación artificial y cada hábitat cambian lo que perciben los seres vivos. La buena ciencia distingue la luz y la gravedad medibles de las leyendas y no confunde una correlación con una causa."
+      ]
+    },
+    {
+      "h": "08 · PROI hoy: puntos de recompensa, no inversión",
+      "p": [
+        "Prometei Iskra (PROI) se describe actualmente como puntos de recompensa dentro del ecosistema PROMETEI. Cuando una función está disponible y sus normas lo permiten, los usuarios pueden conocer ese sistema en la aplicación. No existe una criptomoneda PROI lanzada en blockchain, precio de mercado establecido ni conversión garantizada de puntos a tokens futuros.",
+        "La aspiración es crear algún día una moneda digital útil vinculada a una red de comunicación real, con la esperanza de lograr notoriedad internacional. Pero una posición entre las diez mayores monedas no puede prometerse. El mensajero debe ser valioso incluso si el proyecto de moneda nunca se realiza."
+      ]
+    },
+    {
+      "h": "09 · Cómo la Luna podría «imprimir» PROI en el futuro",
+      "p": [
+        "Imagina un contrato informático verificable que utilice los instantes públicos de luna nueva como reloj para un programa de emisión. En nuestro ejemplo meramente hipotético, la fórmula calcula 100 unidades por día con luna nueva, aumenta suavemente hasta 300 durante la llena y vuelve a bajar. El control muestra el resultado para cada fase. La Luna no fabrica monedas físicamente: sería un programa el que ejecutase las reglas.",
+        "Otro escenario propone una comisión del 1 % por transferencia: 0,25 % del importe se quemaría de manera irreversible y 0,75 % sostendría el funcionamiento de la red. Emisión y quema son procesos diferentes; ninguno garantiza un aumento de valor. Antes de cualquier lanzamiento harían falta reglas públicas, auditoría, gobernanza y revisión legal. Hoy la emisión real de PROI en blockchain es cero."
+      ]
+    }
+  ]
+}
