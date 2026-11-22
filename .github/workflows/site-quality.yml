@@ -40,6 +40,7 @@ jobs:
           node --check scripts/build.mjs
           node --check scripts/build-news.mjs
           node --check scripts/check-site-quality.mjs
+          node --check scripts/check-responsive-browser.mjs
       - name: Generate entire seven-language website
         run: npm run build
       - name: Audit all 211 sitemap destinations, titles, canonicals, translations and images
