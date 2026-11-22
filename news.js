@@ -16,7 +16,7 @@ function updateNews(){
   card.hidden=!visible;
   if(visible)count++;
  }
- if(resultCount)resultCount.textContent=count+" of "+cards.length stories shown";
+ if(resultCount)resultCount.textContent=count+" of "+cards.length+" stories shown";
  if(empty)empty.hidden=count!==0;
  for(const unit of document.querySelectorAll("#story-grid .site-ad-placement"))unit.hidden=count===0;
 }
