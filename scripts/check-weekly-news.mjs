@@ -10,7 +10,7 @@ const photos=JSON.parse(fs.readFileSync("news-images.json","utf8"));
 const config=JSON.parse(fs.readFileSync("site-ad-config.json","utf8"));
 const xml=fs.readFileSync(path.join(dist,"sitemap.xml"),"utf8");
 const get=f=>fs.readFileSync(f,"utf8");
-const safe=s=>String(s).replaceAll("&","&amp;").replaceAll('"',"&quot;");
+const safe=s=>String(s).replaceAll("&","&amp;").replaceAll('"',"&quot;").replaceAll("'","&#39;");
 const categories=new Set(["World","Technology","Economy","Climate","Science","Culture"]);
 assert.equal(issues.length,50,"Exactly fifty English news stories must be published");
 assert.equal(depths.size,40,"The forty existing stories must be expanded");
