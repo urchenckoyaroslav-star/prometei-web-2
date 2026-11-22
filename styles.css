@@ -121,3 +121,26 @@ html,body{overflow-x:clip}
 @media(max-width:840px){.knowledge-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.knowledge-cards{grid-template-columns:1fr;gap:14px}.knowledge-card{min-height:175px;padding:20px}.knowledge-all{width:100%;justify-content:center}}
 @media(prefers-reduced-motion:reduce){.knowledge-card,.knowledge-card:before{transition:none}.knowledge-card:hover{transform:none}}
+
+/* Homepage bridge to the English-only PROMETEI Crypto Atlas */
+.crypto-portal-teaser{position:relative}
+.crypto-nav-link{color:#f6dfa7!important}
+.crypto-portal-panel{display:grid;grid-template-columns:1.4fr .6fr;gap:36px;align-items:center;isolation:isolate;border:1px solid rgba(157,155,220,.52);border-radius:26px;padding:clamp(26px,5vw,60px);background:radial-gradient(circle at 88% 30%,#31507988,transparent 42%),linear-gradient(140deg,#1c2446,#101b31);box-shadow:0 24px 62px #080c2166;overflow:hidden}
+.crypto-portal-label{color:#81dce8;font-size:.75rem;letter-spacing:.2em;font-weight:850}
+.crypto-portal-copy h2{font-size:clamp(2rem,4.3vw,4rem);line-height:1.14;letter-spacing:-.04em;margin:12px 0 21px;color:#fff}
+.crypto-portal-copy h2 em{font-style:normal;background:linear-gradient(95deg,#ffe5a9,#a4eaf5,#c0a3ff);color:transparent;background-clip:text}
+.crypto-portal-copy p{color:#d3def1;line-height:1.8;max-width:65ch}
+.crypto-portal-disclosure{border-left:3px solid #f9dca4;padding:12px 16px;background:#101c36ae;border-radius:8px;font-size:.88rem}
+.crypto-portal-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.crypto-portal-actions .button{display:inline-flex;gap:9px;align-items:center;justify-content:center}
+.crypto-portal-art{position:relative;min-height:300px;display:grid;place-items:center}
+.crypto-portal-orbit{position:absolute;aspect-ratio:1;width:min(285px,88%);border:1px solid #c7b5e16f;border-radius:50%;box-shadow:0 0 40px #5e98ce38,inset 0 0 32px #5e98ce33}
+.crypto-portal-orbit:before{content:"";position:absolute;inset:13%;border:1px dashed #8fd7ea55;border-radius:50%;animation:proiPortalSpin 28s linear infinite}
+.crypto-portal-core{width:135px;height:135px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:50%;background:radial-gradient(circle at 30% 25%,#687eaa,#253560 55%,#11192e);border:1px solid #f0d6a5a1;box-shadow:0 0 50px #aa87eb66;color:#ffe5a7;font-size:3.4rem;text-shadow:0 0 22px #ffd17e}
+.crypto-portal-core small{font-size:.83rem;font-weight:900;letter-spacing:.18em;color:#fff}
+.crypto-portal-moon{position:absolute;font-size:2.15rem;filter:drop-shadow(0 0 11px #9faaff80);animation:proiPortalMoon 4s ease-in-out infinite}
+.crypto-portal-moon.moon-1{top:4%;left:48%}.crypto-portal-moon.moon-2{right:3%;top:45%;animation-delay:1s}.crypto-portal-moon.moon-3{bottom:2%;left:47%;animation-delay:2s}.crypto-portal-moon.moon-4{left:3%;top:45%;animation-delay:3s}
+@keyframes proiPortalSpin{to{transform:rotate(360deg)}}@keyframes proiPortalMoon{50%{transform:translateY(-8px)}}
+@media(max-width:800px){.crypto-portal-panel{grid-template-columns:1fr}.crypto-portal-art{min-height:250px;max-width:360px;justify-self:center;width:100%}.crypto-portal-core{width:120px;height:120px}}
+@media(max-width:550px){.crypto-portal-panel{padding:21px}.crypto-portal-actions .button{width:100%}.crypto-portal-art{min-height:210px}.crypto-portal-orbit{width:205px}.crypto-portal-moon{font-size:1.55rem}.crypto-portal-core{width:102px;height:102px;font-size:2.8rem}}
+@media(prefers-reduced-motion:reduce){.crypto-portal-orbit:before,.crypto-portal-moon{animation:none!important}}
