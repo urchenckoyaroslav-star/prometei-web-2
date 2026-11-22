@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "bitcoin",
+    "facts": [
+      "Bitcoin emerged from Satoshi Nakamoto's 2008 paper about electronic cash without a central operator.",
+      "The Bitcoin network began operating in January 2009 with a now-famous genesis block.",
+      "That first block included a newspaper headline about bank bailouts, placing its launch amid a financial crisis.",
+      "Computer scientist Hal Finney received one of the earliest Bitcoin transactions from Satoshi.",
+      "Bitcoin introduced a public chain of blocks maintained by participants using proof-of-work mining.",
+      "New bitcoin enters circulation through block rewards rather than through a central company.",
+      "The protocol limits total issuance to approximately twenty-one million units.",
+      "Periodic halving events gradually reduce the block subsidy paid to miners.",
+      "Early Bitcoin trading was small and experimental before exchanges made it widely visible.",
+      "Later boom-and-bust cycles demonstrated both extraordinary public interest and severe price volatility.",
+      "Developers also built the Lightning Network to explore faster payments away from the base chain.",
+      "Bitcoin's open-source community has never had one unquestioned corporate owner.",
+      "Energy use, transaction costs, custody risks, and debates about upgrades remain recurring controversies.",
+      "Its historical distinction is a functioning monetary network, not a guarantee that buying its asset is safe."
+    ],
+    "bridge": "Bitcoin is a decentralized bearer asset, whereas PROI begins as an in-app recognition system rather than money."
+  },
+  {
+    "slug": "ethereum",
+    "facts": [
+      "Vitalik Buterin proposed Ethereum in 2013 to make blockchain programs more expressive than simple payments.",
+      "A group of early contributors including Gavin Wood and Joseph Lubin helped shape its launch.",
+      "An international crowdfunding campaign in 2014 financed parts of Ethereum's initial development.",
+      "The network went live in 2015 and popularized programmable smart contracts.",
+      "Its ether asset pays for computation performed by applications running on the network.",
+      "The 2016 DAO exploit triggered a contentious fork whose legacy also includes Ethereum Classic.",
+      "Ethereum became a foundation for decentralized exchanges, digital collectibles, and lending protocols.",
+      "Booming use periodically drove transaction fees high enough to frustrate smaller participants.",
+      "The EIP-1559 upgrade in 2021 introduced a mechanism that burns the base component of transaction fees.",
+      "The Merge in September 2022 replaced Ethereum's proof-of-work consensus with proof of stake.",
+      "Independent validators now propose and attest to blocks while software upgrades continue.",
+      "Scaling networks built around Ethereum aim to process activity with lower costs.",
+      "Vitalik remains an influential public researcher but does not single-handedly control the entire ecosystem.",
+      "Ethereum's financial and technical achievements coexist with smart-contract exploits and governance debates."
+    ],
+    "bridge": "Ethereum's implemented fee-burning rule offers a useful design comparison, but PROI has no equivalent blockchain mechanism today."
+  },
+  {
+    "slug": "tether",
+    "facts": [
+      "Tether's dollar token traces its origins to the Realcoin project launched in 2014.",
+      "Early figures associated with the project include Brock Pierce, Reeve Collins, and Craig Sellars.",
+      "The project rebranded as Tether and became a major source of dollar-denominated liquidity in crypto markets.",
+      "USDT is designed to track the value of one United States dollar rather than chase dramatic price appreciation.",
+      "Tether has issued its tokens across several blockchain networks as market infrastructure evolved.",
+      "Traders and businesses have used USDT to transfer dollar exposure between venues without ordinary bank transfers.",
+      "Its growth made stablecoins an important bridge between traditional finance and blockchain systems.",
+      "The issuer reports backing reserves, yet the quality and transparency of reserves have attracted scrutiny.",
+      "Regulatory settlements and compliance questions have also shaped Tether's public history.",
+      "USDT price movements usually stay much narrower than those of speculative coins, although its peg can deviate.",
+      "The token's usefulness depends on issuer operations, redemption channels, and confidence in reserves.",
+      "Tether's network support comes from multiple underlying blockchains rather than one native USDT consensus system.",
+      "Users must distinguish an issuer-backed claim from assets secured by an independent mining network.",
+      "USDT illustrates how stability objectives introduce custody and counterparty questions of their own."
+    ],
+    "bridge": "USDT seeks a dollar peg, while PROI points do not claim a redeemable dollar value or a reserve-backed promise."
+  },
+  {
+    "slug": "bnb",
+    "facts": [
+      "BNB launched in 2017 alongside Binance, the exchange co-founded by Changpeng Zhao and Yi He.",
+      "It initially existed as an Ethereum token associated with exchange-fee discounts and platform incentives.",
+      "BNB later moved into an expanding chain ecosystem with native network uses.",
+      "BNB Smart Chain launched in 2020 and offered compatibility with Ethereum-style applications.",
+      "The ecosystem spread into exchanges, games, lending apps, and token issuance.",
+      "Binance's global growth helped make BNB familiar to users far beyond its first audience.",
+      "The company and its leadership also faced significant regulatory scrutiny and legal controversies.",
+      "BNB-related programs have included token-burning policies, although details have changed over time.",
+      "Transactions on BNB Chain use BNB to pay network costs.",
+      "The asset's history links exchange business strategy to the wider adoption of a blockchain token.",
+      "Activity rose during periods when lower-cost smart-contract platforms attracted developers.",
+      "The network's validator design has prompted recurring debates about decentralization.",
+      "BNB and Binance are closely associated, but holders should not assume corporate ownership gives guaranteed returns.",
+      "The story shows how utility, branding, governance, and compliance can affect a token together."
+    ],
+    "bridge": "BNB connects a live network and exchange ecosystem, while PROI today only recognizes engagement inside PROMETEI."
+  },
+  {
+    "slug": "usdc",
+    "facts": [
+      "USDC was introduced in 2018 through work involving Circle and Coinbase.",
+      "Circle co-founder Jeremy Allaire became a prominent public advocate for regulated digital dollars.",
+      "The token is designed to stay near one US dollar rather than rise with speculative market cycles.",
+      "Reserve management and redemption processes matter more to USDC's purpose than a scarcity narrative.",
+      "USDC circulates on several blockchains and is used by payment and decentralized-finance applications.",
+      "Circle publishes reserve-related information as part of its transparency approach.",
+      "USDC's market presence expanded as stablecoins became widely used for settlement and transfers.",
+      "In March 2023 its price temporarily lost the peg during uncertainty about reserves held at Silicon Valley Bank.",
+      "The episode highlighted how banking-system events can affect blockchain tokens.",
+      "USDC later recovered its intended dollar relationship as the reserve situation stabilized.",
+      "Unlike Bitcoin, USDC has an identifiable issuer responsible for its backing and redemption framework.",
+      "Its tokens move on blockchain networks that set their own transaction-fee rules.",
+      "Regulatory expectations and compliance are central to the product's long-term story.",
+      "USDC demonstrates that stable value is an operating objective requiring institutions and trust."
+    ],
+    "bridge": "Unlike Circle's issued USDC, PROI points have no claimed reserves, cash redemption, or stablecoin status."
+  }
+]

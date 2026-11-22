@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "ethena",
+    "facts": [
+      "Ethena Labs developed a synthetic-dollar approach as decentralized finance explored alternatives to conventional stablecoins.",
+      "Guy Young became a widely recognized founder of the Ethena project.",
+      "Its USDe instrument became prominent during 2024.",
+      "USDe's design relies on hedging mechanisms rather than simply matching one token to a bank deposit.",
+      "The ENA token became part of the project's governance and incentive ecosystem.",
+      "Hedging depends on market access and counterparties, introducing its own failure modes.",
+      "Funding-rate changes can influence the sustainability of synthetic-dollar strategies.",
+      "Supporters describe the design as a different form of digital-dollar infrastructure.",
+      "Critics highlight complexity, custody exposure, and dependence on market liquidity.",
+      "Ethena's launch attracted substantial attention during a period of yield-focused crypto narratives.",
+      "The system's structure should not be confused with USDC's reserve-backed issuer model.",
+      "ENA's price reflects token demand rather than an obligation to remain at one dollar.",
+      "Governance and risk-management decisions remain important to the project's development.",
+      "Ethena illustrates why a dollar-like user experience can hide very different economic machinery."
+    ],
+    "bridge": "Ethena's hedged dollar design is financial engineering, whereas PROI's reward points do not promise yield or a dollar target."
+  },
+  {
+    "slug": "mantle",
+    "facts": [
+      "Mantle grew out of the BitDAO initiative as Ethereum scaling became a major industry theme.",
+      "The ecosystem maintained historical links with Bybit and the earlier BIT token.",
+      "BitDAO's transition toward the Mantle identity became visible during 2023.",
+      "The MNT token replaced BIT under the ecosystem's migration plan.",
+      "Mantle built an Ethereum-compatible network intended to process activity more efficiently.",
+      "Modular infrastructure choices became part of its public technical narrative.",
+      "The project attracted developers exploring decentralized finance and application deployment.",
+      "Large treasury discussions shaped debate about how ecosystem resources should be allocated.",
+      "Market attention followed the popularity of layer-two scaling networks.",
+      "Ethereum scaling involves trade-offs between costs, settlement security, and operational control.",
+      "Network fees and governance roles for MNT are different from a stablecoin's redemption model.",
+      "Connections to an exchange ecosystem can increase awareness but also invite scrutiny.",
+      "Mantle pursued integrations and ecosystem expansion beyond its initial network launch.",
+      "Its history shows how an established decentralized organization can reorganize around new technology."
+    ],
+    "bridge": "MNT supports a live Ethereum-scaling ecosystem, whereas PROI points have no current transaction-fee duties."
+  },
+  {
+    "slug": "polkadot",
+    "facts": [
+      "Polkadot was proposed by Ethereum co-founder Gavin Wood and other contributors.",
+      "Robert Habermeier became another prominent early technical figure associated with the project.",
+      "The network was conceived to allow multiple specialized chains to cooperate.",
+      "Polkadot's mainnet began rolling out during 2020.",
+      "The relay-chain architecture was designed around shared security and cross-chain communication.",
+      "Parachain auctions later became a widely watched part of ecosystem expansion.",
+      "DOT serves roles in governance, staking, and network activity.",
+      "Developers debated the cost and complexity of maintaining many specialized chains.",
+      "Projects working on identity, finance, and infrastructure explored the platform.",
+      "Wood's research on Web3 helped shape the project's public vision.",
+      "Polkadot's roadmap has included ideas such as more flexible blockspace and the JAM design proposal.",
+      "Market narratives have varied as expectations for interoperability changed.",
+      "Shared-security systems require careful coordination and credible governance.",
+      "Polkadot demonstrates that building a multi-chain network is much harder than announcing token interoperability."
+    ],
+    "bridge": "Polkadot makes chain-to-chain cooperation concrete, while a hypothetical PROI blockchain would first need a credible reason to exist."
+  },
+  {
+    "slug": "internet-computer",
+    "facts": [
+      "The Internet Computer was developed through the DFINITY Foundation's long-running research effort.",
+      "Dominic Williams became the project's best-known founder and spokesperson.",
+      "DFINITY spent years working on the computing and cryptography behind its network.",
+      "The Internet Computer launched publicly in 2021 with the ICP token.",
+      "Canister smart contracts aim to run applications and services within its network architecture.",
+      "The project introduced chain-key cryptography among its distinctive technical ideas.",
+      "Developers promoted applications that could rely less directly on conventional cloud infrastructure.",
+      "An enormous amount of attention surrounded its public token launch.",
+      "ICP later experienced a severe market decline that became a cautionary tale about launch valuations.",
+      "The foundation continued supporting research, software tools, and developer outreach.",
+      "Debate focused on decentralization, operational complexity, and real-world application adoption.",
+      "Network governance and computational resource models distinguish ICP from a pure payment coin.",
+      "The ambition of replacing portions of traditional cloud infrastructure remains technically demanding.",
+      "Internet Computer shows how a bold infrastructure vision can coexist with difficult market history."
+    ],
+    "bridge": "ICP's distributed computing design requires operating infrastructure, whereas PROI currently needs no independent cloud-replacement network."
+  },
+  {
+    "slug": "venice-token",
+    "facts": [
+      "Venice AI emerged as a service focused on private access to machine-intelligence tools.",
+      "Entrepreneur Erik Voorhees became a prominent person associated with the venture.",
+      "Venice introduced its VVV token in January 2025.",
+      "The token was presented as part of a different way to allocate AI service capacity.",
+      "Staking-related arrangements were described as a means of gaining access to ongoing API usage.",
+      "The project emphasizes an AI-service experience rather than ordinary payments or a dollar peg.",
+      "Interest followed wider enthusiasm about generative models and tokenized computation.",
+      "Developers explored how automated agents might use paid or token-mediated inference services.",
+      "Questions about model quality, privacy, and service availability remain important.",
+      "Crypto-market fluctuations can change the cost and appeal of token-based access.",
+      "Access rights depend on the platform's actual rules and operating capacity.",
+      "Voorhees's public reputation in crypto helped draw attention to Venice's launch.",
+      "AI infrastructure and token distribution must be evaluated separately for technical credibility.",
+      "VVV illustrates a token linked to service access rather than to proof-of-work mining."
+    ],
+    "bridge": "VVV links token economics to an AI product, whereas PROI points currently reward participation in a messaging product."
+  }
+]

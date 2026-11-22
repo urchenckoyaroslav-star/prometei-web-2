@@ -1,0 +1,507 @@
+{
+  "snapshot": "2026-11-22",
+  "method": "Coinbase Explore market-cap ranking, first five pages, ten rows per page; market cap order changes over time",
+  "source": "https://www.coinbase.com/explore",
+  "assets": [
+    {
+      "rank": 1,
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "slug": "bitcoin",
+      "ecosystem": "Bitcoin network",
+      "kind": "Currency",
+      "glyph": "₿",
+      "coinbasePage": 1
+    },
+    {
+      "rank": 2,
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "slug": "ethereum",
+      "ecosystem": "Ethereum network",
+      "kind": "Smart contracts",
+      "glyph": "Ξ",
+      "coinbasePage": 1
+    },
+    {
+      "rank": 3,
+      "name": "Tether",
+      "symbol": "USDT",
+      "slug": "tether",
+      "ecosystem": "Tether",
+      "kind": "Stablecoin",
+      "glyph": "₮",
+      "coinbasePage": 1
+    },
+    {
+      "rank": 4,
+      "name": "BNB",
+      "symbol": "BNB",
+      "slug": "bnb",
+      "ecosystem": "BNB Chain ecosystem",
+      "kind": "Exchange and chain",
+      "glyph": "◆",
+      "coinbasePage": 1
+    },
+    {
+      "rank": 5,
+      "name": "USDC",
+      "symbol": "USDC",
+      "slug": "usdc",
+      "ecosystem": "Circle",
+      "kind": "Stablecoin",
+      "glyph": "$",
+      "coinbasePage": 1
+    },
+    {
+      "rank": 6,
+      "name": "XRP",
+      "symbol": "XRP",
+      "slug": "xrp",
+      "ecosystem": "XRP Ledger",
+      "kind": "Payments",
+      "glyph": "✕",
+      "coinbasePage": 1
+    },
+    {
+      "rank": 7,
+      "name": "Solana",
+      "symbol": "SOL",
+      "slug": "solana",
+      "ecosystem": "Solana",
+      "kind": "Smart contracts",
+      "glyph": "◎",
+      "coinbasePage": 1
+    },
+    {
+      "rank": 8,
+      "name": "Hyperliquid",
+      "symbol": "HYPE",
+      "slug": "hyperliquid",
+      "ecosystem": "Hyperliquid",
+      "kind": "Trading infrastructure",
+      "glyph": "↗",
+      "coinbasePage": 1
+    },
+    {
+      "rank": 9,
+      "name": "Zcash",
+      "symbol": "ZEC",
+      "slug": "zcash",
+      "ecosystem": "Zcash",
+      "kind": "Privacy",
+      "glyph": "ⓩ",
+      "coinbasePage": 1
+    },
+    {
+      "rank": 10,
+      "name": "Dogecoin",
+      "symbol": "DOGE",
+      "slug": "dogecoin",
+      "ecosystem": "Dogecoin",
+      "kind": "Meme",
+      "glyph": "Ð",
+      "coinbasePage": 1
+    },
+    {
+      "rank": 11,
+      "name": "Chainlink",
+      "symbol": "LINK",
+      "slug": "chainlink",
+      "ecosystem": "Chainlink",
+      "kind": "Oracle",
+      "glyph": "⬡",
+      "coinbasePage": 2
+    },
+    {
+      "rank": 12,
+      "name": "USDS",
+      "symbol": "USDS",
+      "slug": "usds",
+      "ecosystem": "Sky ecosystem",
+      "kind": "Stablecoin",
+      "glyph": "$",
+      "coinbasePage": 2
+    },
+    {
+      "rank": 13,
+      "name": "Cardano",
+      "symbol": "ADA",
+      "slug": "cardano",
+      "ecosystem": "Cardano",
+      "kind": "Smart contracts",
+      "glyph": "✣",
+      "coinbasePage": 2
+    },
+    {
+      "rank": 14,
+      "name": "Stellar Lumens",
+      "symbol": "XLM",
+      "slug": "stellar",
+      "ecosystem": "Stellar",
+      "kind": "Payments",
+      "glyph": "✧",
+      "coinbasePage": 2
+    },
+    {
+      "rank": 15,
+      "name": "Bitcoin Cash",
+      "symbol": "BCH",
+      "slug": "bitcoin-cash",
+      "ecosystem": "Bitcoin Cash",
+      "kind": "Currency",
+      "glyph": "Ƀ",
+      "coinbasePage": 2
+    },
+    {
+      "rank": 16,
+      "name": "NEAR Protocol",
+      "symbol": "NEAR",
+      "slug": "near",
+      "ecosystem": "NEAR Protocol",
+      "kind": "Smart contracts",
+      "glyph": "И",
+      "coinbasePage": 2
+    },
+    {
+      "rank": 17,
+      "name": "Litecoin",
+      "symbol": "LTC",
+      "slug": "litecoin",
+      "ecosystem": "Litecoin",
+      "kind": "Currency",
+      "glyph": "Ł",
+      "coinbasePage": 2
+    },
+    {
+      "rank": 18,
+      "name": "Avalanche",
+      "symbol": "AVAX",
+      "slug": "avalanche",
+      "ecosystem": "Avalanche",
+      "kind": "Smart contracts",
+      "glyph": "▲",
+      "coinbasePage": 2
+    },
+    {
+      "rank": 19,
+      "name": "Ripple USD",
+      "symbol": "RLUSD",
+      "slug": "ripple-usd",
+      "ecosystem": "Ripple",
+      "kind": "Stablecoin",
+      "glyph": "$",
+      "coinbasePage": 2
+    },
+    {
+      "rank": 20,
+      "name": "World Liberty Financial USD",
+      "symbol": "USD1",
+      "slug": "world-liberty-financial-usd",
+      "ecosystem": "World Liberty Financial",
+      "kind": "Stablecoin",
+      "glyph": "$",
+      "coinbasePage": 2
+    },
+    {
+      "rank": 21,
+      "name": "Uniswap",
+      "symbol": "UNI",
+      "slug": "uniswap",
+      "ecosystem": "Uniswap",
+      "kind": "DeFi",
+      "glyph": "🦄",
+      "coinbasePage": 3
+    },
+    {
+      "rank": 22,
+      "name": "Toncoin",
+      "symbol": "TON",
+      "slug": "toncoin",
+      "ecosystem": "The Open Network",
+      "kind": "Smart contracts",
+      "glyph": "◇",
+      "coinbasePage": 3
+    },
+    {
+      "rank": 23,
+      "name": "SUI",
+      "symbol": "SUI",
+      "slug": "sui",
+      "ecosystem": "Sui",
+      "kind": "Smart contracts",
+      "glyph": "◈",
+      "coinbasePage": 3
+    },
+    {
+      "rank": 24,
+      "name": "PayPal USD",
+      "symbol": "PYUSD",
+      "slug": "paypal-usd",
+      "ecosystem": "PayPal USD",
+      "kind": "Stablecoin",
+      "glyph": "$",
+      "coinbasePage": 3
+    },
+    {
+      "rank": 25,
+      "name": "Hedera",
+      "symbol": "HBAR",
+      "slug": "hedera",
+      "ecosystem": "Hedera",
+      "kind": "Smart contracts",
+      "glyph": "ℏ",
+      "coinbasePage": 3
+    },
+    {
+      "rank": 26,
+      "name": "SHIBA INU",
+      "symbol": "SHIB",
+      "slug": "shiba-inu",
+      "ecosystem": "Shiba Inu",
+      "kind": "Meme",
+      "glyph": "🐕",
+      "coinbasePage": 3
+    },
+    {
+      "rank": 27,
+      "name": "Bittensor",
+      "symbol": "TAO",
+      "slug": "bittensor",
+      "ecosystem": "Bittensor",
+      "kind": "AI network",
+      "glyph": "τ",
+      "coinbasePage": 3
+    },
+    {
+      "rank": 28,
+      "name": "Cronos",
+      "symbol": "CRO",
+      "slug": "cronos",
+      "ecosystem": "Cronos",
+      "kind": "Exchange and chain",
+      "glyph": "⬢",
+      "coinbasePage": 3
+    },
+    {
+      "rank": 29,
+      "name": "PAX Gold",
+      "symbol": "PAXG",
+      "slug": "pax-gold",
+      "ecosystem": "Paxos",
+      "kind": "Tokenized asset",
+      "glyph": "Au",
+      "coinbasePage": 3
+    },
+    {
+      "rank": 30,
+      "name": "Quant",
+      "symbol": "QNT",
+      "slug": "quant",
+      "ecosystem": "Quant",
+      "kind": "Interoperability",
+      "glyph": "Q",
+      "coinbasePage": 3
+    },
+    {
+      "rank": 31,
+      "name": "Aave",
+      "symbol": "AAVE",
+      "slug": "aave",
+      "ecosystem": "Aave",
+      "kind": "DeFi lending",
+      "glyph": "◌",
+      "coinbasePage": 4
+    },
+    {
+      "rank": 32,
+      "name": "World Liberty Financial",
+      "symbol": "WLFI",
+      "slug": "world-liberty-financial",
+      "ecosystem": "World Liberty Financial",
+      "kind": "Governance",
+      "glyph": "W",
+      "coinbasePage": 4
+    },
+    {
+      "rank": 33,
+      "name": "Pepe",
+      "symbol": "PEPE",
+      "slug": "pepe",
+      "ecosystem": "Pepe token",
+      "kind": "Meme",
+      "glyph": "🐸",
+      "coinbasePage": 4
+    },
+    {
+      "rank": 34,
+      "name": "Aster",
+      "symbol": "ASTER",
+      "slug": "aster",
+      "ecosystem": "Aster DEX",
+      "kind": "Trading infrastructure",
+      "glyph": "✺",
+      "coinbasePage": 4
+    },
+    {
+      "rank": 35,
+      "name": "Ondo",
+      "symbol": "ONDO",
+      "slug": "ondo",
+      "ecosystem": "Ondo Finance",
+      "kind": "Tokenized finance",
+      "glyph": "◈",
+      "coinbasePage": 4
+    },
+    {
+      "rank": 36,
+      "name": "Ethena",
+      "symbol": "ENA",
+      "slug": "ethena",
+      "ecosystem": "Ethena Labs",
+      "kind": "Synthetic dollar",
+      "glyph": "△",
+      "coinbasePage": 4
+    },
+    {
+      "rank": 37,
+      "name": "Mantle",
+      "symbol": "MNT",
+      "slug": "mantle",
+      "ecosystem": "Mantle",
+      "kind": "Ethereum scaling",
+      "glyph": "▣",
+      "coinbasePage": 4
+    },
+    {
+      "rank": 38,
+      "name": "Polkadot",
+      "symbol": "DOT",
+      "slug": "polkadot",
+      "ecosystem": "Polkadot",
+      "kind": "Interoperability",
+      "glyph": "●",
+      "coinbasePage": 4
+    },
+    {
+      "rank": 39,
+      "name": "Internet Computer",
+      "symbol": "ICP",
+      "slug": "internet-computer",
+      "ecosystem": "Internet Computer",
+      "kind": "Smart contracts",
+      "glyph": "∞",
+      "coinbasePage": 4
+    },
+    {
+      "rank": 40,
+      "name": "Venice Token",
+      "symbol": "VVV",
+      "slug": "venice-token",
+      "ecosystem": "Venice AI",
+      "kind": "AI access",
+      "glyph": "V",
+      "coinbasePage": 4
+    },
+    {
+      "rank": 41,
+      "name": "Sky",
+      "symbol": "SKY",
+      "slug": "sky",
+      "ecosystem": "Sky ecosystem",
+      "kind": "Governance",
+      "glyph": "☀",
+      "coinbasePage": 5
+    },
+    {
+      "rank": 42,
+      "name": "Pump.fun",
+      "symbol": "PUMP",
+      "slug": "pump-fun",
+      "ecosystem": "Pump.fun",
+      "kind": "Meme platform",
+      "glyph": "♨",
+      "coinbasePage": 5
+    },
+    {
+      "rank": 43,
+      "name": "OpenUSD",
+      "symbol": "OUSD",
+      "slug": "openusd",
+      "ecosystem": "Open Standard",
+      "kind": "Stablecoin",
+      "glyph": "$",
+      "coinbasePage": 5
+    },
+    {
+      "rank": 44,
+      "name": "Morpho",
+      "symbol": "MORPHO",
+      "slug": "morpho",
+      "ecosystem": "Morpho",
+      "kind": "DeFi lending",
+      "glyph": "◐",
+      "coinbasePage": 5
+    },
+    {
+      "rank": 45,
+      "name": "Ethereum Classic",
+      "symbol": "ETC",
+      "slug": "ethereum-classic",
+      "ecosystem": "Ethereum Classic",
+      "kind": "Smart contracts",
+      "glyph": "Ξ",
+      "coinbasePage": 5
+    },
+    {
+      "rank": 46,
+      "name": "Worldcoin",
+      "symbol": "WLD",
+      "slug": "worldcoin",
+      "ecosystem": "World",
+      "kind": "Digital identity",
+      "glyph": "◉",
+      "coinbasePage": 5
+    },
+    {
+      "rank": 47,
+      "name": "Polygon Ecosystem Token",
+      "symbol": "POL",
+      "slug": "polygon-ecosystem-token",
+      "ecosystem": "Polygon",
+      "kind": "Ethereum scaling",
+      "glyph": "⬡",
+      "coinbasePage": 5
+    },
+    {
+      "rank": 48,
+      "name": "Arbitrum",
+      "symbol": "ARB",
+      "slug": "arbitrum",
+      "ecosystem": "Arbitrum",
+      "kind": "Ethereum scaling",
+      "glyph": "▲",
+      "coinbasePage": 5
+    },
+    {
+      "rank": 49,
+      "name": "Jupiter",
+      "symbol": "JUPITER",
+      "slug": "jupiter",
+      "ecosystem": "Jupiter",
+      "kind": "Solana DeFi",
+      "glyph": "♃",
+      "coinbasePage": 5
+    },
+    {
+      "rank": 50,
+      "name": "Jito Staked SOL",
+      "symbol": "JITOSOL",
+      "slug": "jito-staked-sol",
+      "ecosystem": "Jito",
+      "kind": "Liquid staking",
+      "glyph": "✦",
+      "coinbasePage": 5
+    }
+  ]
+}

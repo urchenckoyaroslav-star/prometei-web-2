@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import {urlFor} from '../fm-locales.js';
 import {chartPage} from './build-charts.mjs';
 import {generateGuides} from './build-guides.mjs';
+import {generateCryptoAtlas} from './build-crypto-atlas.mjs';
 import path from 'node:path';
 import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
@@ -231,7 +232,8 @@ for(const lang of locales){
   fs.writeFileSync(dest,chartPage(catalog,lang,site.origin));
 }
 const guideUrls=generateGuides(output,base);
-const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls];
+const cryptoUrls=generateCryptoAtlas(output,base);
+const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls,...cryptoUrls];
 const xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for(const item of urls){
  xml.push('  <url><loc>'+base+item+'</loc>');

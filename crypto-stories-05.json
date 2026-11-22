@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "uniswap",
+    "facts": [
+      "Uniswap first appeared in 2018 as a different way to exchange tokens through smart contracts.",
+      "Developer Hayden Adams became its best-known founder.",
+      "Rather than rely on a traditional order book, Uniswap popularized automated liquidity pools.",
+      "Early users supplied assets to pools so others could exchange tokens through programmed rules.",
+      "The approach helped define the decentralized-finance boom on Ethereum.",
+      "UNI, the governance token, was introduced in 2020 with a widely discussed distribution.",
+      "Some early users received UNI in a community allocation that became a landmark crypto story.",
+      "Uniswap version three introduced concentrated liquidity in 2021.",
+      "Later protocol work investigated more flexible pool behavior and programmable hooks.",
+      "The application became widely recognizable, but it still depends on blockchain fees and smart-contract safety.",
+      "Liquidity providers face economic risks that ordinary savings-account comparisons can obscure.",
+      "Uniswap governance decisions involve incentives, delegates, and software proposals.",
+      "Prominent venture investors supported development, though investment in a company is not identical to holding UNI.",
+      "Uniswap illustrates how an application protocol can grow into an ecosystem without a conventional central exchange."
+    ],
+    "bridge": "UNI governs aspects of a working decentralized-finance protocol, while PROI points do not grant equivalent network governance rights."
+  },
+  {
+    "slug": "toncoin",
+    "facts": [
+      "Toncoin's roots lead to the Telegram Open Network concept announced during 2018.",
+      "Telegram founder Pavel Durov became a central public figure in the project's early story.",
+      "The initial fundraising and planned token distribution faced United States securities enforcement.",
+      "Telegram abandoned its direct involvement in the original token launch during 2020.",
+      "Independent developers later continued a blockchain project now known as The Open Network.",
+      "The TON ecosystem subsequently emphasized applications that connect with messaging experiences.",
+      "Toncoin is used for network transactions and other blockchain functions.",
+      "Community foundations and development groups took public roles in advancing the technology.",
+      "Interest in Telegram-adjacent apps increased public awareness of TON.",
+      "Mini-app experiments suggested ways users might interact with services through familiar chat interfaces.",
+      "The connection to Telegram has often been described too loosely in promotional commentary.",
+      "TON is not simply a coin issued by every Telegram conversation.",
+      "Market interest has varied with expectations about app distribution and user adoption.",
+      "Toncoin's unusual history shows how a technical idea can outlive its original sponsoring company."
+    ],
+    "bridge": "TON's messaging-related ecosystem makes a natural comparison with PROI, but PROMETEI points are not a TON-style chain asset."
+  },
+  {
+    "slug": "sui",
+    "facts": [
+      "Sui was created by Mysten Labs, a team that included former Meta blockchain engineers.",
+      "Evan Cheng and other founders brought experience from earlier Move-language research.",
+      "The Sui mainnet became publicly available in May 2023.",
+      "Sui uses a version of the Move programming language for its smart-contract environment.",
+      "Its object-oriented data model aims to make certain asset operations easier to process independently.",
+      "The project promoted low-latency transactions and application-friendly architecture.",
+      "Early financing involved venture firms interested in a new generation of blockchain platforms.",
+      "Developer tools and ecosystem programs expanded after mainnet launch.",
+      "Gaming, payments, and decentralized-finance projects explored its capabilities.",
+      "Token distribution and unlock schedules attracted attention from market observers.",
+      "The competition among newer layer-one networks influenced expectations for SUI.",
+      "Technical performance claims require measurement under realistic workloads.",
+      "Sui's validator network and token mechanics form a functioning chain, unlike reward-only points.",
+      "The project's trajectory illustrates the difficulty of turning infrastructure speed into durable applications."
+    ],
+    "bridge": "Sui's executed blockchain transactions offer a very different benchmark from the proposed, not-yet-launched PROI coin."
+  },
+  {
+    "slug": "paypal-usd",
+    "facts": [
+      "PayPal introduced its PYUSD stablecoin in 2023.",
+      "The payments company partnered with Paxos for issuing arrangements.",
+      "PYUSD was designed to represent a dollar-backed digital token rather than an independent mining asset.",
+      "PayPal's large existing consumer brand made its entry into stablecoins newsworthy.",
+      "The token initially operated on Ethereum before reaching additional network ecosystems.",
+      "Support for Solana in 2024 highlighted interest in faster and lower-cost settlement.",
+      "Digital-dollar tokens can connect payment applications with blockchain transfers.",
+      "Consumer expectations for refunds and customer support differ from permissionless network assumptions.",
+      "An identified issuer and redemption process are key parts of PYUSD's risk profile.",
+      "Regulatory oversight matters especially for products that present themselves as digital dollars.",
+      "PYUSD's price should generally be discussed in relation to its dollar target.",
+      "Market supply depends on issuance and redemption rather than a Bitcoin-like halving.",
+      "PayPal's involvement does not make all blockchain transactions irreversible or risk-free.",
+      "The project demonstrates how an established payments company can adopt blockchain-based instruments."
+    ],
+    "bridge": "PYUSD is an issuer-managed dollar token, while PROI in PROMETEI is not money and has no dollar redemption mechanism."
+  },
+  {
+    "slug": "hedera",
+    "facts": [
+      "Hedera grew from work by Leemon Baird and Mance Harmon on hashgraph technology.",
+      "The project presented a distributed-ledger approach different from a conventional blockchain architecture.",
+      "HBAR entered wider circulation as the public network developed in 2019.",
+      "The network uses a hashgraph consensus design to reach agreement about transactions.",
+      "Hedera introduced a governing-council structure involving large organizations.",
+      "Companies such as Google and IBM appeared among council participants in its history.",
+      "A council role should not be mistaken for an endorsement of HBAR as an investment.",
+      "Use cases explored payments, tokenization, audit records, and enterprise applications.",
+      "HBAR is associated with network fees and other protocol operations.",
+      "The governance model prompted debate about decentralization and institutional influence.",
+      "Developers promoted predictable costs and enterprise-oriented infrastructure.",
+      "Market interest has followed cycles of attention to real-world distributed-ledger applications.",
+      "Performance depends on application design and real-world conditions rather than a single marketing metric.",
+      "Hedera illustrates a network where organizational governance is an explicit part of the technical story."
+    ],
+    "bridge": "Hedera's formal council model highlights how governance must be defined if PROI ever moves beyond optional reward points."
+  }
+]

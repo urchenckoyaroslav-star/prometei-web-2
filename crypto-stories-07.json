@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "aave",
+    "facts": [
+      "Aave began as ETHLend, a crypto-lending concept associated with Stani Kulechov in 2017.",
+      "The project adopted the Aave identity during its evolution toward pool-based lending.",
+      "An early Aave protocol went live in 2020 as decentralized finance expanded.",
+      "Users of lending protocols interact with smart contracts rather than conventional bank branches.",
+      "Aave gained recognition for novel mechanisms such as flash loans.",
+      "Flash loans require borrowed value to be returned within the same blockchain transaction.",
+      "AAVE became a governance-related token in the broader protocol ecosystem.",
+      "Several blockchain deployments expanded the reach of its lending markets.",
+      "Depositing collateral and borrowing crypto expose users to liquidation risks.",
+      "Market shocks repeatedly tested collateral management and protocol resilience.",
+      "Kulechov stayed a public face of the project and broader decentralized-finance research.",
+      "Governance forums debated parameters, risk limits, and which assets could enter markets.",
+      "High visibility did not prevent phishing, oracle hazards, or other operational concerns.",
+      "Aave offers an example of decentralized lending infrastructure rather than a simple savings account."
+    ],
+    "bridge": "AAVE has protocol governance and lending-risk functions, whereas PROI currently neither secures loans nor governs a blockchain."
+  },
+  {
+    "slug": "world-liberty-financial",
+    "facts": [
+      "World Liberty Financial was announced in 2024 amid unusually visible political interest in cryptocurrency.",
+      "The Trump family became closely associated with its public identity and promotion.",
+      "Figures linked to the Witkoff family also played major roles in the venture.",
+      "The WLFI token was presented primarily around governance within the project.",
+      "Public sales and token distribution attracted investors and extensive media scrutiny.",
+      "Reporting has described substantial financial interests held by entities connected to the founding families.",
+      "Those financial relationships led critics to raise questions about conflicts of interest.",
+      "Supporters promoted the project as an avenue for broader digital-finance adoption.",
+      "Developments around token transferability shaped WLFI's market narrative over time.",
+      "WLFI should not be confused with USD1, the separate dollar-linked stablecoin in the same ecosystem.",
+      "The project's ownership and governance structures deserve careful reading of public disclosures.",
+      "Links to prominent public figures do not establish that a token is safe or guaranteed to rise.",
+      "Regulatory developments and political commentary contributed to sharp shifts in sentiment.",
+      "WLFI is a reminder that public fame can increase attention without removing commercial or legal risk."
+    ],
+    "bridge": "WLFI's governance and political story are fundamentally different from PROI's current role as user-engagement points."
+  },
+  {
+    "slug": "pepe",
+    "facts": [
+      "PEPE appeared in 2023 as a cryptocurrency tied to the long-running Pepe the Frog internet meme.",
+      "Cartoonist Matt Furie created the original character years before the token existed.",
+      "Creating a cultural character does not mean its artist founded or endorsed a later token.",
+      "The token was launched by a separate group whose identities were not central to its early branding.",
+      "PEPE drew much of its first audience from online meme communities.",
+      "Rapid price movements attracted attention from outside the original community.",
+      "Its launch occurred during a period when social-media sentiment strongly influenced meme-token trading.",
+      "PEPE was issued as an Ethereum-based token rather than an independent proof-of-work network.",
+      "Exchange availability amplified its visibility as the token gained market attention.",
+      "Supply, liquidity, and holder concentration became important analytical questions.",
+      "Meme popularity can change suddenly when the cultural conversation moves elsewhere.",
+      "Posts from celebrities about internet memes are not evidence they sponsor a particular token.",
+      "PEPE's market history includes steep rallies and reversals familiar to speculative digital assets.",
+      "It demonstrates the limits of trying to measure a software product's usefulness by viral attention."
+    ],
+    "bridge": "PEPE depends heavily on meme culture, whereas PROI is envisioned as recognition for real participation in PROMETEI services."
+  },
+  {
+    "slug": "aster",
+    "facts": [
+      "Aster developed from the combination and evolution of decentralized trading projects during 2025.",
+      "Its background includes the earlier APX Finance and Astherus initiatives.",
+      "The rebranded product focused on decentralized derivatives infrastructure.",
+      "An ASTER token launch in September 2025 drew substantial market attention.",
+      "YZi Labs, previously known as Binance Labs, was publicly identified as a supporter.",
+      "Changpeng Zhao's public comments also amplified visibility around Aster.",
+      "Social attention should not be mistaken for a guarantee of token performance.",
+      "The project promoted activity across more than one blockchain environment.",
+      "Competition with other derivatives platforms influenced its messaging and design choices.",
+      "Complex leveraged markets carry risks very different from ordinary payment transactions.",
+      "Market sentiment toward ASTER has moved with excitement about trading-platform adoption.",
+      "Centralization, liquidation mechanics, and incentive sustainability are important topics for analysis.",
+      "Aster's model combines application features, token incentives, and network integration.",
+      "An exchange-related token should never be presented as equivalent to a stable digital dollar."
+    ],
+    "bridge": "ASTER's derivative-platform incentives contrast with PROI's simple participation points and do not make leveraged trading a suitable comparison."
+  },
+  {
+    "slug": "ondo",
+    "facts": [
+      "Ondo Finance was established with an ambition to connect traditional financial assets to blockchain infrastructure.",
+      "Nathan Allman became a prominent founder and public spokesperson for the project.",
+      "The ecosystem attracted attention for tokenized treasury-related financial products.",
+      "Ondo's work emerged during growing interest in real-world assets represented on blockchains.",
+      "Tokenization allows claims or rights to be represented through digital records under defined terms.",
+      "The ONDO token is associated with governance and the project's wider ecosystem.",
+      "An on-chain token is not automatically the same legal claim as a security held by an issuer.",
+      "Investors and institutions expressed wider interest in digital representations of traditional assets.",
+      "That theme helped draw attention to Ondo during several market cycles.",
+      "Rules about who may hold particular tokenized instruments can vary across products and jurisdictions.",
+      "Custody, redemption, and legal enforceability remain central considerations for real-world assets.",
+      "Ondo's partnerships and product launches should be evaluated individually rather than treated as universal guarantees.",
+      "ONDO's market value can move independently from short-term Treasury interest rates.",
+      "The project shows that blockchain finance often relies on off-chain institutions and contracts."
+    ],
+    "bridge": "Ondo explores representations of real-world financial claims, while PROI points represent no bond, share, or redeemable asset."
+  }
+]

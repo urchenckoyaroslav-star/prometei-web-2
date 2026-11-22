@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "chainlink",
+    "facts": [
+      "Chainlink grew from work by Sergey Nazarov and Steve Ellis on connecting smart contracts to external information.",
+      "The LINK token began circulating in 2017 as the oracle-network project developed.",
+      "Chainlink's mainnet launched in 2019 and expanded the range of data available to blockchain applications.",
+      "An oracle supplies information that a blockchain cannot verify simply by looking at its own ledger.",
+      "Price feeds became one of Chainlink's most widely discussed early use cases.",
+      "Decentralized-finance teams adopted oracle feeds while trying to avoid dependence on a single data publisher.",
+      "Nazarov became a visible advocate for connecting institutions and blockchains.",
+      "The Cross-Chain Interoperability Protocol later broadened Chainlink's ambitions beyond individual data feeds.",
+      "Research collaborations and pilot projects helped attract enterprise attention.",
+      "Integrations are not the same as guarantees that every company publicly supports the LINK token.",
+      "Oracle reliability, data manipulation, and governance create distinct technical concerns.",
+      "LINK's market interest has moved with broader demand for smart-contract infrastructure.",
+      "Node operators and staking-related designs became part of the network's evolution.",
+      "Chainlink shows that a blockchain application often depends on trusted facts arriving from outside itself."
+    ],
+    "bridge": "Chainlink brings external information into blockchain applications, whereas a moon-calendar proposal for PROI would need independently verifiable phase data."
+  },
+  {
+    "slug": "usds",
+    "facts": [
+      "USDS emerged from the MakerDAO ecosystem's transition toward the Sky identity in 2024.",
+      "Rune Christensen was a central figure in Maker's earlier governance and long-term strategy.",
+      "Maker's DAI stablecoin provided the historical foundation for the later USDS design.",
+      "The Sky transition connected a new brand with governance and stablecoin changes.",
+      "USDS is intended to maintain value close to the United States dollar.",
+      "Its economic design is linked to the governance and collateral practices of the surrounding ecosystem.",
+      "Users have compared it with older DAI mechanics and other decentralized stablecoin models.",
+      "Branding changes generated discussions about decentralization, custody, and compliance.",
+      "The stablecoin is not identical to SKY, the ecosystem's governance token.",
+      "Stablecoin supplies can expand or contract with issuance, collateral, and redemption activity.",
+      "Interest in USDS has tracked demand for decentralized-finance dollar instruments.",
+      "The project illustrates how years-old software communities can reinvent names and mechanisms.",
+      "Peg stability remains a technical and economic objective rather than a law of nature.",
+      "Collateral and smart-contract risks deserve more attention than charts promising ever-rising prices."
+    ],
+    "bridge": "USDS seeks a stable dollar relationship, while PROI currently records activity without any dollar peg."
+  },
+  {
+    "slug": "cardano",
+    "facts": [
+      "Cardano was introduced as a blockchain platform with a strong emphasis on academic research.",
+      "Charles Hoskinson became its most visible founder after earlier work on Ethereum.",
+      "The ADA network entered public operation in 2017 during the Byron era.",
+      "Its Ouroboros consensus family explored proof-of-stake security through formal research.",
+      "The Shelley phase advanced staking and delegation during 2020.",
+      "The Alonzo upgrade in 2021 brought smart-contract capabilities to the network.",
+      "Development teams have included Input Output and other ecosystem organizations.",
+      "Cardano's supporters highlight peer review and deliberate release planning.",
+      "Critics have questioned whether slower rollouts delay usable applications.",
+      "ADA attracted global attention during several large cryptocurrency market cycles.",
+      "Community stake pools became an important part of its operating model.",
+      "Governance changes continued as the project expanded participation beyond founding teams.",
+      "Research-led development does not remove software bugs or economic uncertainty.",
+      "Cardano's story is about balancing methodical design with demands for a growing app ecosystem."
+    ],
+    "bridge": "Cardano's carefully researched staking history is a reminder that any PROI blockchain proposal would need public security analysis before release."
+  },
+  {
+    "slug": "stellar",
+    "facts": [
+      "Stellar was launched in 2014 with a focus on moving value across payment systems.",
+      "Jed McCaleb and Joyce Kim were prominent figures in its founding story.",
+      "The nonprofit Stellar Development Foundation became a central ecosystem organization.",
+      "Its XLM asset helps pay network fees and plays a role in account operations.",
+      "Stellar's consensus model differs from mining-based blockchains such as Bitcoin.",
+      "The network emphasized modest transaction costs and cross-border settlement.",
+      "Partnership discussions with payment providers made Stellar widely known beyond crypto circles.",
+      "Some projects explored issuing digital versions of fiat currency on the ledger.",
+      "The Stellar network later added smart-contract capabilities through Soroban.",
+      "XLM has experienced enthusiasm during payments-focused market cycles and declines during quieter periods.",
+      "The network's technical priorities have included interoperability and accessible financial infrastructure.",
+      "Public endorsements from an institution should be checked against the exact partnership announcement.",
+      "Access to financial services remains an ambition, not a promise that every payment corridor works.",
+      "Stellar offers a practical example of how a network token differs from the currencies issued upon it."
+    ],
+    "bridge": "Stellar aims to move network value, while PROI's present purpose is recognizing participation within one messenger."
+  },
+  {
+    "slug": "bitcoin-cash",
+    "facts": [
+      "Bitcoin Cash began in August 2017 when a group of Bitcoin participants followed a different blockchain fork.",
+      "The split reflected a fierce debate over how to increase transaction throughput.",
+      "Supporters favored larger on-chain blocks as a path toward lower-cost payments.",
+      "Roger Ver became one of the most recognizable advocates for Bitcoin Cash.",
+      "Mining entrepreneur Jihan Wu also became associated with the larger-block movement.",
+      "BCH inherited the earlier Bitcoin ledger history up to the point of its split.",
+      "Afterward it followed its own consensus rules and developed its own community.",
+      "The fork produced years of arguments about the phrase peer-to-peer electronic cash.",
+      "Further disagreements led to another prominent split involving Bitcoin SV in 2018.",
+      "Wallet design, block size, and payment adoption remained recurring development themes.",
+      "Bitcoin Cash continues using proof-of-work mining rather than replacing mining with a rewards app.",
+      "Its value has risen and fallen with shifting expectations about payment adoption.",
+      "BCH is a separate asset from BTC despite their shared early history.",
+      "The project illustrates that communities can disagree sharply even while pursuing the same original problem."
+    ],
+    "bridge": "Bitcoin Cash demonstrates how an actual network fork works; PROI rewards cannot be described as a blockchain fork or native coin."
+  }
+]
