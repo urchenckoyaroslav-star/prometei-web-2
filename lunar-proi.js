@@ -38,6 +38,33 @@ let selectedDate=null,lastDay=null,animationFrame=0,currentPhase=phaseAt(utcToda
 const phaseButtons=[...document.querySelectorAll("[data-phase-index]")];
 const rail=$("lp-milestones");
 const railButtons=[];
+const chartTrace=$("lp-chart-trace"),chartArea=$("lp-chart-area");
+const chartCursor=$("lp-chart-cursor"),chartPoint=$("lp-chart-point");
+function renderRewardChart(){
+ if(!chartTrace||!chartArea)return;
+ const left=20,right=620,top=24,bottom=144,height=bottom-top;
+ let previous=bottom,cumulative=0;
+ let data="M"+left+" "+bottom;
+ for(const m of milestones){
+  const x=left+(right-left)*m.p;
+  cumulative+=m.milli;
+  const y=bottom-(cumulative/totalMilli)*height;
+  data+=" H"+x.toFixed(2)+" V"+y.toFixed(2);
+  previous=y;
+ }
+ data+=" H"+right;
+ chartTrace.setAttribute("d",data);
+ chartArea.setAttribute("d",data+" V"+bottom+" H"+left+" Z");
+}
+function updateChartCursor(p,earnedMilli){
+ if(!chartCursor||!chartPoint)return;
+ const x=20+600*p,y=144-(earnedMilli/totalMilli)*120;
+ chartCursor.setAttribute("x1",x.toFixed(2));
+ chartCursor.setAttribute("x2",x.toFixed(2));
+ chartPoint.setAttribute("cx",x.toFixed(2));
+ chartPoint.setAttribute("cy",y.toFixed(2));
+}
+
 const safeInput=(id,fallback,min,max)=>{
  const n=Number($(id).value);
  return Number.isFinite(n)?Math.max(min,Math.min(max,n)):fallback;
@@ -94,6 +121,7 @@ function paint(age,date=null){
  $("lp-age").textContent=dec.format(safeAge);
  const due=dueAt(p),earnedMilli=due.reduce((sum,m)=>sum+m.milli,0);
  $("lp-issuance").textContent=one.format(earnedMilli/1000)+" PROI";
+ updateChartCursor(p,earnedMilli);
  $("lp-cycle-total").textContent=one.format(totalMilli/1000)+" PROI";
  $("lp-selected-date").textContent=date?dateText.format(date):cfg.labels.manual;
  const baseLunation=lunationIndex(date?date.getTime():utcToday.getTime());
@@ -170,7 +198,13 @@ function renderCalendar(){
   container.append(b);
  }
 }
-slider.addEventListener("input",()=>{cancelAnimationFrame(animationFrame);paint(Number(slider.value));});
+let pendingInput=0;
+slider.addEventListener("input",()=>{
+ cancelAnimationFrame(animationFrame);
+ if(reduced){paint(Number(slider.value));return;}
+ if(pendingInput)return;
+ pendingInput=requestAnimationFrame(()=>{pendingInput=0;paint(Number(slider.value));});
+});
 phaseButtons.forEach(button=>button.addEventListener("click",()=>{
  animate(((Number(button.dataset.phaseIndex)/8)*syn),null);
 }));
@@ -178,7 +212,7 @@ $("lp-month-prev").addEventListener("click",()=>{visibleMonth=makeUTC(visibleMon
 $("lp-month-next").addEventListener("click",()=>{visibleMonth=makeUTC(visibleMonth.getUTCFullYear(),visibleMonth.getUTCMonth()+1,1);renderCalendar()});
 $("lp-month-today").addEventListener("click",()=>{visibleMonth=makeUTC(utcToday.getUTCFullYear(),utcToday.getUTCMonth(),1);renderCalendar();animate(ageAt(utcToday),utcToday)});
 ["lp-transfer","lp-fee-waxing","lp-fee-waning"].forEach(id=>$(id).addEventListener("input",calculateFee));
-renderRail();renderCalendar();paint(ageAt(utcToday),utcToday);
+renderRail();renderRewardChart();renderCalendar();paint(ageAt(utcToday),utcToday);
 const progress=$("lp-progress");
 if(progress){
  let busy=false;
