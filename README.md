@@ -1,6 +1,11 @@
 # PROMETEI WEB 2.0
 
-**Live website:** https://urchenckoyaroslav-star.github.io/prometei-web-2/
+**Live website:** [PROMETEI Messenger for Android](https://prometei-web-2.pages.dev/)
+
+- [Bluetooth messaging without internet](https://prometei-web-2.pages.dev/guides/bluetooth-messaging-without-internet/) explains how nearby Android devices communicate.
+- [PROMETEI News](https://prometei-web-2.pages.dev/news/) collects the latest articles.
+- [PROMETEI FM music chart](https://prometei-web-2.pages.dev/fm-charts) features tracks, artist profiles and music videos.
+- [Crypto Atlas](https://prometei-web-2.pages.dev/crypto-atlas/) is the site's cryptocurrency reference section.
 
 A **real, responsive static website** for PROMETEI Messenger and related independent Android projects. Built from scratch with semantic HTML, custom CSS, accessible controls and vanilla JavaScript — no WordPress, account credentials or paid runtime required. A small build-time Node script prepares SEO metadata and localized static output for Cloudflare Pages.
 
