@@ -326,7 +326,7 @@ function applyGlobalQualityStyles(directory){
   }
 }
 applyGlobalQualityStyles(output);
-const urls=[...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls,...cryptoUrls,...lunarUrls,...weeklyNewsUrls,'advertise/','services/','site-map/'];
+const urls=[...new Set([...locales.flatMap(l=>['fm-charts','fm-history'].map(page=>urlFor(l,page).slice(1))),'',...localized.map(x=>x+'/'),...docs.map(x=>x.slice(0,-5)),'fm',...localized.map(x=>x+'/fm'),...guideUrls,...cryptoUrls,...lunarUrls,...weeklyNewsUrls,'advertise/','services/','site-map/'])];
 const xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for(const item of urls){
  xml.push('  <url><loc>'+base+item+'</loc>');
@@ -447,8 +447,28 @@ const featuredSitemap = [
 ];
 fs.writeFileSync(path.join(output,'sitemap-featured.xml'),featuredSitemap.join('\n')+'\n');
 
-fs.writeFileSync(path.join(output,'robots.txt'),'User-agent: *\nAllow: /\nSitemap: '+base+'sitemap.xml\nSitemap: '+base+'sitemap-fm.xml\nSitemap: '+base+'sitemap-featured.xml\n');
-fs.writeFileSync(path.join(output,'_headers'),`/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n\n/assets/*\n  Cache-Control: public, max-age=3600\n`);
+// Public search and AI crawler discovery. All public content was already allowed by "*".
+const crawlerAgents=['*','Googlebot','Googlebot-Image','Google-Extended','bingbot','OAI-SearchBot','ChatGPT-User','GPTBot','Claude-SearchBot','Claude-User','ClaudeBot','PerplexityBot','Perplexity-User','DuckDuckBot','Applebot','Applebot-Extended'];
+const crawlerRules=crawlerAgents.map(agent=>'User-agent: '+agent+'\nAllow: /\n').join('\n');
+fs.writeFileSync(path.join(output,'robots.txt'),crawlerRules+'\n'+['sitemap.xml','sitemap-fm.xml','sitemap-featured.xml'].map(file=>'Sitemap: '+base+file).join('\n')+'\n');
+// Optional readable entry point for compatible agents, not a Google ranking signal.
+const agentSections=[
+ ['PROMETEI Messenger','','Official Android app and supported communication modes.'],
+ ['How communication works','how-it-works','Technical explanation and limitations.'],
+ ['Connection science guides','guides/','Technical guides and experiments in seven languages.'],
+ ['Developer portfolio','portfolio','Projects and development case studies.'],
+ ['Crypto Atlas','crypto-atlas/','Educational cryptocurrency histories.'],
+ ['PROI Lunar Lab','crypto-atlas/proi/','Lunar and PROI reference.'],
+ ['World News','news/','Editorial news articles.'],
+ ['PROMETEI FM','fm','Radio station.'],
+ ['FM music chart','fm-charts','Music chart and editorial profiles.'],
+ ['FM play history','fm-history','Station play history.'],
+ ['Support','support','Support and documentation.'],
+ ['Full website directory','site-map/','Direct HTML links to public pages.']
+];
+const agentLines=['# PROMETEI','','> Official multilingual site for PROMETEI Messenger and associated editorial and developer projects.','','## Main resources','',...agentSections.filter(([,slug])=>urls.includes(slug)).map(([title,slug,description])=>'- ['+title+']('+base+slug+'): '+description),'','## Language homepages','',...locales.map(l=>'- ['+mappings[l]+']('+base+(l==='en'?'':l+'/')+')'),'','## Complete page discovery','','- [XML sitemap]('+base+'sitemap.xml)','','Check the linked pages for current product limitations, dates and source references.',''];
+fs.writeFileSync(path.join(output,'llms.txt'),agentLines.join('\n'));
+fs.writeFileSync(path.join(output,'_headers'),`/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n\n/assets/*\n  Cache-Control: public, max-age=3600\n\n/llms.txt\n  Content-Type: text/plain; charset=utf-8\n  Cache-Control: public, max-age=3600\n`);
 // Restrict Cloudflare Pages Functions invocation to the station API.
 fs.writeFileSync(path.join(output,'_routes.json'),JSON.stringify({version:1,include:['/api/fm/*',...locales.map(l=>urlFor(l,'fm-history'))],exclude:[]},null,2)+'\n');
 // Google and other public site crawlers may index the pages. Do not add invented verification tokens.
