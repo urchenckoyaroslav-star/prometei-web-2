@@ -1,9 +1,9 @@
 {
-  "note": "AdSense is not active. The current signed-in Google account cannot access AdSense. Paid Google ads require an eligible publisher, verified approved website, actual publisher and slot IDs, and a properly integrated certified consent solution where required. App AdMob credentials cannot be used as website AdSense verification.",
+  "note": "Publisher ID verified against the owner's existing Google AdSense Sites account on 2026-11-28. Render site approval, valid ad unit IDs and certified consent setup remain prerequisites. Keep enabled and consentReady false until verified; house sponsorship remains available.",
   "adsense": {
     "enabled": false,
     "consentReady": false,
-    "publisherId": "",
+    "publisherId": "ca-pub-7195249956747821",
     "slots": {
       "newsFeed": "",
       "newsArticleInline": "",
